@@ -1,0 +1,401 @@
+import { useState, useEffect } from 'react';
+import { ArrowUpRight, Calculator, ShieldAlert, Award } from 'lucide-react';
+
+const loanCategories = [
+  {
+    id: 'personal-finance',
+    title: 'Personal Finance',
+    subcategories: [
+      { name: 'Salary Transfer Loan (STL)', desc: 'High-limit loans requiring salary transfer to tier-1 banks. Offers the lowest APR and maximum tenures up to 48 months.' },
+      { name: 'Post Dated Cheque (PDC) Loan / Non-STL', desc: 'Sovereign structures for professionals who cannot transfer salary, backed by post-dated cheques and security files.' },
+      { name: 'Buy-Out & Consolidation Loans', desc: 'Direct buyout of existing loan facilities from other institutions to consolidate payments and secure lower interest rates.' }
+    ]
+  },
+  {
+    id: 'business-loan',
+    title: 'SME & Corporate Finance',
+    subcategories: [
+      { name: 'Retail Business Loans', desc: 'SME working capital facilities, invoice discounting, and merchant cash advances tailored for local LLC operations.' },
+      { name: 'Loan Against Credit Card (LACC)', desc: 'Unsecured business facilities approved based on historical credit card terminal merchant volumes (pos machines).' },
+      { name: 'Corporate & SME Term Finance', desc: 'High-value structured facilities for expansion, acquisitions, and asset financing backed by audited financials.' },
+      { name: 'Project & Machinery Finance', desc: 'Capital intensive placement for construction fleet, industrial machinery, and contract execution finance.' }
+    ]
+  },
+  {
+    id: 'vehicle-mortgage',
+    title: 'Asset Financing & Insurance',
+    subcategories: [
+      { name: 'Vehicle & Fleet Loan', desc: 'Retail auto finance and commercial logistics fleet placement at preferred institutional rates.' },
+      { name: 'Home Loans & Mortgage Top-Ups', desc: 'Residential and commercial mortgage facilities for UAE residents and foreign investors with high LTV thresholds.' },
+      { name: 'Insurance Portals', desc: 'Sovereign risk coverages, corporate health packages, key-man coverage, and assets insurance facilitation.' }
+    ]
+  }
+];
+
+export default function Loans() {
+  const [selectedCat, setSelectedCat] = useState('personal-finance');
+  
+  // Calculator States
+  const [monthlyIncome, setMonthlyIncome] = useState(25000);
+  const [currentEmi, setCurrentEmi] = useState(5000);
+  const [calcLoanType, setCalcLoanType] = useState('Personal');
+  const [interestRate, setInterestRate] = useState(5.5); // reducing
+  const [tenureYears, setTenureYears] = useState(4);
+
+  // Auto-scroll or tab selector based on hash
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const cleanHash = hash.replace('#', '');
+      if (cleanHash.includes('loan') || cleanHash.includes('finance') || cleanHash.includes('pdc') || cleanHash.includes('stl') || cleanHash.includes('buyout') || cleanHash.includes('credit-card') || cleanHash.includes('sme') || cleanHash.includes('project') || cleanHash.includes('home') || cleanHash.includes('insurance')) {
+        if (cleanHash.includes('business') || cleanHash.includes('sme') || cleanHash.includes('project') || cleanHash.includes('lacc')) {
+          setSelectedCat('business-loan');
+        } else if (cleanHash.includes('vehicle') || cleanHash.includes('fleet') || cleanHash.includes('home') || cleanHash.includes('mortgage') || cleanHash.includes('insurance')) {
+          setSelectedCat('vehicle-mortgage');
+        } else {
+          setSelectedCat('personal-finance');
+        }
+        const element = document.getElementById('loans-directory');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  }, []);
+
+  // UAE Loan Eligibility Calculation (DBR based)
+  // Max DBR is 50% for personal and typically 60% for corporate/business.
+  const dbrRatio = calcLoanType === 'Personal' ? 0.50 : 0.60;
+  const maxAllowedEmi = monthlyIncome * dbrRatio;
+  const eligibleEmi = Math.max(0, maxAllowedEmi - currentEmi);
+  
+  // Calculate loan amount based on reducing balance interest rate
+  // Formula: EMI = [P x r x (1+r)^n] / [(1+r)^n - 1]
+  // Therefore: P = EMI * [(1+r)^n - 1] / [r * (1+r)^n]
+  const r = (interestRate / 100) / 12;
+  const n = tenureYears * 12;
+  const maxEligibleLoan = r > 0
+    ? (eligibleEmi * (Math.pow(1 + r, n) - 1)) / (r * Math.pow(1 + r, n))
+    : eligibleEmi * n;
+
+  const currentDbr = (currentEmi / monthlyIncome) * 100;
+
+  return (
+    <div className="flex-1 w-full bg-[#070F1E] pt-36 sm:pt-40 lg:pt-44 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        
+        {/* Header */}
+        <div className="flex flex-col gap-4 mb-16 relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 border border-[#C5A059]/25 bg-[#0D1625]/85 rounded-full w-fit">
+            <span className="w-2 h-2 rounded-full bg-[#C5A059]"></span>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E2C999]">
+              Pillar II
+            </span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light text-[#FBF9F4] leading-tight">
+            Commercial Facilities & <br />
+            <span className="text-gradient-gold italic">Structured Loans</span>
+          </h1>
+          <p className="text-sm sm:text-base font-light text-[#FBF9F4]/60 max-w-2xl leading-relaxed mt-2">
+            Accelerate your corporate operations and protect your assets. We structure institutional finance, retail credit, and mortgage lines through preferred relationships with tier-1 UAE banks.
+          </p>
+        </div>
+
+        {/* Categories Grid */}
+        <div id="loans-directory" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-20">
+          
+          {/* Tab selector */}
+          <div className="lg:col-span-4 flex flex-col gap-2">
+            <div className="text-[10px] font-bold text-[#C5A059] uppercase tracking-[0.25em] mb-4 pl-2">
+              Facility Classes
+            </div>
+            {loanCategories.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setSelectedCat(item.id)}
+                className={`w-full text-left p-5 transition-all duration-300 rounded-sm border flex items-center justify-between cursor-pointer group ${
+                  selectedCat === item.id 
+                    ? 'bg-[#0D1625] border-[#C5A059] text-[#FBF9F4]' 
+                    : 'bg-[#050B15]/40 border-slate-900 text-[#FBF9F4]/50 hover:bg-[#0D1625]/50 hover:border-[#C5A059]/30 hover:text-[#FBF9F4]'
+                }`}
+              >
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] font-mono text-[#C5A059]">Asset Class</span>
+                  <span className="text-sm font-semibold tracking-wide font-sans">{item.title}</span>
+                </div>
+                <ArrowUpRight className={`w-4 h-4 text-[#C5A059] transition-transform duration-300 ${
+                  selectedCat === item.id ? 'translate-x-0.5 -translate-y-0.5' : 'opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'
+                }`} />
+              </button>
+            ))}
+          </div>
+
+          {/* Right Details Panel */}
+          <div className="lg:col-span-8 bg-[#0D1625] border border-slate-800 p-8 sm:p-10 rounded-sm flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#9A7B3E] via-[#C5A059] to-[#E2C999]"></div>
+            
+            {loanCategories.map((item) => {
+              if (item.id !== selectedCat) return null;
+              return (
+                <div key={item.id} className="animate-fade-in flex flex-col justify-between h-full gap-8">
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-serif text-[#C5A059] font-medium tracking-wide border-b border-[#C5A059]/10 pb-3">
+                      {item.title} Facilities
+                    </h3>
+                    
+                    <div className="grid grid-cols-1 gap-6">
+                      {item.subcategories.map((sub, idx) => (
+                        <div key={idx} className="bg-[#070F1E]/50 border border-slate-850 p-5 hover:border-[#C5A059]/20 transition-all duration-300">
+                          <h4 className="text-xs uppercase tracking-wider font-semibold text-[#E2C999] mb-1.5 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]"></span>
+                            {sub.name}
+                          </h4>
+                          <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed pl-3.5">
+                            {sub.desc}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="border-t border-[#C5A059]/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2.5 bg-[#070F1E] border border-[#C5A059]/25 rounded-full text-[#C5A059]">
+                        <Award className="w-4 h-4" />
+                      </div>
+                      <div className="text-[10px] font-light text-[#FBF9F4]/40 max-w-[280px]">
+                        Leveraging private institutional allocations and direct credit lines for preferred pricing.
+                      </div>
+                    </div>
+                    <a
+                      href="/#secure-intake"
+                      className="px-8 py-3.5 bg-[#C5A059] text-[#070F1E] text-xs font-semibold uppercase tracking-[0.2em] hover:bg-[#E2C999] transition-all rounded-sm font-sans"
+                    >
+                      Request Terms
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+
+          </div>
+        </div>
+
+        {/* UAE Loan Eligibility Calculator */}
+        <div className="bg-[#0D1625] border border-[#C5A059]/20 p-8 sm:p-10 rounded-sm relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-[3px] bg-[#C5A059]"></div>
+          
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-[#C5A059]/10 pb-6 mb-8 gap-4">
+            <div className="flex items-center gap-3">
+              <div className="p-3 bg-[#070F1E] border border-[#C5A059]/20 rounded-sm">
+                <Calculator className="w-5 h-5 text-[#C5A059]" />
+              </div>
+              <div>
+                <h3 className="text-xl font-serif text-[#FBF9F4] font-medium tracking-wide">
+                  UAE Debt Burden Ratio (DBR) & Loan Eligibility Calculator
+                </h3>
+                <p className="text-xs text-[#FBF9F4]/40 font-light mt-0.5">
+                  Check your estimated maximum loan capacity according to the UAE Central Bank compliance thresholds.
+                </p>
+              </div>
+            </div>
+            <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#C5A059] border border-[#C5A059]/20 px-3 py-1 bg-[#070F1E]">
+              DBR Compliance Engine
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            {/* Input Column */}
+            <div className="lg:col-span-7 space-y-6">
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                {/* Income / Revenue Input */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex justify-between items-center text-xs">
+                    <label htmlFor="loan-income" className="font-semibold uppercase tracking-wider text-[#C5A059]">
+                      {calcLoanType === 'Personal' ? 'Monthly Salary' : 'Monthly Business Revenue'}
+                    </label>
+                    <span className="font-mono text-[#FBF9F4] font-semibold text-sm">
+                      AED {monthlyIncome.toLocaleString()}
+                    </span>
+                  </div>
+                  <input 
+                    type="range" 
+                    id="loan-income"
+                    min="5000"
+                    max="150000"
+                    step="5000"
+                    value={monthlyIncome}
+                    onChange={(e) => setMonthlyIncome(Number(e.target.value))}
+                    className="w-full accent-[#C5A059] bg-[#070F1E] h-1.5 rounded-sm appearance-none cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[9px] text-[#FBF9F4]/30 font-mono">
+                    <span>AED 5K</span>
+                    <span>AED 150K+</span>
+                  </div>
+                </div>
+
+                {/* Existing EMI Input */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex justify-between items-center text-xs">
+                    <label htmlFor="loan-emi" className="font-semibold uppercase tracking-wider text-[#C5A059]">
+                      Existing Monthly Liabilities
+                    </label>
+                    <span className="font-mono text-[#FBF9F4] font-semibold text-sm">
+                      AED {currentEmi.toLocaleString()}
+                    </span>
+                  </div>
+                  <input 
+                    type="range" 
+                    id="loan-emi"
+                    min="0"
+                    max="50000"
+                    step="1000"
+                    value={currentEmi}
+                    onChange={(e) => setCurrentEmi(Number(e.target.value))}
+                    className="w-full accent-[#C5A059] bg-[#070F1E] h-1.5 rounded-sm appearance-none cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[9px] text-[#FBF9F4]/30 font-mono">
+                    <span>AED 0</span>
+                    <span>AED 50K</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                {/* Loan Type */}
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="loan-type" className="text-xs font-semibold uppercase tracking-wider text-[#C5A059]">
+                    Facility Class
+                  </label>
+                  <select 
+                    id="loan-type"
+                    value={calcLoanType}
+                    onChange={(e) => setCalcLoanType(e.target.value)}
+                    className="bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 px-3 rounded-sm focus:outline-none focus:border-[#C5A059] appearance-none cursor-pointer"
+                  >
+                    <option value="Personal" className="bg-[#0D1625] text-[#FBF9F4]">Personal (Max 50% DBR)</option>
+                    <option value="Corporate" className="bg-[#0D1625] text-[#FBF9F4]">Corporate/SME (Max 60% DBR)</option>
+                  </select>
+                </div>
+
+                {/* Interest Rate */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex justify-between items-center text-xs">
+                    <label htmlFor="loan-rate" className="font-semibold uppercase tracking-wider text-[#C5A059]">
+                      Interest Rate (Reducing)
+                    </label>
+                    <span className="font-mono text-[#FBF9F4] font-semibold">
+                      {interestRate}%
+                    </span>
+                  </div>
+                  <input 
+                    type="range" 
+                    id="loan-rate"
+                    min="2"
+                    max="15"
+                    step="0.25"
+                    value={interestRate}
+                    onChange={(e) => setInterestRate(Number(e.target.value))}
+                    className="w-full accent-[#C5A059] bg-[#070F1E] h-1.5 rounded-sm appearance-none cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[9px] text-[#FBF9F4]/30 font-mono">
+                    <span>2%</span>
+                    <span>15%</span>
+                  </div>
+                </div>
+
+                {/* Tenure */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex justify-between items-center text-xs">
+                    <label htmlFor="loan-tenure" className="font-semibold uppercase tracking-wider text-[#C5A059]">
+                      Loan Tenure
+                    </label>
+                    <span className="font-mono text-[#FBF9F4] font-semibold">
+                      {tenureYears} Years
+                    </span>
+                  </div>
+                  <input 
+                    type="range" 
+                    id="loan-tenure"
+                    min="1"
+                    max="15"
+                    step="1"
+                    value={tenureYears}
+                    onChange={(e) => setTenureYears(Number(e.target.value))}
+                    className="w-full accent-[#C5A059] bg-[#070F1E] h-1.5 rounded-sm appearance-none cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[9px] text-[#FBF9F4]/30 font-mono">
+                    <span>1 yr</span>
+                    <span>15 yrs</span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* Calculations results */}
+            <div className="lg:col-span-5 bg-[#070F1E]/80 border border-[#C5A059]/15 p-6 rounded-sm flex flex-col justify-between">
+              <div>
+                <h4 className="text-[10px] font-bold text-[#C5A059] uppercase tracking-[0.25em] border-b border-[#C5A059]/15 pb-2 mb-6">
+                  Eligibility Breakdown
+                </h4>
+                
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center border-b border-[#C5A059]/5 pb-3">
+                    <span className="text-[10px] uppercase tracking-wider text-[#FBF9F4]/40">Current Debt Burden (DBR):</span>
+                    <span className={`text-xs font-mono font-semibold ${currentDbr > 45 ? 'text-rose-500' : 'text-[#C5A059]'}`}>
+                      {currentDbr.toFixed(1)}%
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center border-b border-[#C5A059]/5 pb-3">
+                    <span className="text-[10px] uppercase tracking-wider text-[#FBF9F4]/40">Maximum Allowed EMI:</span>
+                    <span className="text-sm font-mono font-semibold text-[#FBF9F4]">AED {Math.round(maxAllowedEmi).toLocaleString()}</span>
+                  </div>
+
+                  <div className="flex justify-between items-center border-b border-[#C5A059]/5 pb-3">
+                    <span className="text-[10px] uppercase tracking-wider text-[#FBF9F4]/40">Eligible Monthly EMI Capacity:</span>
+                    <span className="text-sm font-mono font-semibold text-emerald-500">AED {Math.round(eligibleEmi).toLocaleString()}</span>
+                  </div>
+
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] uppercase tracking-wider text-[#FBF9F4]/40">Est. Max Eligible Loan:</span>
+                    <div className="text-right">
+                      <div className="text-lg font-mono font-semibold text-[#E2C999]">AED {Math.round(maxEligibleLoan).toLocaleString()}</div>
+                      <div className="text-[8px] text-[#FBF9F4]/30 uppercase tracking-wider">Subject to credit assessment</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {currentDbr > 50 && (
+                <div className="my-4 p-3 bg-rose-500/10 border border-rose-500/20 text-[10px] text-rose-300 font-light rounded-sm flex items-start gap-2">
+                  <ShieldAlert className="w-4 h-4 text-rose-500 flex-shrink-0" />
+                  <span>Your current DBR exceeds typical UAE regulations. We recommend reviewing our Restructuring options to write down existing liabilities.</span>
+                </div>
+              )}
+
+              <div className="pt-6 mt-4 border-t border-[#C5A059]/10">
+                <a
+                  href="/#secure-intake"
+                  className="w-full block text-center bg-[#C5A059] hover:bg-[#E2C999] text-[#070F1E] py-3.5 text-xs font-semibold uppercase tracking-[0.2em] transition-all rounded-sm duration-300"
+                >
+                  Apply for Commercial Allocation
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  );
+}
