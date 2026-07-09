@@ -406,28 +406,6 @@ export default function Home() {
                       MYR: 'Malaysian Ringgit',
                       THB: 'Thai Baht'
                     };
-                    const symbols: Record<string, string> = {
-                      AED: 'د.إ',
-                      INR: '₹',
-                      PKR: '₨',
-                      JPY: '¥',
-                      CNY: '¥',
-                      BDT: '৳',
-                      EUR: '€',
-                      GBP: '£',
-                      SGD: 'S$',
-                      SAR: 'ر.س',
-                      QAR: 'ر.ق',
-                      OMR: 'ر.ع.',
-                      KWD: 'د.ك',
-                      CAD: 'C$',
-                      AUD: 'A$',
-                      CHF: 'Fr',
-                      HKD: 'HK$',
-                      NZD: 'NZ$',
-                      MYR: 'RM',
-                      THB: '฿'
-                    };
                     return (
                       <div key={code} className="bg-[#031C14] border border-[var(--brand-gold)]/10 p-3 rounded-sm flex items-center justify-between hover:border-[var(--brand-gold)]/30 transition-all duration-300">
                         <div className="flex flex-col gap-0.5">
@@ -436,7 +414,7 @@ export default function Home() {
                         </div>
                         <div className="text-right flex flex-col gap-0.5">
                           <span className="text-[12px] font-bold text-[var(--brand-gold-light)] font-mono">
-                            {symbols[code]} {value.toFixed(code === 'OMR' || code === 'KWD' ? 3 : 2)}
+                            {value.toFixed(code === 'OMR' || code === 'KWD' ? 3 : 2)}
                           </span>
                           <span className="text-[8px] text-white/30">1.00 USD</span>
                         </div>

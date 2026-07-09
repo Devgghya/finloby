@@ -2,7 +2,7 @@ import { MapPin, Landmark, Award, Shield } from 'lucide-react';
 
 export default function AboutUs() {
   return (
-    <div className="flex-1 w-full bg-[#070F1E] pt-36 sm:pt-40 lg:pt-44 pb-20">
+    <div className="flex-1 w-full bg-[#070F1E] pt-44 sm:pt-48 lg:pt-52 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Header */}
