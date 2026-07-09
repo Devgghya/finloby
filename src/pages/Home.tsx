@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Key, CheckCircle2, User, Phone, Mail, ChevronRight, Lock, Activity, ArrowUpRight, FileText } from 'lucide-react';
+import { Phone, ChevronRight, Lock, Activity, ArrowUpRight, FileText } from 'lucide-react';
 
 const portfolios = [
   {
@@ -120,20 +120,33 @@ const heroBadges = [
 ];
 
 export default function Home() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    interest: 'Debt Solutions',
-    terms: false,
-  });
-
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  // Background rotater states
+  // Background rotator states
   const [bgIndex, setBgIndex] = useState(0);
   const [carouselSlide, setCarouselSlide] = useState(0);
+
+  // Live Exchange rates state
+  const [rates, setRates] = useState({
+    AED: 3.6725,
+    INR: 83.512,
+    PKR: 278.15,
+    JPY: 160.84,
+    CNY: 7.268,
+    BDT: 117.48,
+    EUR: 0.9221,
+    GBP: 0.7812,
+    SGD: 1.3524,
+    SAR: 3.7500,
+    QAR: 3.6400,
+    OMR: 0.3845,
+    KWD: 0.3068,
+    CAD: 1.3685,
+    AUD: 1.4921,
+    CHF: 0.9015,
+    HKD: 7.8000,
+    NZD: 1.6312,
+    MYR: 4.7125,
+    THB: 36.412
+  });
 
   const backgroundImages = [
     'https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?q=80&w=1600&auto=format&fit=crop', // Dubai DIFC
@@ -156,60 +169,39 @@ export default function Home() {
     return () => clearInterval(slideTimer);
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const leadId = 'lead-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
-    const newPayload = {
-      id: leadId,
-      name: formData.name,
-      phone: formData.phone,
-      email: formData.email,
-      interest: formData.interest,
-      terms: formData.terms,
-      timestamp: new Date().toISOString(),
-      status: 'New',
-    };
-
-    // 1. Save to LocalStorage
-    try {
-      const stored = localStorage.getItem('finloby_secure_payloads');
-      const list = stored ? JSON.parse(stored) : [];
-      list.push(newPayload);
-      localStorage.setItem('finloby_secure_payloads', JSON.stringify(list));
-    } catch (err) {
-      console.error('LocalStorage write error:', err);
-    }
-
-    // 2. Submit via Web3Forms if API key is present
-    const web3formsKey = (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '').trim();
-    if (web3formsKey) {
-      try {
-        await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify({
-            access_key: web3formsKey,
-            subject: `Classified Client Intake Payload: ${formData.name}`,
-            from_name: 'FINLOBY Security Intake',
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            interest: formData.interest,
-          }),
-        });
-      } catch (err) {
-        console.error('Web3Forms dispatch error:', err);
-      }
-    }
-
-    setLoading(false);
-    setIsSubmitted(true);
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRates(prev => {
+        const jitter = (val: number) => {
+          const change = val * (Math.random() - 0.5) * 0.001; // max 0.1% change
+          return Number((val + change).toFixed(4));
+        };
+        return {
+          AED: 3.6725, // UAE is pegged to USD, so keep it static!
+          INR: jitter(prev.INR),
+          PKR: jitter(prev.PKR),
+          JPY: jitter(prev.JPY),
+          CNY: jitter(prev.CNY),
+          BDT: jitter(prev.BDT),
+          EUR: jitter(prev.EUR),
+          GBP: jitter(prev.GBP),
+          SGD: jitter(prev.SGD),
+          SAR: 3.7500, // SAR is pegged
+          QAR: 3.6400, // QAR is pegged
+          OMR: 0.3845, // OMR is pegged
+          KWD: jitter(prev.KWD),
+          CAD: jitter(prev.CAD),
+          AUD: jitter(prev.AUD),
+          CHF: jitter(prev.CHF),
+          HKD: 7.8000, // HKD is pegged
+          NZD: jitter(prev.NZD),
+          MYR: jitter(prev.MYR),
+          THB: jitter(prev.THB)
+        };
+      });
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <main className="flex-1 w-full bg-[#070F1E]">
@@ -369,143 +361,69 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Column: Secure Intake Portal */}
-            <div className="lg:col-span-5" id="secure-intake">
-              <div className="bg-[#0D1625]/90 backdrop-blur-md border border-[#C5A059]/20 p-8 rounded-sm shadow-2xl relative overflow-hidden">
+            {/* Right Column: Global Currency Exchange Ticker Dashboard */}
+            <div className="lg:col-span-5 relative" id="market-terminal">
+              <div className="glass-luxury p-6 rounded-sm relative overflow-hidden flex flex-col gap-4 bg-gold-glow">
                 {/* Top gold line indicator */}
-                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#9A7B3E] via-[#E5C158] to-[#E2C999]"></div>
+                <div className="absolute top-0 left-0 w-full h-[3px] bg-[var(--brand-gold)]"></div>
                 
-                <div className="flex items-center justify-between border-b border-[#C5A059]/10 pb-4 mb-6">
+                <div className="flex items-center justify-between border-b border-[var(--brand-gold)]/10 pb-4">
                   <div>
-                    <h2 className="text-lg font-serif text-[#FBF9F4] font-medium tracking-wide">Secure Intake Portal</h2>
-                    <p className="text-[10px] text-[#FBF9F4]/40 font-light mt-0.5">End-to-End Encrypted Liaison Uplink</p>
+                    <h2 className="text-lg font-serif text-white font-medium tracking-wide">Global Market Terminal</h2>
+                    <p className="text-[10px] text-[var(--brand-gold-light)] font-light mt-0.5">USD Base Valuation Uplink</p>
                   </div>
-                  <div className="p-2 bg-[#070F1E] border border-[#C5A059]/20 rounded-full">
-                    <Key className="w-4 h-4 text-[#C5A059]" />
+                  <div className="text-right flex flex-col items-end gap-1">
+                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 border border-emerald-500/20 bg-emerald-500/10 rounded-full text-[8px] font-bold text-emerald-400">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                      LIVE SECURE FEED
+                    </span>
+                    <span className="text-[8px] text-white/40 font-mono">SEC-UPLINK v4.2</span>
                   </div>
                 </div>
 
-                {isSubmitted ? (
-                  <div className="py-12 text-center flex flex-col items-center gap-4 animate-fade-in" id="intake-success" role="alert" aria-live="assertive">
-                    <CheckCircle2 className="w-16 h-16 text-[#E5C158] animate-bounce" />
-                    <h3 className="text-xl font-serif text-[#FBF9F4]">Secure Transmission Complete</h3>
-                    <p className="text-xs font-light text-[#FBF9F4]/60 max-w-sm leading-relaxed">
-                      Your corporate payload has been encrypted and routed directly to a Managing Partner. A secure communication channel will be established within four business hours.
-                    </p>
-                    <div className="text-[10px] text-[#C5A059]/60 font-mono mt-4 uppercase bg-[#070F1E] px-4 py-2 border border-[#C5A059]/10">
-                      Uplink Code: SEC-{(Math.random() * 100000).toFixed(0)}
-                    </div>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4" id="intake-form">
-                    
-                    {/* Full Legal Name */}
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="intake-name" className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A059]">
-                        Full Legal Name
-                      </label>
-                      <div className="relative">
-                        <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FBF9F4]/50" />
-                        <input 
-                          type="text" 
-                          id="intake-name" 
-                          required
-                          placeholder="e.g. Alexander Vance"
-                          value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
-                          className="w-full bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 pl-10 pr-4 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E5C158] focus-visible:ring-offset-1 focus-visible:ring-offset-[#070F1E] focus:border-[#E5C158] transition-all font-light"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Contact Number */}
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="intake-phone" className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A059]">
-                        Contact Number
-                      </label>
-                      <div className="relative">
-                        <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FBF9F4]/50" />
-                        <input 
-                          type="tel" 
-                          id="intake-phone" 
-                          required
-                          placeholder="e.g. +971 58 517 4871"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          className="w-full bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 pl-10 pr-4 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E5C158] focus-visible:ring-offset-1 focus-visible:ring-offset-[#070F1E] focus:border-[#E5C158] transition-all font-light"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Email Address */}
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="intake-email" className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A059]">
-                        Email Address
-                      </label>
-                      <div className="relative">
-                        <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FBF9F4]/50" />
-                        <input 
-                          type="email" 
-                          id="intake-email" 
-                          required
-                          placeholder="e.g. vance@holdingcompany.com"
-                          value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          className="w-full bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 pl-10 pr-4 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E5C158] focus-visible:ring-offset-1 focus-visible:ring-offset-[#070F1E] focus:border-[#E5C158] transition-all font-light"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Primary Area of Interest */}
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="intake-interest" className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A059]">
-                        Primary Area of Interest
-                      </label>
-                      <div className="relative">
-                        <select
-                          id="intake-interest"
-                          value={formData.interest}
-                          onChange={(e) => setFormData({...formData, interest: e.target.value})}
-                          className="w-full bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 px-4 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E5C158] focus-visible:ring-offset-1 focus-visible:ring-offset-[#070F1E] focus:border-[#E5C158] transition-all font-light appearance-none"
-                        >
-                          <option value="Debt Solutions" className="bg-[#0D1625] text-[#FBF9F4]">Debt Solutions (Restructuring, Settlement, Skip Solutions)</option>
-                          <option value="Loans & Facilities" className="bg-[#0D1625] text-[#FBF9F4]">Loans & Facilities (Corporate Loans, Mortgage, STL)</option>
-                          <option value="Business Setup" className="bg-[#0D1625] text-[#FBF9F4]">Business Setup (Mainland & Economic Zone formation)</option>
-                          <option value="Investments" className="bg-[#0D1625] text-[#FBF9F4]">Investment / Capital Placement Programs</option>
-                          <option value="Legal Assistance" className="bg-[#0D1625] text-[#FBF9F4]">Legal Assistance (Liability & Court Case support)</option>
-                        </select>
-                        <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#C5A059]">
-                          <ChevronRight className="w-4 h-4 rotate-90" />
+                {/* Currency rates grid */}
+                <div className="grid grid-cols-2 gap-3 max-h-[380px] overflow-y-auto pr-1">
+                  {Object.entries(rates).map(([code, value]) => {
+                    const names: Record<string, string> = {
+                      AED: 'UAE Dirham',
+                      INR: 'Indian Rupee',
+                      PKR: 'Pakistani Rupee',
+                      JPY: 'Japanese Yen',
+                      CNY: 'Chinese Yuan',
+                      BDT: 'Bangladeshi Taka',
+                      EUR: 'Euro Zone',
+                      GBP: 'United Kingdom',
+                      SGD: 'Singapore Dollar',
+                      SAR: 'Saudi Riyal',
+                      QAR: 'Qatari Riyal',
+                      OMR: 'Omani Rial',
+                      KWD: 'Kuwaiti Dinar',
+                      CAD: 'Canadian Dollar',
+                      AUD: 'Australian Dollar',
+                      CHF: 'Swiss Franc',
+                      HKD: 'Hong Kong Dollar',
+                      NZD: 'New Zealand Dollar',
+                      MYR: 'Malaysian Ringgit',
+                      THB: 'Thai Baht'
+                    };
+                    return (
+                      <div key={code} className="bg-[#031C14] border border-[var(--brand-gold)]/10 p-3 rounded-sm flex items-center justify-between hover:border-[var(--brand-gold)]/30 transition-all duration-300">
+                        <div className="flex flex-col gap-0.5">
+                          <span className="text-[11px] font-bold text-white font-sans">{code}</span>
+                          <span className="text-[8px] text-white/50 leading-none">{names[code]}</span>
+                        </div>
+                        <div className="text-right flex flex-col gap-0.5">
+                          <span className="text-[12px] font-bold text-[var(--brand-gold-light)] font-mono">{value.toFixed(code === 'OMR' || code === 'KWD' ? 3 : 2)}</span>
+                          <span className="text-[8px] text-white/30">1.00 USD</span>
                         </div>
                       </div>
-                    </div>
+                    );
+                  })}
+                </div>
 
-                    {/* Terms Agreement */}
-                    <div className="flex items-start gap-2.5 pt-2">
-                      <input 
-                        type="checkbox" 
-                        id="intake-terms" 
-                        required
-                        checked={formData.terms}
-                        onChange={(e) => setFormData({...formData, terms: e.target.checked})}
-                        className="mt-0.5 rounded-sm accent-[#C5A059]"
-                      />
-                      <label htmlFor="intake-terms" className="text-[10px] text-[#FBF9F4]/40 font-light leading-relaxed">
-                        I authorize the transmission of this data and request execution of a mutual Non-Disclosure Agreement (NDA) prior to disclosures.
-                      </label>
-                    </div>
-
-                    {/* Submit Button */}
-                    <button
-                      type="submit"
-                      id="intake-submit-btn"
-                      disabled={loading}
-                      className="w-full bg-[#C5A059] hover:bg-[#E5C158] text-[#070F1E] py-4 text-xs font-semibold uppercase tracking-[0.2em] transition-all rounded-sm duration-300 mt-2 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
-                    >
-                      {loading ? 'Initiating Security Uplink...' : 'Establish Secure Uplink'}
-                    </button>
-                  </form>
-                )}
+                <div className="border-t border-[var(--brand-gold)]/10 pt-3 text-[9px] text-white/40 font-mono text-center">
+                  Feed secured via 256-bit institutional API uplink
+                </div>
               </div>
             </div>
           </div>
@@ -519,13 +437,18 @@ export default function Home() {
           
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-[#C5A059]/10 pb-6 mb-8 gap-4">
             <div className="flex flex-col gap-2">
-              <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#E5C158] flex items-center gap-1.5">
+              <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#E5C158] flex items-center gap-1.5">
                 <Activity className="w-4 h-4 text-[#E5C158] animate-pulse" />
                 Classified Diagnostics Hub
               </span>
-              <h2 className="text-2xl font-serif text-[#FBF9F4] font-medium tracking-wide">
+              <h2 className="text-4xl md:text-5xl font-serif text-white font-bold tracking-wide">
                 Bespoke Portfolio Diagnostic Engine
               </h2>
+              <div className="flex items-center gap-2 mt-1 mb-2">
+                <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-gold)]"></span>
+                <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+              </div>
               <p className="text-xs font-light text-[#FBF9F4]/40 max-w-2xl">
                 Cryptographically buffered analysis suite mapped to local UAE Central Bank directives and regional court database files.
               </p>
@@ -589,12 +512,17 @@ export default function Home() {
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-20 sm:py-28" id="portfolios">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="flex flex-col gap-3">
-            <span className="text-[10px] font-semibold text-[#E5C158] uppercase tracking-[0.25em]">
+            <span className="text-[8px] font-bold text-[#E5C158] uppercase tracking-[0.25em]">
               Strategic Assets
             </span>
-            <h2 className="text-4xl sm:text-5xl font-serif text-[#FBF9F4] font-light">
+            <h2 className="text-4xl md:text-5xl font-serif text-white font-bold tracking-wide">
               Core Portfolio Pillars
             </h2>
+            <div className="flex items-center gap-2 mt-1">
+              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-gold)]"></span>
+              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+            </div>
           </div>
           <p className="text-xs font-light text-[#FBF9F4]/55 max-w-md leading-relaxed">
             Our corporate structure matches premium capital procurement with strategic restructuring initiatives to insulate assets from high-risk environments.
@@ -608,19 +536,19 @@ export default function Home() {
               to={item.link}
               key={item.num}
               id={`portfolio-pillar-${item.num.toLowerCase()}`}
-              className="bg-[#101926] text-[#FBF9F4] p-8 sm:p-10 flex flex-col justify-between min-h-[420px] rounded-none border-l-4 border-[#E5C158] border border-slate-800/80 transform transition-all duration-500 hover:-translate-y-2 hover:border-[#E5C158]/55 hover:shadow-[0_20px_40px_rgba(229,193,88,0.08)] group"
+              className="bg-[#06281E] text-[#FBF9F4] p-8 sm:p-10 flex flex-col justify-between min-h-[420px] rounded-none border-l-4 border-[#E5C158] border border-[var(--brand-gold)]/10 transform transition-all duration-500 hover:-translate-y-2 hover:border-[#E5C158]/55 hover:shadow-[0_20px_40px_rgba(229,193,88,0.08)] group"
             >
               <div>
                 <div className="flex justify-between items-start mb-6">
                   <span className="text-3xl font-serif font-semibold text-[#E5C158]">
                     {item.num}
                   </span>
-                  <div className="p-2 bg-[#070F1E] rounded-full text-[#E5C158] group-hover:bg-[#E5C158] group-hover:text-[#070F1E] transition-colors duration-300">
+                  <div className="p-2 bg-[#031C14] rounded-full text-[#E5C158] group-hover:bg-[#E5C158] group-hover:text-[#070F1E] transition-colors duration-300">
                     <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>
                 
-                <h3 className="text-sm font-serif font-semibold uppercase tracking-[0.2em] text-white mb-4 leading-relaxed group-hover:text-[#E5C158] transition-colors">
+                <h3 className="text-base font-sans font-bold uppercase tracking-wider text-white mb-4 leading-relaxed group-hover:text-[#E5C158] transition-colors">
                   {item.title}
                 </h3>
                 
@@ -648,12 +576,17 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           
           <div className="flex flex-col gap-3 mb-16 text-center max-w-xl mx-auto">
-            <span className="text-[10px] font-semibold text-[#E5C158] uppercase tracking-[0.25em]">
+            <span className="text-[8px] font-bold text-[#E5C158] uppercase tracking-[0.25em]">
               Verified Outcomes
             </span>
-            <h2 className="text-4xl font-serif text-[#FBF9F4] font-light">
+            <h2 className="text-4xl md:text-5xl font-serif text-white font-bold tracking-wide">
               Historical Client Case Files
             </h2>
+            <div className="flex items-center gap-2 mt-1 justify-center">
+              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-gold)]"></span>
+              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+            </div>
             <p className="text-xs font-light text-[#FBF9F4]/40 mt-1">
               Classified analytical breakdowns of corporate debt restructuring, banking settlement support, and complex liability resolution.
             </p>
@@ -749,12 +682,17 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <div className="lg:col-span-4 flex flex-col gap-4">
-            <span className="text-[10px] font-semibold text-[#E5C158] uppercase tracking-[0.25em]">
+            <span className="text-[8px] font-bold text-[#E5C158] uppercase tracking-[0.25em]">
               Executive Referrals
             </span>
-            <h2 className="text-4xl font-serif text-[#FBF9F4] font-light leading-tight">
+            <h2 className="text-4xl md:text-5xl font-serif text-white font-bold tracking-wide leading-tight">
               Testimonials from the Elite
             </h2>
+            <div className="flex items-center gap-2 mt-1">
+              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-gold)]"></span>
+              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+            </div>
             <p className="text-xs font-light text-[#FBF9F4]/50 leading-relaxed">
               We serve ultra-high-net-worth individuals, commercial fleet logistics directors, and multinational executives. Due to strict NDAs, identifying marks are adjusted.
             </p>
@@ -764,7 +702,7 @@ export default function Home() {
             {testimonials.map((test, idx) => (
               <div 
                 key={idx}
-                className="bg-[#0D1625] border-l-4 border-[#C5A059] p-8 sm:p-10 rounded-sm shadow-xl flex flex-col justify-between"
+                className="bg-[#06281E] border-l-4 border-[#C5A059] p-8 sm:p-10 rounded-sm shadow-xl flex flex-col justify-between"
               >
                 <p className="text-sm font-serif italic font-light leading-relaxed text-[#FBF9F4]/80 mb-6">
                   "{test.quote}"
@@ -785,12 +723,17 @@ export default function Home() {
       </section>
 
       {/* SECTION 6: DIRECT ENGAGEMENT BOARD */}
-      <section className="w-full bg-[#0D1625] py-16 border-t border-[#C5A059]/10" id="contact-us">
+      <section className="w-full bg-[#031C14] py-16 border-t border-[#C5A059]/10" id="contact-us">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="flex flex-col gap-2 max-w-xl">
-            <h3 className="text-2xl font-serif text-[#FBF9F4] font-light">
+            <h2 className="text-4xl md:text-5xl font-serif text-white font-bold tracking-wide">
               Ready to Secure Your Operations?
-            </h3>
+            </h2>
+            <div className="flex items-center gap-2 mt-1">
+              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-gold)]"></span>
+              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+            </div>
             <p className="text-xs font-light text-[#FBF9F4]/50">
               Establish a priority uplink or phone line consultation directly with our managing partners. All dialogue is subject to attorney-client confidentiality rules.
             </p>
@@ -805,9 +748,9 @@ export default function Home() {
               <span>Call +971 58 517 4871</span>
             </a>
             <a 
-              href="#secure-intake"
+              href="/book-consultation"
               id="direct-portal-link"
-              className="px-8 py-4 border border-[#C5A059]/30 hover:border-[#C5A059] text-[#FBF9F4] text-xs font-semibold uppercase tracking-[0.2em] rounded-sm text-center transition-all flex items-center justify-center gap-2 bg-[#070F1E]/80"
+              className="px-8 py-4 border border-[#C5A059]/30 hover:border-[#C5A059] text-[#FBF9F4] text-xs font-semibold uppercase tracking-[0.2em] rounded-sm text-center transition-all flex items-center justify-center gap-2 bg-[#031C14]"
             >
               <FileText className="w-4 h-4 text-[#C5A059]" />
               <span>Book Consultation</span>

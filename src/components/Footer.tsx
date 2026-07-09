@@ -1,21 +1,7 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ShieldCheck, Lock, Landmark, Database } from 'lucide-react';
 
 export default function Footer() {
-  const [logoSrc, setLogoSrc] = useState('/finloby-white.png');
-
-  useEffect(() => {
-    const updateLogo = () => {
-      const currentTheme = localStorage.getItem('finloby-active-theme') || 'default';
-      const isLight = currentTheme === 'warm-alabaster' || currentTheme === 'platinum-ice';
-      setLogoSrc(isLight ? '/finloby.png' : '/finloby-white.png');
-    };
-
-    updateLogo();
-    window.addEventListener('theme-change', updateLogo);
-    return () => window.removeEventListener('theme-change', updateLogo);
-  }, []);
   return (
     <footer className="w-full bg-[#050B15] border-t border-[#C5A059]/15 text-[#FBF9F4]/70 pt-16 pb-8 px-4 sm:px-8" aria-label="Site footer">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -24,11 +10,11 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-4">
             <img 
-              src={logoSrc} 
+              src="/finloby-white.png" 
               alt="Finloby Shield" 
               className="h-14 w-auto object-contain" 
             />
-            <span className="font-serif tracking-[0.3em] uppercase text-base text-[#FBF9F4]">
+            <span className="font-sans font-black tracking-[0.25em] uppercase text-base text-white">
               FINLOBY
             </span>
           </div>

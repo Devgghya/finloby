@@ -9,10 +9,11 @@ import Investments from './pages/Investments';
 import AboutUs from './pages/AboutUs';
 import Blogs from './pages/Blogs';
 import AdminDashboard from './pages/AdminDashboard';
+import Calculator from './pages/Calculator';
+import BookConsultation from './pages/BookConsultation';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { useState, useEffect } from 'react';
-import ThemeSelector from './components/ThemeSelector';
 import Preloader from './components/Preloader';
 
 function App() {
@@ -53,13 +54,14 @@ function App() {
             <Route path="/business-setup" element={<BusinessSetup />} />
             <Route path="/legal-assistance" element={<LegalAssistance />} />
             <Route path="/investments" element={<Investments />} />
+            <Route path="/calculator" element={<Calculator />} />
+            <Route path="/book-consultation" element={<BookConsultation />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </main>
         <Footer />
-        <ThemeSelector />
       </div>
     </Router>
   );

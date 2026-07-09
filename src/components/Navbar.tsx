@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Menu, X, Mail, Phone, Clock, ArrowRight, Lock } from 'lucide-react';
 
@@ -157,6 +157,8 @@ const navItems: NavItem[] = [
       },
     ],
   },
+  { name: 'Calculator', href: '/calculator', type: 'direct' },
+  { name: 'Book Consultation', href: '/book-consultation', type: 'direct' },
   { name: 'Testimonials', href: '/#testimonials', type: 'direct' },
   { name: 'Case Study', href: '/#case-studies', type: 'direct' },
   { name: 'About Us', href: '/about-us', type: 'direct' },
@@ -168,19 +170,6 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeMobileSubmenu, setActiveMobileSubmenu] = useState<string | null>(null);
-  const [logoSrc, setLogoSrc] = useState('/finloby-white.png');
-
-  useEffect(() => {
-    const updateLogo = () => {
-      const currentTheme = localStorage.getItem('finloby-active-theme') || 'default';
-      const isLight = currentTheme === 'warm-alabaster' || currentTheme === 'platinum-ice';
-      setLogoSrc(isLight ? '/finloby.png' : '/finloby-white.png');
-    };
-
-    updateLogo();
-    window.addEventListener('theme-change', updateLogo);
-    return () => window.removeEventListener('theme-change', updateLogo);
-  }, []);
 
   const handleMouseEnter = (name: string, type: 'direct' | 'dropdown' | 'mega') => {
     if (type !== 'direct') {
@@ -202,9 +191,8 @@ export default function Navbar() {
     }
   };
 
-  // Programmatic Splitting of Navigation Items for Perfect Symmetry
-  const leftNavItems = navItems.slice(0, 6);
-  const rightNavItems = navItems.slice(6);
+  // No programmatic splitting - all nav items are rendered in a single horizontal row.
+  const visibleNavItems = navItems;
 
   return (
     <header className="w-full z-50 flex flex-col bg-[#070F1E] border-b border-[#C5A059]/10 fixed top-0 left-0 right-0">
@@ -237,13 +225,13 @@ export default function Navbar() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-5 flex items-center justify-between">
         
         {/* Brand Logo Container */}
-        <Link to="/" id="brand-logo" className="flex items-center gap-1.5 sm:gap-4 group flex-shrink-0">
+        <Link to="/" id="brand-logo" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
           <img 
-            src={logoSrc} 
+            src="/finloby-white.png" 
             alt="Finloby Shield" 
-            className="h-8 sm:h-14 w-auto object-contain transition-all duration-300" 
+            className="h-10 sm:h-16 w-auto object-contain transition-all duration-300" 
           />
-          <span className="font-serif tracking-[0.12em] sm:tracking-[0.3em] uppercase text-[11px] sm:text-base text-[#FBF9F4] group-hover:text-[#E5C158] transition-all duration-300 flex-shrink-0">
+          <span className="font-sans font-black text-xs sm:text-base uppercase tracking-[0.25em] text-white group-hover:text-[var(--brand-gold-light)] transition-all duration-300 flex-shrink-0">
             FINLOBY
           </span>
         </Link>
@@ -266,15 +254,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Access Portal CTA Button -> BOOK CONSULTATION */}
-          <Link
-            to="/#secure-intake"
-            id="nav-cta-btn"
-            className="border border-[#C5A059] px-2.5 sm:px-5 py-1.5 sm:py-2 text-[8px] sm:text-[10px] font-semibold uppercase tracking-[0.1em] sm:tracking-[0.2em] text-white hover:bg-[#E5C158] hover:border-[#E5C158] hover:text-[#070F1E] transition-all duration-500 rounded-sm shadow-[0_0_15px_rgba(229,193,88,0.1)] flex-shrink-0"
-          >
-            BOOK CONSULTATION
-          </Link>
-
           {/* Mobile Hamburger Toggle */}
           <button
             type="button"
@@ -296,11 +275,9 @@ export default function Navbar() {
         onMouseLeave={handleMouseLeave}
         onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) { setTimeout(() => setActiveDropdown(null), 150); } }}
       >
-        <div className="max-w-7xl mx-auto px-8 py-3.5 flex justify-between items-center text-[10.5px] font-semibold uppercase tracking-[0.2em] text-[#FBF9F4]">
-          
-          {/* Left Navigation Group */}
-          <div className="flex items-center gap-1.5">
-            {leftNavItems.map((item, index) => (
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between text-[13px] font-semibold text-[#FBF9F4]">
+          <div className="flex items-center justify-between w-full gap-x-2">
+            {visibleNavItems.map((item, index) => (
               <div
                 key={item.name}
                 className="relative py-1 flex items-center"
@@ -308,14 +285,14 @@ export default function Navbar() {
                 onFocus={() => handleMouseEnter(item.name, item.type)}
               >
                 {index > 0 && (
-                  <span className="w-[3px] h-[3px] rounded-full bg-[#C5A059]/25 mx-2.5" />
+                  <span className="w-[3px] h-[3px] rounded-full bg-[#C5A059]/25 mx-2 flex-shrink-0" />
                 )}
 
                 {item.type === 'direct' ? (
                   <Link
                     to={item.href || '/'}
                     id={`nav-link-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="hover:text-[#E5C158] transition-all duration-300 py-1 uppercase"
+                    className="hover:text-[var(--brand-gold-light)] transition-all duration-300 py-1 whitespace-nowrap text-[13px]"
                   >
                     {item.name}
                   </Link>
@@ -323,14 +300,14 @@ export default function Navbar() {
                   <button
                     type="button"
                     id={`nav-btn-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                    className={`hover:text-[#E5C158] transition-all duration-300 flex items-center gap-1 py-1 cursor-pointer uppercase ${
-                      activeDropdown === item.name ? 'text-[#E5C158]' : ''
+                    className={`hover:text-[var(--brand-gold-light)] transition-all duration-300 flex items-center gap-1 py-1 cursor-pointer text-[13px] ${
+                      activeDropdown === item.name ? 'text-[var(--brand-gold-light)]' : ''
                     }`}
                     aria-expanded={activeDropdown === item.name}
                     aria-haspopup="true"
                   >
                     <span>{item.name}</span>
-                    <ChevronDown className="w-3 h-3" />
+                    <ChevronDown className="w-3.5 h-3.5" />
                   </button>
                 )}
 
@@ -367,29 +344,6 @@ export default function Navbar() {
               </div>
             ))}
           </div>
-
-          {/* Right Navigation Group */}
-          <div className="flex items-center gap-1.5">
-            {rightNavItems.map((item, index) => (
-              <div
-                key={item.name}
-                className="py-1 flex items-center"
-              >
-                {index > 0 && (
-                  <span className="w-[3px] h-[3px] rounded-full bg-[#C5A059]/25 mx-2.5" />
-                )}
-
-                <Link
-                  to={item.href || '/'}
-                  id={`nav-link-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="hover:text-[#E5C158] transition-all duration-300 py-1 uppercase"
-                >
-                  {item.name}
-                </Link>
-              </div>
-            ))}
-          </div>
-
         </div>
 
         {/* 4. MEGA MENU DROPDOWN */}
