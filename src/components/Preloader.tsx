@@ -10,7 +10,7 @@ export default function Preloader() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[var(--bg-midnight)] text-[var(--text-ivory)] select-none">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[var(--bg-midnight)] text-[var(--text-ivory)]" role="status" aria-label="Loading Finloby">
       <div className="flex flex-col items-center gap-6 animate-fade-in duration-1000">
         {/* Animated logo crest */}
         <div className="relative w-28 h-28 flex items-center justify-center">
@@ -25,9 +25,9 @@ export default function Preloader() {
         
         {/* Animated brand wordmark */}
         <div className="text-center flex flex-col items-center">
-          <h1 className="font-serif tracking-[0.4em] uppercase text-2xl sm:text-3xl text-[var(--text-ivory)] font-medium leading-none pl-2">
+          <p className="font-serif tracking-[0.4em] uppercase text-2xl sm:text-3xl text-[var(--text-ivory)] font-medium leading-none pl-2">
             FINLOBY
-          </h1>
+          </p>
           <span className="text-[9px] tracking-[0.3em] text-[var(--brand-gold)] uppercase block mt-3.5 font-bold font-sans">
             SECURE ADVISORY UPLINK
           </span>

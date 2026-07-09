@@ -386,7 +386,7 @@ export default function Home() {
                 </div>
 
                 {isSubmitted ? (
-                  <div className="py-12 text-center flex flex-col items-center gap-4 animate-fade-in" id="intake-success">
+                  <div className="py-12 text-center flex flex-col items-center gap-4 animate-fade-in" id="intake-success" role="alert" aria-live="assertive">
                     <CheckCircle2 className="w-16 h-16 text-[#E5C158] animate-bounce" />
                     <h3 className="text-xl font-serif text-[#FBF9F4]">Secure Transmission Complete</h3>
                     <p className="text-xs font-light text-[#FBF9F4]/60 max-w-sm leading-relaxed">
@@ -405,7 +405,7 @@ export default function Home() {
                         Full Legal Name
                       </label>
                       <div className="relative">
-                        <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FBF9F4]/30" />
+                        <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FBF9F4]/50" />
                         <input 
                           type="text" 
                           id="intake-name" 
@@ -413,7 +413,7 @@ export default function Home() {
                           placeholder="e.g. Alexander Vance"
                           value={formData.name}
                           onChange={(e) => setFormData({...formData, name: e.target.value})}
-                          className="w-full bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 pl-10 pr-4 rounded-sm focus:outline-none focus:border-[#E5C158] transition-all font-light"
+                          className="w-full bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 pl-10 pr-4 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E5C158] focus-visible:ring-offset-1 focus-visible:ring-offset-[#070F1E] focus:border-[#E5C158] transition-all font-light"
                         />
                       </div>
                     </div>
@@ -424,7 +424,7 @@ export default function Home() {
                         Contact Number
                       </label>
                       <div className="relative">
-                        <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FBF9F4]/30" />
+                        <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FBF9F4]/50" />
                         <input 
                           type="tel" 
                           id="intake-phone" 
@@ -432,7 +432,7 @@ export default function Home() {
                           placeholder="e.g. +971 58 517 4871"
                           value={formData.phone}
                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          className="w-full bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 pl-10 pr-4 rounded-sm focus:outline-none focus:border-[#E5C158] transition-all font-light"
+                          className="w-full bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 pl-10 pr-4 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E5C158] focus-visible:ring-offset-1 focus-visible:ring-offset-[#070F1E] focus:border-[#E5C158] transition-all font-light"
                         />
                       </div>
                     </div>
@@ -443,7 +443,7 @@ export default function Home() {
                         Email Address
                       </label>
                       <div className="relative">
-                        <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FBF9F4]/30" />
+                        <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FBF9F4]/50" />
                         <input 
                           type="email" 
                           id="intake-email" 
@@ -451,7 +451,7 @@ export default function Home() {
                           placeholder="e.g. vance@holdingcompany.com"
                           value={formData.email}
                           onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          className="w-full bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 pl-10 pr-4 rounded-sm focus:outline-none focus:border-[#E5C158] transition-all font-light"
+                          className="w-full bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 pl-10 pr-4 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E5C158] focus-visible:ring-offset-1 focus-visible:ring-offset-[#070F1E] focus:border-[#E5C158] transition-all font-light"
                         />
                       </div>
                     </div>
@@ -466,7 +466,7 @@ export default function Home() {
                           id="intake-interest"
                           value={formData.interest}
                           onChange={(e) => setFormData({...formData, interest: e.target.value})}
-                          className="w-full bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 px-4 rounded-sm focus:outline-none focus:border-[#E5C158] transition-all font-light appearance-none"
+                          className="w-full bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 px-4 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E5C158] focus-visible:ring-offset-1 focus-visible:ring-offset-[#070F1E] focus:border-[#E5C158] transition-all font-light appearance-none"
                         >
                           <option value="Debt Solutions" className="bg-[#0D1625] text-[#FBF9F4]">Debt Solutions (Restructuring, Settlement, Skip Solutions)</option>
                           <option value="Loans & Facilities" className="bg-[#0D1625] text-[#FBF9F4]">Loans & Facilities (Corporate Loans, Mortgage, STL)</option>

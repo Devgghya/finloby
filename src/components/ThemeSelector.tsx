@@ -19,6 +19,16 @@ export default function ThemeSelector() {
     window.dispatchEvent(new Event('theme-change'));
   }, [activeTheme]);
 
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen]);
+
   return (
     <div className="fixed right-6 bottom-24 z-50 flex flex-col items-end gap-3 font-sans">
       {/* Toggle Button */}
@@ -27,6 +37,7 @@ export default function ThemeSelector() {
         onClick={() => setIsOpen(!isOpen)}
         className="p-3.5 bg-[#0D1625] hover:bg-[#0D1625]/90 border border-[#C5A059]/40 hover:border-[#C5A059] rounded-full text-[#C5A059] shadow-2xl transition-all duration-300 cursor-pointer flex items-center justify-center relative group"
         aria-label="Toggle theme settings"
+        aria-expanded={isOpen}
       >
         <Paintbrush className="w-5 h-5 group-hover:rotate-12 transition-transform" />
         <span className="absolute right-full mr-3 bg-[#0D1625] border border-[#C5A059]/25 text-[#FBF9F4] text-[10px] font-semibold uppercase tracking-widest px-3 py-1.5 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl whitespace-nowrap">
@@ -36,7 +47,7 @@ export default function ThemeSelector() {
 
       {/* Drawer panel */}
       {isOpen && (
-        <div className="bg-[#0D1625]/98 backdrop-blur-md border border-[#C5A059]/30 p-6 rounded-sm shadow-2xl w-80 max-w-sm flex flex-col gap-4 animate-fade-in relative z-50">
+        <div className="bg-[#0D1625]/98 backdrop-blur-md border border-[#C5A059]/30 p-6 rounded-sm shadow-2xl w-80 max-w-sm flex flex-col gap-4 animate-fade-in relative z-50" role="region" aria-label="Theme selection">
           <div className="flex justify-between items-center border-b border-[#C5A059]/10 pb-3">
             <div>
               <h3 className="text-xs font-bold text-[#C5A059] uppercase tracking-[0.2em] font-serif">Aesthetic Atelier</h3>
@@ -58,6 +69,7 @@ export default function ThemeSelector() {
                 key={t.id}
                 type="button"
                 onClick={() => setActiveTheme(t.id)}
+                aria-pressed={activeTheme === t.id}
                 className={`w-full p-3 transition-all duration-300 border text-left rounded-sm cursor-pointer flex items-center justify-between group ${
                   activeTheme === t.id
                     ? 'bg-[#070F1E] border-[#C5A059] text-white shadow-md'

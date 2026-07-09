@@ -17,7 +17,7 @@ export default function Footer() {
     return () => window.removeEventListener('theme-change', updateLogo);
   }, []);
   return (
-    <footer className="w-full bg-[#050B15] border-t border-[#C5A059]/15 text-[#FBF9F4]/70 pt-16 pb-8 px-4 sm:px-8">
+    <footer className="w-full bg-[#050B15] border-t border-[#C5A059]/15 text-[#FBF9F4]/70 pt-16 pb-8 px-4 sm:px-8" aria-label="Site footer">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         
         {/* Brand & Mission Column */}
@@ -36,13 +36,13 @@ export default function Footer() {
             Institutional debt restructuring, complex commercial facilities, international business setup, and legal defense services for high-profile clients and global corporations.
           </p>
           <div className="flex gap-4 mt-2">
-            <span className="p-2 bg-[#0D1625] rounded-sm border border-[#C5A059]/10">
+            <span className="p-2 bg-[#0D1625] rounded-sm border border-[#C5A059]/10" aria-hidden="true">
               <ShieldCheck className="w-4 h-4 text-[#C5A059]" />
             </span>
-            <span className="p-2 bg-[#0D1625] rounded-sm border border-[#C5A059]/10">
+            <span className="p-2 bg-[#0D1625] rounded-sm border border-[#C5A059]/10" aria-hidden="true">
               <Lock className="w-4 h-4 text-[#C5A059]" />
             </span>
-            <span className="p-2 bg-[#0D1625] rounded-sm border border-[#C5A059]/10">
+            <span className="p-2 bg-[#0D1625] rounded-sm border border-[#C5A059]/10" aria-hidden="true">
               <Landmark className="w-4 h-4 text-[#C5A059]" />
             </span>
           </div>

@@ -282,6 +282,7 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="xl:hidden text-[#FBF9F4] hover:text-[#E5C158] transition-colors p-1 flex-shrink-0"
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -289,9 +290,11 @@ export default function Navbar() {
       </div>
 
       {/* 3. DOUBLE-DECKER: LOWER DECK */}
-      <div 
+      <nav 
+        aria-label="Main navigation"
         className="hidden xl:block w-full border-t border-[#C5A059]/10 bg-[#050B15]/50 relative"
         onMouseLeave={handleMouseLeave}
+        onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) { setTimeout(() => setActiveDropdown(null), 150); } }}
       >
         <div className="max-w-7xl mx-auto px-8 py-3.5 flex justify-between items-center text-[10.5px] font-semibold uppercase tracking-[0.2em] text-[#FBF9F4]">
           
@@ -302,6 +305,7 @@ export default function Navbar() {
                 key={item.name}
                 className="relative py-1 flex items-center"
                 onMouseEnter={() => handleMouseEnter(item.name, item.type)}
+                onFocus={() => handleMouseEnter(item.name, item.type)}
               >
                 {index > 0 && (
                   <span className="w-[3px] h-[3px] rounded-full bg-[#C5A059]/25 mx-2.5" />
@@ -311,7 +315,7 @@ export default function Navbar() {
                   <Link
                     to={item.href || '/'}
                     id={`nav-link-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="hover:text-[#E5C158] transition-all duration-300 py-1"
+                    className="hover:text-[#E5C158] transition-all duration-300 py-1 uppercase"
                   >
                     {item.name}
                   </Link>
@@ -319,9 +323,11 @@ export default function Navbar() {
                   <button
                     type="button"
                     id={`nav-btn-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                    className={`hover:text-[#E5C158] transition-all duration-300 flex items-center gap-1 py-1 cursor-pointer ${
+                    className={`hover:text-[#E5C158] transition-all duration-300 flex items-center gap-1 py-1 cursor-pointer uppercase ${
                       activeDropdown === item.name ? 'text-[#E5C158]' : ''
                     }`}
+                    aria-expanded={activeDropdown === item.name}
+                    aria-haspopup="true"
                   >
                     <span>{item.name}</span>
                     <ChevronDown className="w-3 h-3" />
@@ -376,7 +382,7 @@ export default function Navbar() {
                 <Link
                   to={item.href || '/'}
                   id={`nav-link-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="hover:text-[#E5C158] transition-all duration-300 py-1"
+                  className="hover:text-[#E5C158] transition-all duration-300 py-1 uppercase"
                 >
                   {item.name}
                 </Link>
@@ -416,7 +422,7 @@ export default function Navbar() {
             </div>
           </div>
         )}
-      </div>
+      </nav>
 
       {/* 5. MOBILE / TABLET MENU DRAWER */}
       {mobileMenuOpen && (
@@ -442,6 +448,8 @@ export default function Navbar() {
                         type="button"
                         onClick={() => toggleMobileSubmenu(item.name)}
                         className="text-xs font-semibold uppercase tracking-[0.15em] text-[#FBF9F4]/95 hover:text-[#E5C158] py-2 border-b border-[#C5A059]/5 flex justify-between items-center"
+                        aria-expanded={activeMobileSubmenu === item.name}
+                        aria-haspopup="true"
                       >
                         <span>{item.name}</span>
                         <ChevronDown className={`w-3.5 h-3.5 text-[#E5C158] transition-transform duration-300 ${
