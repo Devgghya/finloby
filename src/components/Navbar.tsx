@@ -323,7 +323,7 @@ export default function Navbar() {
                                 to={link.href}
                                 className="text-[11px] text-[#FBF9F4]/80 hover:text-[var(--brand-gold-light)] transition-all duration-200 flex items-center gap-1.5 group/link"
                               >
-                                <span className="text-[var(--brand-gold)] opacity-0 group-hover/link:opacity-100 transition-opacity duration-200 text-[8px] font-sans">◆</span>
+                                <span className="text-[var(--brand-gold)] opacity-60 group-hover/link:opacity-100 transition-opacity duration-200 text-[8px] font-sans">◆</span>
                                 <span className="leading-snug">{link.name}</span>
                               </Link>
                             </li>
@@ -357,7 +357,7 @@ export default function Navbar() {
                           to={link.href}
                           className="text-[11px] text-[#FBF9F4]/75 hover:text-[var(--brand-gold-light)] transition-all duration-200 flex items-center gap-1.5 group/link"
                         >
-                          <span className="text-[var(--brand-gold)] opacity-0 group-hover/link:opacity-100 transition-opacity duration-200 text-[8px] font-sans">◆</span>
+                          <span className="text-[var(--brand-gold)] opacity-60 group-hover/link:opacity-100 transition-opacity duration-200 text-[8px] font-sans">◆</span>
                           <span className="leading-snug">{link.name}</span>
                         </Link>
                       </li>
@@ -416,9 +416,10 @@ export default function Navbar() {
                                     <Link
                                       to={link.href}
                                       onClick={() => setMobileMenuOpen(false)}
-                                      className="text-xs text-[#FBF9F4]/75 hover:text-[#E5C158]"
+                                      className="text-xs text-[#FBF9F4]/75 hover:text-[var(--brand-gold-light)] flex items-center gap-1.5 py-0.5"
                                     >
-                                      {link.name}
+                                      <span className="text-[var(--brand-gold)] opacity-70 text-[8px] font-sans">◆</span>
+                                      <span>{link.name}</span>
                                     </Link>
                                   </li>
                                 ))}
