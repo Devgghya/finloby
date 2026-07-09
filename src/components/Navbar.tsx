@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, Menu, X, Mail, Phone, Clock, ArrowRight, Lock } from 'lucide-react';
+import { ChevronDown, Menu, X, Mail, Phone, Clock, Lock } from 'lucide-react';
 
 interface LinkItem {
   name: string;
@@ -191,8 +191,8 @@ export default function Navbar() {
     }
   };
 
-  // No programmatic splitting - all nav items are rendered in a single horizontal row.
-  const visibleNavItems = navItems;
+  const primaryNavItems = navItems.filter(item => item.type === 'direct');
+  const servicesNavItems = navItems.filter(item => item.type !== 'direct');
 
   return (
     <header className="w-full z-50 flex flex-col bg-[#070F1E] border-b border-[#C5A059]/10 fixed top-0 left-0 right-0">
@@ -221,8 +221,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* 2. DOUBLE-DECKER: UPPER DECK (Logo & Core Actions) */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-5 flex items-center justify-between">
+      {/* 2. DOUBLE-DECKER: UPPER DECK (Logo & Primary Menu) */}
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-5 flex items-center justify-between gap-8">
         
         {/* Brand Logo Container */}
         <Link to="/" id="brand-logo" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
@@ -236,36 +236,31 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Upper Deck Right Actions */}
-        <div className="flex items-center gap-1.5 sm:gap-4 flex-shrink-0">
-          
-          <div className="hidden lg:flex items-center gap-6 border-r border-[#C5A059]/10 pr-6 mr-2">
-            <div className="text-right">
-              <div className="text-[9px] uppercase tracking-wider text-white font-bold">Direct Partner Line</div>
-              <a href="tel:+971585174871" className="text-xs font-bold text-white hover:text-[#E5C158] transition-colors font-sans">
-                +971 58 517 4871
-              </a>
-            </div>
-            <div className="text-right">
-              <div className="text-[9px] uppercase tracking-wider text-white font-bold">Client Relations</div>
-              <a href="mailto:info@finloby.com" className="text-xs font-bold text-white hover:text-[#E5C158] transition-colors font-sans">
-                info@finloby.com
-              </a>
-            </div>
-          </div>
-
-          {/* Mobile Hamburger Toggle */}
-          <button
-            type="button"
-            id="mobile-menu-toggle"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden text-[#FBF9F4] hover:text-[#E5C158] transition-colors p-1 flex-shrink-0"
-            aria-label="Toggle menu"
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+        {/* Desktop Primary Menu */}
+        <div className="hidden xl:flex items-center gap-x-6 text-[13px] font-semibold text-white">
+          {primaryNavItems.map((item) => (
+            <Link
+              key={item.name}
+              to={item.href || '/'}
+              id={`primary-nav-link-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+              className="hover:text-[var(--brand-gold-light)] transition-all duration-300 py-1 whitespace-nowrap"
+            >
+              {item.name}
+            </Link>
+          ))}
         </div>
+
+        {/* Mobile Hamburger Toggle */}
+        <button
+          type="button"
+          id="mobile-menu-toggle"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="xl:hidden text-[#FBF9F4] hover:text-[#E5C158] transition-colors p-1 flex-shrink-0"
+          aria-label="Toggle menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </div>
 
       {/* 3. DOUBLE-DECKER: LOWER DECK */}
@@ -275,9 +270,9 @@ export default function Navbar() {
         onMouseLeave={handleMouseLeave}
         onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) { setTimeout(() => setActiveDropdown(null), 150); } }}
       >
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between text-[13px] font-semibold text-[#FBF9F4]">
-          <div className="flex items-center justify-between w-full gap-x-2">
-            {visibleNavItems.map((item, index) => (
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-center text-[13px] font-semibold text-[#FBF9F4]">
+          <div className="flex items-center justify-center gap-x-8">
+            {servicesNavItems.map((item, index) => (
               <div
                 key={item.name}
                 className="relative py-1 flex items-center"
@@ -285,37 +280,27 @@ export default function Navbar() {
                 onFocus={() => handleMouseEnter(item.name, item.type)}
               >
                 {index > 0 && (
-                  <span className="w-[3px] h-[3px] rounded-full bg-[#C5A059]/25 mx-2 flex-shrink-0" />
+                  <span className="w-[3px] h-[3px] rounded-full bg-[#C5A059]/25 mx-4 flex-shrink-0" />
                 )}
 
-                {item.type === 'direct' ? (
-                  <Link
-                    to={item.href || '/'}
-                    id={`nav-link-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="hover:text-[var(--brand-gold-light)] transition-all duration-300 py-1 whitespace-nowrap text-[13px]"
-                  >
-                    {item.name}
-                  </Link>
-                ) : (
-                  <button
-                    type="button"
-                    id={`nav-btn-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                    className={`hover:text-[var(--brand-gold-light)] transition-all duration-300 flex items-center gap-1 py-1 cursor-pointer text-[13px] ${
-                      activeDropdown === item.name ? 'text-[var(--brand-gold-light)]' : ''
-                    }`}
-                    aria-expanded={activeDropdown === item.name}
-                    aria-haspopup="true"
-                  >
-                    <span>{item.name}</span>
-                    <ChevronDown className="w-3.5 h-3.5" />
-                  </button>
-                )}
+                <button
+                  type="button"
+                  id={`nav-btn-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  className={`hover:text-[var(--brand-gold-light)] transition-all duration-300 flex items-center gap-1 py-1 cursor-pointer text-[13px] ${
+                    activeDropdown === item.name ? 'text-[var(--brand-gold-light)]' : ''
+                  }`}
+                  aria-expanded={activeDropdown === item.name}
+                  aria-haspopup="true"
+                >
+                  <span>{item.name}</span>
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
 
                 {/* Dropdowns */}
                 {item.type === 'dropdown' && activeDropdown === item.name && item.columns && (
                   <div 
                     id={`dropdown-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                    className={`absolute top-full left-0 mt-3 bg-[#0D1625]/98 backdrop-blur-md border border-[#C5A059]/15 shadow-[0_15px_30px_rgba(0,0,0,0.6)] p-6 rounded-sm z-50 grid gap-6 ${
+                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-[#0D1625]/98 backdrop-blur-md border border-[#C5A059]/15 shadow-[0_15px_30px_rgba(0,0,0,0.6)] p-6 rounded-sm z-50 grid gap-6 ${
                       item.name === 'Business Setup' ? 'w-[540px] grid-cols-3' : 'w-[420px] grid-cols-2'
                     }`}
                   >
@@ -329,10 +314,10 @@ export default function Navbar() {
                             <li key={lIdx}>
                               <Link
                                 to={link.href}
-                                className="text-[11px] text-[#FBF9F4]/80 hover:text-[#E5C158] hover:pl-1 transition-all duration-200 flex items-center justify-between group/link"
+                                className="text-[11px] text-[#FBF9F4]/80 hover:text-[var(--brand-gold-light)] transition-all duration-200 flex items-center gap-1.5 group/link"
                               >
-                                <span>{link.name}</span>
-                                <ArrowRight className="w-3 h-3 text-[#E5C158] opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all" />
+                                <span className="text-[var(--brand-gold)] opacity-0 group-hover/link:opacity-100 transition-opacity duration-200 text-[8px] font-sans">◆</span>
+                                <span className="leading-snug">{link.name}</span>
                               </Link>
                             </li>
                           ))}
@@ -363,10 +348,10 @@ export default function Navbar() {
                       <li key={lIdx}>
                         <Link
                           to={link.href}
-                          className="text-[11px] text-[#FBF9F4]/75 hover:text-[#E5C158] hover:pl-1 transition-all duration-200 flex items-center justify-between group/link"
+                          className="text-[11px] text-[#FBF9F4]/75 hover:text-[var(--brand-gold-light)] transition-all duration-200 flex items-center gap-1.5 group/link"
                         >
+                          <span className="text-[var(--brand-gold)] opacity-0 group-hover/link:opacity-100 transition-opacity duration-200 text-[8px] font-sans">◆</span>
                           <span className="leading-snug">{link.name}</span>
-                          <ArrowRight className="w-3 h-3 text-[#E5C158]/85 opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all flex-shrink-0 ml-1" />
                         </Link>
                       </li>
                     ))}
