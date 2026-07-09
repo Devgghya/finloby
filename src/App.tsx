@@ -21,17 +21,37 @@ function App() {
   const [fadePreloader, setFadePreloader] = useState(false);
 
   useEffect(() => {
-    const fadeTimer = setTimeout(() => {
-      setFadePreloader(true);
-    }, 2300);
+    let hasLoaded = false;
+    const startTime = Date.now();
 
-    const removeTimer = setTimeout(() => {
-      setShowPreloader(false);
-    }, 3000);
+    const triggerFadeOut = () => {
+      if (hasLoaded) return;
+      hasLoaded = true;
+      
+      const elapsed = Date.now() - startTime;
+      const remainingTime = Math.max(1200 - elapsed, 0); // 1.2s minimum display for premium brand introduction
+
+      setTimeout(() => {
+        setFadePreloader(true);
+        setTimeout(() => {
+          setShowPreloader(false);
+        }, 700); // match duration-700 fadeout
+      }, remainingTime);
+    };
+
+    // Preload logo programmatically to track onload
+    const img = new Image();
+    img.src = '/finloby-white.png';
+    img.onload = triggerFadeOut;
+    img.onerror = triggerFadeOut; // fade out anyway if image fails
+
+    // Fallback timer (maximum 3.5s) to guarantee entry if loading hangs
+    const fallbackTimer = setTimeout(triggerFadeOut, 3500);
 
     return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(removeTimer);
+      clearTimeout(fallbackTimer);
+      img.onload = null;
+      img.onerror = null;
     };
   }, []);
 
