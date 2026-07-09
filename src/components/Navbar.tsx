@@ -158,12 +158,12 @@ const navItems: NavItem[] = [
     ],
   },
   { name: 'Calculator', href: '/calculator', type: 'direct' },
-  { name: 'Book Consultation', href: '/book-consultation', type: 'direct' },
   { name: 'Testimonials', href: '/#testimonials', type: 'direct' },
   { name: 'Case Study', href: '/#case-studies', type: 'direct' },
   { name: 'About Us', href: '/about-us', type: 'direct' },
   { name: 'Contact Us', href: '/#contact-us', type: 'direct' },
   { name: 'Blogs', href: '/blogs', type: 'direct' },
+  { name: 'Book Consultation', href: '/book-consultation', type: 'direct' },
 ];
 
 export default function Navbar() {
@@ -238,7 +238,7 @@ export default function Navbar() {
 
         {/* Desktop Primary Menu */}
         <div className="hidden xl:flex items-center gap-x-6 text-[13px] font-semibold text-white">
-          {primaryNavItems.map((item) => (
+          {primaryNavItems.filter(item => item.name !== 'Book Consultation').map((item) => (
             <Link
               key={item.name}
               to={item.href || '/'}
@@ -248,6 +248,13 @@ export default function Navbar() {
               {item.name}
             </Link>
           ))}
+          <Link
+            to="/book-consultation"
+            id="primary-nav-cta-btn"
+            className="border border-[var(--brand-gold)] px-4 py-2 text-xs font-semibold tracking-wider text-white hover:bg-[var(--brand-gold-light)] hover:border-[var(--brand-gold-light)] hover:text-[var(--text-contrast)] transition-all duration-300 rounded-sm shadow-[0_0_15px_rgba(212,175,55,0.1)] ml-2"
+          >
+            Book Consultation
+          </Link>
         </div>
 
         {/* Mobile Hamburger Toggle */}
