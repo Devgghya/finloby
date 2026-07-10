@@ -167,7 +167,7 @@ export default function LegalAssistance() {
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {item.points.map((pt, idx) => (
                         <li key={idx} className="flex gap-2.5 text-xs text-[#FBF9F4]/60 font-light">
-                          <span className="text-[#C5A059] font-serif text-[10px] mt-0.5">◆</span>
+                          <span className="text-[#C5A059] max-sm:text-[#D4AF37] max-sm:px-2 font-sans text-[10px] mt-0.5">◆</span>
                           <span className="leading-relaxed">{pt}</span>
                         </li>
                       ))}

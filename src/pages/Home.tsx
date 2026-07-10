@@ -124,8 +124,8 @@ export default function Home() {
   const [bgIndex, setBgIndex] = useState(0);
   const [carouselSlide, setCarouselSlide] = useState(0);
 
-  // Live Exchange rates state
-  const [rates, setRates] = useState({
+  // Static cached exchange rates registry
+  const rates = {
     AED: 3.6725,
     INR: 83.512,
     PKR: 278.15,
@@ -146,7 +146,7 @@ export default function Home() {
     NZD: 1.6312,
     MYR: 4.7125,
     THB: 36.412
-  });
+  };
 
   const backgroundImages = [
     'https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?q=80&w=1600&auto=format&fit=crop', // Dubai DIFC
@@ -167,40 +167,6 @@ export default function Home() {
       setCarouselSlide((prev) => (prev === 0 ? 1 : 0));
     }, 6000);
     return () => clearInterval(slideTimer);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRates(prev => {
-        const jitter = (val: number) => {
-          const change = val * (Math.random() - 0.5) * 0.001; // max 0.1% change
-          return Number((val + change).toFixed(4));
-        };
-        return {
-          AED: 3.6725, // UAE is pegged to USD, so keep it static!
-          INR: jitter(prev.INR),
-          PKR: jitter(prev.PKR),
-          JPY: jitter(prev.JPY),
-          CNY: jitter(prev.CNY),
-          BDT: jitter(prev.BDT),
-          EUR: jitter(prev.EUR),
-          GBP: jitter(prev.GBP),
-          SGD: jitter(prev.SGD),
-          SAR: 3.7500, // SAR is pegged
-          QAR: 3.6400, // QAR is pegged
-          OMR: 0.3845, // OMR is pegged
-          KWD: jitter(prev.KWD),
-          CAD: jitter(prev.CAD),
-          AUD: jitter(prev.AUD),
-          CHF: jitter(prev.CHF),
-          HKD: 7.8000, // HKD is pegged
-          NZD: jitter(prev.NZD),
-          MYR: jitter(prev.MYR),
-          THB: jitter(prev.THB)
-        };
-      });
-    }, 5000);
-    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -347,15 +313,15 @@ export default function Home() {
               {/* Quick Stats Grid */}
               <div className="grid grid-cols-3 gap-6 pt-12 border-t border-[#C5A059]/10 mt-8 max-w-lg">
                 <div>
-                  <div className="text-2xl font-serif text-[#C5A059]">AED 850M+</div>
+                  <div className="text-2xl font-sans font-bold text-[#C5A059]">AED 850M+</div>
                   <div className="text-[9px] uppercase tracking-wider text-[#FBF9F4]/40 mt-1">Liabilities Resolved</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-serif text-[#C5A059]">100%</div>
+                  <div className="text-2xl font-sans font-bold text-[#C5A059]">100%</div>
                   <div className="text-[9px] uppercase tracking-wider text-[#FBF9F4]/40 mt-1">Confidentiality Rate</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-serif text-[#C5A059]">36+</div>
+                  <div className="text-2xl font-sans font-bold text-[#C5A059]">36+</div>
                   <div className="text-[9px] uppercase tracking-wider text-[#FBF9F4]/40 mt-1">Banking Partners</div>
                 </div>
               </div>
@@ -369,13 +335,13 @@ export default function Home() {
                 
                 <div className="flex items-center justify-between border-b border-[var(--brand-gold)]/10 pb-4">
                   <div>
-                    <h2 className="text-lg font-serif text-white font-medium tracking-wide">Global Market Terminal</h2>
+                    <h2 className="text-lg font-sans font-bold text-white tracking-wide">Global Market Terminal</h2>
                     <p className="text-[10px] text-[var(--brand-gold-light)] font-light mt-0.5">USD Base Valuation Uplink</p>
                   </div>
                   <div className="text-right flex flex-col items-end gap-1">
-                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 border border-emerald-500/20 bg-emerald-500/10 rounded-full text-[8px] font-bold text-emerald-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                      LIVE SECURE FEED
+                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 border border-[#C5A059]/25 bg-[#0D1625] rounded-full text-[8px] font-bold text-[#C5A059]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]"></span>
+                      DAILY ARCHIVE
                     </span>
                     <span className="text-[8px] text-white/40 font-mono">SEC-UPLINK v4.2</span>
                   </div>
@@ -426,11 +392,16 @@ export default function Home() {
                 <div className="border-t border-[var(--brand-gold)]/10 pt-3 text-[9px] text-white/40 font-mono text-center">
                   Feed secured via 256-bit institutional API uplink
                 </div>
+                <span className="text-[11px] uppercase tracking-widest text-slate-400 font-medium text-center mt-3 block">
+                  Data Registry Archive • Market Rates Cached Daily at 00:00 GMT via Regional Sovereign Channels
+                </span>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
 
       {/* SECTION 1.5: BESPOKE PORTFOLIO DIAGNOSTIC ENGINE PLACEHOLDER */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-8 pb-20 md:pb-24 lg:pb-32" id="estimator-section">
@@ -443,7 +414,7 @@ export default function Home() {
                 <Activity className="w-4 h-4 text-[#E5C158] animate-pulse" />
                 Classified Diagnostics Hub
               </span>
-              <h2 className="text-4xl md:text-5xl font-serif text-white font-bold tracking-wide">
+              <h2 className="text-3xl md:text-5xl font-serif text-white font-bold tracking-wide">
                 Bespoke Portfolio Diagnostic Engine
               </h2>
               <div className="flex items-center gap-2 mt-1 mb-2">
@@ -470,7 +441,7 @@ export default function Home() {
             </div>
             
             <Lock className="w-12 h-12 text-[#E5C158]/35 mb-6" />
-            <h3 className="text-lg font-serif text-[#FBF9F4] font-light mb-2 uppercase tracking-wider">
+            <h3 className="text-base font-sans text-[#FBF9F4] font-bold mb-2 uppercase tracking-wider">
               Secure Parameter Pipeline Under Calibration
             </h3>
             <p className="text-xs text-[#FBF9F4]/50 max-w-lg leading-relaxed font-light mb-6">
@@ -490,18 +461,20 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
+
       {/* SECTION 2: GLOBAL INFRASTRUCTURE MARQUEE */}
-      <section className="w-full bg-[#0D1625] border-y border-[#C5A059]/15 py-5 overflow-hidden relative" id="marquee-section">
+      <section className="w-full bg-[#0D1625] py-5 overflow-hidden relative" id="marquee-section">
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#070F1E] to-transparent z-10 pointer-events-none"></div>
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#070F1E] to-transparent z-10 pointer-events-none"></div>
         <div className="flex whitespace-nowrap animate-marquee">
-          <div className="flex items-center gap-12 text-[#C5A059] font-serif text-sm tracking-[0.3em] font-medium pr-12">
+          <div className="flex items-center gap-12 text-[#C5A059] font-sans text-sm tracking-[0.3em] font-semibold pr-12">
             <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
             <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
             <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
             <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
           </div>
-          <div className="flex items-center gap-12 text-[#C5A059] font-serif text-sm tracking-[0.3em] font-medium pr-12 select-none" aria-hidden="true">
+          <div className="flex items-center gap-12 text-[#C5A059] font-sans text-sm tracking-[0.3em] font-semibold pr-12 select-none" aria-hidden="true">
             <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
             <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
             <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
@@ -510,6 +483,8 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
+
       {/* SECTION 3: PORTFOLIO PILLARS SECTION */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-20 sm:py-28" id="portfolios">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -517,7 +492,7 @@ export default function Home() {
             <span className="text-[8px] font-bold text-[#E5C158] uppercase tracking-[0.25em]">
               Strategic Assets
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif text-white font-bold tracking-wide">
+            <h2 className="text-3xl md:text-5xl font-serif text-white font-bold tracking-wide">
               Core Portfolio Pillars
             </h2>
             <div className="flex items-center gap-2 mt-1">
@@ -542,7 +517,7 @@ export default function Home() {
             >
               <div>
                 <div className="flex justify-between items-start mb-6">
-                  <span className="text-3xl font-serif font-semibold text-[#E5C158]">
+                  <span className="text-3xl font-sans font-bold text-[#E5C158]">
                     {item.num}
                   </span>
                   <div className="p-2 bg-[#031C14] rounded-full text-[#E5C158] group-hover:bg-[#E5C158] group-hover:text-[#070F1E] transition-colors duration-300">
@@ -550,7 +525,7 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <h3 className="text-base font-sans font-bold uppercase tracking-wider text-white mb-4 leading-relaxed group-hover:text-[#E5C158] transition-colors">
+                <h3 className="text-sm font-sans font-bold uppercase tracking-wider text-white mb-4 leading-relaxed group-hover:text-[#E5C158] transition-colors">
                   {item.title}
                 </h3>
                 
@@ -563,7 +538,7 @@ export default function Home() {
               <ul className="pt-6 border-t border-slate-800/80 mt-auto space-y-3.5 text-xs font-semibold uppercase tracking-[0.15em] text-[#FBF9F4]">
                 {item.services.map((srv, idx) => (
                   <li key={idx} className="flex items-center gap-2">
-                    <span className="text-[#E5C158] text-[8px] font-serif">◆</span>
+                    <span className="text-[#E5C158] max-sm:text-[#D4AF37] max-sm:px-2 text-[8px] font-sans">◆</span>
                     <span className="font-sans font-semibold text-[#FBF9F4] tracking-wider hover:text-[#E5C158] transition-colors">{srv}</span>
                   </li>
                 ))}
@@ -573,15 +548,17 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
+
       {/* SECTION 4: HISTORICAL CLIENT ANALYSIS (CASE STUDIES - BOOK THEME) */}
-      <section className="w-full bg-[#050B15] border-y border-[#C5A059]/10 py-20 sm:py-28" id="case-studies">
+      <section className="w-full bg-[#050B15] py-20 sm:py-28" id="case-studies">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           
           <div className="flex flex-col gap-3 mb-16 text-center max-w-xl mx-auto">
             <span className="text-[8px] font-bold text-[#E5C158] uppercase tracking-[0.25em]">
               Verified Outcomes
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif text-white font-bold tracking-wide">
+            <h2 className="text-3xl md:text-5xl font-serif text-white font-bold tracking-wide">
               Historical Client Case Files
             </h2>
             <div className="flex items-center gap-2 mt-1 justify-center">
@@ -612,10 +589,10 @@ export default function Home() {
                       <span>{caseFile.period}</span>
                     </div>
                     
-                    <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#C5A059] mb-2 font-sans">
+                    <h4 className="text-[9px] uppercase tracking-[0.2em] font-bold text-[#C5A059] mb-2 font-sans">
                       Client / Registry Account
                     </h4>
-                    <h3 className="text-2xl font-serif text-[#070F1E] font-medium mb-4 leading-snug">
+                    <h3 className="text-xl font-sans text-[#070F1E] font-bold mb-3 leading-snug">
                       {caseFile.client}
                     </h3>
                     <p className="text-xs sm:text-sm font-light leading-relaxed text-[#070F1E]/80 mt-2">
@@ -641,7 +618,7 @@ export default function Home() {
                       <span>SECURE RECORD</span>
                     </div>
 
-                    <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#E5C158] mb-4 font-sans">
+                    <h4 className="text-[9px] uppercase tracking-[0.2em] font-bold text-[#E5C158] mb-4 font-sans">
                       Technical Specifications
                     </h4>
                     
@@ -679,6 +656,8 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
+
       {/* SECTION 5: PRIVATE CLIENT TESTIMONIALS */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-20 sm:py-28" id="testimonials">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -687,7 +666,7 @@ export default function Home() {
             <span className="text-[8px] font-bold text-[#E5C158] uppercase tracking-[0.25em]">
               Executive Referrals
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif text-white font-bold tracking-wide leading-tight">
+            <h2 className="text-3xl md:text-5xl font-serif text-white font-bold tracking-wide leading-tight">
               Testimonials from the Elite
             </h2>
             <div className="flex items-center gap-2 mt-1">
@@ -695,7 +674,7 @@ export default function Home() {
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-gold)]"></span>
               <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
             </div>
-            <p className="text-xs font-light text-[#FBF9F4]/50 leading-relaxed">
+            <p className="text-xs font-light text-[#FBF9F4]/55 leading-relaxed">
               We serve ultra-high-net-worth individuals, commercial fleet logistics directors, and multinational executives. Due to strict NDAs, identifying marks are adjusted.
             </p>
           </div>
@@ -706,11 +685,11 @@ export default function Home() {
                 key={idx}
                 className="bg-[#06281E] border-l-4 border-[#C5A059] p-8 sm:p-10 rounded-sm shadow-xl flex flex-col justify-between"
               >
-                <p className="text-sm font-serif italic font-light leading-relaxed text-[#FBF9F4]/80 mb-6">
+                <p className="text-sm font-sans italic font-light leading-relaxed text-[#FBF9F4]/80 mb-6">
                   "{test.quote}"
                 </p>
                 <div>
-                  <h4 className="text-xs font-semibold text-[#C5A059] uppercase tracking-wider">
+                  <h4 className="text-[11px] font-semibold text-[#C5A059] uppercase tracking-wider">
                     {test.author}
                   </h4>
                   <p className="text-[10px] text-[#FBF9F4]/40 font-light mt-0.5">
@@ -724,11 +703,13 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
+
       {/* SECTION 6: DIRECT ENGAGEMENT BOARD */}
-      <section className="w-full bg-[#031C14] py-16 border-t border-[#C5A059]/10" id="contact-us">
+      <section className="w-full bg-[#031C14] py-16" id="contact-us">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="flex flex-col gap-2 max-w-xl">
-            <h2 className="text-4xl md:text-5xl font-serif text-white font-bold tracking-wide">
+            <h2 className="text-3xl md:text-5xl font-serif text-white font-bold tracking-wide">
               Ready to Secure Your Operations?
             </h2>
             <div className="flex items-center gap-2 mt-1">

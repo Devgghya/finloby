@@ -139,7 +139,7 @@ export default function Loans() {
               return (
                 <div key={item.id} className="animate-fade-in flex flex-col justify-between h-full gap-8">
                   <div className="space-y-6">
-                    <h3 className="text-2xl font-serif text-[#C5A059] font-medium tracking-wide border-b border-[#C5A059]/10 pb-3">
+                    <h3 className="text-2xl font-sans font-bold text-[#C5A059] tracking-wide border-b border-[#C5A059]/10 pb-3">
                       {item.title} Facilities
                     </h3>
                     
@@ -191,7 +191,7 @@ export default function Loans() {
                 <Calculator className="w-5 h-5 text-[#C5A059]" />
               </div>
               <div>
-                <h3 className="text-xl font-serif text-[#FBF9F4] font-medium tracking-wide">
+                <h3 className="text-xl font-sans font-bold text-[#FBF9F4] tracking-wide">
                   UAE Debt Burden Ratio (DBR) & Loan Eligibility Calculator
                 </h3>
                 <p className="text-xs text-[#FBF9F4]/40 font-light mt-0.5">

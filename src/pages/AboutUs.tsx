@@ -29,7 +29,7 @@ export default function AboutUs() {
             <div className="p-3 bg-[#070F1E] border border-[#C5A059]/20 rounded-full w-fit text-[#C5A059] mb-6">
               <Shield className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-serif text-[#FBF9F4] font-medium tracking-wide mb-3">
+            <h3 className="text-lg font-sans font-bold text-[#FBF9F4] tracking-wide mb-3">
               Absolute Discretion
             </h3>
             <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed">
@@ -41,7 +41,7 @@ export default function AboutUs() {
             <div className="p-3 bg-[#070F1E] border border-[#C5A059]/20 rounded-full w-fit text-[#C5A059] mb-6">
               <Landmark className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-serif text-[#FBF9F4] font-medium tracking-wide mb-3">
+            <h3 className="text-lg font-sans font-bold text-[#FBF9F4] tracking-wide mb-3">
               Institutional Leverage
             </h3>
             <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed">
@@ -53,7 +53,7 @@ export default function AboutUs() {
             <div className="p-3 bg-[#070F1E] border border-[#C5A059]/20 rounded-full w-fit text-[#C5A059] mb-6">
               <Award className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-serif text-[#FBF9F4] font-medium tracking-wide mb-3">
+            <h3 className="text-lg font-sans font-bold text-[#FBF9F4] tracking-wide mb-3">
               Sovereign Compliance
             </h3>
             <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed">
@@ -70,7 +70,7 @@ export default function AboutUs() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-4">
               <span className="text-[9px] font-mono text-[#C5A059] uppercase tracking-[0.2em]">Advisory Vision</span>
-              <h2 className="text-2xl font-serif text-[#FBF9F4] font-light">
+              <h2 className="text-2xl font-sans font-semibold text-[#FBF9F4]">
                 Securing Operations Across High-Risk Jurisdictions
               </h2>
               <p className="text-xs font-light text-[#FBF9F4]/70 leading-relaxed">
@@ -108,7 +108,7 @@ export default function AboutUs() {
 
         {/* Global Locations Map Deck */}
         <div>
-          <h3 className="text-xl font-serif text-[#FBF9F4] font-medium tracking-wide mb-8 border-b border-[#C5A059]/10 pb-3">
+          <h3 className="text-xl font-sans font-semibold text-[#FBF9F4] tracking-wide mb-8 border-b border-[#C5A059]/10 pb-3">
             Global Coordination Hubs
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

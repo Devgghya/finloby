@@ -52,15 +52,15 @@ export default function Investments() {
               </p>
               <ul className="space-y-3 pt-4 border-t border-[#C5A059]/10">
                 <li className="flex items-center gap-2.5 text-xs text-[#FBF9F4]/75 font-light">
-                  <span className="text-[#C5A059]">◆</span>
+                  <span className="text-[#C5A059] max-sm:text-[#D4AF37] max-sm:px-2 font-sans">◆</span>
                   Targeted yields ranging from 8% to 18% APR.
                 </li>
                 <li className="flex items-center gap-2.5 text-xs text-[#FBF9F4]/75 font-light">
-                  <span className="text-[#C5A059]">◆</span>
+                  <span className="text-[#C5A059] max-sm:text-[#D4AF37] max-sm:px-2 font-sans">◆</span>
                   Collateralized structures secured via post-dated cheque escrow models.
                 </li>
                 <li className="flex items-center gap-2.5 text-xs text-[#FBF9F4]/75 font-light">
-                  <span className="text-[#C5A059]">◆</span>
+                  <span className="text-[#C5A059] max-sm:text-[#D4AF37] max-sm:px-2 font-sans">◆</span>
                   Private placements reserved for HNWI and institutional groups.
                 </li>
               </ul>
@@ -86,15 +86,15 @@ export default function Investments() {
               </p>
               <ul className="space-y-3 pt-4 border-t border-[#C5A059]/10">
                 <li className="flex items-center gap-2.5 text-xs text-[#FBF9F4]/75 font-light">
-                  <span className="text-[#C5A059]">◆</span>
+                  <span className="text-[#C5A059] max-sm:text-[#D4AF37] max-sm:px-2 font-sans">◆</span>
                   Working capital lines from AED 5 Million up to AED 150 Million.
                 </li>
                 <li className="flex items-center gap-2.5 text-xs text-[#FBF9F4]/75 font-light">
-                  <span className="text-[#C5A059]">◆</span>
+                  <span className="text-[#C5A059] max-sm:text-[#D4AF37] max-sm:px-2 font-sans">◆</span>
                   Tailored debt servicing structures matching cash flow cycles.
                 </li>
                 <li className="flex items-center gap-2.5 text-xs text-[#FBF9F4]/75 font-light">
-                  <span className="text-[#C5A059]">◆</span>
+                  <span className="text-[#C5A059] max-sm:text-[#D4AF37] max-sm:px-2 font-sans">◆</span>
                   Flexible corporate equity swap or debt options.
                 </li>
               </ul>
