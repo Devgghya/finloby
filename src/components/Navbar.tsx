@@ -222,16 +222,16 @@ export default function Navbar() {
       </div>
 
       {/* 2. DOUBLE-DECKER: UPPER DECK (Logo & Primary Menu) */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-5 flex items-center justify-between gap-8">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-5 sm:py-6 flex items-center justify-between gap-8">
         
         {/* Brand Logo Container */}
-        <Link to="/" id="brand-logo" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
+        <Link to="/" id="brand-logo" className="flex items-center gap-1.5 sm:gap-2 group flex-shrink-0">
           <img 
             src="/finloby-white.png" 
             alt="Finloby Shield" 
-            className="h-10 sm:h-16 w-auto object-contain transition-all duration-300" 
+            className="h-12 sm:h-20 w-auto object-contain transition-all duration-300" 
           />
-          <span className="font-sans font-black text-xs sm:text-base uppercase tracking-[0.25em] text-white group-hover:text-[var(--brand-gold-light)] transition-all duration-300 flex-shrink-0">
+          <span className="font-sans font-black text-sm sm:text-lg uppercase tracking-[0.25em] text-white group-hover:text-[var(--brand-gold-light)] transition-all duration-300 flex-shrink-0">
             FINLOBY
           </span>
         </Link>
