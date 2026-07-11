@@ -7,8 +7,8 @@
   --color-text-ivory: #FFFFFF;
   --color-bg-slate-card: #06281E;
   
-  --font-serif: 'Cormorant Garamond', Georgia, Cambria, serif;
-  --font-sans: 'Inter', 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Prata', Georgia, Cambria, serif;
+  --font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
   
   --animate-marquee: marquee 25s linear infinite;
 
@@ -38,11 +38,11 @@
 
 /* Enforce geometric sans-serif globally except for big headers */
 * {
-  font-family: var(--font-sans), 'Inter', sans-serif;
+  font-family: var(--font-sans), 'Outfit', sans-serif;
 }
 
 h1, .font-serif {
-  font-family: var(--font-serif), 'Cormorant Garamond', serif !important;
+  font-family: var(--font-serif), 'Prata', serif !important;
 }
 
 /* Custom Base Styles */
