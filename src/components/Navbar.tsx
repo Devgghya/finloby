@@ -52,9 +52,9 @@ const navItems: NavItem[] = [
       {
         title: 'Personal Finance',
         links: [
-          { name: 'Salary Transfer Loan', href: '/loans#personal-finance' },
-          { name: 'Post Dated Cheque Loan', href: '/loans#personal-finance' },
-          { name: 'Consolidation Loans', href: '/loans#personal-finance' },
+          { name: 'Salary Transfer Loans (STL)', href: '/loans#personal-finance' },
+          { name: 'Non-Salary Transfer Loans (Non-STL / Post-Dated Cheque Loans)', href: '/loans#personal-finance' },
+          { name: 'Buy-Out Loans (Consolidation Loans)', href: '/loans#personal-finance' },
         ],
       },
       {
