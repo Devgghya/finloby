@@ -336,7 +336,6 @@ export default function Home() {
                 <div className="flex items-center justify-between border-b border-[var(--brand-gold)]/10 pb-4">
                   <div>
                     <h2 className="text-lg font-sans font-bold text-white tracking-wide">Global Market Terminal</h2>
-                    <p className="text-[10px] text-[var(--brand-gold-light)] font-light mt-0.5">USD Base Valuation Uplink</p>
                   </div>
                   <div className="text-right flex flex-col items-end gap-1">
                     <span className="inline-flex items-center gap-1.5 px-2 py-0.5 border border-[#C5A059]/25 bg-[#0D1625] rounded-full text-[8px] font-bold text-[#C5A059]">
