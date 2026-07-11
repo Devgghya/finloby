@@ -228,17 +228,54 @@ export default function BusinessSetup() {
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                      {item.items.map((sub, idx) => (
-                        <div key={idx} className="bg-[#070F1E]/50 border border-slate-850 p-5 rounded-sm hover:border-[#C5A059]/20 transition-all duration-300">
-                          <h4 className="text-xs uppercase tracking-wider font-semibold text-[#E2C999] mb-1.5 flex items-center gap-2">
-                            <Briefcase className="w-4 h-4 text-[#C5A059]" />
-                            {sub.name}
-                          </h4>
-                          <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed">
-                            {sub.desc}
-                          </p>
-                        </div>
-                      ))}
+                      {item.items.map((sub, idx) => {
+                        const isFreeZoneCard = sub.name.includes('Free Zone') || sub.name.includes('Economic Zone');
+                        const isMainlandCard = sub.name.includes('Mainland');
+                        
+                        const handleCardClick = () => {
+                          if (isFreeZoneCard) {
+                            const el = document.getElementById('free-zone-registry');
+                            if (el) {
+                              el.scrollIntoView({ behavior: 'smooth' });
+                            }
+                          } else if (isMainlandCard) {
+                            const el = document.getElementById('cost-estimator');
+                            if (el) {
+                              el.scrollIntoView({ behavior: 'smooth' });
+                            }
+                          }
+                        };
+
+                        return (
+                          <div 
+                            key={idx} 
+                            onClick={handleCardClick}
+                            className={`bg-[#070F1E]/50 border border-slate-850 p-5 rounded-sm transition-all duration-300 ${
+                              isFreeZoneCard || isMainlandCard ? 'cursor-pointer hover:border-[#C5A059]/40 hover:bg-[#070F1E]/80' : ''
+                            }`}
+                          >
+                            <h4 className="text-xs uppercase tracking-wider font-semibold text-[#E2C999] mb-1.5 flex items-center justify-between">
+                              <span className="flex items-center gap-2">
+                                <Briefcase className="w-4 h-4 text-[#C5A059]" />
+                                {sub.name}
+                              </span>
+                              {isFreeZoneCard && (
+                                <span className="text-[9px] uppercase tracking-wider text-[#C5A059] font-semibold animate-pulse">
+                                  View Registry &darr;
+                                </span>
+                              )}
+                              {isMainlandCard && (
+                                <span className="text-[9px] uppercase tracking-wider text-[#C5A059] font-semibold animate-pulse">
+                                  Calculator &darr;
+                                </span>
+                              )}
+                            </h4>
+                            <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed">
+                              {sub.desc}
+                            </p>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -268,7 +305,7 @@ export default function BusinessSetup() {
         <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
 
         {/* SECTION: FREE ZONE REGISTRY */}
-        <div className="mb-20">
+        <div id="free-zone-registry" className="mb-20 scroll-mt-28">
           <div className="flex flex-col gap-3 mb-10 text-center max-w-xl mx-auto">
             <span className="text-[8px] font-bold text-[#E5C158] uppercase tracking-[0.25em]">
               Free Zones
@@ -316,12 +353,12 @@ export default function BusinessSetup() {
                       {tierData.zones.map((zone, zIdx) => (
                         <div 
                           key={zIdx} 
-                          className="bg-[#050B15]/80 border border-slate-850 p-4 hover:border-[#C5A059]/20 transition-all duration-300 flex flex-col justify-between"
+                          className="bg-[#050B15]/80 border border-slate-850 p-4 hover:border-[#C5A059]/20 transition-all duration-300 flex flex-col justify-start"
                         >
-                          <h5 className="text-xs font-sans font-semibold text-[#E2C999] mb-1.5">
+                          <h5 className="text-xs font-sans font-semibold text-[#E2C999]">
                             {zone.name}
                           </h5>
-                          <p className="text-[11px] font-light text-[#FBF9F4]/50 leading-relaxed">
+                          <p className="text-[11px] font-light text-[#FBF9F4]/50 leading-relaxed mt-2">
                             {zone.desc}
                           </p>
                         </div>
@@ -337,7 +374,7 @@ export default function BusinessSetup() {
         <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
 
         {/* UAE Company Setup Cost Estimator */}
-        <div className="bg-[#0D1625] border border-[#C5A059]/20 p-8 sm:p-10 rounded-sm relative overflow-hidden">
+        <div id="cost-estimator" className="bg-[#0D1625] border border-[#C5A059]/20 p-8 sm:p-10 rounded-sm relative overflow-hidden scroll-mt-28">
           <div className="absolute top-0 left-0 w-full h-[3px] bg-[#C5A059]"></div>
           
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-[#C5A059]/10 pb-6 mb-8 gap-4">
