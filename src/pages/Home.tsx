@@ -128,24 +128,24 @@ export default function Home() {
   const rates = {
     AED: 3.6725,
     INR: 83.512,
-    PKR: 278.15,
-    JPY: 160.84,
-    CNY: 7.268,
-    BDT: 117.48,
     EUR: 0.9221,
     GBP: 0.7812,
+    CHF: 0.9015,
     SGD: 1.3524,
-    SAR: 3.7500,
-    QAR: 3.6400,
-    OMR: 0.3845,
-    KWD: 0.3068,
     CAD: 1.3685,
     AUD: 1.4921,
-    CHF: 0.9015,
+    KWD: 0.3068,
+    OMR: 0.3845,
+    SAR: 3.7500,
+    QAR: 3.6400,
+    JPY: 160.84,
+    CNY: 7.268,
     HKD: 7.8000,
-    NZD: 1.6312,
     MYR: 4.7125,
-    THB: 36.412
+    THB: 36.412,
+    NZD: 1.6312,
+    PKR: 278.15,
+    BDT: 117.48
   };
 
   const backgroundImages = [
