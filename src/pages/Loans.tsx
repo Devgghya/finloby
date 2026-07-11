@@ -129,9 +129,44 @@ const loanCategories: LoanCategory[] = [
     id: 'vehicle-mortgage',
     title: 'Asset Financing & Insurance',
     subcategories: [
-      { name: 'Vehicle & Fleet Loan', desc: 'Retail auto finance and commercial logistics fleet placement at preferred institutional rates.' },
-      { name: 'Home Loans & Mortgage Top-Ups', desc: 'Residential and commercial mortgage facilities for UAE residents and foreign investors with high LTV thresholds.' },
-      { name: 'Insurance Portals', desc: 'Sovereign risk coverages, corporate health packages, key-man coverage, and assets insurance facilitation.' }
+      {
+        name: 'Vehicle Loans (Auto Loan / Auto Finance)',
+        desc: 'A Vehicle Loan (also known as an Auto Loan or Auto Finance) is a personal, secured loan designed for individual buyers looking to finance a single vehicle for personal use.',
+        steps: [
+          {
+            title: 'Review of Profile & Documents',
+            desc: 'We thoroughly review client’s personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures.'
+          },
+          {
+            title: 'DBR & Central Bank Compliance Check',
+            desc: 'We calculate your exact Debt Burden Ratio (DBR) to ensure your application perfectly aligns with UAE Central Bank policies. Client’s total monthly financial commitments (including existing loans and credit cards) cannot exceed 50% of your gross monthly income. Your final vehicle loan eligibility and maximum monthly instalment will depend entirely on the remaining DBR room you have left.'
+          },
+          {
+            title: 'Down Payment and Repayment duration',
+            desc: 'We work on your profile to lower your upfront costs as much as possible, targeting down payment options as low as 5% to 10% based on your profile and banking policies. Banking repayment structures are set at a highly manageable 48 months, with selected leading banks allowing you to stretch your tenure to the absolute maximum of 60 months for the lowest possible monthly installment.'
+          },
+          {
+            title: 'Disbursement of Loan amount',
+            desc: 'Once you have selected your vehicle, the loan amount is disbursed directly to the showroom or private seller. Simultaneously, the vehicle registration process begins. The car is officially transferred into your name at the RTA, with the financing bank registered as the primary lien holder until the loan is fully repaid.'
+          },
+          {
+            title: 'Individual Vehicle Insurance',
+            desc: 'We assist you in securing a comprehensive insurance policy for the vehicle, vehicle registration and transfer along with processing of Salik Card.'
+          }
+        ]
+      },
+      {
+        name: 'Fleet & Commercial Vehicle Financing',
+        desc: 'Customized credit lines and asset-backed term financing structured for commercial fleets, logistics operations, and company transport fleets at preferred institutional rates.'
+      },
+      {
+        name: 'Home Loans & Mortgage Top-Ups',
+        desc: 'Residential and commercial mortgage facilities for UAE residents and foreign investors with high LTV thresholds.'
+      },
+      {
+        name: 'Insurance Portals',
+        desc: 'Sovereign risk coverages, corporate health packages, key-man coverage, and assets insurance facilitation.'
+      }
     ]
   }
 ];
