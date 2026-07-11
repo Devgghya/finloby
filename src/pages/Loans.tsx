@@ -1,14 +1,118 @@
 import { useState, useEffect } from 'react';
 import { ArrowUpRight, Calculator, ShieldAlert, Award } from 'lucide-react';
 
-const loanCategories = [
+interface LoanStep {
+  title: string;
+  desc: string;
+}
+
+interface LoanSubcategory {
+  name: string;
+  desc: string;
+  steps?: LoanStep[];
+}
+
+interface LoanCategory {
+  id: string;
+  title: string;
+  subcategories: LoanSubcategory[];
+}
+
+const loanCategories: LoanCategory[] = [
   {
     id: 'personal-finance',
     title: 'Personal Finance',
     subcategories: [
-      { name: 'Salary Transfer Loan (STL)', desc: 'High-limit loans requiring salary transfer to tier-1 banks. Offers the lowest APR and maximum tenures up to 48 months.' },
-      { name: 'Post Dated Cheque (PDC) Loan / Non-STL', desc: 'Sovereign structures for professionals who cannot transfer salary, backed by post-dated cheques and security files.' },
-      { name: 'Buy-Out & Consolidation Loans', desc: 'Direct buyout of existing loan facilities from other institutions to consolidate payments and secure lower interest rates.' }
+      {
+        name: 'Salary Transfer Loans (STL)',
+        desc: 'A Salary Transfer Loan (STL) is the most traditional and cost-effective personal finance option in UAE. Under STL structure, client shall commit to transfer monthly salary account directly to the lending bank. Because the bank has a guaranteed source of repayment, STL loans offer the lowest possible interest rates, higher finance amounts, and flexible tenures of up to 48 months (as mandated by the UAE Central Bank).',
+        steps: [
+          {
+            title: 'Review of Profile & Documents',
+            desc: 'We thoroughly review client’s personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures.'
+          },
+          {
+            title: 'DBR & Central Bank Compliance Check',
+            desc: 'We calculate your exact Debt Burden Ratio (which cannot exceed 50% of your gross income per UAE Central Bank rules) to ensure your application passes automated bank filtering.'
+          },
+          {
+            title: 'Optimal Bank Matching',
+            desc: 'We pitch client’s profile to the specific banks offering the lowest reducing interest rates.'
+          },
+          {
+            title: 'Eligibility & Compatibility Check',
+            desc: 'We assess client’s eligibility for the maximum required loan amount across compatible financial institutions by analyzing client’s profile and salary structure.'
+          },
+          {
+            title: 'Salary Transfer Letter Assistance',
+            desc: 'Post soft approval from the institute, Our team assists client in obtaining a compliant Salary Transfer Letter from HR department that matches the specific criteria of the target financial institution, ensuring an error-free submission to the institute.'
+          },
+          {
+            title: 'Loan amount disbursal',
+            desc: 'Our Team assists the client till the approved loan amount is disbursed from the concern financial institution.'
+          }
+        ]
+      },
+      {
+        name: 'Non-Salary Transfer Loans (Non-STL / Post-Dated Cheque Loans)',
+        desc: 'A Non-Salary Transfer Loan (Non-STL) is designed for individuals who are seeking limited amount of loan and want to keep their existing salary account intact. Based on your salary, repayment is secured using Post-Dated Cheques (PDCs) or direct debit instructions from your current bank.',
+        steps: [
+          {
+            title: 'Review of Profile & Documents',
+            desc: 'We thoroughly review client’s personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures.'
+          },
+          {
+            title: 'DBR & Central Bank Compliance Check',
+            desc: 'We calculate your exact Debt Burden Ratio (which cannot exceed 50% of your gross income per UAE Central Bank rules) to ensure your application passes automated bank filtering.'
+          },
+          {
+            title: 'Optimal Bank Matching',
+            desc: 'We pitch client’s profile to the specific banks offering the lowest reducing interest rates.'
+          },
+          {
+            title: 'Eligibility & Compatibility Check',
+            desc: 'We assess client’s eligibility for the maximum required loan amount across compatible financial institutions by analyzing client’s profile and salary structure.'
+          },
+          {
+            title: 'Security Cheque',
+            desc: 'Once soft approval is obtained from the financial institution, security cheque and Direct Debit Authority (DDA) is supposed to be submitted to the concern financial institution.'
+          },
+          {
+            title: 'Loan amount disbursal',
+            desc: 'Our Team assists the client till the approved loan amount is disbursed from the concern financial institution.'
+          }
+        ]
+      },
+      {
+        name: 'Buy-Out Loans (Consolidation Loans)',
+        desc: 'A Buy-Out Loan is a specialized debt consolidation facility where a new bank pays off all client’s existing liabilities once approved such as outstanding credit cards, personal loans, or car finance across multiple UAE banks and combines them into one single loan.',
+        steps: [
+          {
+            title: 'Review of Profile & Documents',
+            desc: 'We thoroughly review client’s personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures.'
+          },
+          {
+            title: 'DBR & Central Bank Compliance Check',
+            desc: 'We calculate your exact Debt Burden Ratio (which cannot exceed 50% of your gross income per UAE Central Bank rules) to ensure your application passes automated bank filtering.'
+          },
+          {
+            title: 'Optimal Bank Matching',
+            desc: 'We pitch client’s profile to the specific banks offering the lowest reducing interest rates.'
+          },
+          {
+            title: 'Liability Letter Processing',
+            desc: 'We guide client to coordinate with current banks to ensure the client gets accurate, timely Liability Letters with the correct payout figures.'
+          },
+          {
+            title: 'Central Bank Settlement Alignment',
+            desc: 'We review the strict timeline between getting your liability letters and securing the buyout funds to prevent the letters from expiring.'
+          },
+          {
+            title: 'Liability Closure & Clearance Tracking',
+            desc: 'Once the buyout is approved, we don\'t just stop there. We guide you through obtaining your final Clearance Letters from your old banks and ensuring your AECB credit report updates correctly to show the old accounts as closed.'
+          }
+        ]
+      }
     ]
   },
   {
@@ -143,16 +247,36 @@ export default function Loans() {
                       {item.title} Facilities
                     </h3>
                     
-                    <div className="grid grid-cols-1 gap-6">
+                    <div className="grid grid-cols-1 gap-8">
                       {item.subcategories.map((sub, idx) => (
-                        <div key={idx} className="bg-[#070F1E]/50 border border-slate-850 p-5 hover:border-[#C5A059]/20 transition-all duration-300">
-                          <h4 className="text-xs uppercase tracking-wider font-semibold text-[#E2C999] mb-1.5 flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]"></span>
+                        <div key={idx} className="bg-[#070F1E]/50 border border-slate-850 p-6 rounded-sm hover:border-[#C5A059]/20 transition-all duration-300">
+                          <h4 className="text-sm font-sans font-bold text-[#E2C999] mb-3 flex items-center gap-2 border-b border-[#C5A059]/10 pb-2">
+                            <span className="w-2 h-2 rounded-full bg-[#C5A059]"></span>
                             {sub.name}
                           </h4>
-                          <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed pl-3.5">
+                          <p className="text-xs sm:text-sm font-light text-[#FBF9F4]/70 leading-relaxed mb-6">
                             {sub.desc}
                           </p>
+                          
+                          {sub.steps && (
+                            <div className="space-y-4 pl-4 border-l border-[#C5A059]/10 mt-4">
+                              {sub.steps.map((step, sIdx) => (
+                                <div key={sIdx} className="flex gap-3.5 items-start">
+                                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/25 text-[#C5A059] flex items-center justify-center text-[10px] font-mono font-bold">
+                                    {sIdx + 1}
+                                  </span>
+                                  <div>
+                                    <h5 className="text-xs font-sans font-semibold text-white mb-0.5">
+                                      {step.title}
+                                    </h5>
+                                    <p className="text-[11px] font-light text-[#FBF9F4]/50 leading-relaxed">
+                                      {step.desc}
+                                    </p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       ))}
                     </div>
