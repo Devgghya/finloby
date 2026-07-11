@@ -101,7 +101,7 @@ const navItems: NavItem[] = [
         title: 'Licensing',
         links: [
           { name: 'Mainland LLC Setup', href: '/business-setup#licensing' },
-          { name: 'Economic Zone Setup', href: '/business-setup#licensing' },
+          { name: 'Free Zone Setup', href: '/business-setup#licensing' },
         ],
       },
       {

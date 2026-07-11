@@ -20,7 +20,7 @@ const portfolios = [
   {
     num: 'III',
     title: 'International Business Setup',
-    desc: 'Seamless mainland and economic zone company formation, banking introduction, MOA drafting, and corporate sponsorship services in the UAE and globally.',
+    desc: 'Seamless mainland and free zone company formation, banking introduction, MOA drafting, and corporate sponsorship services in the UAE and globally.',
     services: ['Licensing', 'Business Setup', 'Banking'],
     link: '/business-setup',
   },
@@ -106,7 +106,7 @@ const heroBadges = [
     img: '/sovereign_asset.jpg'
   },
   {
-    title: 'ECONOMIC ZONE SETUP & ADVISORY',
+    title: 'FREE ZONE SETUP & ADVISORY',
     img: '/economic_zone.jpg'
   },
   {
@@ -393,7 +393,7 @@ export default function Home() {
                   Feed secured via 256-bit institutional API uplink
                 </div>
                 <span className="text-[11px] uppercase tracking-widest text-slate-400 font-medium text-center mt-3 block">
-                  Data Registry Archive • Market Rates Cached Daily at 00:00 GMT via Regional Sovereign Channels
+                  Data Registry Archive • Market Rates Cached Daily at 00:00 GMT via Authorized Regional Channels
                 </span>
               </div>
             </div>

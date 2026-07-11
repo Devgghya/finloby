@@ -8,7 +8,7 @@ const divisions = [
     desc: 'Establish your presence in the UAE market with our streamlined incorporation framework. We guide you through selecting jurisdictions and obtaining licenses.',
     items: [
       { name: 'Mainland LLC Setup', desc: 'Complete market integration without geographical limits. 100% foreign ownership allowed for commercial & industrial licenses.' },
-      { name: 'Economic Zone Incorporation', desc: 'DIFC, DMCC, Meydan, and Shams options. Enjoy 100% tax exemptions, complete capital repatriation, and simplified customs.' }
+      { name: 'Free Zone Incorporation', desc: 'DIFC, DMCC, Meydan, and Shams options. Enjoy 100% tax exemptions, complete capital repatriation, and simplified customs.' }
     ]
   },
   {
@@ -17,7 +17,7 @@ const divisions = [
     desc: 'All structural, legal, and operational documents handled by our senior paralegal staff to secure local compliance certificates.',
     items: [
       { name: 'Articles of Association (AOA) & MOA', desc: 'Bespoke corporate bylaws drafting and notarization matching modern legal benchmarks.' },
-      { name: 'PRO & Sovereign Sponsorships', desc: 'Direct liaisons with UAE Immigration, Ministry of Human Resources, and Municipalities.' },
+      { name: 'PRO & Corporate Sponsorships', desc: 'Direct liaisons with UAE Immigration, Ministry of Human Resources, and Municipalities.' },
       { name: 'Office Procurement Solutions', desc: 'Sourcing of physical, virtual, or co-working space parameters matching regulatory requirements.' }
     ]
   },
@@ -178,7 +178,7 @@ export default function BusinessSetup() {
             <span className="text-gradient-gold italic">Corporate Architecture</span>
           </h1>
           <p className="text-sm sm:text-base font-light text-[#FBF9F4]/60 max-w-2xl leading-relaxed mt-2">
-            Seamless mainland and economic zone company formation, corporate documentation drafts, legal certifications, and premier commercial banking onboarding in the UAE.
+            Seamless mainland and free zone company formation, corporate documentation drafts, legal certifications, and premier commercial banking onboarding in the UAE.
           </p>
         </div>
 
@@ -267,14 +267,14 @@ export default function BusinessSetup() {
 
         <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
 
-        {/* SECTION: SOVEREIGN FREE ZONE DIRECTORY */}
+        {/* SECTION: FREE ZONE REGISTRY */}
         <div className="mb-20">
           <div className="flex flex-col gap-3 mb-10 text-center max-w-xl mx-auto">
             <span className="text-[8px] font-bold text-[#E5C158] uppercase tracking-[0.25em]">
-              Sovereign Registry
+              Free Zones
             </span>
             <h2 className="text-3xl md:text-5xl font-serif text-white font-bold tracking-wide">
-              Sovereign Free Zone Directory
+              UAE Free Zone Registry
             </h2>
             <div className="flex items-center gap-2 mt-1 justify-center">
               <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
@@ -282,7 +282,7 @@ export default function BusinessSetup() {
               <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
             </div>
             <p className="text-xs font-light text-[#FBF9F4]/55 mt-1 leading-relaxed">
-              Explore the 47 registered economic and free zone jurisdictions across the UAE, categorized systematically by scale, infrastructure footprint, and sector specialization.
+              Explore the 47 registered free zone jurisdictions across the UAE, categorized systematically by scale, infrastructure footprint, and sector specialization.
             </p>
           </div>
 
@@ -369,7 +369,7 @@ export default function BusinessSetup() {
                 {/* Jurisdiction */}
                 <div className="flex flex-col gap-2">
                   <label htmlFor="est-jurisdiction" className="text-xs font-semibold uppercase tracking-wider text-[#C5A059]">
-                    Sovereign Jurisdiction
+                    Jurisdiction Type
                   </label>
                   <select 
                     id="est-jurisdiction"
@@ -378,7 +378,7 @@ export default function BusinessSetup() {
                     className="bg-[#070F1E] border border-[#C5A059]/15 text-[#FBF9F4] text-xs py-3.5 px-3 rounded-sm focus:outline-none focus:border-[#C5A059] appearance-none cursor-pointer"
                   >
                     <option value="Mainland" className="bg-[#0D1625] text-[#FBF9F4]">Mainland LLC (Standard LLC)</option>
-                    <option value="Freezone" className="bg-[#0D1625] text-[#FBF9F4]">Economic Zone (DIFC / Meydan / Shams)</option>
+                    <option value="Freezone" className="bg-[#0D1625] text-[#FBF9F4]">Free Zone (DIFC / Meydan / Shams)</option>
                   </select>
                 </div>
 
@@ -501,7 +501,7 @@ export default function BusinessSetup() {
                   )}
 
                   <div className="flex justify-between items-center border-b border-[#C5A059]/5 pb-2.5">
-                    <span className="text-[10px] uppercase tracking-wider text-[#FBF9F4]/40">Sovereign UAE VAT (5%):</span>
+                    <span className="text-[10px] uppercase tracking-wider text-[#FBF9F4]/40">Standard UAE VAT (5%):</span>
                     <span className="font-mono text-[#FBF9F4]">AED {Math.round(VAT).toLocaleString()}</span>
                   </div>
 
