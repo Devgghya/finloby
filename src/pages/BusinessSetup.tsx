@@ -32,8 +32,83 @@ const divisions = [
   }
 ];
 
+const freeZonesData = [
+  {
+    tier: 'Tier 1: The Industrial Mega-Hubs & Logistics Giants',
+    desc: 'These represent the largest free zones by physical area, offering massive manufacturing plots, deep-water ports, and extensive logistics infrastructure.',
+    zones: [
+      { name: 'KEZAD Group (Khalifa Economic Zones Abu Dhabi) – Abu Dhabi', desc: 'The Biggest: Spanning over 550 square kilometers, it is the largest integrated trade, logistics, and industrial hub in the region. It incorporates the former KIZAD and Zones Corp (including ICAD I, II, III, IV, V).' },
+      { name: 'JAFZA (Jebel Ali Free Zone) – Dubai', desc: 'One of the world’s largest industrial free zones, spanning over 57 square kilometers. It is uniquely integrated with Jebel Ali Port and handles a massive percentage of Dubai’s non-oil GDP.' },
+      { name: 'Dubai South (Dubai World Central / DWC) – Dubai', desc: 'An urban mega-development covering 145 square kilometers overall, with its dedicated free zone master-planned around Al Maktoum International Airport, focusing on aviation, aerospace, and multimodal logistics.' },
+      { name: 'Hamriyah Free Zone (HFZA) – Sharjah', desc: 'The second-largest industrial free zone in the UAE, offering deep-water port access, massive industrial plots, and heavy-industry manufacturing zones.' },
+      { name: 'RAKEZ (Ras Al Khaimah Economic Zone) – Ras Al Khaimah', desc: 'A massive powerhouse formed by merging RAK FTZ and RAKIA. It spreads across multiple large-scale industrial zones (Al Ghail, Al Hamra, Al Hulaila) alongside commercial districts.' },
+      { name: 'Fujairah Oil Industry Zone (FOIZ) & Fujairah Free Zone (FFZ) – Fujairah', desc: 'Strategically located outside the Strait of Hormuz on the Indian Ocean. FOIZ is a massive land footprint dedicated entirely to oil storage and bunkering, while FFZ handles heavy manufacturing and shipping.' }
+    ]
+  },
+  {
+    tier: 'Tier 2: Large Commercial, Commodity & Technology Hubs',
+    desc: 'These zones feature major urban commercial footprints, consisting of multiple high-rise office towers, large warehouses, or entire multi-building business parks.',
+    zones: [
+      { name: 'DMCC (Dubai Multi Commodities Centre) – Dubai', desc: 'Governing the entire Jumeirah Lakes Towers (JLT) district. While physically smaller than the industrial ports, it is the largest free zone by company count (over 24,000 active companies) across dozens of commercial towers.' },
+      { name: 'Dubai Silicon Oasis (DSO) – Dubai', desc: 'A fully integrated tech-park and smart city spanning 7.2 square kilometers, housing tech giants, R&D centers, residential zones, and the IFZA (International Free Zone Authority) co-located ecosystem.' },
+      { name: 'Dubai Industrial City (DI) – Dubai', desc: 'A sprawling, dedicated industrial hub within the TECOM portfolio focused on light-to-medium manufacturing, food production, and massive warehousing clusters.' },
+      { name: 'SAIF Zone (Sharjah Airport International Free Zone) – Sharjah', desc: 'A highly active, large-scale commercial and light-industrial hub located right next to Sharjah International Airport.' },
+      { name: 'Ajman Free Zone (AFZ) – Ajman', desc: 'The primary, well-established multi-sector free zone in Ajman, featuring large eco-friendly warehouses, land plots, and multiple commercial complexes near Ajman Port.' },
+      { name: 'DAFZA (Dubai Airport Free Zone) – Dubai', desc: 'A premium, multi-building commercial and logistics hub located directly adjacent to Dubai International Airport (DXB).' }
+    ]
+  },
+  {
+    tier: 'Tier 3: Specialized Mid-Sized Industry & Business Districts',
+    desc: 'These are purpose-built business parks and specialized communities focusing on knowledge, media, science, and financial economies.',
+    zones: [
+      { name: 'DIFC (Dubai International Financial Centre) – Dubai', desc: 'The leading financial hub for the MEASA region, occupying a distinct, premium commercial district in the heart of Dubai with its own independent judicial system based on English Common Law.' },
+      { name: 'ADGM (Abu Dhabi Global Market) – Abu Dhabi', desc: 'Abu Dhabi’s premier financial free zone, physically encompassing the entirety of Al Maryah Island and expanding across Al Reem Island.' },
+      { name: 'Dubai Internet City (DIC) & Dubai Knowledge Park (DKP) – Dubai', desc: 'The region\'s largest information and communications technology (ICT) and human resources hubs, consisting of massive mid-rise corporate campus layouts.' },
+      { name: 'Masdar City Free Zone – Abu Dhabi', desc: 'A distinct, purpose-built sustainable urban district focusing on clean energy, sustainability, and renewable technology companies.' },
+      { name: 'Dubai Media City (DMC) & Dubai Studio City (DSC) – Dubai', desc: 'The primary media and broadcasting ecosystems in the region, featuring major studio lots, soundstages, and corporate office complexes.' },
+      { name: 'Dubai Healthcare City (DHCC) – Dubai', desc: 'The world’s largest integrated healthcare free zone, spanning two major phases focused on clinical services, wellness, and medical education.' },
+      { name: 'Dubai Design District (d3) – Dubai', desc: 'A creative mega-district dedicated to fashion, art, luxury, and interior design brands.' },
+      { name: 'Dubai Science Park (DSP) – Dubai', desc: 'A purpose-built community catering specifically to the life sciences, energy, and environmental sectors with specialized laboratory infrastructure.' },
+      { name: 'Dubai International Academic City (DIAC) – Dubai', desc: 'The largest higher education free zone in the world, hosting a vast campus footprint of international branch universities.' },
+      { name: 'Dubai Production City (DPC) – Dubai', desc: 'A specialized business park dedicated to global printing, publishing, packaging, and media production industries.' },
+      { name: 'twofour54 – Abu Dhabi', desc: 'Abu Dhabi’s media, gaming, and entertainment free zone, featuring custom-built production studios and creative campuses located primarily in Yas Island.' },
+      { name: 'Sharjah Media City (Shams) – Sharjah', desc: 'A rapidly expanding creative hub offering flexible commercial spaces and digital licensing structures for media enterprises.' },
+      { name: 'Sharjah Publishing City Free Zone (SPC Free Zone) – Sharjah', desc: 'The world’s first free zone dedicated entirely to the global print, publishing, and book-bound logistics sector.' },
+      { name: 'Sharjah Research, Technology and Innovation Park (SRTIP) – Sharjah', desc: 'An academic-linked innovation zone promoting advanced R&D, 3D printing labs, and future tech ventures next to University City.' },
+      { name: 'Umm Al Quwain Free Trade Zone (UAQ FTZ) – Umm Al Quwain', desc: 'A fast-growing, cost-effective free zone offering commercial offices, micro-warehouses, and light industrial facilities along Sheikh Mohammed Bin Zayed Road.' }
+    ]
+  },
+  {
+    tier: 'Tier 4: Highly Niche, Small Business & Specialized Virtual Zones',
+    desc: 'These represent the smallest physical footprints, often operating out of a single building complex, a single infrastructure asset, or catering predominantly to digital/virtual licensing models.',
+    zones: [
+      { name: 'Dubai World Trade Centre (DWTC) Free Zone – Dubai', desc: 'A highly concentrated, premium commercial free zone operating out of the iconic World Trade Centre tower complexes and One Central.' },
+      { name: 'Meydan Free Zone (MFZ) – Dubai', desc: 'Operating out of the luxurious Meydan Racecourse stadium complex, this is a highly popular, digitally optimized free zone specializing in e-commerce and virtual setups.' },
+      { name: 'Dubai Maritime City (DMC) – Dubai', desc: 'A specialized maritime peninsula cluster focusing on marine engineering, ship repair, and maritime corporate offices.' },
+      { name: 'Dubai CommerCity (DCC) – Dubai', desc: 'The first dedicated e-commerce free zone in the region, featuring high-tech, compact digital offices and automated fulfillment warehouses near DXB airport.' },
+      { name: 'Dubai Outsource City (DOC) – Dubai', desc: 'A dedicated, mid-sized business park tailored for Business Process Outsourcing (BPO), call centers, and back-office operations.' },
+      { name: 'DUQE Free Zone – Dubai', desc: 'A unique, boutique free zone physically stationed aboard the historic Queen Elizabeth 2 (QE2) cruise ship docked at Port Rashid.' },
+      { name: 'Gold and Diamond Park – Dubai', desc: 'A specialized commercial and retail manufacturing complex on Sheikh Zayed Road dedicated completely to jewelry and precious metals.' },
+      { name: 'Dubai Humanitarian (Formerly IHC) – Dubai', desc: 'The world’s largest humanitarian hub, operating as a non-profit independent free zone hosting global NGOs and UN agencies near Jebel Ali.' },
+      { name: 'Dubai Cars and Automotive Zone (DUCAMZ) & Dubai Auto Zone (DAZ) – Dubai', desc: 'Specialized marketplace clusters designed specifically for the re-export, trade, and storage of used and new automobiles.' },
+      { name: 'Abu Dhabi Airport Free Zone (ADAFZ) – Abu Dhabi', desc: 'A highly strategic business park operating directly within the immediate perimeters of Abu Dhabi International Airport.' },
+      { name: 'Al Ain International Airport Free Zone – Abu Dhabi', desc: 'An airport-linked boutique zone targeted specifically at aviation, light manufacturing, and industrial electronics in Al Ain.' },
+      { name: 'Al Bateen Executive Airport Free Zone – Abu Dhabi', desc: 'A highly exclusive, niche zone catering specifically to private aviation, charter companies, and executive hospitality businesses.' },
+      { name: 'Sharjah Communication Technologies Free Zone (COMTECH) – Sharjah', desc: 'A newly established, highly specialized free zone dedicated exclusively to data centers, telecommunications infrastructure, and AI engineering.' },
+      { name: 'Ajman Media City Free Zone – Ajman', desc: 'A specialized, lean commercial setup catering entirely to digital agencies, media consultants, and creative freelancers.' },
+      { name: 'Ajman NuVentures Centre Free Zone (ANCFZ) – Ajman', desc: 'A state-of-the-art digital/virtual tech hub designed for ultra-fast digital licensing, gaming, and next-gen tech businesses.' },
+      { name: 'RAK Maritime City Free Zone (RMCFZA) – Ras Al Khaimah', desc: 'A port-specific marine zone customized specifically for ship repairs, maritime transport, and heavy marine cargo processing.' },
+      { name: 'RAK Airport Free Zone – Ras Al Khaimah', desc: 'A highly concentrated boutique zone operating inside the footprint of Ras Al Khaimah International Airport.' },
+      { name: 'Fujairah Creative City – Fujairah', desc: 'A highly popular, boutique virtual free zone optimized for media, publishing, consultancy, and digital creators requiring minimal physical infrastructure.' },
+      { name: 'Dubai Flower Centre (DFC) – Dubai', desc: 'An ultra-specialized, single-facility airside hub at DXB airport dedicated entirely to cold-chain logistics for perishable floriculture goods.' },
+      { name: 'Dubai Textile City / Textile Village – Dubai', desc: 'A niche joint-venture zone designed with custom warehouses specifically for international textile traders and fabric wholesalers.' }
+    ]
+  }
+];
+
 export default function BusinessSetup() {
   const [activeDiv, setActiveDiv] = useState('licensing');
+  const [activeTier, setActiveTier] = useState<number | null>(0);
   
   // Cost Estimator State
   const [jurisdiction, setJurisdiction] = useState('Mainland');
@@ -189,6 +264,77 @@ export default function BusinessSetup() {
 
           </div>
         </div>
+
+        <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
+
+        {/* SECTION: SOVEREIGN FREE ZONE DIRECTORY */}
+        <div className="mb-20">
+          <div className="flex flex-col gap-3 mb-10 text-center max-w-xl mx-auto">
+            <span className="text-[8px] font-bold text-[#E5C158] uppercase tracking-[0.25em]">
+              Sovereign Registry
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif text-white font-bold tracking-wide">
+              Sovereign Free Zone Directory
+            </h2>
+            <div className="flex items-center gap-2 mt-1 justify-center">
+              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-gold)]"></span>
+              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+            </div>
+            <p className="text-xs font-light text-[#FBF9F4]/55 mt-1 leading-relaxed">
+              Explore the 47 registered economic and free zone jurisdictions across the UAE, categorized systematically by scale, infrastructure footprint, and sector specialization.
+            </p>
+          </div>
+
+          <div className="space-y-4 max-w-4xl mx-auto">
+            {freeZonesData.map((tierData, tIdx) => {
+              const isOpen = activeTier === tIdx;
+              return (
+                <div 
+                  key={tIdx} 
+                  className="bg-[#0D1625] border border-slate-850 rounded-sm overflow-hidden transition-all duration-300"
+                >
+                  <button
+                    onClick={() => setActiveTier(isOpen ? null : tIdx)}
+                    className="w-full text-left p-6 flex justify-between items-center cursor-pointer hover:bg-[#0D1625]/80 transition-colors duration-300 group"
+                  >
+                    <div>
+                      <h4 className="text-sm sm:text-base font-sans font-bold text-white group-hover:text-[#E2C999] transition-colors">
+                        {tierData.tier}
+                      </h4>
+                      <p className="text-xs font-light text-[#FBF9F4]/40 mt-1">
+                        {tierData.desc}
+                      </p>
+                    </div>
+                    <span className="text-xl text-[#C5A059] font-mono select-none pl-4">
+                      {isOpen ? '−' : '+'}
+                    </span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="border-t border-[#C5A059]/10 p-6 bg-[#070F1E]/30 grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in">
+                      {tierData.zones.map((zone, zIdx) => (
+                        <div 
+                          key={zIdx} 
+                          className="bg-[#050B15]/80 border border-slate-850 p-4 hover:border-[#C5A059]/20 transition-all duration-300 flex flex-col justify-between"
+                        >
+                          <h5 className="text-xs font-sans font-semibold text-[#E2C999] mb-1.5">
+                            {zone.name}
+                          </h5>
+                          <p className="text-[11px] font-light text-[#FBF9F4]/50 leading-relaxed">
+                            {zone.desc}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
 
         {/* UAE Company Setup Cost Estimator */}
         <div className="bg-[#0D1625] border border-[#C5A059]/20 p-8 sm:p-10 rounded-sm relative overflow-hidden">
