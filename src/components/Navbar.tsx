@@ -67,7 +67,7 @@ const navItems: NavItem[] = [
       {
         title: 'Credit Card',
         links: [
-          { name: 'Credit Cards Portal', href: '/loans#vehicle-mortgage' },
+          { name: 'Loan Against Credit Card', href: '/loans#vehicle-mortgage' },
         ],
       },
       {

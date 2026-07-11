@@ -160,6 +160,24 @@ const loanCategories: LoanCategory[] = [
         desc: 'Customized credit lines and asset-backed term financing structured for commercial fleets, logistics operations, and company transport fleets at preferred institutional rates.'
       },
       {
+        name: 'Loan Against Credit Card',
+        desc: 'Loan Against Credit Card feature transforms your unused credit limit into instant cash deposited straight into your bank account.',
+        steps: [
+          {
+            title: 'Limit Verification',
+            desc: "The bank instantly reviews your credit card's available limit. Based on your current usage, the bank presents pre-approved cash loan options tailored to your profile"
+          },
+          {
+            title: 'Flexible Tenure Selection',
+            desc: 'A repayment plan that fits your monthly budget. UAE banks offer highly flexible terms, allowing you to spread the installments over 03 to 36 months'
+          },
+          {
+            title: 'Application/Request Submission',
+            desc: 'Once submitted, the approved funds are disbursed directly into your designated UAE bank account within minutes, while the matching amount is safely blocked on your credit card and released gradually as you pay your monthly installments.'
+          }
+        ]
+      },
+      {
         name: 'Home Loans & Mortgage Top-Ups',
         desc: 'Residential and commercial mortgage facilities for UAE residents and foreign investors with high LTV thresholds.'
       },
