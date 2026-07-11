@@ -5,56 +5,138 @@ const services = [
   {
     id: 'debt-counselling',
     title: 'Debt Counselling',
-    desc: 'Professional analysis of your financial profile by certified credit counselors. We evaluate your current liabilities, establish a strict debt management plan, and guide you through local legal safe-harbors.',
-    details: [
-      'Comprehensive financial liability audit.',
-      'Sovereign legal frame briefing (CBUAE regulations).',
-      'Discreet household budget restructuring plans.',
-      'Direct mediation advice for bank negotiations.'
+    desc: "Debt counselling is a supportive, confidential process where financial experts evaluate your income, expenses, and liabilities to help you regain control of your money. It focuses on teaching you budget management, restructuring your habits, and laying the groundwork for customized repayment strategies to eliminate your financial stress.",
+    processTitle: 'Counselling Process',
+    steps: [
+      {
+        title: 'Personal & Professional Profiling',
+        desc: 'We begin with a basic overview of your personal and professional life. Understanding your career stability, industry, and personal background helps us tailor a strategy that aligns with your specific circumstances.'
+      },
+      {
+        title: 'Expense & Liability Assessment',
+        desc: 'Next, we map out your complete financial picture. We look closely at your obligations:',
+        subpoints: [
+          'Personal Expenses: Your daily and monthly cost of living.',
+          'Existing Debts: Your current financial liabilities, outstanding balances, and creditor terms.'
+        ]
+      },
+      {
+        title: 'Income Evaluation',
+        desc: 'To understand what you can comfortably afford, we review all your revenue streams:',
+        subpoints: [
+          'Personal Income: Your primary salary or wages.',
+          'Consolidated Household Income: Combined income from your household, if applicable.',
+          'Extra Sources: Any side hustles, investments, or passive income.'
+        ]
+      },
+      {
+        title: 'Consolidated Review',
+        desc: "We bring it all together. By contrasting your total consolidated income against your total debts and living expenses, we get an accurate, bird's-eye view of your financial health."
+      },
+      {
+        title: 'Tailored Debt Solutions',
+        desc: 'With a clear picture in place, we define your next steps. We present you with practical, structured debt solutions such as consolidation plans or structured repayment programs—designed to wipe out your debt and secure your financial future.'
+      }
     ]
   },
   {
     id: 'debt-consolidation',
     title: 'Debt Consolidation',
-    desc: 'Consolidating multiple high-interest credit cards and personal loans into a single lower-interest facility, optimized for a structured monthly payment that aligns with your income.',
-    details: [
-      'Buy-out loans from primary banking channels.',
-      'Replacement of multiple card debts with a single flat loan.',
-      'Substantial reduction of total monthly interest burden.',
-      'Centralized tracking through one institution.'
+    desc: 'Debt consolidation is a smart financial strategy that combines multiple outstanding debts, such as credit cards, personal loans, and retail accounts into a single, manageable monthly payment. Instead of struggling with multiple payments, due dates and high interest rates, we help streamline your liabilities into one structured plan, often securing a lower overall interest rate and a clear path to becoming debt-free.',
+    processTitle: 'Our Debt Consolidation Process',
+    steps: [
+      {
+        title: 'Transition from Counselling',
+        desc: 'After your Debt Counselling session, we take your fully mapped financial profile and transition you smoothly into the consolidation phase.'
+      },
+      {
+        title: 'Document & Liability Information',
+        desc: 'We gather all necessary data and documentation regarding your existing liabilities. This includes statements, outstanding balances, and terms from your current creditors so we have an exact picture of what you owe.'
+      },
+      {
+        title: 'Comprehensive Eligibility Check',
+        desc: 'We run a deep dive eligibility check to analyse your official credit history (such as your AECB Report in the UAE), reviewing your recent bank statements, and evaluating your debt-to-burden ratio (DBR).'
+      },
+      {
+        title: 'Bank Policy Compatibility & Due Diligence',
+        desc: "We don't believe in guesswork. Our team performs strict due diligence, matching your financial profile against the lending criteria and risk policies of all major banks to find the highest probability of approval."
+      },
+      {
+        title: 'Expert Approved Action Plan',
+        desc: 'Finally, our team of seasoned financial experts designs a customized consolidation action plan. Once approved by our internal specialists, we execute the strategy to merge your debts and lower your financial stress.'
+      }
     ]
   },
   {
     id: 'debt-settlement',
     title: 'Debt Settlement',
-    desc: 'Direct negotiation with creditors to write off a significant portion of non-performing liabilities. We secure final settlement agreements, release certificates, and update credit registry records.',
-    details: [
-      'Up to 40% - 60% settlement write-offs negotiated.',
-      'Structured legal payout settlements for outstanding balances.',
-      'Official Liability Release certificates from bank legal teams.',
-      'Al-Etihad Credit Bureau (AECB) history correction support.'
+    desc: 'Debt settlement is a powerful negotiation strategy specifically designed for individuals & corporates facing severe financial hardship. When your accounts are caught under the pressure of imminent legal action, extreme financial distress, or intense collection agency harassment, we step in to negotiate directly with your creditors.',
+    processTitle: 'Our Debt Settlement Process',
+    steps: [
+      {
+        title: 'Identifying "At-Risk" Debts',
+        desc: 'We immediately review and isolate the debts currently under the scanner, facing collection agencies, or at risk of legal action and collections. Prioritizing these "fire-zone" accounts ensures we protect you from escalating legal consequences.'
+      },
+      {
+        title: 'Creditor Coordination & Verification',
+        desc: 'We contact the concerned financial institutions directly to audit the current status of your debt file. This allows us to establish the exact, verified amount payable, stripping away unfair penalties or hidden fees.'
+      },
+      {
+        title: 'Aggressive Negotiation & Formal Offer',
+        desc: "Our experienced negotiators review to secure the maximum possible reduction on your outstanding balance. We don't stop until we secure a formal, written settlement offer from the bank or creditor confirming the reduced final settlement offer."
+      },
+      {
+        title: 'Settlement & Final Clearance Letter',
+        desc: 'Based on the formal offer letter received, we proceed towards payment of the debt to settle and close the liability account. Once it is paid, we ensure the financial institution issues an official No Liability / Debt settlement letter. This vital document serves as your legal proof that the debt has been fully settled and closed forever.'
+      }
     ]
   },
   {
     id: 'debt-restructuring',
     title: 'Debt Restructuring',
-    desc: 'Renegotiating the terms of commercial or high-value personal loans. We secure extended amortization tenures, interest rate caps, grace periods, and restructured payment plans.',
-    details: [
-      'Extension of loan repayment tenure up to 60 months.',
-      'Grace periods of 3 to 12 months on principal payments.',
-      'Waiver of late payment fees and accrued penalty interest.',
-      'Conversion of demand facilities into amortized term loans.'
+    desc: 'Debt restructuring is a financial mechanism that alters the existing terms of your loans or credit facilities to make your repayments more manageable. If you are struggling to meet your monthly obligations but want to avoid default and pre-legal situations, restructuring allows you to renegotiate with creditors to extend the repayment duration with a reduced monthly instalment to match your current financial debt paying capacity.',
+    processTitle: 'Debt Restructuring Process',
+    steps: [
+      {
+        title: 'Immediate Expert Consultation',
+        desc: 'Time is of the essence when managing financial strain. Book an immediate consultation with experienced financial advisors without delay so the situation can be evaluated before missing any crucial payments.'
+      },
+      {
+        title: 'Comprehensive Financial Review',
+        desc: 'We dive deep into your current financial reality. Our team conducts a thorough review of all your outstanding debts and liabilities, contrasted against your verified present income streams.'
+      },
+      {
+        title: 'Income-to-Debt Compatibility Check',
+        desc: 'We analyze the math behind your money. By testing the compatibility between your total debt obligations and your actual net income, we calculate a realistic, sustainable monthly payment that covers your living expenses while matching creditors\' terms.'
+      },
+      {
+        title: 'In-House Strategy & Bank Negotiation',
+        desc: 'After a robust in-house consultancy session to lock down your custom restructuring strategy, our expert financial consultants initiate formal discussions with your concerned financial institutions. We advocate on your behalf to negotiate to structure newly modified terms that fit your budget.'
+      }
     ]
   },
   {
     id: 'skip-solutions',
     title: 'Skip Solutions',
     desc: 'Negotiation and resolution of default liabilities for clients who have exited the jurisdiction. We manage legal coordinates and settle debts remotely to clear active cases and travel restrictions.',
-    details: [
-      'Remote Power of Attorney (POA) representation.',
-      'Direct skip-settlement negotiations with collection teams.',
-      'Resolution of police default cases and travel bans.',
-      'Legal clearance certificates issued remotely.'
+    processTitle: 'Skip Resolution Process',
+    steps: [
+      {
+        title: 'Remote Representation Setup',
+        desc: 'Establish legal Power of Attorney (POA) coordinates to act on your behalf with UAE institutions.'
+      },
+      {
+        title: 'Liability Audit & Verification',
+        desc: 'Audit outstanding balances directly with bank collection managers and legal desks.'
+      },
+      {
+        title: 'Resolution of Travel Bans & Cases',
+        desc: 'Negotiate with authorities to clear active police default files and lift active travel restrictions.'
+      },
+      {
+        title: 'Clearance Certificate Issuance',
+        desc: 'Obtain official No Liability and clearance certificates, sent directly to you anywhere in the world.'
+      }
     ]
   }
 ];
@@ -165,18 +247,38 @@ export default function DebtSolutions() {
                       {item.desc}
                     </p>
 
-                    <h4 className="text-[10px] font-bold text-[#FBF9F4] uppercase tracking-[0.2em] mb-4 flex items-center gap-2 border-b border-[#C5A059]/10 pb-2">
+                    <h4 className="text-[10px] font-bold text-[#FBF9F4] uppercase tracking-[0.2em] mb-6 flex items-center gap-2 border-b border-[#C5A059]/10 pb-2">
                       <ShieldCheck className="w-4 h-4 text-[#C5A059]" />
-                      Core Advisory Specifications
+                      {item.processTitle || 'Core Advisory Specifications'}
                     </h4>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {item.details.map((detail, idx) => (
-                        <li key={idx} className="flex gap-2.5 text-xs text-[#FBF9F4]/60 font-light">
-                          <span className="text-[#C5A059] max-sm:text-[#D4AF37] max-sm:px-2 font-sans text-[10px] mt-0.5">◆</span>
-                          <span className="leading-relaxed">{detail}</span>
-                        </li>
+                    
+                    <div className="space-y-6">
+                      {item.steps?.map((step, idx) => (
+                        <div key={idx} className="flex gap-4 items-start">
+                          <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#C5A059]/15 border border-[#C5A059]/30 text-[#C5A059] flex items-center justify-center text-xs font-mono font-bold">
+                            {idx + 1}
+                          </span>
+                          <div className="flex-1">
+                            <h5 className="text-sm font-sans font-bold text-white mb-1">
+                              {step.title}
+                            </h5>
+                            <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed">
+                              {step.desc}
+                            </p>
+                            {step.subpoints && (
+                              <ul className="mt-2.5 pl-2 space-y-1.5 border-l border-[#C5A059]/10 ml-1">
+                                {step.subpoints.map((sub, sIdx) => (
+                                  <li key={sIdx} className="flex gap-2 text-[11px] text-[#FBF9F4]/55 font-light">
+                                    <span className="text-[#C5A059] max-sm:text-[#D4AF37] max-sm:px-2 font-sans">•</span>
+                                    <span>{sub}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
 
                   <div className="border-t border-[#C5A059]/10 pt-8 mt-6 flex flex-col sm:flex-row items-center justify-between gap-6">
