@@ -7,8 +7,8 @@ const divisions = [
     title: 'Licensing & Formation',
     desc: 'Establish your presence in the UAE market with our streamlined incorporation framework. We guide you through selecting jurisdictions and obtaining licenses.',
     items: [
-      { name: 'Mainland LLC Setup', desc: 'Complete market integration without geographical limits. 100% foreign ownership allowed for commercial & industrial licenses.' },
-      { name: 'Free Zone Incorporation', desc: 'DIFC, DMCC, Meydan, and Shams options. Enjoy 100% tax exemptions, complete capital repatriation, and simplified customs.' }
+      { name: 'Mainland License', desc: 'Complete market integration without geographical limits. 100% foreign ownership allowed for commercial & industrial licenses.' },
+      { name: 'Free Zone License', desc: 'DIFC, DMCC, Meydan, and Shams options. Enjoy 100% tax exemptions, complete capital repatriation, and simplified customs.' }
     ]
   },
   {

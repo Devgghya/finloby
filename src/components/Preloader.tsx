@@ -15,7 +15,7 @@ export default function Preloader() {
         </div>
         
         {/* Animated brand wordmark */}
-        <div className="text-center flex flex-col items-center">
+        <div className="text-center flex flex-col items-center max-w-sm px-4">
           <img 
             src="/FINLOBY-TEXT.png" 
             alt="FINLOBY" 
@@ -24,6 +24,9 @@ export default function Preloader() {
           <span className="text-[9px] tracking-[0.3em] text-[var(--brand-gold)] uppercase block mt-3.5 font-bold font-sans">
             SECURE ADVISORY UPLINK
           </span>
+          <p className="text-[11px] font-sans font-light italic text-[#FBF9F4]/70 mt-6 tracking-wide text-center leading-relaxed animate-fade-in max-w-[280px]">
+            "We Help Repair The Past So You Can Build your Future"
+          </p>
         </div>
       </div>
     </div>

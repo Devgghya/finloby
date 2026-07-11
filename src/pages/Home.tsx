@@ -348,45 +348,62 @@ export default function Home() {
                 </div>
 
                 {/* Currency rates grid */}
-                <div className="grid grid-cols-2 gap-3 max-h-[380px] overflow-y-auto pr-1">
-                  {Object.entries(rates).map(([code, value]) => {
-                    const names: Record<string, string> = {
-                      AED: 'UAE Dirham',
-                      INR: 'Indian Rupee',
-                      PKR: 'Pakistani Rupee',
-                      JPY: 'Japanese Yen',
-                      CNY: 'Chinese Yuan',
-                      BDT: 'Bangladeshi Taka',
-                      EUR: 'Euro Zone',
-                      GBP: 'United Kingdom',
-                      SGD: 'Singapore Dollar',
-                      SAR: 'Saudi Riyal',
-                      QAR: 'Qatari Riyal',
-                      OMR: 'Omani Rial',
-                      KWD: 'Kuwaiti Dinar',
-                      CAD: 'Canadian Dollar',
-                      AUD: 'Australian Dollar',
-                      CHF: 'Swiss Franc',
-                      HKD: 'Hong Kong Dollar',
-                      NZD: 'New Zealand Dollar',
-                      MYR: 'Malaysian Ringgit',
-                      THB: 'Thai Baht'
-                    };
-                    return (
-                      <div key={code} className="bg-[#031C14] border border-[var(--brand-gold)]/10 p-3 rounded-sm flex items-center justify-between hover:border-[var(--brand-gold)]/30 transition-all duration-300">
-                        <div className="flex flex-col gap-0.5">
-                          <span className="text-[11px] font-bold text-white font-sans">{code}</span>
-                          <span className="text-[8px] text-white/50 leading-none">{names[code]}</span>
-                        </div>
-                        <div className="text-right flex flex-col gap-0.5">
-                          <span className="text-[12px] font-bold text-[var(--brand-gold-light)] font-mono">
-                            {value.toFixed(code === 'OMR' || code === 'KWD' ? 3 : 2)}
-                          </span>
-                          <span className="text-[8px] text-white/30">1.00 USD</span>
-                        </div>
-                      </div>
-                    );
-                  })}
+                <div className="max-h-[380px] overflow-y-auto pr-1">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="border-b border-[var(--brand-gold)]/20 text-[9px] uppercase tracking-wider text-[#E5C158]/80 font-mono">
+                        <th className="py-2.5 pb-3">Currency</th>
+                        <th className="py-2.5 pb-3 text-right">1.00 USD</th>
+                        <th className="py-2.5 pb-3 text-right">1.00 AED</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-[var(--brand-gold)]/5">
+                      {Object.entries(rates).map(([code, value]) => {
+                        const names: Record<string, string> = {
+                          AED: 'UAE Dirham',
+                          INR: 'Indian Rupee',
+                          PKR: 'Pakistani Rupee',
+                          JPY: 'Japanese Yen',
+                          CNY: 'Chinese Yuan',
+                          BDT: 'Bangladeshi Taka',
+                          EUR: 'Euro Zone',
+                          GBP: 'United Kingdom',
+                          SGD: 'Singapore Dollar',
+                          SAR: 'Saudi Riyal',
+                          QAR: 'Qatari Riyal',
+                          OMR: 'Omani Rial',
+                          KWD: 'Kuwaiti Dinar',
+                          CAD: 'Canadian Dollar',
+                          AUD: 'Australian Dollar',
+                          CHF: 'Swiss Franc',
+                          HKD: 'Hong Kong Dollar',
+                          NZD: 'New Zealand Dollar',
+                          MYR: 'Malaysian Ringgit',
+                          THB: 'Thai Baht'
+                        };
+                        const valueAgainstAED = value / 3.6725;
+                        const usdDecimals = code === 'OMR' || code === 'KWD' ? 3 : 2;
+                        const aedDecimals = code === 'OMR' || code === 'KWD' ? 4 : (valueAgainstAED < 1 ? 4 : 2);
+                        
+                        return (
+                          <tr key={code} className="hover:bg-[#031C14]/50 transition-colors duration-200">
+                            <td className="py-2.5 pr-2">
+                              <div className="flex flex-col">
+                                <span className="text-[11px] font-bold text-white font-sans">{code}</span>
+                                <span className="text-[8px] text-white/50">{names[code]}</span>
+                              </div>
+                            </td>
+                            <td className="py-2.5 text-right font-mono text-[11px] font-medium text-[var(--brand-gold-light)]">
+                              {value.toFixed(usdDecimals)}
+                            </td>
+                            <td className="py-2.5 text-right font-mono text-[11px] font-medium text-white/80">
+                              {valueAgainstAED.toFixed(aedDecimals)}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
                 </div>
 
                 <div className="border-t border-[var(--brand-gold)]/10 pt-3 text-[9px] text-white/40 font-mono text-center">

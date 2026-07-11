@@ -32,7 +32,7 @@ function App() {
       hasLoaded = true;
       
       const elapsed = Date.now() - startTime;
-      const remainingTime = Math.max(1200 - elapsed, 0); // 1.2s minimum display for premium brand introduction
+      const remainingTime = Math.max(3200 - elapsed, 0); // 3.2s minimum display for premium brand introduction to allow reading the tagline
 
       setTimeout(() => {
         setFadePreloader(true);
