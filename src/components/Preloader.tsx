@@ -16,9 +16,11 @@ export default function Preloader() {
         
         {/* Animated brand wordmark */}
         <div className="text-center flex flex-col items-center">
-          <p className="font-sans font-black tracking-[0.3em] uppercase text-2xl sm:text-3xl text-white leading-none pl-2">
-            FINLOBY
-          </p>
+          <img 
+            src="/FINLOBY-TEXT.png" 
+            alt="FINLOBY" 
+            className="h-7 w-auto object-contain pl-1 animate-pulse" 
+          />
           <span className="text-[9px] tracking-[0.3em] text-[var(--brand-gold)] uppercase block mt-3.5 font-bold font-sans">
             SECURE ADVISORY UPLINK
           </span>

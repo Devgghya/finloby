@@ -223,15 +223,17 @@ export default function Navbar() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-5 sm:py-6 flex items-center justify-between gap-8">
         
         {/* Brand Logo Container */}
-        <Link to="/" id="brand-logo" className="flex items-center gap-1.5 sm:gap-2 group flex-shrink-0">
+        <Link to="/" id="brand-logo" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
           <img 
             src="/finloby-white.png" 
             alt="Finloby Shield" 
             className="h-12 sm:h-20 w-auto object-contain transition-all duration-300" 
           />
-          <span className="font-sans font-black text-sm sm:text-lg uppercase tracking-[0.25em] text-white group-hover:text-[var(--brand-gold-light)] transition-all duration-300 flex-shrink-0">
-            FINLOBY
-          </span>
+          <img 
+            src="/FINLOBY-TEXT.png" 
+            alt="FINLOBY" 
+            className="h-4 sm:h-7 w-auto object-contain transition-all duration-300" 
+          />
         </Link>
 
         {/* Desktop Primary Menu */}

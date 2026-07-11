@@ -8,15 +8,17 @@ export default function Footer() {
         
         {/* Brand & Mission Column */}
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <img 
               src="/finloby-white.png" 
               alt="Finloby Shield" 
               className="h-14 w-auto object-contain" 
             />
-            <span className="font-sans font-black tracking-[0.25em] uppercase text-base text-white">
-              FINLOBY
-            </span>
+            <img 
+              src="/FINLOBY-TEXT.png" 
+              alt="FINLOBY" 
+              className="h-5 w-auto object-contain" 
+            />
           </div>
           <p className="text-xs font-light leading-relaxed text-[#FBF9F4]/50 max-w-sm mt-2">
             Institutional debt restructuring, complex commercial facilities, international business setup, and legal defense services for high-profile clients and global corporations.
