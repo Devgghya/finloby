@@ -5,6 +5,7 @@ const services = [
   {
     id: 'debt-counselling',
     title: 'Debt Counselling',
+    tagline: 'A Detailed Consultation Session',
     desc: "Debt counselling is a supportive, confidential process where financial experts evaluate your income, expenses, and liabilities to help you regain control of your money. It focuses on teaching you budget management, restructuring your habits, and laying the groundwork for customized repayment strategies to eliminate your financial stress.",
     processTitle: 'Counselling Process',
     steps: [
@@ -42,6 +43,7 @@ const services = [
   {
     id: 'debt-consolidation',
     title: 'Debt Consolidation',
+    tagline: 'Multiple Liabilities into 1 EMI',
     desc: 'Debt consolidation is a smart financial strategy that combines multiple outstanding debts, such as credit cards, personal loans, and retail accounts into a single, manageable monthly payment. Instead of struggling with multiple payments, due dates and high interest rates, we help streamline your liabilities into one structured plan, often securing a lower overall interest rate and a clear path to becoming debt-free.',
     processTitle: 'Our Debt Consolidation Process',
     steps: [
@@ -70,6 +72,7 @@ const services = [
   {
     id: 'debt-settlement',
     title: 'Debt Settlement',
+    tagline: 'Negotiation to settle debts via obtaining waiver of interest',
     desc: 'Debt settlement is a powerful negotiation strategy specifically designed for individuals & corporates facing severe financial hardship. When your accounts are caught under the pressure of imminent legal action, extreme financial distress, or intense collection agency harassment, we step in to negotiate directly with your creditors.',
     processTitle: 'Our Debt Settlement Process',
     steps: [
@@ -94,6 +97,7 @@ const services = [
   {
     id: 'debt-restructuring',
     title: 'Debt Restructuring',
+    tagline: 'Convert High Cost Debt into One Lower EMI with Longer Tenure',
     desc: 'Debt restructuring is a financial mechanism that alters the existing terms of your loans or credit facilities to make your repayments more manageable. If you are struggling to meet your monthly obligations but want to avoid default and pre-legal situations, restructuring allows you to renegotiate with creditors to extend the repayment duration with a reduced monthly instalment to match your current financial debt paying capacity.',
     processTitle: 'Debt Restructuring Process',
     steps: [
@@ -112,30 +116,6 @@ const services = [
       {
         title: 'In-House Strategy & Bank Negotiation',
         desc: 'After a robust in-house consultancy session to lock down your custom restructuring strategy, our expert financial consultants initiate formal discussions with your concerned financial institutions. We advocate on your behalf to negotiate to structure newly modified terms that fit your budget.'
-      }
-    ]
-  },
-  {
-    id: 'skip-solutions',
-    title: 'Skip Solutions',
-    desc: 'Negotiation and resolution of default liabilities for clients who have exited the jurisdiction. We manage legal coordinates and settle debts remotely to clear active cases and travel restrictions.',
-    processTitle: 'Skip Resolution Process',
-    steps: [
-      {
-        title: 'Remote Representation Setup',
-        desc: 'Establish legal Power of Attorney (POA) coordinates to act on your behalf with UAE institutions.'
-      },
-      {
-        title: 'Liability Audit & Verification',
-        desc: 'Audit outstanding balances directly with bank collection managers and legal desks.'
-      },
-      {
-        title: 'Resolution of Travel Bans & Cases',
-        desc: 'Negotiate with authorities to clear active police default files and lift active travel restrictions.'
-      },
-      {
-        title: 'Clearance Certificate Issuance',
-        desc: 'Obtain official No Liability and clearance certificates, sent directly to you anywhere in the world.'
       }
     ]
   }
@@ -240,9 +220,14 @@ export default function DebtSolutions() {
               return (
                 <div key={item.id} className="animate-fade-in flex flex-col justify-between h-full gap-8">
                   <div>
-                    <h3 className="text-2xl font-serif text-[#C5A059] font-medium tracking-wide mb-4">
+                    <h3 className="text-2xl font-serif text-[#C5A059] font-medium tracking-wide mb-1">
                       {item.title}
                     </h3>
+                    {item.tagline && (
+                      <div className="text-[11px] font-mono text-[#E2C999] uppercase tracking-wider mb-4">
+                        {item.tagline}
+                      </div>
+                    )}
                     <p className="text-xs sm:text-sm font-light text-[#FBF9F4]/70 leading-relaxed mb-8">
                       {item.desc}
                     </p>

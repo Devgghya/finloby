@@ -32,7 +32,6 @@ const navItems: NavItem[] = [
           { name: 'Debt Consolidation', href: '/debt-solutions#debt-consolidation' },
           { name: 'Debt Settlement', href: '/debt-solutions#debt-settlement' },
           { name: 'Debt Restructuring', href: '/debt-solutions#debt-restructuring' },
-          { name: 'Skip Solutions', href: '/debt-solutions#skip-solutions' },
         ],
       },
       {
@@ -42,7 +41,6 @@ const navItems: NavItem[] = [
           { name: 'Debt Consolidation', href: '/debt-solutions#debt-consolidation' },
           { name: 'Debt Settlement', href: '/debt-solutions#debt-settlement' },
           { name: 'Debt Restructuring', href: '/debt-solutions#debt-restructuring' },
-          { name: 'Skip Solutions', href: '/debt-solutions#skip-solutions' },
         ],
       },
     ],
