@@ -32,6 +32,56 @@ const divisions = [
   }
 ];
 
+const mainlandStructures = [
+  {
+    name: 'Limited Liability Company (LLC)',
+    desc: 'This is by far the most popular structure for trading, commercial, and industrial operations on the mainland.',
+    details: [
+      { label: 'Shareholders', value: 'Min. 1, Max. 50 (can be individual or corporate).' },
+      { label: 'Liability', value: 'Limited. Your personal assets are protected; you are only liable up to the extent of your shares.' },
+      { label: 'Ownership', value: '100% foreign ownership is permitted for most commercial and industrial activities.' },
+      { label: 'Best for', value: 'General trading, e-commerce, logistics, construction, and manufacturing.' }
+    ]
+  },
+  {
+    name: 'Sole Establishment (Sole Proprietorship)',
+    desc: 'A company owned and run completely by one individual.',
+    details: [
+      { label: 'Shareholders', value: 'Exactly 1 person.' },
+      { label: 'Liability', value: 'Unlimited. There is no legal distinction between your personal assets and the business.' },
+      { label: 'Ownership & Agent', value: 'Expats can own 100% for professional/service activities; a Local Service Agent (LSA) is appointed (holds 0% equity).' },
+      { label: 'Best for', value: 'Consultants, freelancers, tech specialists, and small service-based businesses.' }
+    ]
+  },
+  {
+    name: 'Civil Company (Civil Partnership)',
+    desc: 'A structure specifically designed for professionals who want to pool their skills and operate as partners.',
+    details: [
+      { label: 'Shareholders', value: 'Two or more individuals.' },
+      { label: 'Liability', value: 'Unlimited. Partners are personally liable for the debts and obligations of the firm.' },
+      { label: 'Ownership', value: '100% foreign ownership is allowed; a Local Service Agent (LSA) who is a UAE national is appointed.' },
+      { label: 'Best for', value: 'Doctors, lawyers, accountants, engineers, and digital marketers.' }
+    ]
+  },
+  {
+    name: 'Branch or Representative Office',
+    desc: 'For an existing company (local or foreign) looking to expand its presence onto the UAE mainland.',
+    details: [
+      { label: 'Branch Office', value: 'Can conduct business, execute contracts, and generate revenue, matching the parent company.' },
+      { label: 'Representative Office', value: 'Strictly for marketing/promotion. Cannot trade, sign contracts, or turn a profit.' },
+      { label: 'Liability', value: 'The parent company bears 100% of the liability.' }
+    ]
+  },
+  {
+    name: 'Private Joint Stock Company (PrJSC) / Public Joint Stock Company (PJSC)',
+    desc: 'These are larger corporate structures intended for massive enterprises, financial institutions, or companies intending to go public.',
+    details: [
+      { label: 'Private (PrJSC)', value: 'Formed by a minimum of 3 founders. Shares cannot be offered to the public.' },
+      { label: 'Public (PJSC)', value: 'Formed by a minimum of 10 founders. Shares openly traded on stock exchange (DFM/ADX) with minimum capital threshold.' }
+    ]
+  }
+];
+
 const freeZonesData = [
   {
     tier: 'Tier 1: The Industrial Mega-Hubs & Logistics Giants',
@@ -239,7 +289,7 @@ export default function BusinessSetup() {
                               el.scrollIntoView({ behavior: 'smooth' });
                             }
                           } else if (isMainlandCard) {
-                            const el = document.getElementById('cost-estimator');
+                            const el = document.getElementById('mainland-structures');
                             if (el) {
                               el.scrollIntoView({ behavior: 'smooth' });
                             }
@@ -266,7 +316,7 @@ export default function BusinessSetup() {
                               )}
                               {isMainlandCard && (
                                 <span className="text-[9px] uppercase tracking-wider text-[#C5A059] font-semibold animate-pulse">
-                                  Calculator &darr;
+                                  View Structures &darr;
                                 </span>
                               )}
                             </h4>
@@ -299,6 +349,58 @@ export default function BusinessSetup() {
               );
             })}
 
+          </div>
+        </div>
+
+        <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
+
+        {/* SECTION: MAINLAND LEGAL STRUCTURES */}
+        <div id="mainland-structures" className="mb-20 scroll-mt-28">
+          <div className="flex flex-col gap-3 mb-10 text-center max-w-xl mx-auto">
+            <span className="text-[8px] font-bold text-[#E5C158] uppercase tracking-[0.25em]">
+              Mainland Framework
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif text-white font-bold tracking-wide">
+              Mainland Legal Structures
+            </h2>
+            <div className="flex items-center gap-2 mt-1 justify-center">
+              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-gold)]"></span>
+              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+            </div>
+            <p className="text-xs font-light text-[#FBF9F4]/55 mt-1 leading-relaxed">
+              When registering a business on the UAE Mainland (regulated by the Department of Economic Development, or DED, in each respective emirate), you have several legal structures to choose from. The structure you select determines your liability, the number of shareholders allowed, and whether you need a local service agent.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {mainlandStructures.map((structure, sIdx) => (
+              <div 
+                key={sIdx}
+                className={`bg-[#0D1625] border border-slate-850 p-6 rounded-sm hover:border-[#C5A059]/20 transition-all duration-300 flex flex-col justify-start relative overflow-hidden ${
+                  sIdx === 3 || sIdx === 4 ? 'md:col-span-1 lg:col-span-1' : ''
+                }`}
+              >
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#C5A059]/25 to-transparent"></div>
+                <span className="text-[9px] font-mono text-[#C5A059] uppercase tracking-widest mb-1">
+                  Structure 0{sIdx + 1}
+                </span>
+                <h4 className="text-sm font-sans font-bold text-white mb-2 leading-snug">
+                  {structure.name}
+                </h4>
+                <p className="text-[11px] font-light text-[#FBF9F4]/60 leading-relaxed mb-6">
+                  {structure.desc}
+                </p>
+                <div className="space-y-2 mt-auto border-t border-slate-850/50 pt-4">
+                  {structure.details.map((detail, dIdx) => (
+                    <div key={dIdx} className="flex flex-col gap-0.5 text-[10px] leading-relaxed">
+                      <span className="text-[#C5A059] uppercase tracking-wider font-semibold text-[8px]">{detail.label}:</span>
+                      <span className="text-[#FBF9F4]/75 font-light">{detail.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
