@@ -178,8 +178,50 @@ const loanCategories: LoanCategory[] = [
         ]
       },
       {
-        name: 'Home Loans & Mortgage Top-Ups',
-        desc: 'Residential and commercial mortgage facilities for UAE residents and foreign investors with high LTV thresholds.'
+        name: 'Home Loans & Mortgages',
+        desc: 'A secured retail financing facility provided by licensed financial institutions specifically for purchasing, constructing, or refinancing residential property. The property itself serves as collateral, and the loan is heavily regulated by the Central Bank of the UAE (CBUAE) to ensure market stability.',
+        steps: [
+          {
+            title: 'The Two Structural Forms Available',
+            desc: 'Conventional Mortgages (standard loan where the bank charges interest) vs. Islamic Mortgages (Sharia-compliant Murabaha or Ijara lease-to-own structure, where the bank sells/leases the property at a fixed profit margin).'
+          },
+          {
+            title: 'Review of Profile & Documents',
+            desc: 'We thoroughly review client’s personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures.'
+          },
+          {
+            title: 'DBR & Central Bank Compliance Check',
+            desc: 'We calculate your exact Debt Burden Ratio (which cannot exceed 50% of your gross income per UAE Central Bank rules) to ensure your application passes automated bank filtering.'
+          },
+          {
+            title: 'Review of Critical Banking Requirements',
+            desc: 'Salaried residents require a minimum salary of AED 10,000–15,000. AECB Credit Scores are heavily scrutinised (missed payments will stall application). Mandatory Life Insurance is legally required by UAE banks to cover outstanding debt.'
+          },
+          {
+            title: 'Loan Tenure & Age Caps',
+            desc: 'The maximum allowable lifespan for a residential mortgage is 25 years. The loan must be fully repaid before the borrower reaches age 65 (salaried) or age 70 (self-employed).'
+          },
+          {
+            title: 'Review of Loan-to-Value (LTV) Caps',
+            desc: 'CBUAE dictates LTV limits: Expat Residents get max 75% LTV (<5M) or 65% LTV (>5M). UAE Nationals get max 80% LTV (<5M) or 70% LTV (>5M). Subsequent properties are capped at 60% LTV, and off-plan properties are capped at 50% LTV.'
+          },
+          {
+            title: 'Banking Pre-Approval (Borrower Assessment)',
+            desc: 'KYC check and document compilation (salary certificates for salaried; audited financials, corporate bank statements, trade licenses for self-employed). We package the underwriting file and coordinate with the bank to obtain the formal Pre-Approval Letter (valid for 60 to 90 days).'
+          },
+          {
+            title: 'Property Selection & Underwriting (Asset Assessment)',
+            desc: 'Transaction advisory on the Memorandum of Understanding (MoU / Form F). We coordinate the bank\'s technical property valuation to prevent valuation shortfalls, and secure the Final Offer Letter (FOL), reviewing lock-in clauses and early settlement fees (capped at 1% or AED 10,000).'
+          },
+          {
+            title: 'Execution, Settlement & Handover',
+            desc: 'Pre-closing audits between buyer, seller, broker, and bank developers to align payout manager\'s cheques. We guide you through the DLD Trustee Office for DLD Title Transfer (settling old mortgages, registering bank security blocks, and issuing the new Title Deed).'
+          },
+          {
+            title: 'Post-Disbursement Review (Portfolio Management)',
+            desc: 'EIBOR tracking to evaluate buy-outs or balance transfers to lower-cost lenders if rates drop. We also advise on Equity Release strategies to unlock cash if the property appreciates substantially.'
+          }
+        ]
       },
       {
         name: 'Insurance Portals',
@@ -238,7 +280,7 @@ export default function Loans() {
   const currentDbr = (currentEmi / monthlyIncome) * 100;
 
   return (
-    <div className="flex-1 w-full bg-[#070F1E] pt-44 sm:pt-48 lg:pt-52 pb-20">
+    <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Header */}

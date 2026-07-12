@@ -17,7 +17,7 @@ export default function Investments() {
   const yieldTenureMonths = annualYield / 12;
 
   return (
-    <div className="flex-1 w-full bg-[#070F1E] pt-44 sm:pt-48 lg:pt-52 pb-20">
+    <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Header */}

@@ -129,7 +129,7 @@ export default function AdminDashboard() {
 
   if (!isAuthenticated) {
     return (
-      <div className="flex-1 w-full bg-[#070F1E] flex items-center justify-center pt-44 sm:pt-48 lg:pt-52 pb-20">
+      <div className="flex-1 w-full bg-[#070F1E] flex items-center justify-center pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20">
         <div className="w-full max-w-md bg-[#0D1625] border border-[#C5A059]/20 p-8 rounded-sm shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#9A7B3E] via-[#C5A059] to-[#E2C999]"></div>
           
@@ -185,7 +185,7 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="flex-1 w-full bg-[#070F1E] pt-44 sm:pt-48 lg:pt-52 pb-20">
+    <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Header */}

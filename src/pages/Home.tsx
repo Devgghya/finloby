@@ -211,7 +211,7 @@ export default function Home() {
         </div>
 
         {/* 1.1 Dynamic Carousel of Circular Badges - Slides every 6s with expensive transform transitions */}
-        <div className="w-full pt-48 sm:pt-52 lg:pt-60 pb-6 relative z-20 select-none overflow-hidden">
+        <div className="w-full pt-48 sm:pt-52 lg:pt-60 xl:pt-64 pb-6 relative z-20 select-none overflow-hidden">
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 overflow-hidden relative">
             <div 
               className="flex w-[200%] transition-transform duration-1000 ease-in-out"

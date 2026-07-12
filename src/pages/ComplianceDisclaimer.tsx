@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function ComplianceDisclaimer() {
   return (
-    <div className="flex-1 w-full bg-[#070F1E] pt-44 sm:pt-48 lg:pt-52 pb-20 font-sans">
+    <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20 font-sans">
       <div className="max-w-4xl mx-auto px-4 sm:px-8">
         
         {/* Navigation Back */}

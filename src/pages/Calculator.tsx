@@ -57,7 +57,7 @@ export default function Calculator() {
   const monthlySavings = monthlyCardInterest - monthlyLoanInterest;
 
   return (
-    <div className="min-h-screen bg-[var(--bg-midnight)] text-[var(--text-ivory)] pt-44 sm:pt-48 lg:pt-52 pb-20 px-4 sm:px-8 font-sans">
+    <div className="min-h-screen bg-[var(--bg-midnight)] text-[var(--text-ivory)] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20 px-4 sm:px-8 font-sans">
       <div className="max-w-6xl mx-auto flex flex-col gap-12">
         
         {/* Header */}
