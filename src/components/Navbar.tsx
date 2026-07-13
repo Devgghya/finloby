@@ -60,14 +60,14 @@ const navItems: NavItem[] = [
       {
         title: 'Vehicle / Auto Loan',
         links: [
-          { name: 'Vehicle Loan', href: '/loans#vehicle-mortgage' },
-          { name: 'Fleet Loan', href: '/loans#vehicle-mortgage' },
+          { name: 'Vehicle Loan', href: '/loans#vehicle-loan' },
+          { name: 'Fleet Loan', href: '/loans#vehicle-loan' },
         ],
       },
       {
         title: 'Credit Card',
         links: [
-          { name: 'Loan Against Credit Card', href: '/loans#vehicle-mortgage' },
+          { name: 'Loan Against Credit Card', href: '/loans#credit-card' },
         ],
       },
       {
@@ -82,13 +82,13 @@ const navItems: NavItem[] = [
       {
         title: 'Mortgage Loan',
         links: [
-          { name: 'Home Loans & Mortgages', href: '/loans#vehicle-mortgage' },
+          { name: 'Home Loans & Mortgages', href: '/loans#mortgage-loan' },
         ],
       },
       {
         title: 'Insurance',
         links: [
-          { name: 'Insurance Portal Link', href: '/loans#vehicle-mortgage' },
+          { name: 'Insurance Portal Link', href: '/loans#insurance' },
         ],
       },
     ],

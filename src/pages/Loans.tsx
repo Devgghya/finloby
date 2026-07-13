@@ -126,8 +126,8 @@ const loanCategories: LoanCategory[] = [
     ]
   },
   {
-    id: 'vehicle-mortgage',
-    title: 'Asset Financing & Insurance',
+    id: 'vehicle-loan',
+    title: 'Vehicle & Fleet Finance',
     subcategories: [
       {
         name: 'Vehicle Loans (Auto Loan / Auto Finance)',
@@ -158,7 +158,13 @@ const loanCategories: LoanCategory[] = [
       {
         name: 'Fleet & Commercial Vehicle Financing',
         desc: 'Customized credit lines and asset-backed term financing structured for commercial fleets, logistics operations, and company transport fleets at preferred institutional rates.'
-      },
+      }
+    ]
+  },
+  {
+    id: 'credit-card',
+    title: 'Loan Against Credit Card',
+    subcategories: [
       {
         name: 'Loan Against Credit Card',
         desc: 'Loan Against Credit Card feature transforms your unused credit limit into instant cash deposited straight into your bank account.',
@@ -176,7 +182,13 @@ const loanCategories: LoanCategory[] = [
             desc: 'Once submitted, the approved funds are disbursed directly into your designated UAE bank account within minutes, while the matching amount is safely blocked on your credit card and released gradually as you pay your monthly installments.'
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    id: 'mortgage-loan',
+    title: 'Home Loans & Mortgages',
+    subcategories: [
       {
         name: 'Home Loans & Mortgages',
         desc: 'A secured retail financing facility provided by licensed financial institutions specifically for purchasing, constructing, or refinancing residential property. The property itself serves as collateral, and the loan is heavily regulated by the Central Bank of the UAE (CBUAE) to ensure market stability.',
@@ -222,7 +234,13 @@ const loanCategories: LoanCategory[] = [
             desc: 'EIBOR tracking to evaluate buy-outs or balance transfers to lower-cost lenders if rates drop. We also advise on Equity Release strategies to unlock cash if the property appreciates substantially.'
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    id: 'insurance',
+    title: 'Insurance Portals',
+    subcategories: [
       {
         name: 'Insurance Portals',
         desc: 'Sovereign risk coverages, corporate health packages, key-man coverage, and assets insurance facilitation.'
@@ -246,11 +264,17 @@ export default function Loans() {
     const hash = window.location.hash;
     if (hash) {
       const cleanHash = hash.replace('#', '');
-      if (cleanHash.includes('loan') || cleanHash.includes('finance') || cleanHash.includes('pdc') || cleanHash.includes('stl') || cleanHash.includes('buyout') || cleanHash.includes('credit-card') || cleanHash.includes('sme') || cleanHash.includes('project') || cleanHash.includes('home') || cleanHash.includes('insurance')) {
+      if (cleanHash.includes('loan') || cleanHash.includes('finance') || cleanHash.includes('pdc') || cleanHash.includes('stl') || cleanHash.includes('buyout') || cleanHash.includes('credit-card') || cleanHash.includes('sme') || cleanHash.includes('project') || cleanHash.includes('home') || cleanHash.includes('mortgage') || cleanHash.includes('insurance')) {
         if (cleanHash.includes('business') || cleanHash.includes('sme') || cleanHash.includes('project') || cleanHash.includes('lacc')) {
           setSelectedCat('business-loan');
-        } else if (cleanHash.includes('vehicle') || cleanHash.includes('fleet') || cleanHash.includes('home') || cleanHash.includes('mortgage') || cleanHash.includes('insurance')) {
-          setSelectedCat('vehicle-mortgage');
+        } else if (cleanHash.includes('vehicle') || cleanHash.includes('fleet')) {
+          setSelectedCat('vehicle-loan');
+        } else if (cleanHash.includes('credit-card') || cleanHash.includes('card')) {
+          setSelectedCat('credit-card');
+        } else if (cleanHash.includes('home') || cleanHash.includes('mortgage')) {
+          setSelectedCat('mortgage-loan');
+        } else if (cleanHash.includes('insurance')) {
+          setSelectedCat('insurance');
         } else {
           setSelectedCat('personal-finance');
         }
