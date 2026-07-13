@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Landmark, Briefcase, FileText, ChevronRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const divisions = [
   {
@@ -213,6 +214,11 @@ export default function BusinessSetup() {
 
   return (
     <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20">
+      <SEO
+        title="International Business Setup & Company Formation"
+        description="Seamless mainland and free zone company formation, banking introductions, MOA drafting, and corporate sponsorship services in the UAE and globally."
+        keywords="company setup Dubai, business setup UAE, free zone company formation, mainland licensing, corporate banking introduction, corporate sponsorship, DIFC, DMCC"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Header */}

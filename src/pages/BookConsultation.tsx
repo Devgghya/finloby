@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Key, CheckCircle2, User, Phone, Mail, ChevronRight, ShieldCheck } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function BookConsultation() {
   const [formData, setFormData] = useState({
@@ -23,6 +24,11 @@ export default function BookConsultation() {
 
   return (
     <div className="min-h-screen bg-[var(--bg-midnight)] text-[var(--text-ivory)] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20 px-4 sm:px-8 font-sans">
+      <SEO
+        title="Schedule a Private Consultation"
+        description="Request a confidential, face-to-face or digital consultation with a senior FINLOBY financial consultant to discuss corporate debt and strategic wealth protection."
+        keywords="schedule financial consultation, book advisory session, confidential wealth consultation, FINLOBY booking"
+      />
       <div className="max-w-xl mx-auto">
         
         <div className="bg-[#06281E]/95 backdrop-blur-md border border-[var(--brand-gold)]/20 p-8 sm:p-10 rounded-sm shadow-2xl relative overflow-hidden bg-gold-glow">

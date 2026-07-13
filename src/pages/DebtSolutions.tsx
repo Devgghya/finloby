@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ShieldCheck, ArrowRight, Calculator, Shield } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const services = [
   {
@@ -163,6 +164,11 @@ export default function DebtSolutions() {
 
   return (
     <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20">
+      <SEO
+        title="Debt Solutions & Corporate Restructuring"
+        description="Bespoke personal and corporate debt settlement, consolidation, and liability negotiations designed to restore financial equilibrium with absolute discretion."
+        keywords="corporate debt restructuring, debt settlement, debt consolidation, debt counselling, liability negotiation, Dubai, UAE"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Header section */}

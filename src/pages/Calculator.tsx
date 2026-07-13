@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Landmark, Calculator as CalcIcon, Percent, FileText, CheckCircle2 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Calculator() {
   const [activeTab, setActiveTab] = useState<'loan' | 'debt-settlement' | 'setup' | 'consolidation'>('loan');
@@ -58,6 +59,11 @@ export default function Calculator() {
 
   return (
     <div className="min-h-screen bg-[var(--bg-midnight)] text-[var(--text-ivory)] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20 px-4 sm:px-8 font-sans">
+      <SEO
+        title="Financial & Debt Settlement Calculators"
+        description="Calculate your debt settlement, consolidation loans, or business facility amortization schedules with our advanced financial calculators."
+        keywords="debt settlement calculator, loan consolidation calculator, business loan amortization, financial calculators, interest rate calculator, Dubai finance tool"
+      />
       <div className="max-w-6xl mx-auto flex flex-col gap-12">
         
         {/* Header */}

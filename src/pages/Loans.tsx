@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ArrowUpRight, Calculator, ShieldAlert, Award } from 'lucide-react';
+import SEO from '../components/SEO';
 
 interface LoanStep {
   title: string;
@@ -307,6 +308,11 @@ export default function Loans() {
 
   return (
     <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20">
+      <SEO
+        title="Loans & Commercial Facilities"
+        description="High-volume salary transfer, fleet, business, and mortgage loans structured through tier-1 banking institutions and private lenders."
+        keywords="commercial loans, mortgage loans, business finance, auto loans, personal finance, credit cards, debt buyout, SME finance, Dubai, UAE"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Header */}

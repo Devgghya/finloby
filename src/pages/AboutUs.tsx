@@ -1,8 +1,14 @@
 import { MapPin, Landmark, Award, Shield } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function AboutUs() {
   return (
     <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20">
+      <SEO
+        title="About Us | Credentials & Legacy"
+        description="Discover FINLOBY's legacy of financial excellence, institutional partnership, and strategic wealth insulation for sovereign clients and private entities."
+        keywords="financial advisors, wealth protection, institutional advisory, private client services, corporate compliance, FINLOBY team"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Header */}

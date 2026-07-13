@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Restricted Areas
+Disallow: /admin
+
+# Host & Sitemap
+Sitemap: https://finloby.com/sitemap.xml
+Host: https://finloby.com

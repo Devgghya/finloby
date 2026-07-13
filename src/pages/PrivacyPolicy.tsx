@@ -1,9 +1,15 @@
 import { Shield, Lock, FileText, Calendar, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function PrivacyPolicy() {
   return (
     <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20 font-sans">
+      <SEO
+        title="Privacy Policy | Data Protection Protocols"
+        description="Read our comprehensive privacy policy outlining how FINLOBY handles client data and ensures sovereign-level privacy and absolute security."
+        keywords="privacy policy, data protection, client confidentiality, FINLOBY privacy, legal data protection UAE"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-8">
         
         {/* Navigation Back */}

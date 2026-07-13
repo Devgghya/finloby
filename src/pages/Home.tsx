@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, ChevronRight, Lock, Activity, ArrowUpRight, FileText } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const portfolios = [
   {
@@ -171,6 +172,31 @@ export default function Home() {
 
   return (
     <main className="flex-1 w-full bg-[#070F1E]">
+      <SEO
+        title="FINLOBY | Visionary Wealth. Absolute Protection."
+        description="FINLOBY is an ultra-luxury financial consultancy specializing in institutional debt solutions, loans & commercial facilities, international business setup, investments, and cross-border legal assistance."
+        keywords="financial consultancy, debt solutions, corporate debt restructuring, commercial loans, company setup Dubai, wealth protection, cross-border legal support, FINLOBY"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "FinancialService",
+          "name": "FINLOBY",
+          "url": "https://finloby.com",
+          "logo": "https://finloby.com/finloby-white.png",
+          "description": "FINLOBY is an ultra-luxury financial consultancy specializing in institutional debt solutions, loans & commercial facilities, international business setup, investments, and cross-border legal assistance.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Al Ameri Business Tower, Suite #21-02, Barsha Heights, Tecom",
+            "addressLocality": "Dubai Media City",
+            "addressRegion": "Dubai",
+            "addressCountry": "AE"
+          },
+          "telephone": "+971585174871",
+          "email": "info@finloby.com",
+          "sameAs": [
+            "https://www.linkedin.com/company/finloby"
+          ]
+        }}
+      />
       
       {/* SECTION 1: THE HERO FRAMEWORK */}
       <section className="relative w-full overflow-hidden min-h-[95vh] flex flex-col justify-start border-b border-[#C5A059]/10">

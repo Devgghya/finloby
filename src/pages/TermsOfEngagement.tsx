@@ -1,9 +1,15 @@
 import { FileText, Award, Scale, Calendar, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function TermsOfEngagement() {
   return (
     <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20 font-sans">
+      <SEO
+        title="Terms of Engagement | Client Agreement"
+        description="Read the Terms of Engagement and service agreements governing advisory relationships and financial mediation with FINLOBY."
+        keywords="terms of engagement, terms of service, client agreement, FINLOBY terms, advisory agreement"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-8">
         
         {/* Navigation Back */}

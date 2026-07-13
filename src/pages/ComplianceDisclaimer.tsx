@@ -1,9 +1,15 @@
 import { ShieldAlert, BookOpen, Scale, Calendar, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function ComplianceDisclaimer() {
   return (
     <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20 font-sans">
+      <SEO
+        title="Compliance & Disclaimer | Regulatory Notice"
+        description="Important regulatory notices, risk disclosures, and licensing information regarding FINLOBY's advisory services and compliance frameworks."
+        keywords="compliance disclaimer, regulatory disclosure, licensing advisory, FINLOBY compliance, risk warning"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-8">
         
         {/* Navigation Back */}

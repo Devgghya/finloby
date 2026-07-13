@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { TrendingUp, AlertTriangle } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Investments() {
   const [allocation, setAllocation] = useState(5000000); // 5 Million AED
@@ -18,6 +19,11 @@ export default function Investments() {
 
   return (
     <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20">
+      <SEO
+        title="Investment & Capital Placement"
+        description="Connecting institutional investors with high-yield opportunities and structuring joint ventures with verified capital seekers globally."
+        keywords="investment capital placement, institutional investors, joint ventures, high-yield investment, capital seekers, venture capital, private equity, Dubai"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Header */}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowLeft, Clock, Calendar, User, BookOpen, Share2 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const blogPosts = [
   {
@@ -83,6 +84,11 @@ export default function Blogs() {
 
   return (
     <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20">
+      <SEO
+        title={activePost ? `${activePost.title} | Financial Insights` : "Financial Insights & Intelligence Blog"}
+        description={activePost ? activePost.summary : "Stay informed with the latest insights, analyses, and strategic advice on corporate debt, company formation, and wealth management from FINLOBY."}
+        keywords={activePost ? `financial blog, ${activePost.title.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, '')}, FINLOBY` : "financial blog, wealth management insights, corporate finance trends, Dubai banking updates"}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {activePost ? (

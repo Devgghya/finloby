@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Gavel, ArrowRight, ClipboardCheck, Scale } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const categories = [
   {
@@ -96,6 +97,11 @@ export default function LegalAssistance() {
 
   return (
     <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20">
+      <SEO
+        title="Cross-Border Legal Support & Police Clearance"
+        description="Strategic defense against financial liabilities, police case clearance assistance, court representation coordinates, and cross-border skip settlement support."
+        keywords="cross-border legal support, police case clearance, travel ban clearance UAE, financial liability defense, skip settlement, legal negotiation, Dubai, UAE"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Header */}
