@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ArrowUpRight, Calculator, ShieldAlert, Award } from 'lucide-react';
 
 interface LoanStep {
@@ -258,10 +259,11 @@ export default function Loans() {
   const [calcLoanType, setCalcLoanType] = useState('Personal');
   const [interestRate, setInterestRate] = useState(5.5); // reducing
   const [tenureYears, setTenureYears] = useState(4);
+  const location = useLocation();
 
   // Auto-scroll or tab selector based on hash
   useEffect(() => {
-    const hash = window.location.hash;
+    const hash = location.hash;
     if (hash) {
       const cleanHash = hash.replace('#', '');
       if (cleanHash.includes('loan') || cleanHash.includes('finance') || cleanHash.includes('pdc') || cleanHash.includes('stl') || cleanHash.includes('buyout') || cleanHash.includes('credit-card') || cleanHash.includes('sme') || cleanHash.includes('project') || cleanHash.includes('home') || cleanHash.includes('mortgage') || cleanHash.includes('insurance')) {
@@ -284,7 +286,7 @@ export default function Loans() {
         }
       }
     }
-  }, []);
+  }, [location.hash]);
 
   // UAE Loan Eligibility Calculation (DBR based)
   // Max DBR is 50% for personal and typically 60% for corporate/business.
