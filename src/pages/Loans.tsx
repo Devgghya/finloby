@@ -567,9 +567,25 @@ export default function Loans() {
                             <span className="w-2 h-2 rounded-full bg-[#C5A059]"></span>
                             {sub.name}
                           </h4>
-                          <p className="text-xs sm:text-sm font-light text-[#FBF9F4]/70 leading-relaxed mb-6">
-                            {sub.desc}
-                          </p>
+                          <div className="text-xs sm:text-sm font-light text-[#FBF9F4]/70 leading-relaxed mb-6 space-y-2">
+                            {sub.desc.split('\n').map((line, lIdx) => {
+                              const trimmed = line.trim();
+                              if (!trimmed) return null;
+                              const colIdx = trimmed.indexOf(':');
+                              if (colIdx > 0 && colIdx < 40) {
+                                const boldPart = trimmed.slice(0, colIdx);
+                                const restPart = trimmed.slice(colIdx + 1).trim();
+                                return (
+                                  <p key={lIdx}>
+                                    <strong className="text-[#E2C999]">{boldPart}:</strong> {restPart}
+                                  </p>
+                                );
+                              }
+                              return (
+                                <p key={lIdx}>{trimmed}</p>
+                              );
+                            })}
+                          </div>
                           
                            {sub.steps && (
                              <div className="space-y-4 pl-4 border-l border-[#C5A059]/10 mt-4">
@@ -597,11 +613,39 @@ export default function Loans() {
                                            const isAlphaSub = /^[a-z]\.\s+/.test(trimmed);
                                            const isBulletSub = /^[•\-]\s+/.test(trimmed);
                                            
+                                           // Check if line contains a bold title ending in colon: e.g. "AECB Alignment (Dual Scrutiny): In Retail Loans..."
+                                           const colonIndex = trimmed.indexOf(':');
+                                           let formattedContent = null;
+                                           if (colonIndex > 0 && colonIndex < 80 && !isNumberedSub && !isAlphaSub && !isBulletSub) {
+                                             const boldLabel = trimmed.slice(0, colonIndex);
+                                             const restText = trimmed.slice(colonIndex + 1).trim();
+                                             formattedContent = (
+                                               <p key={lIdx}>
+                                                 <strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}
+                                               </p>
+                                             );
+                                           }
+                                           
                                            if (isNumberedSub) {
                                              const content = trimmed.replace(/^\d+\.\s+/, '');
+                                             const numMatch = trimmed.match(/^\d+\./)?.[0];
+                                             
+                                             // Check if subpoint has colon bold title
+                                             const subColonIndex = content.indexOf(':');
+                                             if (subColonIndex > 0 && subColonIndex < 80) {
+                                               const boldLabel = content.slice(0, subColonIndex);
+                                               const restText = content.slice(subColonIndex + 1).trim();
+                                               return (
+                                                 <div key={lIdx} className="pl-4 flex gap-2 text-[10px] text-[#FBF9F4]/50">
+                                                   <span className="text-[#C5A059] font-semibold">{numMatch}</span>
+                                                   <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
+                                                 </div>
+                                               );
+                                             }
+                                             
                                              return (
                                                <div key={lIdx} className="pl-4 flex gap-2 text-[10px] text-[#FBF9F4]/50">
-                                                 <span className="text-[#C5A059] font-semibold">{trimmed.match(/^\d+\./)?.[0]}</span>
+                                                 <span className="text-[#C5A059] font-semibold">{numMatch}</span>
                                                  <span>{content}</span>
                                                </div>
                                              );
@@ -609,9 +653,24 @@ export default function Loans() {
                                            
                                            if (isAlphaSub) {
                                              const content = trimmed.replace(/^[a-z]\.\s+/, '');
+                                             const alphaMatch = trimmed.match(/^[a-z]\./)?.[0];
+                                             
+                                             // Check if subpoint has colon bold title
+                                             const subColonIndex = content.indexOf(':');
+                                             if (subColonIndex > 0 && subColonIndex < 80) {
+                                               const boldLabel = content.slice(0, subColonIndex);
+                                               const restText = content.slice(subColonIndex + 1).trim();
+                                               return (
+                                                 <div key={lIdx} className="pl-8 flex gap-2 text-[10px] text-[#FBF9F4]/45">
+                                                   <span className="text-[#C5A059] font-medium">{alphaMatch}</span>
+                                                   <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
+                                                 </div>
+                                               );
+                                             }
+                                             
                                              return (
                                                <div key={lIdx} className="pl-8 flex gap-2 text-[10px] text-[#FBF9F4]/45">
-                                                 <span className="text-[#C5A059] font-medium">{trimmed.match(/^[a-z]\./)?.[0]}</span>
+                                                 <span className="text-[#C5A059] font-medium">{alphaMatch}</span>
                                                  <span>{content}</span>
                                                </div>
                                              );
@@ -619,6 +678,20 @@ export default function Loans() {
                                            
                                            if (isBulletSub) {
                                              const content = trimmed.replace(/^[•\-]\s+/, '');
+                                             
+                                             // Check if subpoint has colon bold title
+                                             const subColonIndex = content.indexOf(':');
+                                             if (subColonIndex > 0 && subColonIndex < 80) {
+                                               const boldLabel = content.slice(0, subColonIndex);
+                                               const restText = content.slice(subColonIndex + 1).trim();
+                                               return (
+                                                 <div key={lIdx} className="pl-4 flex gap-2 text-[10px] text-[#FBF9F4]/50">
+                                                   <span className="text-[#C5A059]">•</span>
+                                                   <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
+                                                 </div>
+                                               );
+                                             }
+                                             
                                              return (
                                                <div key={lIdx} className="pl-4 flex gap-2 text-[10px] text-[#FBF9F4]/50">
                                                  <span className="text-[#C5A059]">•</span>
@@ -626,6 +699,8 @@ export default function Loans() {
                                                </div>
                                              );
                                            }
+                                           
+                                           if (formattedContent) return formattedContent;
                                            
                                            // Normal line
                                            return (
