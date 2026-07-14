@@ -174,18 +174,17 @@ export default function BusinessSetup() {
     const hash = location.hash;
     if (hash) {
       const cleanHash = hash.replace('#', '');
-      if (cleanHash.includes('setup') || cleanHash.includes('business') || cleanHash.includes('mainland') || cleanHash.includes('licensing') || cleanHash.includes('moa') || cleanHash.includes('aoa') || cleanHash.includes('bank') || cleanHash.includes('banking')) {
-        if (cleanHash.includes('moa') || cleanHash.includes('aoa') || cleanHash.includes('pro') || cleanHash.includes('office') || cleanHash.includes('immigration')) {
-          setActiveDiv('business');
-        } else if (cleanHash.includes('bank') || cleanHash.includes('banking') || cleanHash.includes('authority')) {
-          setActiveDiv('banking');
-        } else {
-          setActiveDiv('licensing');
-        }
-        const element = document.getElementById('setup-directory');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
+      if (cleanHash === 'business' || cleanHash.includes('moa') || cleanHash.includes('aoa') || cleanHash.includes('pro') || cleanHash.includes('office') || cleanHash.includes('immigration')) {
+        setActiveDiv('business');
+      } else if (cleanHash === 'banking' || cleanHash.includes('bank') || cleanHash.includes('authority')) {
+        setActiveDiv('banking');
+      } else if (cleanHash === 'licensing' || cleanHash.includes('mainland') || cleanHash.includes('freezone') || cleanHash.includes('free-zone')) {
+        setActiveDiv('licensing');
+      }
+      
+      const element = document.getElementById('setup-directory');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
       }
     }
   }, [location.hash]);
