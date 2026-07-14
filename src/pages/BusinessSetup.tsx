@@ -38,67 +38,87 @@ const divisions: Division[] = [
     items: [
       { 
         name: 'MOA & AOA', 
-        desc: 'The Memorandum of Association (MoA) and Articles of Association (AoA) are not mere incorporation templates; they form the bedrock of your corporate governance and operational scope under the UAE Commercial Companies Law. From a banking policy perspective, these documents are closely scrutinized by compliance and risk management teams during Corporate Bank Account Opening and Anti-Money Laundering (AML) evaluations.',
+        desc: 'Corporate Architecture: Drafting Your MoA & AoA\nThe Memorandum of Association (MoA) and Articles of Association (AoA) are not mere incorporation templates; they form the bedrock of your corporate governance and operational scope under the UAE Commercial Companies Law. From a banking policy perspective, these documents are closely scrutinized by compliance and risk management teams during Corporate Bank Account Opening and Anti-Money Laundering (AML) evaluations.',
         steps: [
           {
-            title: 'Activity Mapping & Dynamic Clustering',
+            title: '1. The Strategy: Aligning Corporate Vision with Regulatory Realities - Activity Mapping & Dynamic Clustering',
             desc: 'We guide client to explicitly outline all core commercial, service, or industrial operations. Activities must precisely align with the Department of Economic Development (DED) or specific Free Zone classification codes. A mismatch between listed activities and actual transactional footprint can trigger compliance flags, account restrictions, or corporate bank account denials under UAE Central Bank regulations.'
           },
           {
-            title: 'Capitalization & Equity Distribution',
+            title: '1. The Strategy: Aligning Corporate Vision with Regulatory Realities - Capitalization & Equity Distribution',
             desc: 'We guide client to define the share capital structure, nominal share value, and exact equity breakdown among partners. This structural clarity is essential to satisfy bank Know-Your-Customer (KYC) requirements, particularly regarding Ultimate Beneficial Ownership (UBO) mandates.'
           },
           {
-            title: 'Custom Corporate Governance Structuring',
+            title: '2. Execution: The Legal & Digital Validation Process - Custom Corporate Governance Structuring',
             desc: 'We draft specific clauses managing executive voting weights, profit-sharing distributions (essential for professional civil structures), operational restrictions, board appointment processes, and clear corporate exit mechanisms as per the UAE Government laws and regulations.'
           },
           {
-            title: 'Public Notarization & Digital Authentication',
+            title: '2. Execution: The Legal & Digital Validation Process - Public Notarization & Digital Authentication',
             desc: 'We help guide the document through formal legal channels using UAE Pass digital notarization or via an official DED Notary Public. This legal execution ensures the corporate framework is fully recognized by UAE judicial, municipal, and financial institutions.'
           }
         ]
       },
       { 
         name: 'Immigration, PRO & Sponsorship', 
-        desc: 'Navigating the operational administrative landscape in the UAE requires strict compliance with immigration procedures, labor laws, and the evolving corporate setup frameworks across both Mainland and Free Zone jurisdictions.',
+        desc: 'Immigration & Corporate Representation: PRO Services & Sponsorship\nNavigating the operational administrative landscape in the UAE requires strict compliance with immigration procedures, labor laws, and the evolving corporate setup frameworks across both Mainland and Free Zone jurisdictions.',
         steps: [
           {
-            title: '100% Foreign Ownership Validation',
+            title: '1. Corporate Sponsorship & Local Representation Structures - 100% Foreign Ownership Validation',
             desc: 'Assess the company’s activity profile against the updated Commercial Companies Law framework. For sectors where full foreign ownership is approved, structure the corporate framework entirely under the international investor’s control.'
           },
           {
-            title: 'Local Service Agent (LSA) Agreements',
+            title: '1. Corporate Sponsorship & Local Representation Structures - Local Service Agent (LSA) Agreements',
             desc: 'For professional civil partnerships and sole establishments requiring local representation, construct an independent LSA agreement. This framework guarantees the UAE National holds 0% equity and operational control, receiving a transparent, fixed annual administrative fee for government liaison support.'
           },
           {
-            title: 'Corporate Sponsorship Advisory',
+            title: '1. Corporate Sponsorship & Local Representation Structures - Corporate Sponsorship Advisory',
             desc: 'For specific strategic industries requiring national equity participation, implement secure corporate sponsorship structures to safeguard the foreign investor\'s operational rights, financial assets, and intellectual property.'
           },
           {
-            title: 'Corporate Infrastructure Approvals',
+            title: '2. End-to-End PRO & Government Liaison Engineering - Corporate Infrastructure Approvals',
             desc: 'Oversee the structural applications for corporate identification, including the issuance of the Establishment Card from the Federal Authority for Identity, Citizenship, Customs and Port Security (ICP) and the activation of the corporate labor file with the Ministry of Human Resources and Emiratisation (MoHRE).'
           },
           {
-            title: 'Workforce & Residency Lifecycle Management',
+            title: '2. End-to-End PRO & Government Liaison Engineering - Workforce & Residency Lifecycle Management',
             desc: 'Manage the end-to-end processing of investor residency rights, employee work permits, medical clearances, and Emirates ID enrollments, ensuring full operational compliance for the corporate team.'
           }
         ]
       },
       { 
         name: 'Office Set up and Visa Quota', 
-        desc: 'In the UAE, a company cannot hire staff or issue visas until it creates an infrastructure "envelope." For Mainland entities, this process involves both the Ministry of Human Resources and Emiratisation (MoHRE) for labor permits and the GDRFA for residency visas. For Free Zone entities, these workflows are consolidated under the specific Free Zone Authority.',
+        desc: 'The Office Setup & Visa Quota Allocation Process\nIn the UAE, a company cannot hire staff or issue visas until it creates an infrastructure "envelope." For Mainland entities, this process involves both the Ministry of Human Resources and Emiratisation (MoHRE) for labor permits and the GDRFA for residency visas. For Free Zone entities, these workflows are consolidated under the specific Free Zone Authority.',
         steps: [
           {
-            title: 'Corporate Legal Foundation & Infrastructure',
-            desc: 'Establishment & Trade License: The client must possess an active commercial trade license issued by the Department of Economy and Tourism (DET) on the Mainland, or the relevant Free Zone Authority. Establishment Card Registration: Once the license is issued, we help the client to apply for an Establishment Card. This officially registers the company with the immigration portal (GDRFA or ICP) and opens the corporate labor portal.'
+            title: 'Step 1: Corporate Legal Foundation & Infrastructure - Establishment & Trade License',
+            desc: 'The client must possess an active commercial trade license issued by the Department of Economy and Tourism (DET) on the Mainland, or the relevant Free Zone Authority.'
           },
           {
-            title: 'Physical Footprint Formalization',
-            desc: 'Lease Execution & Registration: (1) Mainland: We guide client to secure a physical office lease and register it to generate an Ejari Certificate. (2) Free Zones: We guide client to execute a Commercial Lease Agreement for a physical space or dedicated serviced suite. Spatial Quota Formula Applied: The absolute ceiling of quota relies on the net usable square meters on the Ejari: Default Quota Capacity = Total Net Useable Area (sq. meters) / 10.'
+            title: 'Step 1: Corporate Legal Foundation & Infrastructure - Establishment Card Registration',
+            desc: 'Once the license is issued, we help the client to apply for an Establishment Card. This officially registers the company with the immigration portal (GDRFA or ICP) and opens the corporate labor portal.'
           },
           {
-            title: 'Proactive E-Quota Request & Inspection',
-            desc: 'E-Signature Card: The client\'s authorized signatory applies for a MoHRE Electronic Signature Card to link their UAE Pass to the labor system. MoHRE Quota Request (Tasheel): An initial quota request is filed electronically. The system maps the requested corporate titles against the trade license activities. Taq’eem (Physical Site Inspection): A field inspector will physically visit the office to inspect the premises and confirm it is a functional business environment equipped with desks, IT infrastructure, utilities, and corporate signage. Approval & Allocation: Upon successful inspection, the quota is updated on the MoHRE portal.'
+            title: 'Step 2: Physical Footprint Formalization - Lease Execution & Registration',
+            desc: 'Mainland: We guide client to secure a physical office lease and register it to generate an Ejari Certificate.\nFree Zones: We guide client to execute a Commercial Lease Agreement for a physical space or dedicated serviced suite.'
+          },
+          {
+            title: 'Step 2: Physical Footprint Formalization - The Spatial Quota Formula Applied',
+            desc: 'The absolute ceiling of quota relies on the net usable square meters on the Ejari: Default Quota Capacity = Total Net Useable Area (sq. meters) / 10'
+          },
+          {
+            title: 'Step 3: Proactive E-Quota Request & Inspection - E-Signature Card',
+            desc: 'The client\'s authorized signatory applies for a MoHRE Electronic Signature Card to link their UAE Pass to the labor system.'
+          },
+          {
+            title: 'Step 3: Proactive E-Quota Request & Inspection - MoHRE Quota Request (Tasheel)',
+            desc: 'An initial quota request is filed electronically. The system maps the requested corporate titles (e.g., Financial Analyst, Consultant, Managing Director) against the trade license activities.'
+          },
+          {
+            title: 'Step 3: Proactive E-Quota Request & Inspection - Taq’eem (Physical Site Inspection)',
+            desc: 'A field inspector from MoHRE or the Free Zone will physically visit the office. They inspect the premises to confirm it is a functional business environment equipped with desks, IT infrastructure, utilities, and corporate signage.'
+          },
+          {
+            title: 'Step 3: Proactive E-Quota Request & Inspection - Approval & Allocation',
+            desc: 'Upon a successful inspection, the quota is updated on the MoHRE portal, allowing the company to legally begin issuing work permits.'
           }
         ]
       }
@@ -111,15 +131,15 @@ const divisions: Division[] = [
     items: [
       { 
         name: 'Opening of Bank Account', 
-        desc: 'Corporate banking onboarding is highly regulated by CBUAE Anti-Money Laundering (AML) and Combating the Financing of Terrorism (CFT) laws. A business cannot open a traditional corporate bank account using a "Flexi-Desk" if they represent a complex consultancy model; banks require physical substance.',
+        desc: 'The Corporate Bank Account Opening Process\nCorporate banking onboarding is highly regulated by CBUAE Anti-Money Laundering (AML) and Combating the Financing of Terrorism (CFT) laws. A business cannot open a traditional corporate bank account using a "Flexi-Desk" if they represent a complex consultancy model; banks require physical substance.',
         steps: [
           {
             title: 'Step 1: Building the "Substance" Case File',
-            desc: 'Corporate Documents: Trade License, Share Certificates, Memorandum & Articles of Association (MoA/AoA), and full Ultimate Beneficial Owner (UBO) declarations (required under Cabinet Decision No. 109). Proof of Onshore Physicality: Ejari Certificate / Free Zone Lease and recent utility bills (DEWA/Empower). Signatory Identification: Passports, valid UAE Visas, and physical Emirates IDs of all partners, shareholders holding 25% or more.'
+            desc: 'Before approaching a bank, we prepare the client for a comprehensive compliance dossier.\nCorporate Documents: Trade License, Share Certificates, Memorandum & Articles of Association (MoA/AoA), and full Ultimate Beneficial Owner (UBO) declarations (required under Cabinet Decision No. 109).\nProof of Onshore Physicality: The bank\'s risk department will explicitly demand a copy of the Ejari Certificate / Free Zone Lease and recent utility bills (DEWA/Empower).\nSignatory Identification: Passports, valid UAE Visas, and physical Emirates IDs of all partners, shareholders holding 25% or more, and authorized bank signatories.'
           },
           {
             title: 'Step 2: Demonstrating Financial & Professional Legitimacy',
-            desc: 'Corporate Business Plan: A structured deck outlining the client\'s financial advisory scope, corporate target market, and projected 12-month cash flows. Source of Wealth & Financial History: 6 months of bank statements demonstrating the origin of the initial corporate capital. Proof of Business Activity: Drafts or signed copies of client agreements, consultancy service contracts, or letters of intent.'
+            desc: 'Corporate Business Plan: A structured deck outlining the client\'s financial advisory scope, corporate target market, and projected 12-month cash flows.\nSource of Wealth & Financial History: 6 months of corporate bank statements from the shareholders\' existing/previous entities or 6 months of personal bank statements demonstrating the origin of the initial corporate capital.\nProof of Business Activity: Drafts or signed copies of client agreements, consultancy service contracts, or letters of intent from prospective regional clients.'
           },
           {
             title: 'Step 3: Banking Selection & Minimum Balance Tiers',
@@ -127,7 +147,7 @@ const divisions: Division[] = [
           },
           {
             title: 'Step 4: The KYC Interview and On-Site Verification',
-            desc: 'The Compliance Interview: Face-to-face KYC interview with the Relationship Manager. Physical Audits: Compliance agents taking geo-tagged photographs of the physical office space. Activation: Once compliance clears the file, the IBAN is issued and client deposits the initial minimum balance.'
+            desc: 'The Compliance Interview: The bank\'s Relationship Manager holds a face-to-face Know Your Customer (KYC) interview with the main authorized signatory to verify the transaction details outlined in the application.\nPhysical Audits: Major national banks routinely send field compliance agents to take geo-tagged photographs of the physical office space to ensure the company matches its declared operational footprint.\nActivation: Once compliance clears the file, the IBAN is issued, and the client deposits the required initial minimum balance to activate the account.'
           }
         ]
       }
