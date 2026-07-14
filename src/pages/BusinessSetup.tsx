@@ -453,130 +453,154 @@ export default function BusinessSetup() {
                               {sub.desc}
                             </p>
 
-                             {sub.steps && (
+                              {sub.steps && (
                                <div className="space-y-4 pl-4 border-l border-[#C5A059]/10 mt-6 text-left">
-                                 {sub.steps.map((step, sIdx) => {
-                                   const cleanedTitle = step.title.replace(/^(?:Step\s+\d+:\s*|\d+\.\s*)/i, '');
-                                   const lines = step.desc.split('\n');
+                                 {(() => {
+                                   let lastPhase = '';
+                                   let stepIdxInPhase = 0;
                                    
-                                   return (
-                                     <div key={sIdx} className="flex gap-3 items-start">
-                                       <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/25 text-[#C5A059] flex items-center justify-center text-[10px] font-mono font-bold">
-                                         {sIdx + 1}
-                                       </span>
-                                       <div className="flex-1">
-                                         <h5 className="text-[11px] font-sans font-semibold text-white mb-0.5">
-                                           {cleanedTitle}
-                                         </h5>
-                                         <div className="text-[10px] font-light text-[#FBF9F4]/55 leading-relaxed space-y-1.5">
-                                           {lines.map((line, lIdx) => {
-                                             const trimmed = line.trim();
-                                             if (!trimmed) return null;
-                                             
-                                             const isNumberedSub = /^\d+\.\s+/.test(trimmed);
-                                             const isAlphaSub = /^[a-z]\.\s+/.test(trimmed);
-                                             const isBulletSub = /^[•\-]\s+/.test(trimmed);
-                                             
-                                             // Check if line contains a bold title ending in colon
-                                             const colonIndex = trimmed.indexOf(':');
-                                             let formattedContent = null;
-                                             if (colonIndex > 0 && colonIndex < 80 && !isNumberedSub && !isAlphaSub && !isBulletSub) {
-                                               const boldLabel = trimmed.slice(0, colonIndex);
-                                               const restText = trimmed.slice(colonIndex + 1).trim();
-                                               formattedContent = (
-                                                 <p key={lIdx}>
-                                                   <strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}
-                                                 </p>
-                                               );
-                                             }
-                                             
-                                             if (isNumberedSub) {
-                                               const content = trimmed.replace(/^\d+\.\s+/, '');
-                                               const numMatch = trimmed.match(/^\d+\./)?.[0];
-                                               
-                                               // Check if subpoint has colon bold title
-                                               const subColonIndex = content.indexOf(':');
-                                               if (subColonIndex > 0 && subColonIndex < 80) {
-                                                 const boldLabel = content.slice(0, subColonIndex);
-                                                 const restText = content.slice(subColonIndex + 1).trim();
+                                   return sub.steps.map((step, sIdx) => {
+                                     const parts = step.title.split(/\s+[-–—]\s+/);
+                                     let phaseHeader = null;
+                                     let displayTitle = step.title;
+                                     
+                                     if (parts.length > 1) {
+                                       const phaseName = parts[0].trim();
+                                       displayTitle = parts.slice(1).join(' - ').trim();
+                                       
+                                       if (phaseName !== lastPhase) {
+                                         lastPhase = phaseName;
+                                         stepIdxInPhase = 0;
+                                         phaseHeader = (
+                                           <div className="text-[10px] font-sans font-bold text-[#E2C999] uppercase tracking-[0.15em] mt-6 mb-3 first:mt-0 border-b border-[#C5A059]/10 pb-1.5">
+                                             {phaseName}
+                                           </div>
+                                         );
+                                       }
+                                     }
+                                     
+                                     stepIdxInPhase++;
+                                     const cleanedTitle = displayTitle.replace(/^(?:Step\s+\d+:\s*|\d+\.\s*)/i, '');
+                                     const lines = step.desc.split('\n');
+                                     
+                                     return (
+                                       <div key={sIdx} className="space-y-2">
+                                         {phaseHeader}
+                                         <div className="flex gap-3 items-start pl-1">
+                                           <span className="flex-shrink-0 w-4 h-4 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/25 text-[#C5A059] flex items-center justify-center text-[9px] font-mono font-bold mt-0.5">
+                                             {parts.length > 1 ? stepIdxInPhase : sIdx + 1}
+                                           </span>
+                                           <div className="flex-1">
+                                             <h5 className="text-[11px] font-sans font-semibold text-white mb-0.5">
+                                               {cleanedTitle}
+                                             </h5>
+                                             <div className="text-[10px] font-light text-[#FBF9F4]/55 leading-relaxed space-y-1.5">
+                                               {lines.map((line, lIdx) => {
+                                                 const trimmed = line.trim();
+                                                 if (!trimmed) return null;
+                                                 
+                                                 const isNumberedSub = /^\d+\.\s+/.test(trimmed);
+                                                 const isAlphaSub = /^[a-z]\.\s+/.test(trimmed);
+                                                 const isBulletSub = /^[•\-]\s+/.test(trimmed);
+                                                 
+                                                 const colonIndex = trimmed.indexOf(':');
+                                                 let formattedContent = null;
+                                                 if (colonIndex > 0 && colonIndex < 80 && !isNumberedSub && !isAlphaSub && !isBulletSub) {
+                                                   const boldLabel = trimmed.slice(0, colonIndex);
+                                                   const restText = trimmed.slice(colonIndex + 1).trim();
+                                                   formattedContent = (
+                                                     <p key={lIdx}>
+                                                       <strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}
+                                                     </p>
+                                                   );
+                                                 }
+                                                 
+                                                 if (isNumberedSub) {
+                                                   const content = trimmed.replace(/^\d+\.\s+/, '');
+                                                   const numMatch = trimmed.match(/^\d+\./)?.[0];
+                                                   
+                                                   const subColonIndex = content.indexOf(':');
+                                                   if (subColonIndex > 0 && subColonIndex < 80) {
+                                                     const boldLabel = content.slice(0, subColonIndex);
+                                                     const restText = content.slice(subColonIndex + 1).trim();
+                                                     return (
+                                                       <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
+                                                         <span className="text-[#C5A059] font-semibold">{numMatch}</span>
+                                                         <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
+                                                       </div>
+                                                     );
+                                                   }
+                                                   
+                                                   return (
+                                                     <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
+                                                       <span className="text-[#C5A059] font-semibold">{numMatch}</span>
+                                                       <span>{content}</span>
+                                                     </div>
+                                                   );
+                                                 }
+                                                 
+                                                 if (isAlphaSub) {
+                                                   const content = trimmed.replace(/^[a-z]\.\s+/, '');
+                                                   const alphaMatch = trimmed.match(/^[a-z]\./)?.[0];
+                                                   
+                                                   const subColonIndex = content.indexOf(':');
+                                                   if (subColonIndex > 0 && subColonIndex < 80) {
+                                                     const boldLabel = content.slice(0, subColonIndex);
+                                                     const restText = content.slice(subColonIndex + 1).trim();
+                                                     return (
+                                                       <div key={lIdx} className="pl-8 flex gap-2 text-[9px] text-[#FBF9F4]/40">
+                                                         <span className="text-[#C5A059] font-medium">{alphaMatch}</span>
+                                                         <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
+                                                       </div>
+                                                     );
+                                                   }
+                                                   
+                                                   return (
+                                                     <div key={lIdx} className="pl-8 flex gap-2 text-[9px] text-[#FBF9F4]/40">
+                                                       <span className="text-[#C5A059] font-medium">{alphaMatch}</span>
+                                                       <span>{content}</span>
+                                                     </div>
+                                                   );
+                                                 }
+                                                 
+                                                 if (isBulletSub) {
+                                                   const content = trimmed.replace(/^[•\-]\s+/, '');
+                                                   
+                                                   const subColonIndex = content.indexOf(':');
+                                                   if (subColonIndex > 0 && subColonIndex < 80) {
+                                                     const boldLabel = content.slice(0, subColonIndex);
+                                                     const restText = content.slice(subColonIndex + 1).trim();
+                                                     return (
+                                                       <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
+                                                         <span className="text-[#C5A059]">•</span>
+                                                         <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
+                                                       </div>
+                                                     );
+                                                   }
+                                                   
+                                                   return (
+                                                     <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
+                                                       <span className="text-[#C5A059]">•</span>
+                                                       <span>{content}</span>
+                                                     </div>
+                                                   );
+                                                 }
+                                                 
+                                                 if (formattedContent) return formattedContent;
+                                                 
                                                  return (
-                                                   <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
-                                                     <span className="text-[#C5A059] font-semibold">{numMatch}</span>
-                                                     <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
-                                                   </div>
+                                                   <p key={lIdx}>
+                                                     {trimmed}
+                                                   </p>
                                                  );
-                                               }
-                                               
-                                               return (
-                                                 <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
-                                                   <span className="text-[#C5A059] font-semibold">{numMatch}</span>
-                                                   <span>{content}</span>
-                                                 </div>
-                                               );
-                                             }
-                                             
-                                             if (isAlphaSub) {
-                                               const content = trimmed.replace(/^[a-z]\.\s+/, '');
-                                               const alphaMatch = trimmed.match(/^[a-z]\./)?.[0];
-                                               
-                                               // Check if subpoint has colon bold title
-                                               const subColonIndex = content.indexOf(':');
-                                               if (subColonIndex > 0 && subColonIndex < 80) {
-                                                 const boldLabel = content.slice(0, subColonIndex);
-                                                 const restText = content.slice(subColonIndex + 1).trim();
-                                                 return (
-                                                   <div key={lIdx} className="pl-8 flex gap-2 text-[9px] text-[#FBF9F4]/40">
-                                                     <span className="text-[#C5A059] font-medium">{alphaMatch}</span>
-                                                     <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
-                                                   </div>
-                                                 );
-                                               }
-                                               
-                                               return (
-                                                 <div key={lIdx} className="pl-8 flex gap-2 text-[9px] text-[#FBF9F4]/40">
-                                                   <span className="text-[#C5A059] font-medium">{alphaMatch}</span>
-                                                   <span>{content}</span>
-                                                 </div>
-                                               );
-                                             }
-                                             
-                                             if (isBulletSub) {
-                                               const content = trimmed.replace(/^[•\-]\s+/, '');
-                                               
-                                               // Check if subpoint has colon bold title
-                                               const subColonIndex = content.indexOf(':');
-                                               if (subColonIndex > 0 && subColonIndex < 80) {
-                                                 const boldLabel = content.slice(0, subColonIndex);
-                                                 const restText = content.slice(subColonIndex + 1).trim();
-                                                 return (
-                                                   <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
-                                                     <span className="text-[#C5A059]">•</span>
-                                                     <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
-                                                   </div>
-                                                 );
-                                               }
-                                               
-                                               return (
-                                                 <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
-                                                   <span className="text-[#C5A059]">•</span>
-                                                   <span>{content}</span>
-                                                 </div>
-                                               );
-                                             }
-                                             
-                                             if (formattedContent) return formattedContent;
-                                             
-                                             return (
-                                               <p key={lIdx}>
-                                                 {trimmed}
-                                               </p>
-                                             );
-                                           })}
+                                               })}
+                                             </div>
+                                           </div>
                                          </div>
                                        </div>
-                                     </div>
-                                   );
-                                 })}
+                                     );
+                                   });
+                                 })()}
                                </div>
                              )}
                           </div>
