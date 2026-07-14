@@ -250,31 +250,34 @@ export default function DebtSolutions() {
                     </h4>
                     
                     <div className="space-y-6">
-                      {item.steps?.map((step, idx) => (
-                        <div key={idx} className="flex gap-4 items-start">
-                          <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#C5A059]/15 border border-[#C5A059]/30 text-[#C5A059] flex items-center justify-center text-xs font-mono font-bold">
-                            {idx + 1}
-                          </span>
-                          <div className="flex-1">
-                            <h5 className="text-sm font-sans font-bold text-white mb-1">
-                              {step.title}
-                            </h5>
-                            <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed">
-                              {step.desc}
-                            </p>
-                            {step.subpoints && (
-                              <ul className="mt-2.5 pl-2 space-y-1.5 border-l border-[#C5A059]/10 ml-1">
-                                {step.subpoints.map((sub, sIdx) => (
-                                  <li key={sIdx} className="flex gap-2 text-[11px] text-[#FBF9F4]/55 font-light">
-                                    <span className="text-[#C5A059] max-sm:text-[#D4AF37] max-sm:px-2 font-sans">•</span>
-                                    <span>{sub}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
+                      {item.steps?.map((step, idx) => {
+                        const cleanedTitle = step.title.replace(/^(?:Step\s+\d+:\s*|\d+\.\s*)/i, '');
+                        return (
+                          <div key={idx} className="flex gap-4 items-start">
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#C5A059]/15 border border-[#C5A059]/30 text-[#C5A059] flex items-center justify-center text-xs font-mono font-bold">
+                              {idx + 1}
+                            </span>
+                            <div className="flex-1">
+                              <h5 className="text-sm font-sans font-bold text-white mb-1">
+                                {cleanedTitle}
+                              </h5>
+                              <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed">
+                                {step.desc}
+                              </p>
+                              {step.subpoints && (
+                                <ul className="mt-2.5 pl-2 space-y-1.5 border-l border-[#C5A059]/10 ml-1">
+                                  {step.subpoints.map((sub, sIdx) => (
+                                    <li key={sIdx} className="flex gap-2 text-[11px] text-[#FBF9F4]/55 font-light">
+                                      <span className="text-[#C5A059] max-sm:text-[#D4AF37] max-sm:px-2 font-sans">•</span>
+                                      <span>{sub}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
 

@@ -453,25 +453,28 @@ export default function BusinessSetup() {
                               {sub.desc}
                             </p>
 
-                            {sub.steps && (
-                              <div className="space-y-4 pl-4 border-l border-[#C5A059]/10 mt-6 text-left">
-                                {sub.steps.map((step, sIdx) => (
-                                  <div key={sIdx} className="flex gap-3 items-start">
-                                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/25 text-[#C5A059] flex items-center justify-center text-[10px] font-mono font-bold">
-                                      {sIdx + 1}
-                                    </span>
-                                    <div>
-                                      <h5 className="text-[11px] font-sans font-semibold text-white mb-0.5">
-                                        {step.title}
-                                      </h5>
-                                      <p className="text-[10px] font-light text-[#FBF9F4]/55 leading-relaxed">
-                                        {step.desc}
-                                      </p>
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
+                             {sub.steps && (
+                               <div className="space-y-4 pl-4 border-l border-[#C5A059]/10 mt-6 text-left">
+                                 {sub.steps.map((step, sIdx) => {
+                                   const cleanedTitle = step.title.replace(/^(?:Step\s+\d+:\s*|\d+\.\s*)/i, '');
+                                   return (
+                                     <div key={sIdx} className="flex gap-3 items-start">
+                                       <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/25 text-[#C5A059] flex items-center justify-center text-[10px] font-mono font-bold">
+                                         {sIdx + 1}
+                                       </span>
+                                       <div>
+                                         <h5 className="text-[11px] font-sans font-semibold text-white mb-0.5">
+                                           {cleanedTitle}
+                                         </h5>
+                                         <p className="text-[10px] font-light text-[#FBF9F4]/55 leading-relaxed">
+                                           {step.desc}
+                                         </p>
+                                       </div>
+                                     </div>
+                                   );
+                                 })}
+                               </div>
+                             )}
                           </div>
                         );
                       })}
