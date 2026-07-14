@@ -74,8 +74,8 @@ const navItems: NavItem[] = [
         title: 'Business Loan',
         links: [
           { name: 'Retail Business Loans', href: '/loans#business-loan' },
-          { name: 'Loan Against Card', href: '/loans#business-loan' },
-          { name: 'Corporate Term Finance', href: '/loans#business-loan' },
+          { name: 'SME Business Loans', href: '/loans#business-loan' },
+          { name: 'Project Finance', href: '/loans#business-loan' },
           { name: 'Machinery Finance', href: '/loans#business-loan' },
         ],
       },
@@ -107,16 +107,15 @@ const navItems: NavItem[] = [
       {
         title: 'Business',
         links: [
-          { name: 'MOA & Articles Drafting', href: '/business-setup#business-services' },
-          { name: 'PRO & Sponsorships', href: '/business-setup#business-services' },
-          { name: 'Office Set Up Quotas', href: '/business-setup#business-services' },
+          { name: 'MOA & AOA', href: '/business-setup#business' },
+          { name: 'Immigration, PRO & Sponsorship', href: '/business-setup#business' },
+          { name: 'Office Set up and Visa Quota', href: '/business-setup#business' },
         ],
       },
       {
         title: 'Banking',
         links: [
-          { name: 'Corporate Account Opening', href: '/business-setup#banking-liaison' },
-          { name: 'Assignment of Authority', href: '/business-setup#banking-liaison' },
+          { name: 'Opening of Bank Account', href: '/business-setup#banking' },
         ],
       },
     ],

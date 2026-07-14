@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Landmark, Briefcase, FileText, ChevronRight } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const divisions = [
   {
     id: 'licensing',
-    title: 'Licensing & Formation',
+    title: 'Licensing',
     desc: 'Establish your presence in the UAE market with our streamlined incorporation framework. We guide you through selecting jurisdictions and obtaining licenses.',
     items: [
       { name: 'Mainland License', desc: 'Complete market integration without geographical limits. 100% foreign ownership allowed for commercial & industrial licenses.' },
@@ -13,22 +14,21 @@ const divisions = [
     ]
   },
   {
-    id: 'business-services',
-    title: 'Corporate Secretariat Services',
+    id: 'business',
+    title: 'Business Services',
     desc: 'All structural, legal, and operational documents handled by our senior paralegal staff to secure local compliance certificates.',
     items: [
-      { name: 'Articles of Association (AOA) & MOA', desc: 'Bespoke corporate bylaws drafting and notarization matching modern legal benchmarks.' },
-      { name: 'PRO & Corporate Sponsorships', desc: 'Direct liaisons with UAE Immigration, Ministry of Human Resources, and Municipalities.' },
-      { name: 'Office Procurement Solutions', desc: 'Sourcing of physical, virtual, or co-working space parameters matching regulatory requirements.' }
+      { name: 'MOA & AOA', desc: 'Bedrock of corporate governance and operational scope. Activity Mapping, Capitalization structures, and digital notarization.' },
+      { name: 'Immigration, PRO & Sponsorship', desc: 'Corporate Sponsorship, Local Service Agent (LSA) agreements, Establishment Cards, MoHRE files, and residency visas.' },
+      { name: 'Office Set up and Visa Quota', desc: 'Commercial Lease Agreements (Ejari/Lease), spatial quota optimization calculations, Tasheel quota filing, and Taq\'eem site inspections.' }
     ]
   },
   {
-    id: 'banking-liaison',
+    id: 'banking',
     title: 'Corporate Banking Introductions',
     desc: 'Unlocking access to tier-1 commercial banking institutions. We resolve KYC complexities and structure secure asset controls.',
     items: [
-      { name: 'Bank Account Openings', desc: 'Direct corporate manager introductions to ENBD, FAB, ADCB, and Mashreq.' },
-      { name: 'Assignment of Authority & Signatory Codes', desc: 'Structuring corporate bylaws to match multi-jurisdictional compliance frameworks.' }
+      { name: 'Opening of Bank Account', desc: 'Comprehensive substance dossier compilation, Ejari physical verification, corporate business plan presentation, Relationship Manager KYC interview, and compliance audits.' }
     ]
   }
 ];
@@ -168,15 +168,17 @@ export default function BusinessSetup() {
   const [activityType, setActivityType] = useState('Commercial');
   const [bankingAssistance, setBankingAssistance] = useState(true);
 
+  const location = useLocation();
+
   useEffect(() => {
-    const hash = window.location.hash;
+    const hash = location.hash;
     if (hash) {
       const cleanHash = hash.replace('#', '');
-      if (cleanHash.includes('setup') || cleanHash.includes('business') || cleanHash.includes('mainland') || cleanHash.includes('economic-zone') || cleanHash.includes('moa') || cleanHash.includes('aoa') || cleanHash.includes('open-bank') || cleanHash.includes('banking')) {
+      if (cleanHash.includes('setup') || cleanHash.includes('business') || cleanHash.includes('mainland') || cleanHash.includes('licensing') || cleanHash.includes('moa') || cleanHash.includes('aoa') || cleanHash.includes('bank') || cleanHash.includes('banking')) {
         if (cleanHash.includes('moa') || cleanHash.includes('aoa') || cleanHash.includes('pro') || cleanHash.includes('office') || cleanHash.includes('immigration')) {
-          setActiveDiv('business-services');
+          setActiveDiv('business');
         } else if (cleanHash.includes('bank') || cleanHash.includes('banking') || cleanHash.includes('authority')) {
-          setActiveDiv('banking-liaison');
+          setActiveDiv('banking');
         } else {
           setActiveDiv('licensing');
         }
@@ -186,7 +188,7 @@ export default function BusinessSetup() {
         }
       }
     }
-  }, []);
+  }, [location.hash]);
 
   // UAE Incorporation Cost Estimates
   // Licensing
