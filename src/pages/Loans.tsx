@@ -102,6 +102,10 @@ const loanCategories: LoanCategory[] = [
             desc: 'We pitch client’s profile to the specific banks offering the lowest reducing interest rates.'
           },
           {
+            title: 'Eligibility & Compatibility Check',
+            desc: 'We assess client’s eligibility for the maximum required loan amount across compatible financial institutions by analyzing client’s profile and salary structure.'
+          },
+          {
             title: 'Liability Letter Processing',
             desc: 'We guide client to coordinate with current banks to ensure the client gets accurate, timely Liability Letters with the correct payout figures.'
           },
@@ -110,8 +114,16 @@ const loanCategories: LoanCategory[] = [
             desc: 'We review the strict timeline between getting your liability letters and securing the buyout funds to prevent the letters from expiring.'
           },
           {
+            title: 'Security Cheque',
+            desc: 'Once soft approval is obtained from the financial institution, security cheque and Direct Debit Authority (DDA) is supposed to be submitted to the concern financial institution.'
+          },
+          {
             title: 'Liability Closure & Clearance Tracking',
             desc: 'Once the buyout is approved, we don\'t just stop there. We guide you through obtaining your final Clearance Letters from your old banks and ensuring your AECB credit report updates correctly to show the old accounts as closed.'
+          },
+          {
+            title: 'Loan amount disbursal',
+            desc: 'Our Team assists the client till the approved loan amount is disbursed from the concern financial institution.'
           }
         ]
       }
