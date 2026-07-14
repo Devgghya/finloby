@@ -340,12 +340,12 @@ const loanCategories: LoanCategory[] = [
     title: 'Home Loans & Mortgages',
     subcategories: [
       {
-        name: 'Home Loans & Mortgages',
-        desc: 'A secured retail financing facility provided by licensed financial institutions specifically for purchasing, constructing, or refinancing residential property. The property itself serves as collateral, and the loan is heavily regulated by the Central Bank of the UAE (CBUAE) to ensure market stability.',
+        name: 'Home Loan',
+        desc: 'Home Loan (Mortgage Loan) is a secured retail financing facility provided by licensed financial institutions to individuals (UAE Nationals, residents, resident expatriates, or non-residents) specifically for purchasing, constructing, or refinancing residential property. The property itself serves as the underlying collateral, and the loan is heavily regulated by the Central Bank of the UAE (CBUAE) to ensure market stability and prevent predatory lending.',
         steps: [
           {
-            title: 'The Two Structural Forms Available',
-            desc: 'Conventional Mortgages (standard loan where the bank charges interest) vs. Islamic Mortgages (Sharia-compliant Murabaha or Ijara lease-to-own structure, where the bank sells/leases the property at a fixed profit margin).'
+            title: 'The Two Structural Forms',
+            desc: 'UAE banks offer two legal and financial pathways to a mortgage:\nConventional Mortgages:\nA standard loan where the bank charges interest\nIslamic Mortgage (Sharia-Compliant):\nStructured as a Murabaha (cost-plus profit) or Ijara (lease-to-own). Instead of charging interest, the bank buys the property and sells or leases it back to the customer at a profit margin.'
           },
           {
             title: 'Review of Profile & Documents',
@@ -357,31 +357,31 @@ const loanCategories: LoanCategory[] = [
           },
           {
             title: 'Review of Critical Banking Requirements',
-            desc: 'Salaried residents require a minimum salary of AED 10,000–15,000. AECB Credit Scores are heavily scrutinised (missed payments will stall application). Mandatory Life Insurance is legally required by UAE banks to cover outstanding debt.'
+            desc: 'To qualify for a home loan in the UAE, banks strictly evaluate:\n1. Minimum Salary: Usually starts at AED 10,000 to AED 15,000 per month for salaried residents.\n2. AECB Credit Score: The Al Etihad Credit Bureau score is heavily scrutinise; a history of bounced cheques or missed card payments will stall an application.\n3. Mandatory Life Insurance: UAE banks legally require you to take out a mortgage protection life insurance policy assigned to the bank to cover the outstanding debt in the event of death.'
           },
           {
             title: 'Loan Tenure & Age Caps',
-            desc: 'The maximum allowable lifespan for a residential mortgage is 25 years. The loan must be fully repaid before the borrower reaches age 65 (salaried) or age 70 (self-employed).'
+            desc: 'The maximum allowable lifespan for a residential mortgage is 25 years. Furthermore, the loan must be fully repaid before the borrower reaches:\n1. Age 65 for salaried individuals.\n2. Age 70 for self-employed individuals.'
           },
           {
             title: 'Review of Loan-to-Value (LTV) Caps',
-            desc: 'CBUAE dictates LTV limits: Expat Residents get max 75% LTV (<5M) or 65% LTV (>5M). UAE Nationals get max 80% LTV (<5M) or 70% LTV (>5M). Subsequent properties are capped at 60% LTV, and off-plan properties are capped at 50% LTV.'
+            desc: 'The CBUAE dictates exactly how much a bank can lend relative to the property\'s independent valuation. You cannot borrow 100% of the property value. The limits scale based on nationality, property price, and whether it’s your first home:\n1. Expatriate Residents (First Property):\na. Value under AED 5 Million: Maximum 75% LTV (25% down payment required).\nb. Value over AED 5 Million: Maximum 65% LTV (35% down payment required).\n2. UAE Nationals (First Property):\na. Value under AED 5 Million: Maximum 80% LTV (20% down payment required).\nb. Value over AED 5 Million: Maximum 70% LTV (30% down payment required).\n3. Second/Subsequent Properties (Investors):\nCapped at 60% LTV for both expats and UAE nationals.\n4. Off-Plan Properties:\nStricter rules apply to under-construction properties, universally capped at 50% LTV.'
           },
           {
-            title: 'Banking Pre-Approval (Borrower Assessment)',
-            desc: 'KYC check and document compilation (salary certificates for salaried; audited financials, corporate bank statements, trade licenses for self-employed). We package the underwriting file and coordinate with the bank to obtain the formal Pre-Approval Letter (valid for 60 to 90 days).'
+            title: 'Banking Pre-Approval (The "Borrower" Assessment)',
+            desc: 'The goal is to secure a formal commitment from the lender regarding the client’s creditworthiness.\n1. KYC & Document Compilation:\nWe help gather and verify the compliance package based on the profile:\na. Salaried Expat: Salary certificates, 6 months of bank statements, payslips, and continuous employment records.\nb. Self-Employed/Business Owners: Audited financial statements, corporate bank statements (12 months), trade licenses, and MOA/Share Certificates.\n2. Application Submission & Liaison:\nWe help package the underwriting file and submit it to the selected bank(s). We Manage all query-handling and clarify income discrepancies with the bank’s assigned credit team.\n3. Pre-Approval Letter Issuance:\nWe help client in obtaining the formal Pre-Approval Letter. Ensuring the client understands its parameters (typically valid for 60 to 90 days), allowing them to confidently place an offer on a property.'
           },
           {
-            title: 'Property Selection & Underwriting (Asset Assessment)',
-            desc: 'Transaction advisory on the Memorandum of Understanding (MoU / Form F). We coordinate the bank\'s technical property valuation to prevent valuation shortfalls, and secure the Final Offer Letter (FOL), reviewing lock-in clauses and early settlement fees (capped at 1% or AED 10,000).'
+            title: 'Property Selection & Underwriting (The "Asset" Assessment)',
+            desc: '1. Transaction Advisory (Form F / MoU): Once the client identifies a property, we review the Memorandum of Understanding (Form F) before they sign it.\n2. Bank Valuation Coordination:\nWe coordinate and Initiate and monitor the bank’s independent technical property valuation to ensure the asset\'s appraised value matches the agreed purchase price (preventing a "valuation shortfall" where the client would have to plug the gap with cash).\n3. Final Offer Letter (FOL): We help client in securing the final binding mortgage contract from the bank. We then review the fine print, specifically checking lock-in periods, early settlement fees (capped by the CBUAE at 1% or AED 10,000), and mandatory life/property insurance premiums.'
           },
           {
             title: 'Execution, Settlement & Handover',
-            desc: 'Pre-closing audits between buyer, seller, broker, and bank developers to align payout manager\'s cheques. We guide you through the DLD Trustee Office for DLD Title Transfer (settling old mortgages, registering bank security blocks, and issuing the new Title Deed).'
+            desc: 'The goal is the successful legal transfer of title and funds disbursement.\n1. Pre-Closing Audits:\nCoordination between the buyer, seller, real estate broker, and bank developers to align the final payout figures. Ensure all manager\'s cheques are cut precisely.\n2. DLD Trust Deed & Title Transfer: We guide the client through the final step at a Dubai Land Department (DLD) Trustee Office. Oversee the simultaneous actions of:\na. The bank settling the existing owner\'s mortgage (if applicable).\nb. The registration of the bank\'s security block (the mortgage) on the property.\nc. The issuance of the new Title Deed in client\'s name.'
           },
           {
             title: 'Post-Disbursement Review (Portfolio Management)',
-            desc: 'EIBOR tracking to evaluate buy-outs or balance transfers to lower-cost lenders if rates drop. We also advise on Equity Release strategies to unlock cash if the property appreciates substantially.'
+            desc: 'Our relationship doesn\'t end at handover. This phase ensures retention.\n1. EIBOR Tracking & Re-Financing Reviews: We monitor macro interest rate environments. If market rates drop significantly, we proactively advise the client on mortgage buy-outs or balance transfers to lower-cost lenders.\n2. Equity Release Strategies: If the property appreciates substantially over the subsequent years, we consult the client on structuring an "Equity Release" loan to unlock capital for future corporate or real estate investments.'
           }
         ]
       }
