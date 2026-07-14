@@ -2,41 +2,47 @@ import { useState, useEffect } from 'react';
 import { ShieldCheck, ArrowRight, Calculator, Shield } from 'lucide-react';
 import SEO from '../components/SEO';
 
-const services = [
+interface ServiceStep {
+  title: string;
+  desc: string;
+  subpoints?: string[];
+}
+
+interface ServiceItem {
+  id: string;
+  title: string;
+  tagline: string;
+  desc: string;
+  processTitle: string;
+  steps: ServiceStep[];
+}
+
+const services: ServiceItem[] = [
   {
     id: 'debt-counselling',
     title: 'Debt Counselling',
     tagline: 'A Detailed Consultation Session',
-    desc: "Debt counselling is a supportive, confidential process where financial experts evaluate your income, expenses, and liabilities to help you regain control of your money. It focuses on teaching you budget management, restructuring your habits, and laying the groundwork for customized repayment strategies to eliminate your financial stress.",
+    desc: 'Debt counselling is a supportive, confidential process where financial experts evaluate your income, expenses, and liabilities to help you regain control of your money. It focuses on teaching you budget management, restructuring your habits, and laying the groundwork for customized repayment strategies to eliminate your financial stress.',
     processTitle: 'Counselling Process',
     steps: [
       {
-        title: 'Personal & Professional Profiling',
+        title: '1. Personal & Professional Profiling',
         desc: 'We begin with a basic overview of your personal and professional life. Understanding your career stability, industry, and personal background helps us tailor a strategy that aligns with your specific circumstances.'
       },
       {
-        title: 'Expense & Liability Assessment',
-        desc: 'Next, we map out your complete financial picture. We look closely at your obligations:',
-        subpoints: [
-          'Personal Expenses: Your daily and monthly cost of living.',
-          'Existing Debts: Your current financial liabilities, outstanding balances, and creditor terms.'
-        ]
+        title: '2. Expense & Liability Assessment',
+        desc: 'Next, we map out your complete financial picture. We look closely at your:\nPersonal Expenses: Your daily and monthly cost of living.\nExisting Debts: Your current financial liabilities, outstanding balances, and creditor terms.'
       },
       {
-        title: 'Income Evaluation',
-        desc: 'To understand what you can comfortably afford, we review all your revenue streams:',
-        subpoints: [
-          'Personal Income: Your primary salary or wages.',
-          'Consolidated Household Income: Combined income from your household, if applicable.',
-          'Extra Sources: Any side hustles, investments, or passive income.'
-        ]
+        title: '3. Income Evaluation',
+        desc: 'To understand what you can comfortably afford, we review all your revenue streams. This includes your:\nPersonal Income: Your primary salary or wages.\nConsolidated Household Income: Combined income from your household, if applicable.\nExtra Sources: Any side hustles, investments, or passive income.'
       },
       {
-        title: 'Consolidated Review',
-        desc: "We bring it all together. By contrasting your total consolidated income against your total debts and living expenses, we get an accurate, bird's-eye view of your financial health."
+        title: '4. Consolidated Review',
+        desc: 'We bring it all together. By contrasting your total consolidated income against your total debts and living expenses, we get an accurate, bird\'s-eye view of your financial health.'
       },
       {
-        title: 'Tailored Debt Solutions',
+        title: '5. Tailored Debt Solutions',
         desc: 'With a clear picture in place, we define your next steps. We present you with practical, structured debt solutions such as consolidation plans or structured repayment programs—designed to wipe out your debt and secure your financial future.'
       }
     ]
@@ -49,23 +55,23 @@ const services = [
     processTitle: 'Our Debt Consolidation Process',
     steps: [
       {
-        title: 'Transition from Counselling',
+        title: '1. Transition from Counselling',
         desc: 'After your Debt Counselling session, we take your fully mapped financial profile and transition you smoothly into the consolidation phase.'
       },
       {
-        title: 'Document & Liability Information',
+        title: '2. Document & Liability information',
         desc: 'We gather all necessary data and documentation regarding your existing liabilities. This includes statements, outstanding balances, and terms from your current creditors so we have an exact picture of what you owe.'
       },
       {
-        title: 'Comprehensive Eligibility Check',
-        desc: 'We run a deep dive eligibility check to analyse your official credit history (such as your AECB Report in the UAE), reviewing your recent bank statements, and evaluating your debt-to-burden ratio (DBR).'
+        title: '3. Comprehensive Eligibility Check',
+        desc: 'We run deep dive eligibility check to analyse your official credit history (such as your AECB Report in the UAE), reviewing your recent bank statements, and evaluating your debt-to-burden ratio (DBR).'
       },
       {
-        title: 'Bank Policy Compatibility & Due Diligence',
-        desc: "We don't believe in guesswork. Our team performs strict due diligence, matching your financial profile against the lending criteria and risk policies of all major banks to find the highest probability of approval."
+        title: '4. Bank Policy Compatibility & Due Diligence',
+        desc: 'We don\'t believe in guesswork. Our team performs strict due diligence, matching your financial profile against the lending criteria and risk policies of all major banks to find the highest probability of approval.'
       },
       {
-        title: 'Expert Approved Action Plan',
+        title: '5. Expert Approved Action Plan',
         desc: 'Finally, our team of seasoned financial experts designs a customized consolidation action plan. Once approved by our internal specialists, we execute the strategy to merge your debts and lower your financial stress.'
       }
     ]
@@ -78,20 +84,20 @@ const services = [
     processTitle: 'Our Debt Settlement Process',
     steps: [
       {
-        title: 'Identifying "At-Risk" Debts',
+        title: '1. Identifying "At-Risk" Debts',
         desc: 'We immediately review and isolate the debts currently under the scanner, facing collection agencies, or at risk of legal action and collections. Prioritizing these "fire-zone" accounts ensures we protect you from escalating legal consequences.'
       },
       {
-        title: 'Creditor Coordination & Verification',
+        title: '2. Creditor Coordination & Verification',
         desc: 'We contact the concerned financial institutions directly to audit the current status of your debt file. This allows us to establish the exact, verified amount payable, stripping away unfair penalties or hidden fees.'
       },
       {
-        title: 'Aggressive Negotiation & Formal Offer',
-        desc: "Our experienced negotiators review to secure the maximum possible reduction on your outstanding balance. We don't stop until we secure a formal, written settlement offer from the bank or creditor confirming the reduced final settlement offer."
+        title: '3. Aggressive Negotiation & Formal Offer',
+        desc: 'Our experienced negotiators review to secure the maximum possible reduction on your outstanding balance. We don\'t stop until we secure a formal, written settlement offer from the bank or creditor confirming the reduced final settlement offer.'
       },
       {
-        title: 'Settlement & Final Clearance Letter',
-        desc: 'Based on the formal offer letter received, we proceed towards payment of the debt to settle and close the liability account. Once it is paid, we ensure the financial institution issues an official No Liability / Debt settlement letter. This vital document serves as your legal proof that the debt has been fully settled and closed forever.'
+        title: '4. Settlement & Final Clearance Letter',
+        desc: 'Based the formal offer letter received, we proceed towards payment of the debt to settle and close the liability account. Once it is paid, we ensure the financial institution issues an official No Liability / Debt settlement letter. This vital document serves as your legal proof that the debt has been fully settled and closed forever.'
       }
     ]
   },
@@ -99,23 +105,23 @@ const services = [
     id: 'debt-restructuring',
     title: 'Debt Restructuring',
     tagline: 'Convert High Cost Debt into One Lower EMI with Longer Tenure',
-    desc: 'Debt restructuring is a financial mechanism that alters the existing terms of your loans or credit facilities to make your repayments more manageable. If you are struggling to meet your monthly obligations but want to avoid default and pre-legal situations, restructuring allows you to renegotiate with creditors to extend the repayment duration with a reduced monthly instalment to match your current financial debt paying capacity.',
+    desc: 'Debt restructuring is a financial mechanism that alters the existing terms of your loans or credit facilities to make your repayments more manageable. If you are struggling to meet your monthly obligations but want to avoid default and pre-legal situations restructuring allows to renegotiate with creditors to extend the repayment duration with reduced monthly instalment to match your current financial debt paying capacity.',
     processTitle: 'Debt Restructuring Process',
     steps: [
       {
-        title: 'Immediate Expert Consultation',
-        desc: 'Time is of the essence when managing financial strain. Book an immediate consultation with experienced financial advisors without delay so the situation can be evaluated before missing any crucial payments.'
+        title: '1. Immediate Expert Consultation',
+        desc: 'Time is of the essence when managing financial strain. Book an immediate consultation with experienced financial advisors without delay so situation can be evaluated before missing any crucial payments.'
       },
       {
-        title: 'Comprehensive Financial Review',
+        title: '2. Comprehensive Financial Review',
         desc: 'We dive deep into your current financial reality. Our team conducts a thorough review of all your outstanding debts and liabilities, contrasted against your verified present income streams.'
       },
       {
-        title: 'Income-to-Debt Compatibility Check',
-        desc: 'We analyze the math behind your money. By testing the compatibility between your total debt obligations and your actual net income, we calculate a realistic, sustainable monthly payment that covers your living expenses while matching creditors\' terms.'
+        title: '3. Income-to-Debt Compatibility Check',
+        desc: 'We analyze the math behind your money. By testing the compatibility between your total debt obligations and your actual net income, we calculate a realistic, sustainable monthly payment that covers your living expenses while matching creditors terms.'
       },
       {
-        title: 'In-House Strategy & Bank Negotiation',
+        title: '4. In-House Strategy & Bank Negotiation',
         desc: 'After a robust in-house consultancy session to lock down your custom restructuring strategy, our expert financial consultants initiate formal discussions with your concerned financial institutions. We advocate on your behalf to negotiate to structure newly modified terms that fit your budget.'
       }
     ]

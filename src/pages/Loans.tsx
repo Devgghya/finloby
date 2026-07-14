@@ -280,34 +280,60 @@ const loanCategories: LoanCategory[] = [
     title: 'Vehicle & Fleet Finance',
     subcategories: [
       {
-        name: 'Vehicle Loans (Auto Loan / Auto Finance)',
+        name: 'Vehicle Loan',
         desc: 'A Vehicle Loan (also known as an Auto Loan or Auto Finance) is a personal, secured loan designed for individual buyers looking to finance a single vehicle for personal use.',
         steps: [
           {
-            title: 'Review of Profile & Documents',
+            title: 'Step 1: Review of Profile & Documents',
             desc: 'We thoroughly review client’s personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures.'
           },
           {
-            title: 'DBR & Central Bank Compliance Check',
+            title: 'Step 2: DBR & Central Bank Compliance Check',
             desc: 'We calculate your exact Debt Burden Ratio (DBR) to ensure your application perfectly aligns with UAE Central Bank policies. Client’s total monthly financial commitments (including existing loans and credit cards) cannot exceed 50% of your gross monthly income. Your final vehicle loan eligibility and maximum monthly instalment will depend entirely on the remaining DBR room you have left.'
           },
           {
-            title: 'Down Payment and Repayment duration',
-            desc: 'We work on your profile to lower your upfront costs as much as possible, targeting down payment options as low as 5% to 10% based on your profile and banking policies. Banking repayment structures are set at a highly manageable 48 months, with selected leading banks allowing you to stretch your tenure to the absolute maximum of 60 months for the lowest possible monthly installment.'
+            title: 'Step 3: Down Payment and Repayment duration',
+            desc: 'We work on your profile to lower your upfront costs as much as possible, targeting down payment options as low as 5% to 10% based on your profile and banking policies.\nBanking repayment structures are set at a highly manageable 48 months, with selected leading banks allowing you to stretch your tenure to the absolute maximum of 60 months for the lowest possible monthly installment.'
           },
           {
-            title: 'Disbursement of Loan amount',
+            title: 'Step 4: Disbursement of Loan amount',
             desc: 'Once you have selected your vehicle, the loan amount is disbursed directly to the showroom or private seller. Simultaneously, the vehicle registration process begins. The car is officially transferred into your name at the RTA, with the financing bank registered as the primary lien holder until the loan is fully repaid.'
           },
           {
-            title: 'Individual Vehicle Insurance',
+            title: 'Step 5: Individual Vehicle Insurance',
             desc: 'We assist you in securing a comprehensive insurance policy for the vehicle, vehicle registration and transfer along with processing of Salik Card.'
           }
         ]
       },
       {
-        name: 'Fleet & Commercial Vehicle Financing',
-        desc: 'Customized credit lines and asset-backed term financing structured for commercial fleets, logistics operations, and company transport fleets at preferred institutional rates.'
+        name: 'Fleet Loan',
+        desc: 'A Fleet Loan is a comprehensive, structured credit facility tailored for companies that need to acquire, manage, or upgrade a large group of vehicles simultaneously. Ideal for logistics, rent a car companies, and large-scale distribution businesses in Dubai, fleet financing allows you to bundle multiple vehicles into a single, manageable loan agreement with optimized interest rates and unified repayment terms.',
+        steps: [
+          {
+            title: 'Step 1: Fleet Requirement & Capacity Planning',
+            desc: 'We evaluate your entire business expansion plan. Rather than looking at one vehicle, we assess how a fleet addition impacts your projected revenue, operational costs, and overall debt-service coverage ratio (DSCR).'
+          },
+          {
+            title: 'Step 2: Corporate Credit Line Sourcing',
+            desc: 'Instead of a basic car loan, we negotiate a Fleet Credit Facility or Master Lease/Loan Agreement with UAE banks. This gives your business an approved financial umbrella/limit that you can draw down from as you add vehicles.'
+          },
+          {
+            title: 'Step 3: Advanced Documentation & Business Case',
+            desc: 'In addition to Trade Licenses and bank statements, we help you prepare a solid business case. This may include existing client contracts (proving the need for a fleet), fleet management profiles, and bulk proforma invoices from commercial dealers.'
+          },
+          {
+            title: 'Step 4: Commercial Credit Committee Review',
+            desc: 'Fleet loans involve higher capital risks, meaning they go to senior bank credit committees. We proactively manage this intense underwriting process, defending your business model to secure a high-limit fleet approval.'
+          },
+          {
+            title: 'Step 5: Fleet Insurance & Global Mortgage',
+            desc: 'We negotiate bulk, fleet-wide commercial insurance policies to save you premium costs. The bank establishes a global mortgage framework over the incoming asset lot.'
+          },
+          {
+            title: 'Step 6: Phased Disbursement & Fleet Deployment',
+            desc: 'Disbursement can happen all at once or in phases. As the dealers ready the batches of vehicles, the bank releases funds against the master credit line. Your fleet is registered, tagged, and deployed simultaneously.'
+          }
+        ]
       }
     ]
   },
