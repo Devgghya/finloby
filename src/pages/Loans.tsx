@@ -575,18 +575,66 @@ export default function Loans() {
                              <div className="space-y-4 pl-4 border-l border-[#C5A059]/10 mt-4">
                                {sub.steps.map((step, sIdx) => {
                                  const cleanedTitle = step.title.replace(/^(?:Step\s+\d+:\s*|\d+\.\s*)/i, '');
+                                 // Check if desc has lists or subpoints
+                                 const lines = step.desc.split('\n');
+                                 
                                  return (
                                    <div key={sIdx} className="flex gap-3.5 items-start">
                                      <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/25 text-[#C5A059] flex items-center justify-center text-[10px] font-mono font-bold">
                                        {sIdx + 1}
                                      </span>
-                                     <div>
-                                       <h5 className="text-xs font-sans font-semibold text-white mb-0.5">
+                                     <div className="flex-1">
+                                       <h5 className="text-xs font-sans font-semibold text-white mb-1">
                                          {cleanedTitle}
                                        </h5>
-                                       <p className="text-[11px] font-light text-[#FBF9F4]/50 leading-relaxed">
-                                         {step.desc}
-                                       </p>
+                                       <div className="text-[11px] font-light text-[#FBF9F4]/60 leading-relaxed space-y-2">
+                                         {lines.map((line, lIdx) => {
+                                           const trimmed = line.trim();
+                                           if (!trimmed) return null;
+                                           
+                                           // Check if line is a subpoint like '1. ', 'a. ', 'b. ' or starting with bullet points
+                                           const isNumberedSub = /^\d+\.\s+/.test(trimmed);
+                                           const isAlphaSub = /^[a-z]\.\s+/.test(trimmed);
+                                           const isBulletSub = /^[•\-]\s+/.test(trimmed);
+                                           
+                                           if (isNumberedSub) {
+                                             const content = trimmed.replace(/^\d+\.\s+/, '');
+                                             return (
+                                               <div key={lIdx} className="pl-4 flex gap-2 text-[10px] text-[#FBF9F4]/50">
+                                                 <span className="text-[#C5A059] font-semibold">{trimmed.match(/^\d+\./)?.[0]}</span>
+                                                 <span>{content}</span>
+                                               </div>
+                                             );
+                                           }
+                                           
+                                           if (isAlphaSub) {
+                                             const content = trimmed.replace(/^[a-z]\.\s+/, '');
+                                             return (
+                                               <div key={lIdx} className="pl-8 flex gap-2 text-[10px] text-[#FBF9F4]/45">
+                                                 <span className="text-[#C5A059] font-medium">{trimmed.match(/^[a-z]\./)?.[0]}</span>
+                                                 <span>{content}</span>
+                                               </div>
+                                             );
+                                           }
+                                           
+                                           if (isBulletSub) {
+                                             const content = trimmed.replace(/^[•\-]\s+/, '');
+                                             return (
+                                               <div key={lIdx} className="pl-4 flex gap-2 text-[10px] text-[#FBF9F4]/50">
+                                                 <span className="text-[#C5A059]">•</span>
+                                                 <span>{content}</span>
+                                               </div>
+                                             );
+                                           }
+                                           
+                                           // Normal line
+                                           return (
+                                             <p key={lIdx}>
+                                               {trimmed}
+                                             </p>
+                                           );
+                                         })}
+                                       </div>
                                      </div>
                                    </div>
                                  );

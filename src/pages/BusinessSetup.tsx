@@ -457,18 +457,63 @@ export default function BusinessSetup() {
                                <div className="space-y-4 pl-4 border-l border-[#C5A059]/10 mt-6 text-left">
                                  {sub.steps.map((step, sIdx) => {
                                    const cleanedTitle = step.title.replace(/^(?:Step\s+\d+:\s*|\d+\.\s*)/i, '');
+                                   const lines = step.desc.split('\n');
+                                   
                                    return (
                                      <div key={sIdx} className="flex gap-3 items-start">
                                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/25 text-[#C5A059] flex items-center justify-center text-[10px] font-mono font-bold">
                                          {sIdx + 1}
                                        </span>
-                                       <div>
+                                       <div className="flex-1">
                                          <h5 className="text-[11px] font-sans font-semibold text-white mb-0.5">
                                            {cleanedTitle}
                                          </h5>
-                                         <p className="text-[10px] font-light text-[#FBF9F4]/55 leading-relaxed">
-                                           {step.desc}
-                                         </p>
+                                         <div className="text-[10px] font-light text-[#FBF9F4]/55 leading-relaxed space-y-1.5">
+                                           {lines.map((line, lIdx) => {
+                                             const trimmed = line.trim();
+                                             if (!trimmed) return null;
+                                             
+                                             const isNumberedSub = /^\d+\.\s+/.test(trimmed);
+                                             const isAlphaSub = /^[a-z]\.\s+/.test(trimmed);
+                                             const isBulletSub = /^[•\-]\s+/.test(trimmed);
+                                             
+                                             if (isNumberedSub) {
+                                               const content = trimmed.replace(/^\d+\.\s+/, '');
+                                               return (
+                                                 <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
+                                                   <span className="text-[#C5A059] font-semibold">{trimmed.match(/^\d+\./)?.[0]}</span>
+                                                   <span>{content}</span>
+                                                 </div>
+                                               );
+                                             }
+                                             
+                                             if (isAlphaSub) {
+                                               const content = trimmed.replace(/^[a-z]\.\s+/, '');
+                                               return (
+                                                 <div key={lIdx} className="pl-8 flex gap-2 text-[9px] text-[#FBF9F4]/40">
+                                                   <span className="text-[#C5A059] font-medium">{trimmed.match(/^[a-z]\./)?.[0]}</span>
+                                                   <span>{content}</span>
+                                                 </div>
+                                               );
+                                             }
+                                             
+                                             if (isBulletSub) {
+                                               const content = trimmed.replace(/^[•\-]\s+/, '');
+                                               return (
+                                                 <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
+                                                   <span className="text-[#C5A059]">•</span>
+                                                   <span>{content}</span>
+                                                 </div>
+                                               );
+                                             }
+                                             
+                                             return (
+                                               <p key={lIdx}>
+                                                 {trimmed}
+                                               </p>
+                                             );
+                                           })}
+                                         </div>
                                        </div>
                                      </div>
                                    );
