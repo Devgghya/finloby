@@ -122,90 +122,154 @@ const loanCategories: LoanCategory[] = [
     title: 'Business Loan',
     subcategories: [
       { 
-        name: 'Retail Business Loans', 
-        desc: 'Unsecured term loans, Merchant Point-of-Sale (POS) financing, Business Credit Cards, and working capital lines for companies with an annual turnover between AED 500,000 to AED 10–20 Million.',
+        name: 'Retail Business Loans (Micro & Small Enterprises)', 
+        desc: 'Target Profile:\nCompanies with an annual turnover between AED 500,000 to AED 10–20 Million.\n\nProduct Types:\nUnsecured term loans, Merchant Point-of-Sale (POS) financing, Business Credit Cards, and minor working capital lines.',
         steps: [
           {
-            title: 'Onboarding & Cash Flow Scrubbing',
-            desc: "We coordinate to run a check on both the Company's AECB score and the Principal Shareholder's personal AECB score, perform a thorough 12-month bounced cheque audit, and calculate the client's Average Quarterly Balance (AQB) run rate."
+            title: 'Phase 1: Onboarding & Cash Flow Scrubbing - AECB Alignment (Dual Scrutiny)',
+            desc: 'In Retail Loans, UAE banks rely heavily on "scorecard lending." We coordinate to run a check on both the Company’s AECB score and the Principal Shareholder\'s personal AECB score.'
           },
           {
-            title: 'Structuring & Solution Selection',
-            desc: 'If the client is in retail, F&B, or e-commerce, we guide them toward POS/Payment Gateway Loans. We perform VAT Return Triangulation to ensure revenues match FTA filings.'
+            title: 'Phase 1: Onboarding & Cash Flow Scrubbing - The "Bounced Cheque" Audit',
+            desc: 'We thoroughly review the last 12 months of bank statements. In the UAE, even one or two outward bounced cheques due to insufficient funds (EFSR) may trigger an automatic system rejection. We guide client to clean these up or wait out the cycle before applying.'
           },
           {
-            title: 'Fast-Track Packaging & Submission',
-            desc: 'We verify standard documents (valid Trade License, Ejari, MOA, and 6-12 months bank statements) and prepare the client for Personal Guarantee (PG) and security PDC structuring.'
+            title: 'Phase 1: Onboarding & Cash Flow Scrubbing - Average Quarterly Balance (AQB) Calculation',
+            desc: 'Calculate the client’s real monthly transactional run rate. Banks generally benchmark the loan amount against the client\'s AQB.'
           },
           {
-            title: 'Approval & Drawdown',
-            desc: "We monitor automated underwriting gates to ensure fast turnaround. Upon approval, we verify the bank's setup fees and insurance fees before signing the offer letter."
+            title: 'Phase 2: Structuring & Solution Selection - Traditional Unsecured vs. POS Financing',
+            desc: 'If the client is in retail, F&B, or e-commerce, we guide them toward POS/Payment Gateway Loans.'
+          },
+          {
+            title: 'Phase 2: Structuring & Solution Selection - VAT Return Triangulation',
+            desc: 'We guide client to ensure that the revenues reflected on the bank statements match the Federal Tax Authority (FTA) VAT returns perfectly. There are system in place to cross-verify VAT filings against statement inflows.'
+          },
+          {
+            title: 'Phase 3: Fast-Track Packaging & Submission - Document Standardization',
+            desc: 'We gather to verify the standard package required by Dubai retail underwriters: Valid Trade License, Ejari (commercial tenancy contract), Memorandum of Association (MOA), and 6–12 months of bank statements.'
+          },
+          {
+            title: 'Phase 3: Fast-Track Packaging & Submission - Personal Guarantee (PG) Structuring',
+            desc: 'We prepare the client for the mandatory signing of a Personal Guarantee and a security post-dated cheque (PDC) for the full loan value, a standard security mechanism in UAE retail banking as per service provider institutions, banking law and practice'
+          },
+          {
+            title: 'Phase 4: Approval & Drawdown - Turnaround Monitoring',
+            desc: 'Retail business loans are designed to be fast. We monitor automated underwriting gates. Upon approval, we cross check the setup fees and insurance fees before signing the offer letter.'
           }
         ]
       },
       { 
-        name: 'SME Business Loans', 
-        desc: 'Structured Trade Finance (Letters of Credit, LCs, Trust Receipts), Bank Guarantees, Overdrafts (OD), Asset/Equipment Financing, and Commercial Mortgages for medium & corporate enterprises with turnover up to AED 250 Million.',
+        name: 'SME Loans (Medium & Corporate Enterprises)', 
+        desc: 'Target Profile:\nCompanies with an annual turnover between AED 20 Million to AED 250 Million (aligned with the latest CBUAE SME Customer Protection Regulations).\n\nProduct Types:\nStructured Trade Finance (Letter of Credit, Trust Receipts), Bank Guarantees, Overdrafts (OD), Asset/Equipment Financing, and Commercial Mortgages.',
         steps: [
           {
-            title: 'Comprehensive Financial Diagnostics',
-            desc: 'We collect 2 to 3 years of audited financials from a UAE-registered auditor, verify that key credit parameters (DSCR > 1.25, Leverage Ratio < 3:1) are met, and conduct AML/KYC sanity checks to map Ultimate Beneficial Owners (UBOs).'
+            title: 'Phase 1: Comprehensive Financial Diagnostics - Audited Financials Reconciliation',
+            desc: 'SME Corporate loans cannot rely on bank statements alone. We need to collect 2 to 3 years of audited financials stamped by a UAE-registered auditor. Further, verification is required that key ratios meet UAE commercial banking credit parameters:\nDebt Service Coverage Ratio (DSCR): Ideally >1.25\nLeverage Ratio (Debt-to-Equity): Ideally <3:1'
           },
           {
-            title: 'Credit Facility Architecture',
-            desc: 'We package mixed facilities (Overdrafts for payroll, LCs for sourcing, and Trust Receipts to bridge clearing gaps) and identify corporate assets (mortgages, receivables factoring) to lower rates.'
+            title: 'Phase 1: Comprehensive Financial Diagnostics - Anti-Money Laundering (AML) & KYC Sanity Check',
+            desc: 'We ensure the Ultimate Beneficial Owners (UBOs) are clearly mapped. Verify that no corporate transactions originate from or link to sanctioned jurisdictions, ensuring complete alignment with CBUAE guideline.'
           },
           {
-            title: 'Information Memorandum (IM) & Risk Pitching',
-            desc: 'We write a comprehensive IM pitch deck detailing industry outlook, working capital cycles, and utilization plans, ensuring complete alignment with CBUAE SME Customer Protection Regulations.'
+            title: 'Phase 2: Credit Facility Architecture - Facility Bundling (The "Toolkit" Approach)',
+            desc: 'Rather than asking for a flat cash loan from institutes, we structure a mixed facility. For example, for an engineering or trading firm, package:\nAn Overdraft Line for local supplier payroll.\nLetters of Credit (LCs) for global sourcing.\nTrust Receipts (TR) to bridge the 60-to-90 day clearing gap.'
           },
           {
-            title: 'Committee Management & FL Execution',
-            desc: "We present the IM to corporate desks of major financial institutions to create a competitive bidding environment on EIBOR spreads, and review the Final Facility Letter (FL) to align covenants."
+            title: 'Phase 2: Credit Facility Architecture - Collateral & Security Asset Mapping',
+            desc: 'We identify clean corporate assets to lower the borrowing rate. This includes a registered mortgage on industrial warehouses, factories, office units, or a lien over receivables (Invoice Factoring).'
+          },
+          {
+            title: 'Phase 3: Information Memorandum (IM) & Risk Pitching - The IM Pitch Deck',
+            desc: 'Unlike retail, corporate SME loans require a formal human underwriting committee review. We guide Firm to write a comprehensive Information Memorandum detailing:\nIndustry outlook in the UAE/GCC market.\nWorking capital cycle (Days Inventory Outstanding + Days Sales Outstanding − Days Payable Outstanding).\nExplicit utilization plan for the requested facility.'
+          },
+          {
+            title: 'Phase 3: Information Memorandum (IM) & Risk Pitching - SME Customer Protection Adherence',
+            desc: 'We ensure the engagement aligns with the CBUAE SME Customer Protection Regulation (Circular 2/2026). We guide firm to confirm that the bank provides a clear, bilingual (Arabic/English) Key Facts Statement highlighting all transparent pricing, variable margin spreads over EIBOR, and covenants, while verifying that "tied-selling/bundling" of unrequested insurance products is avoided.'
+          },
+          {
+            title: 'Phase 4: Credit Committee Management & Facility Letter (FL) Execution - Lender RFP and Negotiation',
+            desc: 'Present the IM to multiple corporate desks to all major financial institutions to create a competitive bidding environment on the EIBOR margin spread.'
+          },
+          {
+            title: 'Phase 4: Credit Committee Management & Facility Letter (FL) Execution - Covenant Management',
+            desc: 'Review the Final Facility Letter carefully. Ensure that the financial covenants (e.g., maintaining a specific minimum turnover through the lending bank’s account) are realistic and will not trigger technical defaults for client during seasonal lulls.'
           }
         ]
       },
       { 
-        name: 'Project Finance', 
-        desc: 'Structured as Limited-Recourse or Non-Recourse Financing where the bank relies strictly on the future cash flows generated by the project, lending directly to a Special Purpose Vehicle (SPV) created solely for massive manufacturing, infrastructure, or real estate projects.',
+        name: 'Project Finance (Special Purpose Vehicles & Infrastructure)', 
+        desc: 'Target Profile:\nMassive manufacturing setups, infrastructure developments, or large-scale real estate projects.\n\nKey UAE Concept:\nThe bank lends directly to a Special Purpose Vehicle (SPV) created solely for the project, isolating the parent company\'s balance sheet from risk.',
         steps: [
           {
-            title: 'Feasibility Modeling & Bankability Check',
-            desc: 'We build a 3-way financial model mapping out income statements, balance sheets, and FCFE (min. DSCR of 1.30x to 1.50x). We help secure binding Off-Take Agreements and structure sponsor equity-to-debt ratios (30:70 or 40:60).'
+            title: 'Phase 1: Feasibility Modeling & Bankability Check - The 3-Way Financial Model',
+            desc: 'We build a meticulous financial model mapping out the Project\'s Income Statement, Balance Sheet, and Free Cash Flow to Equity (FCFE). UAE underwriting committees require a minimum Debt Service Coverage Ratio (DSCR) of 1.30× to 1.50×.'
           },
           {
-            title: 'Risk Allocation & Legal Architecture',
-            desc: 'We guide the client to open a project-specific Escrow account, and assemble comprehensive security packages (land mortgages, EPC contract assignments, and SPV share pledges).'
+            title: 'Phase 1: Feasibility Modeling & Bankability Check - Off-Take Agreement Structuring',
+            desc: 'Banks in Dubai rarely fund projects based on speculation. We help secure a binding Off-Take Agreement (a guarantee from an eligible buyer to purchase the project’s future output) to make the deal "bankable."'
           },
           {
-            title: 'Due Diligence & Consortium Syndication',
-            desc: 'We coordinate external technical advisors to vet construction timelines/costs and guide the client to pitch the IM to a consortium of local banks to arrange Syndicated Loan Facilities for projects exceeding AED 100 Million.'
+            title: 'Phase 1: Feasibility Modeling & Bankability Check - Equity to Debt Structuring',
+            desc: 'We help and guide ensure the sponsors have their equity portion ready. Dubai banks typically require a 30:70 or 40:60 Equity-to-Debt ratio. The bank will mandate that the client\'s equity is injected and utilized before a single bank dirham is disbursed.'
           },
           {
-            title: 'Tranche Disbursal & Drawdown Management',
-            desc: "We coordinate with the bank's project monitors to release funding in tranches based on audited, certified construction milestones rather than a lump sum."
+            title: 'Phase 2: Risk Allocation & Legal Architecture - SPV & Escrow Account Setup',
+            desc: 'We guide the client to open a project-specific Escrow Account with an authorized Dubai bank. All project inflows and construction outflows must legally clear through this account.'
+          },
+          {
+            title: 'Phase 2: Risk Allocation & Legal Architecture - Collateral & Security Package Assembly',
+            desc: 'Unlike corporate loans, standard project finance utilizes a comprehensive security bundle under UAE law:\nMortgage over the project land/concession rights.\nAssignment of Project Contracts: Legal assignment of the EPC (Engineering, Procurement, Construction) contract and insurance policies directly to the lender.\nShare Pledge: A registered pledge over the shares of the SPV with the relevant authority (e.g., DED or DIFC).'
+          },
+          {
+            title: 'Phase 3: Due Diligence & Bank Consortium Syndication - Independent Engineers/Valuers',
+            desc: 'Dubai banks appoints an external Technical Advisor (such as a certified engineering firm) at the client\'s expense to vet the construction timelines and cost estimates.'
+          },
+          {
+            title: 'Phase 3: Due Diligence & Bank Consortium Syndication - Information Memorandum (IM) Pitching',
+            desc: 'For projects exceeding AED 100 Million, we guide firm to pitch the IM to a consortium of local banks (e.g., Emirates NBD, FAB, ADCB) to arrange a Syndicated Loan Facility, mitigating single-bank risk exposure.'
+          },
+          {
+            title: 'Phase 4: Tranche Disbursal & Drawdown Management - Progress-Based Milestone Releases',
+            desc: 'Funds are not released in a lump sum. We coordinate with the bank\'s project monitors to release funding in tranches based on audited, certified construction milestones.'
           }
         ]
       },
       { 
-        name: 'Machinery Finance', 
-        desc: 'Treated as traditional Asset-Backed Lending (ABL) relying on the equipment itself as collateral, or Sharia-compliant lease-to-own (Ijara) structures where the yellow goods, production lines, or medical tech represent the main security.',
+        name: 'Machinery & Heavy Equipment Finance', 
+        desc: 'Target Profile:\nConstruction, logistics, healthcare, and industrial manufacturing firms acquiring yellow goods, production lines, or medical tech.\n\nKey Dubai Concept:\nThis is an Asset-Backed Loan (ABL) or Islamic Lease-to-Own (Ijara) where the asset itself represents the main security.',
         steps: [
           {
-            title: 'Procurement & Asset Verification',
-            desc: "We ensure the machinery vendor is on the bank's pre-approved panel (structuring LCs for overseas suppliers) and guide the client to budget for mandatory equity down payments (75% to 90% LTV)."
+            title: 'Phase 1: Procurement & Asset Verification - Approved Dealer Validation',
+            desc: 'Dubai banks maintain strict "Approved Supplier/Manufacturer Lists." We ensure the machinery vendor is on the selected bank\'s pre-approved panel (e.g., RAKBANK or CBI). Buying from unlisted overseas suppliers requires Letter of Credit (LC) structuring.'
           },
           {
-            title: 'Registry & Legal Compliance',
-            desc: 'We conduct asset title searches and manage the possessory pledge/hypothecation registration on the EIRC registry. We structure amortization schedules to match the useful life of the asset (4 to 7 years cap).'
+            title: 'Phase 1: Procurement & Asset Verification - Down Payment & Loan-to-Value (LTV) Optimization',
+            desc: 'We guide to budget for the mandatory equity down payment. Dubai asset-backed structures generally provide an LTV of 75% to 90%, meaning the client must pay 10% to 25% upfront directly to the dealer.'
           },
           {
-            title: 'Credit Underwriting & Insurance Packaging',
-            desc: 'We compile proof of immediate revenue generation (pipeline contracts) and help package specialized comprehensive asset insurance with the bank listed as Sole Loss Payee.'
+            title: 'Phase 2: Registry & Legal Compliance - EIRC (Emirates Integrated Registries Company) Check',
+            desc: 'We conduct an asset title search. The bank will register a possessory pledge/hypothecation over the movable machinery on the EIRC registry to prevent the client from selling or re-pledging the machine during the loan tenure.'
           },
           {
-            title: 'Disbursement & Delivery Order',
-            desc: "Upon approval, the bank cuts a manager's cheque or swift transfer directly to the dealer. We guide delivery coordination and ensure the bank's asset management team inspects and tags the asset serial numbers."
+            title: 'Phase 2: Registry & Legal Compliance - Tenure Matching',
+            desc: 'We help to structure the amortization schedule relative to the useful life of the asset. Dubai banks cap machinery financing at 4 to 7 years, ensuring the loan does not outlast the physical depreciation of the asset.'
+          },
+          {
+            title: 'Phase 3: Credit Underwriting & Insurance Packaging - Cash Flow Triangulation',
+            desc: 'Even though the loan is secured by the asset, the bank requires proof that the machinery will generate immediate revenue. Present contracts or pipeline projects that require this specific machinery.'
+          },
+          {
+            title: 'Phase 3: Credit Underwriting & Insurance Packaging - Mandatory Comprehensive Asset Insurance',
+            desc: 'We help to package a specialized asset insurance policy with the bank listed as the Sole Loss Payee. The policy must cover operational damage, theft, and third-party liabilities common to Dubai industrial zones.'
+          },
+          {
+            title: 'Phase 4: Disbursement & Delivery Order - Direct-to-Dealer Payout',
+            desc: 'Upon approval of the Facility Letter, the bank cuts a manager’s cheque or processes a direct swift transfer directly to the machinery dealer, never to the client’s operational account.'
+          },
+          {
+            title: 'Phase 4: Disbursement & Delivery Order - Delivery & Asset Inspection',
+            desc: 'We guide client to Coordinate the delivery of the machine, ensuring the bank’s asset management team physically inspects and tags the serial number of the asset to finalize the activation of the loan.'
           }
         ]
       }
