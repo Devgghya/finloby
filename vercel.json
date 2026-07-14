@@ -1,6 +1,9 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/:path*", "destination": "/index.html" }
+    {
+      "source": "/((?!assets/|robots\\.txt|sitemap\\.xml|favicon\\.svg|index\\.html|.*\\..*).*)",
+      "destination": "/index.html"
+    }
   ]
 }
