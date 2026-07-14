@@ -119,7 +119,7 @@ const loanCategories: LoanCategory[] = [
   },
   {
     id: 'business-loan',
-    title: 'SME & Corporate Finance',
+    title: 'Business Loan',
     subcategories: [
       { 
         name: 'Retail Business Loans', 
