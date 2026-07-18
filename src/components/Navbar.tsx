@@ -28,18 +28,18 @@ const navItems: NavItem[] = [
       {
         title: 'Personal Solutions',
         links: [
-          { name: 'Debt Restructuring', href: '/debt-solutions#debt-restructuring' },
           { name: 'Debt Counselling', href: '/debt-solutions#debt-counselling' },
           { name: 'Debt Consolidation', href: '/debt-solutions#debt-consolidation' },
+          { name: 'Debt Restructuring', href: '/debt-solutions#debt-restructuring' },
           { name: 'Debt Settlement', href: '/debt-solutions#debt-settlement' },
         ],
       },
       {
         title: 'Corporate Solutions',
         links: [
-          { name: 'Debt Restructuring', href: '/debt-solutions#debt-restructuring' },
           { name: 'Debt Counselling', href: '/debt-solutions#debt-counselling' },
           { name: 'Debt Consolidation', href: '/debt-solutions#debt-consolidation' },
+          { name: 'Debt Restructuring', href: '/debt-solutions#debt-restructuring' },
           { name: 'Debt Settlement', href: '/debt-solutions#debt-settlement' },
         ],
       },
