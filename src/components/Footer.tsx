@@ -21,7 +21,7 @@ export default function Footer() {
                 className="h-5 w-auto object-contain" 
               />
             </div>
-            <span className="text-[9px] text-[#C5A059] font-medium tracking-[0.08em] font-mono leading-none pl-1 transition-all duration-300 select-none">
+            <span className="text-xs sm:text-sm text-[#E5C158] font-serif tracking-[0.06em] font-medium leading-none pl-1 transition-all duration-300 select-none mt-1">
               Commitment | Trust | Confidentiality
             </span>
           </div>

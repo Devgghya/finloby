@@ -244,7 +244,7 @@ export default function Navbar() {
               className="h-4 sm:h-7 w-auto object-contain transition-all duration-300" 
             />
           </div>
-          <span className="text-[7px] sm:text-[9px] text-[#C5A059] font-medium tracking-[0.08em] font-mono leading-none pl-1 transition-all duration-300 select-none">
+          <span className="text-[10px] sm:text-xs text-[#E5C158] font-serif tracking-[0.06em] font-medium leading-none pl-1 transition-all duration-300 select-none mt-1">
             Commitment | Trust | Confidentiality
           </span>
         </Link>
