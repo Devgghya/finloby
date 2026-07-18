@@ -18,6 +18,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { useState, useEffect } from 'react';
 import Preloader from './components/Preloader';
+import WhatsAppWidget from './components/WhatsAppWidget';
 
 function App() {
   const [showPreloader, setShowPreloader] = useState(true);
@@ -88,6 +89,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <WhatsAppWidget />
       </div>
     </Router>
   );
