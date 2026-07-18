@@ -90,10 +90,6 @@ const individualCategories: LegalCategory[] = [
       {
         title: 'Travel Ban & Legal Maze - How We Assist',
         desc: 'We guide you through the legal maze, helping you understand travel bans, arrest warrants, and asset attachments, while preparing your financial documentation for legal defense.'
-      },
-      {
-        title: 'Al Nyaba Division - How We Assist',
-        desc: 'In the UAE, the Al Nyaba (Public Prosecution) handles the criminal aspect of financial disputes, such as severe cheque bounce cases or fraud allegations, before they reach the judge. We assist you during the Nyaba phase by coordinating with legal experts, exploring options to pay fines instead of serving jail time, and presenting settlement agreements to the prosecutor to get the criminal case dismissed or suspended.'
       }
     ]
   },
@@ -102,6 +98,10 @@ const individualCategories: LegalCategory[] = [
     title: 'Court Case Support',
     desc: 'Strategic defense representation against civil or commercial court claims filed by financial institutions to protect client assets from execution.',
     steps: [
+      {
+        title: 'Al Nyaba Division - How We Assist',
+        desc: 'In the UAE, the Al Nyaba (Public Prosecution) handles the criminal aspect of financial disputes, such as severe cheque bounce cases or fraud allegations, before they reach the judge. We assist you during the Nyaba phase by coordinating with legal experts, exploring options to pay fines instead of serving jail time, and presenting settlement agreements to the prosecutor to get the criminal case dismissed or suspended.'
+      },
       {
         title: 'Court Defense - How We Assist',
         desc: 'We guide you through civil and commercial court procedures, coordinating with certified legal experts to present structured financial documentation and secure manageable settlement terms or dismissals.'
