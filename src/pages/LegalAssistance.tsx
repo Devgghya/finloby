@@ -17,54 +17,108 @@ interface LegalCategory {
 
 const individualCategories: LegalCategory[] = [
   {
-    id: 'banking-collections',
-    title: 'Bank Collection',
-    desc: 'When facing debt or financial strain in the UAE, navigating banking policies and legal systems can be overwhelming. As an experienced financial and management consultancy, we act as your strategic partner and advisor at every stage of the debt cycle, ensuring your interests are protected while working toward a viable resolution.',
+    id: 'early-stage',
+    title: 'The Early Stage',
+    desc: 'Banks track missed payments using a "bucket system" based on Days Past Due (DPD) (e.g., Bucket 1 for 1-30 days, Bucket 2 for 31-60 days, etc.).',
     steps: [
       {
-        title: '1. The Early Stage: Internal Bank Buckets',
-        desc: 'Banks track missed payments using a "bucket system" based on Days Past Due (DPD) (e.g., Bucket 1 for 1-30 days, Bucket 2 for 31-60 days, etc.).\nHow We Assist: We analyze your cash flow immediately to help you submit realistic payment proposals or cure the default before the account escalates.'
-      },
-      {
-        title: '2. The Collection Stage',
-        desc: 'Once an account slips into later buckets, it is handed over to internal or external collection agencies. This stage often involves intense communication and pressure.\nHow We Assist: After taking due consent from the client, we step in as client’s representative, managing communications with collectors, assessing your actual financial capacity, and shielding you from undue harassment.'
-      },
-      {
-        title: '3. The Pre-Legal Stage & Demand Notices',
-        desc: 'If defaults persist, the bank\'s legal department issues an official Pre-Legal Notice or Demand Letter, signaling their intent to initiate formal legal proceedings.\nHow We Assist: This is a critical window. We evaluate the legal notice, prepare formal responses, and initiate urgent negotiations with the bank to halt legal escalation.'
-      },
-      {
-        title: '4. Restructuring & Settlement (The Turning Point)',
-        desc: 'Even during severe default, banks prefer recovery over litigation. Clients typically have two strategic options:\nRestructuring: Rescheduling the debt into a new, extended loan term with lower, manageable monthly EMIs.\nSettlement: Negotiating a lump-sum, discounted payout to close the liability permanently.\nHow We Assist: We build a strong proposal and try to secure the most favorable restructuring terms or maximum settlement waivers.'
+        title: 'How We Assist',
+        desc: 'We analyze your cash flow immediately to help you submit realistic payment proposals or cure the default before the account escalates.'
       }
     ]
   },
   {
-    id: 'legal-defense',
-    title: 'Legal Support',
-    desc: 'Facing financial strain in the UAE requires a highly strategic approach to banking policies and local laws. Our consultancy acts as your expert partner throughout the debt cycle, safeguarding your interests and delivering structured, legally sound negotiation strategies to resolve your liabilities.',
+    id: 'collection-stage',
+    title: 'The Collection Stage',
+    desc: 'Once an account slips into later buckets, it is handed over to internal or external collection agencies. This stage often involves intense communication and pressure.',
     steps: [
       {
-        title: 'Police Case Clearance Support',
-        desc: 'If no resolution is reached, the bank will initiate formal legal actions, which may include filing a police complaint (for bounced security cheques) or a civil/commercial court case.\nHow We Assist: We guide you through the legal maze, helping you understand travel bans, arrest warrants, and asset attachments, while preparing your financial documentation for legal defense.'
-      },
-      {
-        title: 'Legal Escalation: The Al Nyaba (Public Prosecution) Division',
-        desc: 'In the UAE, the Al Nyaba (Public Prosecution) handles the criminal aspect of financial disputes, such as severe cheque bounce cases or fraud allegations, before they reach the judge.\nHow We Assist: We assist you during the Nyaba phase by coordinating with legal experts, exploring options to pay fines instead of serving jail time, and presenting settlement agreements to the prosecutor to get the criminal case dismissed or suspended.'
+        title: 'How We Assist',
+        desc: 'After taking due consent from the client, we step in as client’s representative, managing communications with collectors, assessing your actual financial capacity, and shielding you from undue harassment.'
       }
     ]
   },
   {
-    id: 'skip-assistance',
+    id: 'pre-legal',
+    title: 'The Pre-Legal Stage',
+    desc: 'If defaults persist, the bank\'s legal department issues an official Pre-Legal Notice or Demand Letter, signaling their intent to initiate formal legal proceedings.',
+    steps: [
+      {
+        title: 'How We Assist',
+        desc: 'This is a critical window. We evaluate the legal notice, prepare formal responses, and initiate urgent negotiations with the bank to halt legal escalation.'
+      }
+    ]
+  },
+  {
+    id: 'restructuring',
+    title: 'Debt Restructuring',
+    desc: 'Even during severe default, banks prefer recovery over litigation. Rescheduling the debt into a new, extended loan term with lower, manageable monthly EMIs is a key recovery pathway.',
+    steps: [
+      {
+        title: 'How We Assist',
+        desc: 'We build a strong proposal and try to secure the most favorable restructuring terms, lowering reducing interest rates and extending repayment tenures.'
+      }
+    ]
+  },
+  {
+    id: 'mediation',
+    title: 'Debt Mediation',
+    desc: 'Acting as your strategic partner and advisor at every stage of the debt cycle, mediating between you and your lenders to achieve an amicable resolution.',
+    steps: [
+      {
+        title: 'How We Assist',
+        desc: 'We step in as client’s representative, managing all direct communications, verifying claims, and protecting you from administrative and collections pressure.'
+      }
+    ]
+  },
+  {
+    id: 'settlement',
+    title: 'Debt Settlement Support',
+    desc: 'Negotiating a discounted, lump-sum payout to settle the liability permanently. Banks prefer to recover a settled amount than go to court.',
+    steps: [
+      {
+        title: 'How We Assist',
+        desc: 'We source and submit realistic proposals to obtain maximum settlement waivers and ensure the old accounts are closed and updated on AECB credit reports.'
+      }
+    ]
+  },
+  {
+    id: 'police-case',
+    title: 'Police Case Support',
+    desc: 'If no resolution is reached, the bank will initiate formal legal actions, which may include filing a police complaint (for bounced security cheques) or a civil/commercial court case.',
+    steps: [
+      {
+        title: 'Travel Ban & Legal Maze - How We Assist',
+        desc: 'We guide you through the legal maze, helping you understand travel bans, arrest warrants, and asset attachments, while preparing your financial documentation for legal defense.'
+      },
+      {
+        title: 'Al Nyaba Division - How We Assist',
+        desc: 'In the UAE, the Al Nyaba (Public Prosecution) handles the criminal aspect of financial disputes, such as severe cheque bounce cases or fraud allegations, before they reach the judge. We assist you during the Nyaba phase by coordinating with legal experts, exploring options to pay fines instead of serving jail time, and presenting settlement agreements to the prosecutor to get the criminal case dismissed or suspended.'
+      }
+    ]
+  },
+  {
+    id: 'court-case',
+    title: 'Court Case Support',
+    desc: 'Strategic defense representation against civil or commercial court claims filed by financial institutions to protect client assets from execution.',
+    steps: [
+      {
+        title: 'Court Defense - How We Assist',
+        desc: 'We guide you through civil and commercial court procedures, coordinating with certified legal experts to present structured financial documentation and secure manageable settlement terms or dismissals.'
+      }
+    ]
+  },
+  {
+    id: 'skip-solutions',
     title: 'Skip Solutions',
     desc: 'At Finloby, we recognize that facing severe financial distress can be overwhelming. When individuals leave the country under the pressure of outstanding liabilities, it is rarely a matter of evading responsibility. Instead, it is almost always a difficult decision forced by sudden, extreme compulsions, where an individual feels they have no immediate choice, yet maintains a complete and genuine intention to honor their financial obligations.',
     steps: [
       {
-        title: 'Creditor Liaison',
+        title: 'Creditor Liaison - How We Assist',
         desc: 'We bridge the gap between you and your creditors. We specialize in representing clients who are currently outside the UAE but remain deeply committed to resolving their loan issues. By stepping in to negotiate with banks, we demonstrate your good faith and willingness to find a mutually beneficial solution.'
       },
       {
-        title: 'Resolution & Negotiation Plan',
+        title: 'Negotiation Plan - How We Assist',
         desc: 'If you have been delaying the resolution of your debts, you do not have to navigate this process alone. Let us help you formalize your intent to repay and structure a realistic negotiation plan.'
       }
     ]
@@ -73,31 +127,85 @@ const individualCategories: LegalCategory[] = [
 
 const corporateCategories: LegalCategory[] = [
   {
-    id: 'banking-collections',
-    title: 'Corporate Bank Collection',
-    desc: 'For corporate entities, commercial defaults and debt recovery actions can halt operations, freeze accounts, and trigger trade license blocks. We represent LLCs, Partnerships, and Free Zone entities in restructuring commercial lines, overdrafts, and trade finance facilities.',
+    id: 'early-stage',
+    title: 'The Early Stage',
+    desc: 'Analyzing corporate balance sheets, debt-service coverage ratio (DSCR), and trade facility utilization to understand the business\'s actual debt capacity.',
     steps: [
       {
-        title: '1. Commercial Debt Assessment - How We Assist',
-        desc: 'Analyzing corporate balance sheets, debt-service coverage ratio (DSCR), and trade facility utilization to understand the business\'s actual debt capacity.'
-      },
-      {
-        title: '2. Corporate Collection Mediation - How We Assist',
-        desc: 'Negotiating with multiple lending banks or syndicates. We manage collections pressure, preventing aggressive enforcement from disrupting operational cash flow.'
-      },
-      {
-        title: '3. Commercial Legal Escalation & Demand Notice Defense - How We Assist',
-        desc: 'Defending against corporate demand letters, insolvency filings, and performance bond enforcements. We prepare corporate responses to buy time for strategic restructuring.'
-      },
-      {
-        title: 'Corporate Debt Restructuring & Syndicated Workouts - How We Assist',
-        desc: 'Restructuring commercial loans, LCs, and OD facilities into long-term syndicated workouts. We coordinate directly with head office recovery departments to adjust repayment tenures and lower interest spreads over EIBOR.'
+        title: 'Commercial Debt Assessment - How We Assist',
+        desc: 'Conducting comprehensive balance sheet audits and transaction assessments to build a compliant restructuring model.'
       }
     ]
   },
   {
-    id: 'legal-defense',
-    title: 'Corporate Legal Support',
+    id: 'collection-stage',
+    title: 'The Collection Stage',
+    desc: 'For corporate entities, late-stage commercial defaults can trigger intense pressure from multiple lending syndicates or external collections.',
+    steps: [
+      {
+        title: 'Corporate Collection Mediation - How We Assist',
+        desc: 'Negotiating with multiple lending banks or syndicates. We manage collections pressure, preventing aggressive enforcement from disrupting operational cash flow.'
+      }
+    ]
+  },
+  {
+    id: 'pre-legal',
+    title: 'The Pre-Legal Stage',
+    desc: 'Defending against corporate demand letters, insolvency filings, and performance bond enforcements before formal civil lawsuits are registered.',
+    steps: [
+      {
+        title: 'Commercial Legal Escalation - How We Assist',
+        desc: 'We prepare corporate responses to buy time for strategic restructuring and block bond enforcements.'
+      }
+    ]
+  },
+  {
+    id: 'restructuring',
+    title: 'Debt Restructuring',
+    desc: 'Restructuring commercial loans, LCs, and OD facilities into long-term syndicated workouts to align with corporate recovery needs.',
+    steps: [
+      {
+        title: 'Syndicated Workouts - How We Assist',
+        desc: 'We coordinate directly with head office recovery departments to adjust repayment tenures and lower interest spreads over EIBOR.'
+      }
+    ]
+  },
+  {
+    id: 'mediation',
+    title: 'Debt Mediation',
+    desc: 'Corporate mediation is essential when dealing with multiple banking desks to coordinate structured, unified operational waivers.',
+    steps: [
+      {
+        title: 'Lender Mediation - How We Assist',
+        desc: 'Mediating between board members and bank risk groups to adjust financial covenants and maintain ongoing operations.'
+      }
+    ]
+  },
+  {
+    id: 'settlement',
+    title: 'Debt Settlement Support',
+    desc: 'Negotiating corporate liability write-offs and final lump-sum settlements across commercial lines, overdrafts, and trade finance.',
+    steps: [
+      {
+        title: 'Lump-Sum Closures - How We Assist',
+        desc: 'Sourcing corporate settlement waivers and closing old facilities with complete clearance certificates.'
+      }
+    ]
+  },
+  {
+    id: 'police-case',
+    title: 'Police Case Support',
+    desc: 'Protecting corporate promoters, shareholders, and managers from personal criminal liabilities resulting from corporate defaults (e.g., bounced security cheques).',
+    steps: [
+      {
+        title: 'Promoter Status Security - How We Assist',
+        desc: 'Resolving active travel bans, arrest listings, or corporate check cases placed on managers or shareholders.'
+      }
+    ]
+  },
+  {
+    id: 'court-case',
+    title: 'Court Case Support',
     desc: 'Protecting corporate entities from legal liabilities, shareholder attachment orders, and trade license restrictions in civil and commercial courts.',
     steps: [
       {
@@ -105,14 +213,14 @@ const corporateCategories: LegalCategory[] = [
         desc: 'Representing the corporate entity in commercial court disputes, contractual breaches, and financial default lawsuits. We help draft solid legal defenses via local advocates to protect company assets from attachment.'
       },
       {
-        title: 'Executive & Shareholder Liability Protection - How We Assist',
+        title: 'Shareholder Liability Protection - How We Assist',
         desc: 'Shielding the personal assets and immigration status of managers, directors, and shareholders from corporate liability. We ensure corporate structures (LLCs/Free Zones) are leveraged to maintain limited liability status.'
       }
     ]
   },
   {
-    id: 'skip-assistance',
-    title: 'Corporate Cross-Border Solutions',
+    id: 'skip-solutions',
+    title: 'Skip Solutions',
     desc: 'Managing cross-border defaults, overseas subsidiary protection, and international commercial arbitration for companies operating across multiple jurisdictions.',
     steps: [
       {
@@ -122,10 +230,6 @@ const corporateCategories: LegalCategory[] = [
       {
         title: 'International Debt Arbitration - How We Assist',
         desc: 'Representing foreign corporate shareholders in formal restructuring and settlement negotiations with regional Middle Eastern lenders.'
-      },
-      {
-        title: 'Immigration & Travel Ban Resolution for Promoters - How We Assist',
-        desc: 'Coordinating with local legal partners to resolve active immigration blocks or travel bans placed on international promoters and board members.'
       }
     ]
   }
@@ -133,7 +237,7 @@ const corporateCategories: LegalCategory[] = [
 
 export default function LegalAssistance() {
   const [activeDivision, setActiveDivision] = useState<'individual' | 'corporate'>('individual');
-  const [activeTab, setActiveTab] = useState('banking-collections');
+  const [activeTab, setActiveTab] = useState('early-stage');
   
   // Interactive Questionnaire States
   const [caseType, setCaseType] = useState('Default');
@@ -146,13 +250,25 @@ export default function LegalAssistance() {
     const hash = window.location.hash;
     if (hash) {
       const cleanHash = hash.replace('#', '');
-      if (cleanHash.includes('legal') || cleanHash.includes('police') || cleanHash.includes('court') || cleanHash.includes('skip-solutions-crossborder') || cleanHash.includes('restructuring') || cleanHash.includes('negotiations') || cleanHash.includes('settlement')) {
-        if (cleanHash.includes('police') || cleanHash.includes('court') || cleanHash.includes('ban')) {
-          setActiveTab('legal-defense');
-        } else if (cleanHash.includes('skip') || cleanHash.includes('crossborder')) {
-          setActiveTab('skip-assistance');
-        } else {
-          setActiveTab('banking-collections');
+      if (cleanHash.includes('legal') || cleanHash.includes('police') || cleanHash.includes('court') || cleanHash.includes('skip') || cleanHash.includes('restructuring') || cleanHash.includes('mediation') || cleanHash.includes('settlement') || cleanHash.includes('early') || cleanHash.includes('collection') || cleanHash.includes('pre-legal')) {
+        if (cleanHash.includes('police') || cleanHash.includes('nyaba') || cleanHash.includes('ban')) {
+          setActiveTab('police-case');
+        } else if (cleanHash.includes('court')) {
+          setActiveTab('court-case');
+        } else if (cleanHash.includes('skip')) {
+          setActiveTab('skip-solutions');
+        } else if (cleanHash.includes('restructuring')) {
+          setActiveTab('restructuring');
+        } else if (cleanHash.includes('mediation')) {
+          setActiveTab('mediation');
+        } else if (cleanHash.includes('settlement')) {
+          setActiveTab('settlement');
+        } else if (cleanHash.includes('early')) {
+          setActiveTab('early-stage');
+        } else if (cleanHash.includes('collection')) {
+          setActiveTab('collection-stage');
+        } else if (cleanHash.includes('pre-legal')) {
+          setActiveTab('pre-legal');
         }
         const element = document.getElementById('legal-directory');
         if (element) {

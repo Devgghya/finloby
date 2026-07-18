@@ -140,16 +140,25 @@ const navItems: NavItem[] = [
       {
         title: 'Banking Collections',
         links: [
-          { name: 'Restructuring Mediation', href: '/legal-assistance#banking-collections' },
-          { name: 'Settlement Supports', href: '/legal-assistance#banking-collections' },
+          { name: 'The Early Stage', href: '/legal-assistance#early-stage' },
+          { name: 'The Collection Stage', href: '/legal-assistance#collection-stage' },
+          { name: 'The Pre-Legal Stage', href: '/legal-assistance#pre-legal' },
         ],
       },
       {
-        title: 'Legal Support',
+        title: 'Debt Resolution',
         links: [
-          { name: 'Police Case Clearance', href: '/legal-assistance#legal-defense' },
-          { name: 'Court Cases Representation', href: '/legal-assistance#legal-defense' },
-          { name: 'Skip Solutions (Cross Border)', href: '/legal-assistance#skip-assistance' },
+          { name: 'Debt Restructuring', href: '/legal-assistance#restructuring' },
+          { name: 'Debt Mediation', href: '/legal-assistance#mediation' },
+          { name: 'Debt Settlement', href: '/legal-assistance#settlement' },
+        ],
+      },
+      {
+        title: 'Legal & Skip',
+        links: [
+          { name: 'Police Case Support', href: '/legal-assistance#police-case' },
+          { name: 'Court Case Support', href: '/legal-assistance#court-case' },
+          { name: 'Skip Solutions', href: '/legal-assistance#skip-solutions' },
         ],
       },
     ],
