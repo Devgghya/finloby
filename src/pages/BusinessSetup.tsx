@@ -496,104 +496,107 @@ export default function BusinessSetup() {
                                              </h5>
                                              <div className="text-[10px] font-light text-[#FBF9F4]/55 leading-relaxed space-y-1.5">
                                                {lines.map((line, lIdx) => {
-                                                 const trimmed = line.trim();
-                                                 if (!trimmed) return null;
-                                                 
-                                                 const isNumberedSub = /^\d+\.\s+/.test(trimmed);
-                                                 const isAlphaSub = /^[a-z]\.\s+/.test(trimmed);
-                                                 const isBulletSub = /^[•\-]\s+/.test(trimmed);
-                                                 
-                                                 const colonIndex = trimmed.indexOf(':');
-                                                 let formattedContent = null;
-                                                 if (colonIndex > 0 && colonIndex < 80 && !isNumberedSub && !isAlphaSub && !isBulletSub) {
-                                                   const boldLabel = trimmed.slice(0, colonIndex);
-                                                   const restText = trimmed.slice(colonIndex + 1).trim();
-                                                   formattedContent = (
-                                                     <p key={lIdx}>
-                                                       <strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}
-                                                     </p>
-                                                   );
-                                                 }
-                                                 
-                                                 if (isNumberedSub) {
-                                                   const content = trimmed.replace(/^\d+\.\s+/, '');
-                                                   const numMatch = trimmed.match(/^\d+\./)?.[0];
-                                                   
-                                                   const subColonIndex = content.indexOf(':');
-                                                   if (subColonIndex > 0 && subColonIndex < 80) {
-                                                     const boldLabel = content.slice(0, subColonIndex);
-                                                     const restText = content.slice(subColonIndex + 1).trim();
-                                                     return (
-                                                       <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
-                                                         <span className="text-[#C5A059] font-semibold">{numMatch}</span>
-                                                         <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
-                                                       </div>
-                                                     );
-                                                   }
-                                                   
-                                                   return (
-                                                     <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
-                                                       <span className="text-[#C5A059] font-semibold">{numMatch}</span>
-                                                       <span>{content}</span>
-                                                     </div>
-                                                   );
-                                                 }
-                                                 
-                                                 if (isAlphaSub) {
-                                                   const content = trimmed.replace(/^[a-z]\.\s+/, '');
-                                                   const alphaMatch = trimmed.match(/^[a-z]\./)?.[0];
-                                                   
-                                                   const subColonIndex = content.indexOf(':');
-                                                   if (subColonIndex > 0 && subColonIndex < 80) {
-                                                     const boldLabel = content.slice(0, subColonIndex);
-                                                     const restText = content.slice(subColonIndex + 1).trim();
-                                                     return (
-                                                       <div key={lIdx} className="pl-8 flex gap-2 text-[9px] text-[#FBF9F4]/40">
-                                                         <span className="text-[#C5A059] font-medium">{alphaMatch}</span>
-                                                         <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
-                                                       </div>
-                                                     );
-                                                   }
-                                                   
-                                                   return (
-                                                     <div key={lIdx} className="pl-8 flex gap-2 text-[9px] text-[#FBF9F4]/40">
-                                                       <span className="text-[#C5A059] font-medium">{alphaMatch}</span>
-                                                       <span>{content}</span>
-                                                     </div>
-                                                   );
-                                                 }
-                                                 
-                                                 if (isBulletSub) {
-                                                   const content = trimmed.replace(/^[•\-]\s+/, '');
-                                                   
-                                                   const subColonIndex = content.indexOf(':');
-                                                   if (subColonIndex > 0 && subColonIndex < 80) {
-                                                     const boldLabel = content.slice(0, subColonIndex);
-                                                     const restText = content.slice(subColonIndex + 1).trim();
-                                                     return (
-                                                       <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
-                                                         <span className="text-[#C5A059]">•</span>
-                                                         <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
-                                                       </div>
-                                                     );
-                                                   }
-                                                   
-                                                   return (
-                                                     <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
-                                                       <span className="text-[#C5A059]">•</span>
-                                                       <span>{content}</span>
-                                                     </div>
-                                                   );
-                                                 }
-                                                 
-                                                 if (formattedContent) return formattedContent;
-                                                 
-                                                 return (
-                                                   <p key={lIdx}>
-                                                     {trimmed}
-                                                   </p>
-                                                 );
-                                               })}
+                                                  const trimmed = line.trim();
+                                                  if (!trimmed) return null;
+                                                  
+                                                  // Strip asterisks so they don't render literally
+                                                  const cleanLine = trimmed.replace(/\*\*/g, '');
+
+                                                  const isNumberedSub = /^\d+\.\s+/.test(cleanLine);
+                                                  const isAlphaSub = /^[a-z]\.\s+/.test(cleanLine);
+                                                  const isBulletSub = /^[•\-]\s+/.test(cleanLine);
+                                                  
+                                                  const colonIndex = cleanLine.indexOf(':');
+                                                  let formattedContent = null;
+                                                  if (colonIndex > 0 && colonIndex < 80 && !isNumberedSub && !isAlphaSub && !isBulletSub) {
+                                                    const boldLabel = cleanLine.slice(0, colonIndex);
+                                                    const restText = cleanLine.slice(colonIndex + 1).trim();
+                                                    formattedContent = (
+                                                      <p key={lIdx}>
+                                                        <strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}
+                                                      </p>
+                                                    );
+                                                  }
+                                                  
+                                                  if (isNumberedSub) {
+                                                    const content = cleanLine.replace(/^\d+\.\s+/, '');
+                                                    const numMatch = cleanLine.match(/^\d+\./)?.[0];
+                                                    
+                                                    const subColonIndex = content.indexOf(':');
+                                                    if (subColonIndex > 0 && subColonIndex < 80) {
+                                                      const boldLabel = content.slice(0, subColonIndex);
+                                                      const restText = content.slice(subColonIndex + 1).trim();
+                                                      return (
+                                                        <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
+                                                          <span className="text-[#C5A059] font-semibold">{numMatch}</span>
+                                                          <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
+                                                        </div>
+                                                      );
+                                                    }
+                                                    
+                                                    return (
+                                                      <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
+                                                        <span className="text-[#C5A059] font-semibold">{numMatch}</span>
+                                                        <span>{content}</span>
+                                                      </div>
+                                                    );
+                                                  }
+                                                  
+                                                  if (isAlphaSub) {
+                                                    const content = cleanLine.replace(/^[a-z]\.\s+/, '');
+                                                    const alphaMatch = cleanLine.match(/^[a-z]\./)?.[0];
+                                                    
+                                                    const subColonIndex = content.indexOf(':');
+                                                    if (subColonIndex > 0 && subColonIndex < 80) {
+                                                      const boldLabel = content.slice(0, subColonIndex);
+                                                      const restText = content.slice(subColonIndex + 1).trim();
+                                                      return (
+                                                        <div key={lIdx} className="pl-8 flex gap-2 text-[9px] text-[#FBF9F4]/40">
+                                                          <span className="text-[#C5A059] font-medium">{alphaMatch}</span>
+                                                          <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
+                                                        </div>
+                                                      );
+                                                    }
+                                                    
+                                                    return (
+                                                      <div key={lIdx} className="pl-8 flex gap-2 text-[9px] text-[#FBF9F4]/40">
+                                                        <span className="text-[#C5A059] font-medium">{alphaMatch}</span>
+                                                        <span>{content}</span>
+                                                      </div>
+                                                    );
+                                                  }
+                                                  
+                                                  if (isBulletSub) {
+                                                    const content = cleanLine.replace(/^[•\-]\s+/, '');
+                                                    
+                                                    const subColonIndex = content.indexOf(':');
+                                                    if (subColonIndex > 0 && subColonIndex < 80) {
+                                                      const boldLabel = content.slice(0, subColonIndex);
+                                                      const restText = content.slice(subColonIndex + 1).trim();
+                                                      return (
+                                                        <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
+                                                          <span className="text-[#C5A059]">•</span>
+                                                          <span><strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}</span>
+                                                        </div>
+                                                      );
+                                                    }
+                                                    
+                                                    return (
+                                                      <div key={lIdx} className="pl-4 flex gap-2 text-[9px] text-[#FBF9F4]/45">
+                                                        <span className="text-[#C5A059]">•</span>
+                                                        <span>{content}</span>
+                                                      </div>
+                                                    );
+                                                  }
+                                                  
+                                                  if (formattedContent) return formattedContent;
+                                                  
+                                                  return (
+                                                    <p key={lIdx}>
+                                                      {cleanLine}
+                                                    </p>
+                                                  );
+                                                })}
                                              </div>
                                            </div>
                                          </div>

@@ -348,15 +348,18 @@ export default function LegalAssistance() {
                                         const trimmed = line.trim();
                                         if (!trimmed) return null;
                                         
-                                        const isNumberedSub = /^\d+\.\s+/.test(trimmed);
-                                        const isAlphaSub = /^[a-z]\.\s+/.test(trimmed);
-                                        const isBulletSub = /^[•\-]\s+/.test(trimmed);
+                                        // Strip asterisks so they don't render literally
+                                        const cleanLine = trimmed.replace(/\*\*/g, '');
+
+                                        const isNumberedSub = /^\d+\.\s+/.test(cleanLine);
+                                        const isAlphaSub = /^[a-z]\.\s+/.test(cleanLine);
+                                        const isBulletSub = /^[•\-]\s+/.test(cleanLine);
                                         
-                                        const colonIndex = trimmed.indexOf(':');
+                                        const colonIndex = cleanLine.indexOf(':');
                                         let formattedContent = null;
                                         if (colonIndex > 0 && colonIndex < 80 && !isNumberedSub && !isAlphaSub && !isBulletSub) {
-                                          const boldLabel = trimmed.slice(0, colonIndex);
-                                          const restText = trimmed.slice(colonIndex + 1).trim();
+                                          const boldLabel = cleanLine.slice(0, colonIndex);
+                                          const restText = cleanLine.slice(colonIndex + 1).trim();
                                           formattedContent = (
                                             <p key={lIdx}>
                                               <strong className="text-[#E2C999]">{boldLabel}:</strong> {restText}
@@ -365,8 +368,8 @@ export default function LegalAssistance() {
                                         }
                                         
                                         if (isNumberedSub) {
-                                          const content = trimmed.replace(/^\d+\.\s+/, '');
-                                          const numMatch = trimmed.match(/^\d+\./)?.[0];
+                                          const content = cleanLine.replace(/^\d+\.\s+/, '');
+                                          const numMatch = cleanLine.match(/^\d+\./)?.[0];
                                           
                                           const subColonIndex = content.indexOf(':');
                                           if (subColonIndex > 0 && subColonIndex < 80) {
@@ -389,8 +392,8 @@ export default function LegalAssistance() {
                                         }
                                         
                                         if (isAlphaSub) {
-                                          const content = trimmed.replace(/^[a-z]\.\s+/, '');
-                                          const alphaMatch = trimmed.match(/^[a-z]\./)?.[0];
+                                          const content = cleanLine.replace(/^[a-z]\.\s+/, '');
+                                          const alphaMatch = cleanLine.match(/^[a-z]\./)?.[0];
                                           
                                           const subColonIndex = content.indexOf(':');
                                           if (subColonIndex > 0 && subColonIndex < 80) {
@@ -413,7 +416,7 @@ export default function LegalAssistance() {
                                         }
                                         
                                         if (isBulletSub) {
-                                          const content = trimmed.replace(/^[•\-]\s+/, '');
+                                          const content = cleanLine.replace(/^[•\-]\s+/, '');
                                           
                                           const subColonIndex = content.indexOf(':');
                                           if (subColonIndex > 0 && subColonIndex < 80) {
@@ -439,7 +442,7 @@ export default function LegalAssistance() {
                                         
                                         return (
                                           <p key={lIdx}>
-                                            {trimmed}
+                                            {cleanLine}
                                           </p>
                                         );
                                       })}
