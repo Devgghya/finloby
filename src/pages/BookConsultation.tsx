@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Key, CheckCircle2, User, Phone, Mail, ChevronRight, ShieldCheck } from 'lucide-react';
 import SEO from '../components/SEO';
+import { BorderBeam } from '../components/ui/BorderBeam';
 
 export default function BookConsultation() {
   const [formData, setFormData] = useState({
@@ -32,8 +33,7 @@ export default function BookConsultation() {
       <div className="max-w-xl mx-auto">
         
         <div className="bg-[#06281E]/95 backdrop-blur-md border border-[var(--brand-gold)]/20 p-8 sm:p-10 rounded-sm shadow-2xl relative overflow-hidden bg-gold-glow">
-          {/* Top gold line indicator */}
-          <div className="absolute top-0 left-0 w-full h-[3px] bg-[var(--brand-gold)]"></div>
+          <BorderBeam duration={10} delay={0} size={200} />
           
           <div className="flex items-center justify-between border-b border-[var(--brand-gold)]/10 pb-4 mb-6">
             <div>

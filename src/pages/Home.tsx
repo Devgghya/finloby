@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, ChevronRight, Lock, Activity, ArrowUpRight, FileText } from 'lucide-react';
 import SEO from '../components/SEO';
+import { BorderBeam } from '../components/ui/BorderBeam';
+import { TextShimmer } from '../components/ui/TextShimmer';
 
 const portfolios = [
   {
@@ -312,9 +314,9 @@ export default function Home() {
               
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif font-light text-[#FBF9F4] leading-[1.08] tracking-tight">
                 Visionary Wealth.<br />
-                <span className="text-gradient-gold font-normal italic">Absolute Protection.</span>
+                <TextShimmer className="font-normal italic">Absolute Protection.</TextShimmer>
               </h1>
-
+              
               <p className="text-base sm:text-lg font-light text-[#FBF9F4]/70 max-w-xl leading-relaxed">
                 FINLOBY orchestrates premium corporate restructuring, institutional debt settlement, structured credit placement, and cross-border legal coordination for discerning private entities.
               </p>
@@ -356,8 +358,7 @@ export default function Home() {
             {/* Right Column: Global Currency Exchange Ticker Dashboard */}
             <div className="lg:col-span-5 relative" id="market-terminal">
               <div className="glass-luxury p-6 rounded-sm relative overflow-hidden flex flex-col gap-4 bg-gold-glow">
-                {/* Top gold line indicator */}
-                <div className="absolute top-0 left-0 w-full h-[3px] bg-[var(--brand-gold)]"></div>
+                <BorderBeam duration={12} delay={0} size={150} />
                 
                 <div className="flex items-center justify-between border-b border-[var(--brand-gold)]/10 pb-4">
                   <div>

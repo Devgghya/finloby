@@ -226,3 +226,28 @@ html, body {
   white-space: nowrap;
   border-width: 0;
 }
+
+/* Premium Animations (21st.dev inspired) */
+@keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.animate-border-beam {
+  animation: border-beam calc(var(--duration, 15) * 1s) infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 8s infinite linear;
+}
+

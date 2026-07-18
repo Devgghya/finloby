@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ShieldCheck, ArrowRight, Calculator, Shield } from 'lucide-react';
 import SEO from '../components/SEO';
+import { BorderBeam } from '../components/ui/BorderBeam';
 
 interface ServiceStep {
   title: string;
@@ -226,6 +227,7 @@ export default function DebtSolutions() {
 
           {/* Right Tab details container */}
           <div className="lg:col-span-8 bg-[#0D1625] border border-slate-800 p-8 sm:p-10 rounded-sm flex flex-col justify-between relative overflow-hidden">
+            <BorderBeam duration={12} delay={0} size={250} />
             <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#9A7B3E] via-[#C5A059] to-[#E2C999]"></div>
             
             {services.map((item) => {
