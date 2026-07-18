@@ -43,11 +43,11 @@ const divisions: Division[] = [
         steps: [
           {
             title: '1. The Strategy: Aligning Corporate Vision with Regulatory Realities - Activity Mapping & Dynamic Clustering',
-            desc: 'We guide client to explicitly outline all core commercial, service, or industrial operations. Activities must precisely align with the Department of Economic Development (DED) or specific Free Zone classification codes. A mismatch between listed activities and actual transactional footprint can trigger compliance flags, account restrictions, or corporate bank account denials under UAE Central Bank regulations.'
+            desc: 'We guide clients to explicitly outline all core commercial, service, or industrial operations. Activities must precisely align with the Department of Economic Development (DED) or specific Free Zone classification codes. A mismatch between listed activities and actual transactional footprint can trigger compliance flags, account restrictions, or corporate bank account denials under UAE Central Bank regulations.'
           },
           {
             title: '1. The Strategy: Aligning Corporate Vision with Regulatory Realities - Capitalization & Equity Distribution',
-            desc: 'We guide client to define the share capital structure, nominal share value, and exact equity breakdown among partners. This structural clarity is essential to satisfy bank Know-Your-Customer (KYC) requirements, particularly regarding Ultimate Beneficial Ownership (UBO) mandates.'
+            desc: 'We guide clients to define the share capital structure, nominal share value, and exact equity breakdown among partners. This structural clarity is essential to satisfy bank Know-Your-Customer (KYC) requirements, particularly regarding Ultimate Beneficial Ownership (UBO) mandates.'
           },
           {
             title: '2. Execution: The Legal & Digital Validation Process - Custom Corporate Governance Structuring',
