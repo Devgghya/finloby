@@ -89,7 +89,9 @@ const navItems: NavItem[] = [
       {
         title: 'Insurance',
         links: [
-          { name: 'Insurance Portal Link', href: '/loans#insurance' },
+          { name: 'Auto Insurance', href: '/loans#insurance' },
+          { name: 'Mortgage Insurance', href: '/loans#insurance' },
+          { name: 'Credit Life & Loan Protection', href: '/loans#insurance' },
         ],
       },
     ],
