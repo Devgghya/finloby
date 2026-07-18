@@ -123,6 +123,7 @@ const heroBadges = [
 ];
 
 export default function Home() {
+  const SHOW_CASE_STUDIES = false;
   // Background rotator states
   const [bgIndex, setBgIndex] = useState(0);
   const [carouselSlide, setCarouselSlide] = useState(0);
@@ -329,13 +330,13 @@ export default function Home() {
                 >
                   Explore Pillars
                 </a>
-                <a 
-                  href="#case-studies" 
-                  id="hero-cases-btn"
+                <Link 
+                  to="/book-consultation" 
+                  id="hero-consult-btn"
                   className="px-8 py-4 border border-[#C5A059]/30 text-[#FBF9F4] text-xs font-semibold uppercase tracking-[0.2em] hover:border-[#E5C158] hover:bg-[#E5C158]/5 transition-all duration-300 rounded-sm text-center"
                 >
-                  Institutional Case Files
-                </a>
+                  Secure Consultation
+                </Link>
               </div>
 
               {/* Quick Stats Grid */}
@@ -511,17 +512,13 @@ export default function Home() {
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#070F1E] to-transparent z-10 pointer-events-none"></div>
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#070F1E] to-transparent z-10 pointer-events-none"></div>
         <div className="flex whitespace-nowrap animate-marquee">
-          <div className="flex items-center gap-12 text-[#C5A059] font-sans text-sm tracking-[0.3em] font-semibold pr-12">
-            <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
-            <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
-            <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
-            <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
+          <div className="flex items-center gap-12 text-[#C5A059] font-sans text-xs tracking-[0.25em] font-semibold pr-12">
+            <span>KEZAD GROUP ◆ DUBAI SOUTH (DWC) ◆ JAFZA (JEBEL ALI) ◆ HAMRIYAH FREE ZONE (HFZA) ◆ RAKEZ ◆ DMCC ◆ DUBAI SILICON OASIS (DSO) ◆ SAIF ZONE ◆ AJMAN FREE ZONE (AFZ) ◆ DAFZA ◆ DIFC ◆ ADGM ◆ SHARJAH MEDIA CITY (SHAMS) ◆ MEYDAN FREE ZONE</span>
+            <span>KEZAD GROUP ◆ DUBAI SOUTH (DWC) ◆ JAFZA (JEBEL ALI) ◆ HAMRIYAH FREE ZONE (HFZA) ◆ RAKEZ ◆ DMCC ◆ DUBAI SILICON OASIS (DSO) ◆ SAIF ZONE ◆ AJMAN FREE ZONE (AFZ) ◆ DAFZA ◆ DIFC ◆ ADGM ◆ SHARJAH MEDIA CITY (SHAMS) ◆ MEYDAN FREE ZONE</span>
           </div>
-          <div className="flex items-center gap-12 text-[#C5A059] font-sans text-sm tracking-[0.3em] font-semibold pr-12 select-none" aria-hidden="true">
-            <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
-            <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
-            <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
-            <span>DUBAI DIFC ◆ LONDON CITY ◆ SINGAPORE MARINA ◆ NEW DELHI CORRIDOR</span>
+          <div className="flex items-center gap-12 text-[#C5A059] font-sans text-xs tracking-[0.25em] font-semibold pr-12 select-none" aria-hidden="true">
+            <span>KEZAD GROUP ◆ DUBAI SOUTH (DWC) ◆ JAFZA (JEBEL ALI) ◆ HAMRIYAH FREE ZONE (HFZA) ◆ RAKEZ ◆ DMCC ◆ DUBAI SILICON OASIS (DSO) ◆ SAIF ZONE ◆ AJMAN FREE ZONE (AFZ) ◆ DAFZA ◆ DIFC ◆ ADGM ◆ SHARJAH MEDIA CITY (SHAMS) ◆ MEYDAN FREE ZONE</span>
+            <span>KEZAD GROUP ◆ DUBAI SOUTH (DWC) ◆ JAFZA (JEBEL ALI) ◆ HAMRIYAH FREE ZONE (HFZA) ◆ RAKEZ ◆ DMCC ◆ DUBAI SILICON OASIS (DSO) ◆ SAIF ZONE ◆ AJMAN FREE ZONE (AFZ) ◆ DAFZA ◆ DIFC ◆ ADGM ◆ SHARJAH MEDIA CITY (SHAMS) ◆ MEYDAN FREE ZONE</span>
           </div>
         </div>
       </section>
@@ -591,113 +588,117 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
+      {SHOW_CASE_STUDIES && (
+        <>
+          <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
 
-      {/* SECTION 4: HISTORICAL CLIENT ANALYSIS (CASE STUDIES - BOOK THEME) */}
-      <section className="w-full bg-[#050B15] py-20 sm:py-28" id="case-studies">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          
-          <div className="flex flex-col gap-3 mb-16 text-center max-w-xl mx-auto">
-            <span className="text-[8px] font-bold text-[#E5C158] uppercase tracking-[0.25em]">
-              Verified Outcomes
-            </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-white font-bold tracking-wide">
-              Historical Client Case Files
-            </h2>
-            <div className="flex items-center gap-2 mt-1 justify-center">
-              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-gold)]"></span>
-              <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
-            </div>
-            <p className="text-xs font-light text-[#FBF9F4]/40 mt-1">
-              Classified analytical breakdowns of corporate debt restructuring, banking settlement support, and complex liability resolution.
-            </p>
-          </div>
-
-          {/* Ledger Open Book Layout */}
-          <div className="space-y-12">
-            {caseStudies.map((caseFile, idx) => (
-              <div 
-                key={idx}
-                className="grid grid-cols-1 lg:grid-cols-2 rounded-sm overflow-hidden border border-[#C5A059]/25 shadow-2xl relative min-h-[380px] group"
-              >
-                {/* Left Page (Ivory paper ledger page) */}
-                <div className="bg-[#F7F5F0] text-[#070F1E] p-8 sm:p-10 flex flex-col justify-between relative border-r border-[#C5A059]/15">
-                  {/* Book spine inner shadow on right edge */}
-                  <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-black/10 to-transparent pointer-events-none z-10" />
-                  
-                  <div>
-                    <div className="flex items-center justify-between border-b border-black/10 pb-3 mb-6 text-[10px] font-mono font-semibold tracking-widest text-[#070F1E]/60 uppercase">
-                      <span>CASE FILE #{idx + 1}</span>
-                      <span>{caseFile.period}</span>
-                    </div>
-                    
-                    <h4 className="text-[9px] uppercase tracking-[0.2em] font-bold text-[#C5A059] mb-2 font-sans">
-                      Client / Registry Account
-                    </h4>
-                    <h3 className="text-xl font-sans text-[#070F1E] font-bold mb-3 leading-snug">
-                      {caseFile.client}
-                    </h3>
-                    <p className="text-xs sm:text-sm font-light leading-relaxed text-[#070F1E]/80 mt-2">
-                      <strong>Resolution Outcome: </strong>
-                      {caseFile.outcome}
-                    </p>
-                  </div>
-                  
-                  <div className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest pt-4 border-t border-black/5 mt-6 flex justify-between">
-                    <span>Region Code: {caseFile.region}</span>
-                    <span>Classification: Private client</span>
-                  </div>
+          {/* SECTION 4: HISTORICAL CLIENT ANALYSIS (CASE STUDIES - BOOK THEME) */}
+          <section className="w-full bg-[#050B15] py-20 sm:py-28" id="case-studies">
+            <div className="max-w-7xl mx-auto px-4 sm:px-8">
+              
+              <div className="flex flex-col gap-3 mb-16 text-center max-w-xl mx-auto">
+                <span className="text-[8px] font-bold text-[#E5C158] uppercase tracking-[0.25em]">
+                  Verified Outcomes
+                </span>
+                <h2 className="text-3xl md:text-5xl font-serif text-white font-bold tracking-wide">
+                  Historical Client Case Files
+                </h2>
+                <div className="flex items-center gap-2 mt-1 justify-center">
+                  <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-gold)]"></span>
+                  <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
                 </div>
-
-                {/* Right Page (Dark navy metrics ledger page) */}
-                <div className="bg-[#0B121F] text-[#FBF9F4] p-8 sm:p-10 flex flex-col justify-between relative">
-                  {/* Book spine inner shadow on left edge */}
-                  <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-black/25 to-transparent pointer-events-none z-10" />
-                  
-                  <div>
-                    <div className="flex items-center justify-between border-b border-[#C5A059]/10 pb-3 mb-6 text-[10px] font-mono text-[#C5A059]/60 uppercase tracking-wider">
-                      <span>METRIC DATA SHEET</span>
-                      <span>SECURE RECORD</span>
-                    </div>
-
-                    <h4 className="text-[9px] uppercase tracking-[0.2em] font-bold text-[#E5C158] mb-4 font-sans">
-                      Technical Specifications
-                    </h4>
-                    
-                    <div className="grid grid-cols-2 gap-y-4 gap-x-6 text-xs border-b border-slate-800/80 pb-6">
-                      <div>
-                        <span className="text-[#FBF9F4]/40 block text-[9px] uppercase tracking-wider mb-0.5">Facility Classification</span>
-                        <span className="font-sans font-semibold text-slate-200">{caseFile.facility}</span>
-                      </div>
-                      <div>
-                        <span className="text-[#FBF9F4]/40 block text-[9px] uppercase tracking-wider mb-0.5">Clearing Registry</span>
-                        <span className="font-mono text-[#E5C158] font-semibold">REG-FL-{(idx + 3280).toString(16).toUpperCase()}</span>
-                      </div>
-                      <div>
-                        <span className="text-[#FBF9F4]/40 block text-[9px] uppercase tracking-wider mb-0.5">Settlement Write-Off</span>
-                        <span className="font-mono font-semibold text-emerald-400">
-                          {idx === 0 ? '45% (AED 63.9M Savings)' : idx === 1 ? 'Refinanced / Verified' : '100% Case Cleared'}
-                        </span>
-                      </div>
-                      <div>
-                        <span className="text-[#FBF9F4]/40 block text-[9px] uppercase tracking-wider mb-0.5">Security Protocol</span>
-                        <span className="font-mono text-slate-300">Class 5 NDA / Pre-Mediation</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="pt-6 mt-4 flex items-center justify-between text-[10px] font-semibold uppercase tracking-widest text-[#E5C158] cursor-pointer hover:text-white transition-colors duration-300">
-                    <span>Access Confidential Ledger Log</span>
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
-                  </div>
-                </div>
+                <p className="text-xs font-light text-[#FBF9F4]/40 mt-1">
+                  Classified analytical breakdowns of corporate debt restructuring, banking settlement support, and complex liability resolution.
+                </p>
               </div>
-            ))}
-          </div>
 
-        </div>
-      </section>
+              {/* Ledger Open Book Layout */}
+              <div className="space-y-12">
+                {caseStudies.map((caseFile, idx) => (
+                  <div 
+                    key={idx}
+                    className="grid grid-cols-1 lg:grid-cols-2 rounded-sm overflow-hidden border border-[#C5A059]/25 shadow-2xl relative min-h-[380px] group"
+                  >
+                    {/* Left Page (Ivory paper ledger page) */}
+                    <div className="bg-[#F7F5F0] text-[#070F1E] p-8 sm:p-10 flex flex-col justify-between relative border-r border-[#C5A059]/15">
+                      {/* Book spine inner shadow on right edge */}
+                      <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-black/10 to-transparent pointer-events-none z-10" />
+                      
+                      <div>
+                        <div className="flex items-center justify-between border-b border-black/10 pb-3 mb-6 text-[10px] font-mono font-semibold tracking-widest text-[#070F1E]/60 uppercase">
+                          <span>CASE FILE #{idx + 1}</span>
+                          <span>{caseFile.period}</span>
+                        </div>
+                        
+                        <h4 className="text-[9px] uppercase tracking-[0.2em] font-bold text-[#C5A059] mb-2 font-sans">
+                          Client / Registry Account
+                        </h4>
+                        <h3 className="text-xl font-sans text-[#070F1E] font-bold mb-3 leading-snug">
+                          {caseFile.client}
+                        </h3>
+                        <p className="text-xs sm:text-sm font-light leading-relaxed text-[#070F1E]/80 mt-2">
+                          <strong>Resolution Outcome: </strong>
+                          {caseFile.outcome}
+                        </p>
+                      </div>
+                      
+                      <div className="text-[9px] font-semibold text-slate-500 uppercase tracking-widest pt-4 border-t border-black/5 mt-6 flex justify-between">
+                        <span>Region Code: {caseFile.region}</span>
+                        <span>Classification: Private client</span>
+                      </div>
+                    </div>
+
+                    {/* Right Page (Dark navy metrics ledger page) */}
+                    <div className="bg-[#0B121F] text-[#FBF9F4] p-8 sm:p-10 flex flex-col justify-between relative">
+                      {/* Book spine inner shadow on left edge */}
+                      <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-black/25 to-transparent pointer-events-none z-10" />
+                      
+                      <div>
+                        <div className="flex items-center justify-between border-b border-[#C5A059]/10 pb-3 mb-6 text-[10px] font-mono text-[#C5A059]/60 uppercase tracking-wider">
+                          <span>METRIC DATA SHEET</span>
+                          <span>SECURE RECORD</span>
+                        </div>
+
+                        <h4 className="text-[9px] uppercase tracking-[0.2em] font-bold text-[#E5C158] mb-4 font-sans">
+                          Technical Specifications
+                        </h4>
+                        
+                        <div className="grid grid-cols-2 gap-y-4 gap-x-6 text-xs border-b border-slate-800/80 pb-6">
+                          <div>
+                            <span className="text-[#FBF9F4]/40 block text-[9px] uppercase tracking-wider mb-0.5">Facility Classification</span>
+                            <span className="font-sans font-semibold text-slate-200">{caseFile.facility}</span>
+                          </div>
+                          <div>
+                            <span className="text-[#FBF9F4]/40 block text-[9px] uppercase tracking-wider mb-0.5">Clearing Registry</span>
+                            <span className="font-mono text-[#E5C158] font-semibold">REG-FL-{(idx + 3280).toString(16).toUpperCase()}</span>
+                          </div>
+                          <div>
+                            <span className="text-[#FBF9F4]/40 block text-[9px] uppercase tracking-wider mb-0.5">Settlement Write-Off</span>
+                            <span className="font-mono font-semibold text-emerald-400">
+                              {idx === 0 ? '45% (AED 63.9M Savings)' : idx === 1 ? 'Refinanced / Verified' : '100% Case Cleared'}
+                            </span>
+                          </div>
+                          <div>
+                            <span className="text-[#FBF9F4]/40 block text-[9px] uppercase tracking-wider mb-0.5">Security Protocol</span>
+                            <span className="font-mono text-slate-300">Class 5 NDA / Pre-Mediation</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="pt-6 mt-4 flex items-center justify-between text-[10px] font-semibold uppercase tracking-widest text-[#E5C158] cursor-pointer hover:text-white transition-colors duration-300">
+                        <span>Access Confidential Ledger Log</span>
+                        <ChevronRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </section>
+        </>
+      )}
 
       <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
 

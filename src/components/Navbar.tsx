@@ -156,7 +156,7 @@ const navItems: NavItem[] = [
   },
   // { name: 'Calculator', href: '/calculator', type: 'direct' },
   { name: 'Testimonials', href: '/#testimonials', type: 'direct' },
-  { name: 'Case Study', href: '/#case-studies', type: 'direct' },
+  // { name: 'Case Study', href: '/#case-studies', type: 'direct' },
   { name: 'About Us', href: '/about-us', type: 'direct' },
   { name: 'Contact Us', href: '/#contact-us', type: 'direct' },
   { name: 'Blogs', href: '/blogs', type: 'direct' },
@@ -222,17 +222,22 @@ export default function Navbar() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-5 sm:py-6 flex items-center justify-between gap-8">
         
         {/* Brand Logo Container */}
-        <Link to="/" id="brand-logo" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
-          <img 
-            src="/finloby-white.png" 
-            alt="Finloby Shield" 
-            className="h-12 sm:h-20 w-auto object-contain transition-all duration-300" 
-          />
-          <img 
-            src="/FINLOBY-TEXT.png" 
-            alt="FINLOBY" 
-            className="h-4 sm:h-7 w-auto object-contain transition-all duration-300" 
-          />
+        <Link to="/" id="brand-logo" className="flex flex-col gap-1 group flex-shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <img 
+              src="/finloby-white.png" 
+              alt="Finloby Shield" 
+              className="h-12 sm:h-20 w-auto object-contain transition-all duration-300" 
+            />
+            <img 
+              src="/FINLOBY-TEXT.png" 
+              alt="FINLOBY" 
+              className="h-4 sm:h-7 w-auto object-contain transition-all duration-300" 
+            />
+          </div>
+          <span className="text-[7px] sm:text-[9px] text-[#C5A059] font-medium tracking-[0.08em] font-mono leading-none pl-1 transition-all duration-300 select-none">
+            Commitment | Trust | Confidentiality
+          </span>
         </Link>
 
         {/* Desktop Primary Menu */}

@@ -27,15 +27,15 @@ const individualCategories: LegalCategory[] = [
       },
       {
         title: '2. The Collection Stage',
-        desc: 'Once an account slips into later buckets, it is handed over to internal or external collection agencies. This stage often involves intense communication and pressure.\nHow We Assist: We step in as your representative, managing communications with collectors, assessing your actual financial capacity, and shielding you from undue harassment.'
+        desc: 'Once an account slips into later buckets, it is handed over to internal or external collection agencies. This stage often involves intense communication and pressure.\nHow We Assist: After taking due consent from the client, we step in as client’s representative, managing communications with collectors, assessing your actual financial capacity, and shielding you from undue harassment.'
       },
       {
         title: '3. The Pre-Legal Stage & Demand Notices',
         desc: 'If defaults persist, the bank\'s legal department issues an official Pre-Legal Notice or Demand Letter, signaling their intent to initiate formal legal proceedings.\nHow We Assist: This is a critical window. We evaluate the legal notice, prepare formal responses, and initiate urgent negotiations with the bank to halt legal escalation.'
       },
       {
-        title: 'Restructuring & Settlement (The Turning Point)',
-        desc: 'Even during severe default, banks prefer recovery over litigation. Clients typically have two strategic options:\nRestructuring: Rescheduling the debt into a new, extended loan term with lower, manageable monthly EMIs.\nSettlement: Negotiating a lump-sum, discounted payout to close the liability permanently.\nHow We Assist: We build a strong proposal , negotiate directly with high level bank decision-makers, and secure the most favorable restructuring terms or maximum settlement waivers.'
+        title: '4. Restructuring & Settlement (The Turning Point)',
+        desc: 'Even during severe default, banks prefer recovery over litigation. Clients typically have two strategic options:\nRestructuring: Rescheduling the debt into a new, extended loan term with lower, manageable monthly EMIs.\nSettlement: Negotiating a lump-sum, discounted payout to close the liability permanently.\nHow We Assist: We build a strong proposal and try to secure the most favorable restructuring terms or maximum settlement waivers.'
       }
     ]
   },
@@ -56,24 +56,16 @@ const individualCategories: LegalCategory[] = [
   },
   {
     id: 'skip-assistance',
-    title: 'Cross-Border Skip Solutions',
-    desc: 'Secure asset coordination for clients residing outside the UAE. Settle files remotely and secure full clearances with absolute safety.',
+    title: 'Skip Solutions',
+    desc: 'At Finloby, we recognize that facing severe financial distress can be overwhelming. When individuals leave the country under the pressure of outstanding liabilities, it is rarely a matter of evading responsibility. Instead, it is almost always a difficult decision forced by sudden, extreme compulsions, where an individual feels they have no immediate choice, yet maintains a complete and genuine intention to honor their financial obligations.',
     steps: [
       {
-        title: 'Remote Settlement - How We Assist',
-        desc: 'Remote bank account settlements through corporate power of attorney.'
+        title: 'Creditor Liaison',
+        desc: 'We bridge the gap between you and your creditors. We specialize in representing clients who are currently outside the UAE but remain deeply committed to resolving their loan issues. By stepping in to negotiate with banks, we demonstrate your good faith and willingness to find a mutually beneficial solution.'
       },
       {
-        title: 'Police Clearance - How We Assist',
-        desc: 'Securing full police clearances without entering the jurisdiction.'
-      },
-      {
-        title: 'Immigration & Border Listing - How We Assist',
-        desc: 'Resolving active immigration files and airport block listings.'
-      },
-      {
-        title: 'Documentation Delivery - How We Assist',
-        desc: 'Comprehensive border clearance documentation delivery.'
+        title: 'Resolution & Negotiation Plan',
+        desc: 'If you have been delaying the resolution of your debts, you do not have to navigate this process alone. Let us help you formalize your intent to repay and structure a realistic negotiation plan.'
       }
     ]
   }

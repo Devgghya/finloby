@@ -28,103 +28,103 @@ const loanCategories: LoanCategory[] = [
     subcategories: [
       {
         name: 'Salary Transfer Loans (STL)',
-        desc: 'A Salary Transfer Loan (STL) is the most traditional and cost-effective personal finance option in UAE. Under STL structure, client shall commit to transfer monthly salary account directly to the lending bank. Because the bank has a guaranteed source of repayment, STL loans offer the lowest possible interest rates, higher finance amounts, and flexible tenures of up to 48 months (as mandated by the UAE Central Bank).',
+        desc: 'A Salary Transfer Loan (STL) is the most traditional and cost-effective personal finance option in the UAE. Under STL structure, the client shall commit to transfer the monthly salary account directly to the lending bank. Because the bank has a guaranteed source of repayment, STL loans offer the lowest possible interest rates, higher finance amounts, and flexible tenures of up to 48 months (as mandated by the UAE Central Bank).',
         steps: [
           {
             title: 'Review of Profile & Documents',
-            desc: 'We thoroughly review client’s personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures.'
+            desc: "We thoroughly review the client's personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures."
           },
           {
             title: 'DBR & Central Bank Compliance Check',
             desc: 'We calculate your exact Debt Burden Ratio (which cannot exceed 50% of your gross income per UAE Central Bank rules) to ensure your application passes automated bank filtering.'
           },
           {
-            title: 'Optimal Bank Matching',
-            desc: 'We pitch client’s profile to the specific banks offering the lowest reducing interest rates.'
+            title: 'Eligibility & Compatibility Check',
+            desc: "We assess a client's eligibility for the maximum required loan amount across compatible financial institutions by analyzing the client's profile and salary structure."
           },
           {
-            title: 'Eligibility & Compatibility Check',
-            desc: 'We assess client’s eligibility for the maximum required loan amount across compatible financial institutions by analyzing client’s profile and salary structure.'
+            title: 'Optimal Bank Matching',
+            desc: "Based on the client's consensual authority,we pitch the client's profile to the specific banks offering the lowest reducing interest rates."
           },
           {
             title: 'Salary Transfer Letter Assistance',
-            desc: 'Post soft approval from the institute, Our team assists client in obtaining a compliant Salary Transfer Letter from HR department that matches the specific criteria of the target financial institution, ensuring an error-free submission to the institute.'
+            desc: 'Post soft approval from the institute, Our team assists clients in obtaining a compliant Salary Transfer Letter from the HR department that matches the specific criteria of the target financial institution, ensuring an error-free submission to the institute.'
           },
           {
             title: 'Loan amount disbursal',
-            desc: 'Our Team assists the client till the approved loan amount is disbursed from the concern financial institution.'
+            desc: 'Our Team assists the client till the approved loan amount is disbursed from the concerned financial institution.'
           }
         ]
       },
       {
         name: 'Non-Salary Transfer Loans (Non-STL / Post-Dated Cheque Loans)',
-        desc: 'A Non-Salary Transfer Loan (Non-STL) is designed for individuals who are seeking limited amount of loan and want to keep their existing salary account intact. Based on your salary, repayment is secured using Post-Dated Cheques (PDCs) or direct debit instructions from your current bank.',
+        desc: 'A Non-Salary Transfer Loan (Non-STL) is designed for individuals who are seeking loan and want to keep their existing salary account intact. Based on your salary, repayment is secured using Post-Dated Cheques (PDCs) or direct debit instructions from your current bank.',
         steps: [
           {
             title: 'Review of Profile & Documents',
-            desc: 'We thoroughly review client’s personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures.'
+            desc: "We thoroughly review the client's personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures."
           },
           {
             title: 'DBR & Central Bank Compliance Check',
             desc: 'We calculate your exact Debt Burden Ratio (which cannot exceed 50% of your gross income per UAE Central Bank rules) to ensure your application passes automated bank filtering.'
           },
           {
-            title: 'Optimal Bank Matching',
-            desc: 'We pitch client’s profile to the specific banks offering the lowest reducing interest rates.'
+            title: 'Eligibility & Compatibility Check',
+            desc: "We assess a client's eligibility for the maximum required loan amount across compatible financial institutions by analyzing the client's profile and salary structure."
           },
           {
-            title: 'Eligibility & Compatibility Check',
-            desc: 'We assess client’s eligibility for the maximum required loan amount across compatible financial institutions by analyzing client’s profile and salary structure.'
+            title: 'Optimal Bank Matching',
+            desc: "We pitch the client's profile to the specific banks offering the lowest reducing interest rates."
           },
           {
             title: 'Security Cheque',
-            desc: 'Once soft approval is obtained from the financial institution, security cheque and Direct Debit Authority (DDA) is supposed to be submitted to the concern financial institution.'
+            desc: 'Once soft approval is obtained from the financial institution, a security cheque and Direct Debit Authority (DDA) is supposed to be submitted to the concerned financial institution.'
           },
           {
             title: 'Loan amount disbursal',
-            desc: 'Our Team assists the client till the approved loan amount is disbursed from the concern financial institution.'
+            desc: 'Our Team assists the client till the approved loan amount is disbursed from the concerned financial institution.'
           }
         ]
       },
       {
         name: 'Buy-Out Loans (Consolidation Loans)',
-        desc: 'A Buy-Out Loan is a specialized debt consolidation facility where a new bank pays off all client’s existing liabilities once approved such as outstanding credit cards, personal loans, or car finance across multiple UAE banks and combines them into one single loan.',
+        desc: 'A Buy-Out Loan is a specialized debt consolidation facility where a new bank pays off all client’s existing liabilities once approved such as outstanding credit cards, personal loans, or car finance across multiple banking and financial institutes and combines them into one single loan.',
         steps: [
           {
             title: 'Review of Profile & Documents',
-            desc: 'We thoroughly review client’s personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures.'
+            desc: "We thoroughly review the client's personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures."
           },
           {
             title: 'DBR & Central Bank Compliance Check',
             desc: 'We calculate your exact Debt Burden Ratio (which cannot exceed 50% of your gross income per UAE Central Bank rules) to ensure your application passes automated bank filtering.'
           },
           {
-            title: 'Optimal Bank Matching',
-            desc: 'We pitch client’s profile to the specific banks offering the lowest reducing interest rates.'
+            title: 'Eligibility & Compatibility Check',
+            desc: "We assess a client's eligibility for the maximum required loan amount across compatible financial institutions by analyzing the client's profile and salary structure."
           },
           {
-            title: 'Eligibility & Compatibility Check',
-            desc: 'We assess client’s eligibility for the maximum required loan amount across compatible financial institutions by analyzing client’s profile and salary structure.'
+            title: 'Optimal Bank Matching',
+            desc: "We pitch the client's profile to the specific banks offering the lowest reducing interest rates."
           },
           {
             title: 'Liability Letter Processing',
-            desc: 'We guide client to coordinate with current banks to ensure the client gets accurate, timely Liability Letters with the correct payout figures.'
+            desc: 'We guide clients to coordinate with current banks to ensure the client gets accurate, timely Liability Letters with the correct payout figures.'
+          },
+          {
+            title: 'Security Cheque',
+            desc: 'Once soft approval is obtained from the financial institution, a security cheque and Direct Debit Authority (DDA) is supposed to be submitted to the concerned financial institution.'
           },
           {
             title: 'Central Bank Settlement Alignment',
             desc: 'We review the strict timeline between getting your liability letters and securing the buyout funds to prevent the letters from expiring.'
           },
           {
-            title: 'Security Cheque',
-            desc: 'Once soft approval is obtained from the financial institution, security cheque and Direct Debit Authority (DDA) is supposed to be submitted to the concern financial institution.'
-          },
-          {
             title: 'Liability Closure & Clearance Tracking',
-            desc: 'Once the buyout is approved, we don\'t just stop there. We guide you through obtaining your final Clearance Letters from your old banks and ensuring your AECB credit report updates correctly to show the old accounts as closed.'
+            desc: "Once the buyout is approved, we don't just stop there. We guide you through obtaining your final Clearance Letters from your old banks and ensuring your AECB credit report updates correctly to show the old accounts as closed."
           },
           {
             title: 'Loan amount disbursal',
-            desc: 'Our Team assists the client till the approved loan amount is disbursed from the concern financial institution.'
+            desc: 'Our Team assists the client till the approved loan amount is disbursed from the concerned financial institution.'
           }
         ]
       }
@@ -140,15 +140,15 @@ const loanCategories: LoanCategory[] = [
         steps: [
           {
             title: 'Phase 1: Onboarding & Cash Flow Scrubbing - AECB Alignment (Dual Scrutiny)',
-            desc: 'In Retail Loans, UAE banks rely heavily on "scorecard lending." We coordinate to run a check on both the Company’s AECB score and the Principal Shareholder\'s personal AECB score.'
+            desc: "In Retail Loans, UAE banks rely heavily on \"scorecard lending.\" Based on firm consensual authority, we coordinate to run a check on both the Company’s AECB score and the Principal Shareholder's personal AECB score."
           },
           {
             title: 'Phase 1: Onboarding & Cash Flow Scrubbing - The "Bounced Cheque" Audit',
-            desc: 'We thoroughly review the last 12 months of bank statements. In the UAE, even one or two outward bounced cheques due to insufficient funds (EFSR) may trigger an automatic system rejection. We guide client to clean these up or wait out the cycle before applying.'
+            desc: 'We thoroughly review the last 12 months of bank statements. In the UAE, even one or two outward bounced cheques due to insufficient funds (EFSR) may trigger an automatic system rejection. We guide clients to clean these up or wait out the cycle before applying.'
           },
           {
             title: 'Phase 1: Onboarding & Cash Flow Scrubbing - Average Quarterly Balance (AQB) Calculation',
-            desc: 'Calculate the client’s real monthly transactional run rate. Banks generally benchmark the loan amount against the client\'s AQB.'
+            desc: "We calculate the client’s real monthly transactional run rate. Banks generally benchmark the loan amount against the client's AQB."
           },
           {
             title: 'Phase 2: Structuring & Solution Selection - Traditional Unsecured vs. POS Financing',
@@ -156,7 +156,7 @@ const loanCategories: LoanCategory[] = [
           },
           {
             title: 'Phase 2: Structuring & Solution Selection - VAT Return Triangulation',
-            desc: 'We guide client to ensure that the revenues reflected on the bank statements match the Federal Tax Authority (FTA) VAT returns perfectly. There are system in place to cross-verify VAT filings against statement inflows.'
+            desc: 'We guide clients to ensure that the revenues reflected on the bank statements match the Federal Tax Authority (FTA) VAT returns perfectly. There are systems in place to cross-verify VAT filings against statement inflows.'
           },
           {
             title: 'Phase 3: Fast-Track Packaging & Submission - Document Standardization',
@@ -194,37 +194,43 @@ const loanCategories: LoanCategory[] = [
           },
           {
             title: 'Phase 3: Information Memorandum (IM) & Risk Pitching - The IM Pitch Deck',
-            desc: 'Unlike retail, corporate SME loans require a formal human underwriting committee review. We guide Firm to write a comprehensive Information Memorandum detailing:\nIndustry outlook in the UAE/GCC market.\nWorking capital cycle (Days Inventory Outstanding + Days Sales Outstanding − Days Payable Outstanding).\nExplicit utilization plan for the requested facility.'
+            desc: 'Unlike retail, corporate SME loans require a formal human underwriting committee review. We guide firm to write a comprehensive Information Memorandum detailing:\nIndustry outlook in the UAE/GCC market.\nWorking capital cycle (Days Inventory Outstanding + Days Sales Outstanding − Days Payable Outstanding).\nExplicit utilization plan for the requested facility.'
           },
           {
             title: 'Phase 3: Information Memorandum (IM) & Risk Pitching - SME Customer Protection Adherence',
-            desc: 'We ensure the engagement aligns with the CBUAE SME Customer Protection Regulation (Circular 2/2026). We guide firm to confirm that the bank provides a clear, bilingual (Arabic/English) Key Facts Statement highlighting all transparent pricing, variable margin spreads over EIBOR, and covenants, while verifying that "tied-selling/bundling" of unrequested insurance products is avoided.'
+            desc: 'We ensure the engagement aligns with the CBUAE SME Customer Protection Regulation (Circular 2/2026). We guide the firm to confirm that the bank provides a clear, bilingual (Arabic/English) Key Facts Statement highlighting all transparent pricing, variable margin spreads over EIBOR, and covenants, while verifying that "tied-selling/bundling" of unrequested insurance products is avoided.'
           },
           {
             title: 'Phase 4: Credit Committee Management & Facility Letter (FL) Execution - Lender RFP and Negotiation',
-            desc: 'Present the IM to multiple corporate desks to all major financial institutions to create a competitive bidding environment on the EIBOR margin spread.'
+            desc: "Based on client’s consensual authority, we present the IM to multiple corporate desks to all major financial institutions to create a competitive bidding environment on the EIBOR margin spread."
           },
           {
             title: 'Phase 4: Credit Committee Management & Facility Letter (FL) Execution - Covenant Management',
-            desc: 'Review the Final Facility Letter carefully. Ensure that the financial covenants (e.g., maintaining a specific minimum turnover through the lending bank’s account) are realistic and will not trigger technical defaults for client during seasonal lulls.'
+            desc: 'We then review the Final Facility Letter carefully. Ensure that the financial covenants (e.g., maintaining a specific minimum turnover through the lending bank’s account) are realistic and will not trigger technical defaults for clients during seasonal lulls.'
           }
         ]
-      },
-      { 
-        name: 'Project Finance (Special Purpose Vehicles & Infrastructure)', 
-        desc: 'Target Profile:\nMassive manufacturing setups, infrastructure developments, or large-scale real estate projects.\n\nKey UAE Concept:\nThe bank lends directly to a Special Purpose Vehicle (SPV) created solely for the project, isolating the parent company\'s balance sheet from risk.',
+      }
+    ]
+  },
+  {
+    id: 'project-finance',
+    title: 'Project & Machinery',
+    subcategories: [
+      {
+        name: 'Project Finance (Special Purpose Vehicles & Infrastructure)',
+        desc: 'Target Profile:\nMassive manufacturing setups, infrastructure developments, or large-scale real estate projects.\n\nKey UAE Concept:\nThe bank lends to a Special Purpose Vehicle (SPV) created solely for the project, isolating the parent company\'s balance sheet from risk.',
         steps: [
           {
             title: 'Phase 1: Feasibility Modeling & Bankability Check - The 3-Way Financial Model',
-            desc: 'We build a meticulous financial model mapping out the Project\'s Income Statement, Balance Sheet, and Free Cash Flow to Equity (FCFE). UAE underwriting committees require a minimum Debt Service Coverage Ratio (DSCR) of 1.30× to 1.50×.'
+            desc: "We build a meticulous financial model mapping out the Project's Income Statement, Balance Sheet, and Free Cash Flow to Equity (FCFE). UAE underwriting committees require a minimum Debt Service Coverage Ratio (DSCR) of 1.30× to 1.50×."
           },
           {
             title: 'Phase 1: Feasibility Modeling & Bankability Check - Off-Take Agreement Structuring',
-            desc: 'Banks in Dubai rarely fund projects based on speculation. We help secure a binding Off-Take Agreement (a guarantee from an eligible buyer to purchase the project’s future output) to make the deal "bankable."'
+            desc: 'Banks in UAE rarely fund projects based on speculation. We help secure a binding Off-Take Agreement (a guarantee from an eligible buyer to purchase the project’s future output) to make the deal "bankable."'
           },
           {
             title: 'Phase 1: Feasibility Modeling & Bankability Check - Equity to Debt Structuring',
-            desc: 'We help and guide ensure the sponsors have their equity portion ready. Dubai banks typically require a 30:70 or 40:60 Equity-to-Debt ratio. The bank will mandate that the client\'s equity is injected and utilized before a single bank dirham is disbursed.'
+            desc: "We help and guide the client to ensure the sponsors have their equity portion ready.The bank mandates that the client's equity is injected and utilized before a single bank dirham is disbursed."
           },
           {
             title: 'Phase 2: Risk Allocation & Legal Architecture - SPV & Escrow Account Setup',
@@ -236,37 +242,37 @@ const loanCategories: LoanCategory[] = [
           },
           {
             title: 'Phase 3: Due Diligence & Bank Consortium Syndication - Independent Engineers/Valuers',
-            desc: 'Dubai banks appoints an external Technical Advisor (such as a certified engineering firm) at the client\'s expense to vet the construction timelines and cost estimates.'
+            desc: "UAE banks appoints an external Technical Advisor (such as a certified engineering firm) at the client's expense to vet the construction timelines and cost estimates.(Subject to banking law and practice of UAE)"
           },
           {
             title: 'Phase 3: Due Diligence & Bank Consortium Syndication - Information Memorandum (IM) Pitching',
-            desc: 'For projects exceeding AED 100 Million, we guide firm to pitch the IM to a consortium of local banks (e.g., Emirates NBD, FAB, ADCB) to arrange a Syndicated Loan Facility, mitigating single-bank risk exposure.'
+            desc: 'For projects exceeding AED 100 Million, we guide firms to pitch the IM to a consortium of local banks to arrange a Syndicated Loan Facility, mitigating single-bank risk exposure.(Subject to banking law and practice of UAE)'
           },
           {
             title: 'Phase 4: Tranche Disbursal & Drawdown Management - Progress-Based Milestone Releases',
-            desc: 'Funds are not released in a lump sum. We coordinate with the bank\'s project monitors to release funding in tranches based on audited, certified construction milestones.'
+            desc: "Funds are not released in a lump sum. Based on the client's consensual authority, we coordinate with the bank's project monitors to release funding in tranches based on audited, certified construction milestones."
           }
         ]
       },
-      { 
-        name: 'Machinery & Heavy Equipment Finance', 
+      {
+        name: 'Machinery & Heavy Equipment Finance',
         desc: 'Target Profile:\nConstruction, logistics, healthcare, and industrial manufacturing firms acquiring yellow goods, production lines, or medical tech.\n\nKey Dubai Concept:\nThis is an Asset-Backed Loan (ABL) or Islamic Lease-to-Own (Ijara) where the asset itself represents the main security.',
         steps: [
           {
             title: 'Phase 1: Procurement & Asset Verification - Approved Dealer Validation',
-            desc: 'Dubai banks maintain strict "Approved Supplier/Manufacturer Lists." We ensure the machinery vendor is on the selected bank\'s pre-approved panel (e.g., RAKBANK or CBI). Buying from unlisted overseas suppliers requires Letter of Credit (LC) structuring.'
+            desc: "UAE banks maintain strict \"Approved Supplier/Manufacturer Lists.\" We ensure the machinery vendor is on the selected bank's pre-approved panel. Buying from unlisted overseas suppliers requires Letter of Credit (LC) structuring."
           },
           {
             title: 'Phase 1: Procurement & Asset Verification - Down Payment & Loan-to-Value (LTV) Optimization',
-            desc: 'We guide to budget for the mandatory equity down payment. Dubai asset-backed structures generally provide an LTV of 75% to 90%, meaning the client must pay 10% to 25% upfront directly to the dealer.'
+            desc: 'We budget the mandatory equity down payment. UAE asset-backed structures generally provide an LTV of 75% to 90%.'
           },
           {
             title: 'Phase 2: Registry & Legal Compliance - EIRC (Emirates Integrated Registries Company) Check',
-            desc: 'We conduct an asset title search. The bank will register a possessory pledge/hypothecation over the movable machinery on the EIRC registry to prevent the client from selling or re-pledging the machine during the loan tenure.'
+            desc: 'We conduct an asset title search. The bank generally register a possessory pledge/hypothecation over the movable machinery on the EIRC registry to prevent the client from selling or re-pledging the machine during the loan tenure.'
           },
           {
             title: 'Phase 2: Registry & Legal Compliance - Tenure Matching',
-            desc: 'We help to structure the amortization schedule relative to the useful life of the asset. Dubai banks cap machinery financing at 4 to 7 years, ensuring the loan does not outlast the physical depreciation of the asset.'
+            desc: 'We help clients to structure the amortization schedule relative to the useful life of the asset. UAE banks cap machinery financing at 4 to 7 years, ensuring the loan does not outlast the physical depreciation of the asset.'
           },
           {
             title: 'Phase 3: Credit Underwriting & Insurance Packaging - Cash Flow Triangulation',
@@ -274,7 +280,7 @@ const loanCategories: LoanCategory[] = [
           },
           {
             title: 'Phase 3: Credit Underwriting & Insurance Packaging - Mandatory Comprehensive Asset Insurance',
-            desc: 'We help to package a specialized asset insurance policy with the bank listed as the Sole Loss Payee. The policy must cover operational damage, theft, and third-party liabilities common to Dubai industrial zones.'
+            desc: 'We assist in packaging a specialized asset insurance policy with the bank listed as the Sole Loss Payee. The policy must cover operational damage, theft, and third-party liabilities common to Dubai industrial zones.'
           },
           {
             title: 'Phase 4: Disbursement & Delivery Order - Direct-to-Dealer Payout',
@@ -282,7 +288,7 @@ const loanCategories: LoanCategory[] = [
           },
           {
             title: 'Phase 4: Disbursement & Delivery Order - Delivery & Asset Inspection',
-            desc: 'We guide client to Coordinate the delivery of the machine, ensuring the bank’s asset management team physically inspects and tags the serial number of the asset to finalize the activation of the loan.'
+            desc: 'We guide clients to Coordinate the delivery of the machine, ensuring the bank’s asset management team physically inspects and tags the serial number of the asset to finalize the activation of the loan.'
           }
         ]
       }
@@ -294,33 +300,33 @@ const loanCategories: LoanCategory[] = [
     subcategories: [
       {
         name: 'Vehicle Loan',
-        desc: 'A Vehicle Loan (also known as an Auto Loan or Auto Finance) is a personal, secured loan designed for individual buyers looking to finance a single vehicle for personal use.',
+        desc: 'A Vehicle Loan (also known as an Auto Loan or Auto Finance) is a personal, secured loan designed for individual buyers looking to finance vehicle for personal use.',
         steps: [
           {
             title: 'Step 1: Review of Profile & Documents',
-            desc: 'We thoroughly review client’s personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures.'
+            desc: "We thoroughly review the client's personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures."
           },
           {
             title: 'Step 2: DBR & Central Bank Compliance Check',
-            desc: 'We calculate your exact Debt Burden Ratio (DBR) to ensure your application perfectly aligns with UAE Central Bank policies. Client’s total monthly financial commitments (including existing loans and credit cards) cannot exceed 50% of your gross monthly income. Your final vehicle loan eligibility and maximum monthly instalment will depend entirely on the remaining DBR room you have left.'
+            desc: "We calculate your exact Debt Burden Ratio (DBR) to ensure your application perfectly aligns with UAE Central Bank policies. Client’s total monthly financial commitments (including existing loans and credit cards) cannot exceed 50% of your gross monthly income. Your final vehicle loan eligibility and maximum monthly instalment will depend entirely on the remaining DBR room you have left."
           },
           {
             title: 'Step 3: Down Payment and Repayment duration',
-            desc: 'We work on your profile to lower your upfront costs as much as possible, targeting down payment options as low as 5% to 10% based on your profile and banking policies.\nBanking repayment structures are set at a highly manageable 48 months, with selected leading banks allowing you to stretch your tenure to the absolute maximum of 60 months for the lowest possible monthly installment.'
+            desc: "We work on your profile to lower your upfront costs as much as possible, targeting down payment options as low as 5% to 10% based on your profile and banking policies.\nBanking repayment structures are set at a highly manageable 48 months, with selected leading banks allowing you to stretch your tenure to the absolute maximum of 60 months for the lowest possible monthly installment. (Subject to Client’s profile and respective banking policies)"
           },
           {
             title: 'Step 4: Disbursement of Loan amount',
-            desc: 'Once you have selected your vehicle, the loan amount is disbursed directly to the showroom or private seller. Simultaneously, the vehicle registration process begins. The car is officially transferred into your name at the RTA, with the financing bank registered as the primary lien holder until the loan is fully repaid.'
+            desc: "Once you have selected your vehicle, the loan amount is disbursed directly to the showroom or private seller. Simultaneously, the vehicle registration process begins. The car is officially transferred into your name at the RTA, with the financing bank registered as the primary lien holder until the loan is fully repaid."
           },
           {
             title: 'Step 5: Individual Vehicle Insurance',
-            desc: 'We assist you in securing a comprehensive insurance policy for the vehicle, vehicle registration and transfer along with processing of Salik Card.'
+            desc: "We assist you in securing a comprehensive insurance policy for the vehicle, vehicle registration and transfer along with processing of Salik Card."
           }
         ]
       },
       {
         name: 'Fleet Loan',
-        desc: 'A Fleet Loan is a comprehensive, structured credit facility tailored for companies that need to acquire, manage, or upgrade a large group of vehicles simultaneously. Ideal for logistics, rent a car companies, and large-scale distribution businesses in Dubai, fleet financing allows you to bundle multiple vehicles into a single, manageable loan agreement with optimized interest rates and unified repayment terms.',
+        desc: 'A Fleet Loan is a comprehensive, structured credit facility tailored for companies that need to acquire, manage, or upgrade a large group of vehicles simultaneously. Ideal for logistics, rental car companies, and large-scale distribution businesses in Dubai, fleet financing allows you to bundle multiple vehicles into a single, manageable loan agreement with optimized interest rates and unified repayment terms.',
         steps: [
           {
             title: 'Step 1: Fleet Requirement & Capacity Planning',
@@ -328,7 +334,7 @@ const loanCategories: LoanCategory[] = [
           },
           {
             title: 'Step 2: Corporate Credit Line Sourcing',
-            desc: 'Instead of a basic car loan, we negotiate a Fleet Credit Facility or Master Lease/Loan Agreement with UAE banks. This gives your business an approved financial umbrella/limit that you can draw down from as you add vehicles.'
+            desc: 'Instead of a basic car loan, we negotiate a Fleet Credit Facility or Master Lease/Loan Agreement with financial institutions. This gives your business an approved financial umbrella/limit that you can draw down from as you add vehicles.'
           },
           {
             title: 'Step 3: Advanced Documentation & Business Case',
@@ -340,7 +346,7 @@ const loanCategories: LoanCategory[] = [
           },
           {
             title: 'Step 5: Fleet Insurance & Global Mortgage',
-            desc: 'We negotiate bulk, fleet-wide commercial insurance policies to save you premium costs. The bank establishes a global mortgage framework over the incoming asset lot.'
+            desc: "Based on the client's consensual authority, we negotiate or guide for bulk, fleet-wide commercial insurance policies to save you premium costs. The bank establishes a global mortgage framework over the incoming asset lot."
           },
           {
             title: 'Step 6: Phased Disbursement & Fleet Deployment',
@@ -352,23 +358,45 @@ const loanCategories: LoanCategory[] = [
   },
   {
     id: 'credit-card',
-    title: 'Loan Against Credit Card',
+    title: 'Credit Cards',
     subcategories: [
+      {
+        name: 'Credit Card Issuance',
+        desc: 'At Finloby, we guide our clients through the legal parameters governing consumer credit., the issuance of credit cards by licensed financial institutions is strictly regulated by Central Bank of UAE to ensure responsible lending and protect consumer rights.',
+        steps: [
+          {
+            title: 'Core Statutory Requirements for Issuance',
+            desc: 'The key legal standards mandated by the UAE Central Bank for acquiring a retail credit facility.'
+          },
+          {
+            title: 'Mandatory Income Threshold',
+            desc: 'To ensure cardholders are creditworthy, Credit card is issued subject to individual income and banking law and practice in UAE.'
+          },
+          {
+            title: 'Pledged Deposit Exception',
+            desc: 'Applicants who do not meet the minimum salary and still seek credit card facility can avail the same by pledging cash deposit with the issuing bank to secure the credit facility. (Subject to banking law and practice in UAE)'
+          },
+          {
+            title: 'Debt Burden Ratio (DBR) Cap',
+            desc: "Total monthly debt obligations—including credit card minimum payments, personal loans, and auto finance, must not exceed 50% of the customer's gross salary or regular income. For retirees, this cap drops strictly to 30%."
+          }
+        ]
+      },
       {
         name: 'Loan Against Credit Card',
         desc: 'Loan Against Credit Card feature transforms your unused credit limit into instant cash deposited straight into your bank account.',
         steps: [
           {
             title: 'Limit Verification',
-            desc: "The bank instantly reviews your credit card's available limit. Based on your current usage, the bank presents pre-approved cash loan options tailored to your profile"
+            desc: "The bank reviews your credit card's available limit. Based on your current usage, the bank presents pre-approved cash loan options tailored to your profile"
           },
           {
             title: 'Flexible Tenure Selection',
-            desc: 'A repayment plan that fits your monthly budget. UAE banks offer highly flexible terms, allowing you to spread the installments over 03 to 36 months'
+            desc: 'A repayment plan that fits your monthly budget. Financial Institutions offer highly flexible terms, allowing you to spread the installments over 03 to 36 months'
           },
           {
             title: 'Application/Request Submission',
-            desc: 'Once submitted, the approved funds are disbursed directly into your designated UAE bank account within minutes, while the matching amount is safely blocked on your credit card and released gradually as you pay your monthly installments.'
+            desc: 'Once submitted, the approved funds are disbursed into your designated bank account, while the matching amount is safely blocked on your credit card and released gradually as you pay your monthly installments.'
           }
         ]
       }
@@ -384,11 +412,11 @@ const loanCategories: LoanCategory[] = [
         steps: [
           {
             title: 'The Two Structural Forms',
-            desc: 'UAE banks offer two legal and financial pathways to a mortgage:\nConventional Mortgages:\nA standard loan where the bank charges interest\nIslamic Mortgage (Sharia-Compliant):\nStructured as a Murabaha (cost-plus profit) or Ijara (lease-to-own). Instead of charging interest, the bank buys the property and sells or leases it back to the customer at a profit margin.'
+            desc: 'UAE banks offer two legal and financial pathways to a mortgage:\nConventional Mortgages:\nA standard loan where the bank charges interest\nIslamic Mortgage (Sharia-Compliant):\nStructured as a Murabaha (cost-plus profit) or Ijara (lease-to-own)..'
           },
           {
             title: 'Review of Profile & Documents',
-            desc: 'We thoroughly review client’s personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures.'
+            desc: "We thoroughly review the client's personal and employment profile along with all required documents in order to evaluate all liabilities for further procedures."
           },
           {
             title: 'DBR & Central Bank Compliance Check',
@@ -396,7 +424,7 @@ const loanCategories: LoanCategory[] = [
           },
           {
             title: 'Review of Critical Banking Requirements',
-            desc: 'To qualify for a home loan in the UAE, banks strictly evaluate:\n1. Minimum Salary: Usually starts at AED 10,000 to AED 15,000 per month for salaried residents.\n2. AECB Credit Score: The Al Etihad Credit Bureau score is heavily scrutinise; a history of bounced cheques or missed card payments will stall an application.\n3. Mandatory Life Insurance: UAE banks legally require you to take out a mortgage protection life insurance policy assigned to the bank to cover the outstanding debt in the event of death.'
+            desc: 'To qualify for a home loan in the UAE, banks strictly evaluate:\n1. Minimum Salary: Usually starts at AED 10,000 to AED 15,000 per month for salaried residents.\n2. AECB Credit Score: The Al Etihad Credit Bureau score is heavily scrutinized; a history of bounced cheques or missed card payments will stall an application.\n3. Mandatory Life Insurance: UAE banks require you to take out a mortgage protection life insurance policy assigned to the bank to cover the outstanding debt.'
           },
           {
             title: 'Loan Tenure & Age Caps',
@@ -408,15 +436,15 @@ const loanCategories: LoanCategory[] = [
           },
           {
             title: 'Banking Pre-Approval (The "Borrower" Assessment)',
-            desc: 'The goal is to secure a formal commitment from the lender regarding the client’s creditworthiness.\n1. KYC & Document Compilation:\nWe help gather and verify the compliance package based on the profile:\na. Salaried Expat: Salary certificates, 6 months of bank statements, payslips, and continuous employment records.\nb. Self-Employed/Business Owners: Audited financial statements, corporate bank statements (12 months), trade licenses, and MOA/Share Certificates.\n2. Application Submission & Liaison:\nWe help package the underwriting file and submit it to the selected bank(s). We Manage all query-handling and clarify income discrepancies with the bank’s assigned credit team.\n3. Pre-Approval Letter Issuance:\nWe help client in obtaining the formal Pre-Approval Letter. Ensuring the client understands its parameters (typically valid for 60 to 90 days), allowing them to confidently place an offer on a property.'
+            desc: 'The goal is to secure a formal commitment from the lender regarding the client’s creditworthiness.\n1. KYC & Document Compilation:\nWe help gather and verify the compliance package based on the profile:\na. Salaried Expat: Salary certificates, 6 months of bank statements, payslips, and continuous employment records.\nb. Self-Employed/Business Owners: Audited financial statements, corporate bank statements (12 months), trade licenses, and MOA/Share Certificates.\n2. Application Submission:\nWe help package the underwriting file and submit it to the selected bank(s). Based on the client\'s consensual authority, we manage all query handling and clarify income discrepancies with the bank’s assigned credit team.\n3. Pre-Approval Letter Issuance:\nWe guide and assist clients in obtaining the formal Pre-Approval Letter. Ensuring the client understands its parameters (typically valid for 60 to 90 days), allowing them to confidently place an offer on a property.'
           },
           {
             title: 'Property Selection & Underwriting (The "Asset" Assessment)',
-            desc: '1. Transaction Advisory (Form F / MoU): Once the client identifies a property, we review the Memorandum of Understanding (Form F) before they sign it.\n2. Bank Valuation Coordination:\nWe coordinate and Initiate and monitor the bank’s independent technical property valuation to ensure the asset\'s appraised value matches the agreed purchase price (preventing a "valuation shortfall" where the client would have to plug the gap with cash).\n3. Final Offer Letter (FOL): We help client in securing the final binding mortgage contract from the bank. We then review the fine print, specifically checking lock-in periods, early settlement fees (capped by the CBUAE at 1% or AED 10,000), and mandatory life/property insurance premiums.'
+            desc: '1. Transaction Advisory (Form F / MoU): Once the client identifies a property, we review the Memorandum of Understanding (Form F) before they sign it.\n2. Bank Valuation Coordination:\nWe coordinate and Initiate and monitor the bank’s independent technical property valuation to ensure the asset\'s appraised value matches the agreed purchase price (preventing a "valuation shortfall" where the client would have to plug the gap with cash).\n3. Final Offer Letter (FOL): We help clients in securing the final binding mortgage contract from the bank. We then review the fine print, specifically checking lock-in periods, early settlement fees, and mandatory life/property insurance premiums.'
           },
           {
             title: 'Execution, Settlement & Handover',
-            desc: 'The goal is the successful legal transfer of title and funds disbursement.\n1. Pre-Closing Audits:\nCoordination between the buyer, seller, real estate broker, and bank developers to align the final payout figures. Ensure all manager\'s cheques are cut precisely.\n2. DLD Trust Deed & Title Transfer: We guide the client through the final step at a Dubai Land Department (DLD) Trustee Office. Oversee the simultaneous actions of:\na. The bank settling the existing owner\'s mortgage (if applicable).\nb. The registration of the bank\'s security block (the mortgage) on the property.\nc. The issuance of the new Title Deed in client\'s name.'
+            desc: 'The goal is the successful legal transfer of title and funds disbursement.\n1. Pre-Closing Audits:\nCoordination between the buyer, seller, real estate broker, and bank developers to align the final payout figures. Ensure all manager\'s cheques are cut precisely.\n2. DLD Trust Deed & Title Transfer: We guide the client through the final step at a Dubai Land Department (DLD) Trustee Office. Oversee the simultaneous actions of:\na. The bank settling the existing owner\'s mortgage (if applicable).\nb. The registration of the bank\'s security block (the mortgage) on the property.\nc. The issuance of the new Title Deed in the client\'s name.'
           },
           {
             title: 'Post-Disbursement Review (Portfolio Management)',
@@ -431,8 +459,16 @@ const loanCategories: LoanCategory[] = [
     title: 'Insurance Portals',
     subcategories: [
       {
-        name: 'Insurance Portals',
-        desc: 'Sovereign risk coverages, corporate health packages, key-man coverage, and assets insurance facilitation.'
+        name: 'Auto Insurance',
+        desc: 'When purchasing a vehicle through a UAE bank loan, central bank guidelines dictate that comprehensive motor coverage must be maintained throughout the financing period. Standard banking protocol dictates that a "Loss Payee Clause" be integrated into the policy. This designation establishes the lending bank as the primary beneficiary, ensuring that the remaining loan balance is settled directly with the institution in the event of a write-off or severe accident.'
+      },
+      {
+        name: 'Mortgage Insurance',
+        desc: "Securing a residential or commercial mortgage in the UAE requires mandatory property and fire insurance before final approval. In line with local banking frameworks, the financing institution must be registered as the first loss payee on the policy. This framework safeguards the physical asset against risks like structural damage, fire, or natural disasters, protecting the bank's financial stake while shielding the owner from catastrophic property loss."
+      },
+      {
+        name: 'Credit Life & Loan Protection Insurance',
+        desc: "Often categorized as Debt Liability Insurance, this policy serves as a financial safety net for both the borrower and the lender. Most UAE banks mandate this coverage during the issuance of credit cards, personal loans, or mortgages to cover unforeseen events such as involuntary job loss, permanent disability, or death. If triggered, the policy steps in to clear the remaining debt, ensuring outstanding financial burdens do not pass on to family members or the borrower's estate."
       }
     ]
   }
@@ -574,10 +610,11 @@ export default function Loans() {
                             {sub.desc.split('\n').map((line, lIdx) => {
                               const trimmed = line.trim();
                               if (!trimmed) return null;
-                              const colIdx = trimmed.indexOf(':');
+                              const cleanLine = trimmed.replace(/\*\*/g, '');
+                              const colIdx = cleanLine.indexOf(':');
                               if (colIdx > 0 && colIdx < 40) {
-                                const boldPart = trimmed.slice(0, colIdx);
-                                const restPart = trimmed.slice(colIdx + 1).trim();
+                                const boldPart = cleanLine.slice(0, colIdx);
+                                const restPart = cleanLine.slice(colIdx + 1).trim();
                                 return (
                                   <p key={lIdx}>
                                     <strong className="text-[#E2C999]">{boldPart}:</strong> {restPart}
@@ -585,7 +622,7 @@ export default function Loans() {
                                 );
                               }
                               return (
-                                <p key={lIdx}>{trimmed}</p>
+                                <p key={lIdx}>{cleanLine}</p>
                               );
                             })}
                           </div>

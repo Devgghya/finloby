@@ -8,17 +8,22 @@ export default function Footer() {
         
         {/* Brand & Mission Column */}
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <img 
-              src="/finloby-white.png" 
-              alt="Finloby Shield" 
-              className="h-14 w-auto object-contain" 
-            />
-            <img 
-              src="/FINLOBY-TEXT.png" 
-              alt="FINLOBY" 
-              className="h-5 w-auto object-contain" 
-            />
+          <div className="flex flex-col gap-1.5">
+            <div className="flex items-center gap-3">
+              <img 
+                src="/finloby-white.png" 
+                alt="Finloby Shield" 
+                className="h-14 w-auto object-contain" 
+              />
+              <img 
+                src="/FINLOBY-TEXT.png" 
+                alt="FINLOBY" 
+                className="h-5 w-auto object-contain" 
+              />
+            </div>
+            <span className="text-[9px] text-[#C5A059] font-medium tracking-[0.08em] font-mono leading-none pl-1 transition-all duration-300 select-none">
+              Commitment | Trust | Confidentiality
+            </span>
           </div>
           <p className="text-xs font-light leading-relaxed text-[#FBF9F4]/50 max-w-sm mt-2">
             Institutional debt restructuring, complex commercial facilities, international business setup, and legal defense services for high-profile clients and global corporations.
@@ -84,7 +89,7 @@ export default function Footer() {
             <Link to="/business-setup" id="footer-link-setup" className="hover:text-[#C5A059] transition-colors">Business Setup</Link>
             <Link to="/investments" id="footer-link-investments" className="hover:text-[#C5A059] transition-colors">Investments</Link>
             <Link to="/legal-assistance" id="footer-link-legal" className="hover:text-[#C5A059] transition-colors">Legal Assistance</Link>
-            <Link to="/#case-studies" id="footer-link-cases" className="hover:text-[#C5A059] transition-colors">Case Studies</Link>
+            <Link to="/about-us" id="footer-link-about" className="hover:text-[#C5A059] transition-colors">About Us</Link>
           </div>
         </div>
 
