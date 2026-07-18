@@ -28,19 +28,19 @@ const navItems: NavItem[] = [
       {
         title: 'Personal Solutions',
         links: [
+          { name: 'Debt Restructuring', href: '/debt-solutions#debt-restructuring' },
           { name: 'Debt Counselling', href: '/debt-solutions#debt-counselling' },
           { name: 'Debt Consolidation', href: '/debt-solutions#debt-consolidation' },
           { name: 'Debt Settlement', href: '/debt-solutions#debt-settlement' },
-          { name: 'Debt Restructuring', href: '/debt-solutions#debt-restructuring' },
         ],
       },
       {
         title: 'Corporate Solutions',
         links: [
+          { name: 'Debt Restructuring', href: '/debt-solutions#debt-restructuring' },
           { name: 'Debt Counselling', href: '/debt-solutions#debt-counselling' },
           { name: 'Debt Consolidation', href: '/debt-solutions#debt-consolidation' },
           { name: 'Debt Settlement', href: '/debt-solutions#debt-settlement' },
-          { name: 'Debt Restructuring', href: '/debt-solutions#debt-restructuring' },
         ],
       },
     ],
@@ -67,6 +67,7 @@ const navItems: NavItem[] = [
       {
         title: 'Credit Card',
         links: [
+          { name: 'Credit Card Issuance', href: '/loans#credit-card' },
           { name: 'Loan Against Credit Card', href: '/loans#credit-card' },
         ],
       },
@@ -143,14 +144,6 @@ const navItems: NavItem[] = [
           { name: 'The Early Stage', href: '/legal-assistance#early-stage' },
           { name: 'The Collection Stage', href: '/legal-assistance#collection-stage' },
           { name: 'The Pre-Legal Stage', href: '/legal-assistance#pre-legal' },
-        ],
-      },
-      {
-        title: 'Debt Resolution',
-        links: [
-          { name: 'Debt Restructuring', href: '/legal-assistance#restructuring' },
-          { name: 'Debt Mediation', href: '/legal-assistance#mediation' },
-          { name: 'Debt Settlement', href: '/legal-assistance#settlement' },
         ],
       },
       {
