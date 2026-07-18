@@ -9,7 +9,7 @@ import Investments from './pages/Investments';
 import AboutUs from './pages/AboutUs';
 import Blogs from './pages/Blogs';
 import AdminDashboard from './pages/AdminDashboard';
-import Calculator from './pages/Calculator';
+// import Calculator from './pages/Calculator';
 import BookConsultation from './pages/BookConsultation';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfEngagement from './pages/TermsOfEngagement';
@@ -77,7 +77,7 @@ function App() {
             <Route path="/business-setup" element={<BusinessSetup />} />
             <Route path="/legal-assistance" element={<LegalAssistance />} />
             <Route path="/investments" element={<Investments />} />
-            <Route path="/calculator" element={<Calculator />} />
+            {/* <Route path="/calculator" element={<Calculator />} /> */}
             <Route path="/book-consultation" element={<BookConsultation />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfEngagement />} />

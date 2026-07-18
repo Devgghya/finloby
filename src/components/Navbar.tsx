@@ -154,7 +154,7 @@ const navItems: NavItem[] = [
       },
     ],
   },
-  { name: 'Calculator', href: '/calculator', type: 'direct' },
+  // { name: 'Calculator', href: '/calculator', type: 'direct' },
   { name: 'Testimonials', href: '/#testimonials', type: 'direct' },
   { name: 'Case Study', href: '/#case-studies', type: 'direct' },
   { name: 'About Us', href: '/about-us', type: 'direct' },
