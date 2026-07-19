@@ -13,6 +13,17 @@ export default function BookConsultation() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const interestOptions = [
+    { value: 'Debt Solutions', label: 'Debt Solutions (Restructuring, Settlement, Skip Solutions)' },
+    { value: 'Loans & Facilities', label: 'Loans & Facilities (Corporate Loans, Mortgage, STL)' },
+    { value: 'Business Setup', label: 'Business Setup (Mainland & Free Zone formation)' },
+    { value: 'Investments', label: 'Investment / Capital Placement Programs' },
+    { value: 'Legal Assistance', label: 'Legal Assistance (Liability & Court Case support)' }
+  ];
+
+  const selectedOption = interestOptions.find(opt => opt.value === formData.interest) || interestOptions[0];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -118,25 +129,49 @@ export default function BookConsultation() {
 
               {/* Primary Area of Interest */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="intake-interest" className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-gold)]">
+                <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-gold)]">
                   Primary Area of Interest
                 </label>
                 <div className="relative">
-                  <select
-                    id="intake-interest"
-                    value={formData.interest}
-                    onChange={(e) => setFormData({...formData, interest: e.target.value})}
-                    className="w-full bg-[#031C14] border border-[var(--brand-gold)]/15 text-white text-xs py-3.5 px-4 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-gold)] focus-visible:ring-offset-1 focus-visible:ring-offset-[#031C14] focus:border-[var(--brand-gold)] transition-all font-light appearance-none"
+                  <button
+                    type="button"
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="w-full bg-[#031C14] border border-[var(--brand-gold)]/15 text-white text-xs py-3.5 px-4 rounded-sm focus:outline-none focus:border-[var(--brand-gold)] transition-all font-light text-left flex justify-between items-center"
                   >
-                    <option value="Debt Solutions" className="bg-[#06281E] text-white">Debt Solutions (Restructuring, Settlement, Skip Solutions)</option>
-                    <option value="Loans & Facilities" className="bg-[#06281E] text-white">Loans & Facilities (Corporate Loans, Mortgage, STL)</option>
-                    <option value="Business Setup" className="bg-[#06281E] text-white">Business Setup (Mainland & Free Zone formation)</option>
-                    <option value="Investments" className="bg-[#06281E] text-white">Investment / Capital Placement Programs</option>
-                    <option value="Legal Assistance" className="bg-[#06281E] text-white">Legal Assistance (Liability & Court Case support)</option>
-                  </select>
-                  <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[var(--brand-gold)]">
-                    <ChevronRight className="w-4 h-4 rotate-90" />
-                  </div>
+                    <span>{selectedOption.label}</span>
+                    <ChevronRight className={`w-4 h-4 text-[var(--brand-gold)] transition-transform duration-200 ${isOpen ? 'rotate-90' : 'rotate-0'}`} />
+                  </button>
+
+                  {/* Dropdown Options List */}
+                  {isOpen && (
+                    <>
+                      {/* Invisible backdrop to close dropdown when clicking outside */}
+                      <div className="fixed inset-0 z-10" onClick={() => setIsOpen(false)} />
+                      
+                      <div className="absolute left-0 right-0 mt-1.5 bg-[#031C14] border border-[var(--brand-gold)]/25 rounded-sm shadow-2xl z-20 py-1 overflow-hidden animate-fade-in max-h-60 overflow-y-auto">
+                        {interestOptions.map((option) => {
+                          const isSelected = option.value === formData.interest;
+                          return (
+                            <button
+                              key={option.value}
+                              type="button"
+                              onClick={() => {
+                                setFormData({ ...formData, interest: option.value });
+                                setIsOpen(false);
+                              }}
+                              className={`w-full text-left px-4 py-3 text-xs transition-colors duration-150 ${
+                                isSelected 
+                                  ? 'bg-[#C5A059] text-[#070F1E] font-medium' 
+                                  : 'text-white/80 hover:bg-[#C5A059]/10 hover:text-white'
+                              }`}
+                            >
+                              {option.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
 
