@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ShieldCheck, Lock, Landmark, Database } from 'lucide-react';
+import { TextShimmer } from './ui/TextShimmer';
 
 export default function Footer() {
   return (
@@ -21,9 +22,9 @@ export default function Footer() {
                 className="h-5 w-auto object-contain" 
               />
             </div>
-            <span className="text-xs sm:text-sm text-[#E5C158] font-serif tracking-[0.06em] font-medium leading-none pl-1 transition-all duration-300 select-none mt-1">
+            <TextShimmer className="text-xs sm:text-sm font-serif italic tracking-[0.06em] font-medium leading-none pl-1 transition-all duration-300 select-none mt-1">
               Commitment | Trust | Confidentiality
-            </span>
+            </TextShimmer>
           </div>
           <p className="text-xs font-light leading-relaxed text-[#FBF9F4]/50 max-w-sm mt-2">
             Institutional debt restructuring, complex commercial facilities, international business setup, and legal defense services for high-profile clients and global corporations.

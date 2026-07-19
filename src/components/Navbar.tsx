@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Menu, X, Mail, Phone, Clock, Lock } from 'lucide-react';
+import { TextShimmer } from './ui/TextShimmer';
 
 interface LinkItem {
   name: string;
@@ -239,9 +240,9 @@ export default function Navbar() {
               className="h-4 sm:h-7 w-auto object-contain transition-all duration-300" 
             />
           </div>
-          <span className="text-[10px] sm:text-xs text-[#E5C158] font-serif tracking-[0.06em] font-medium leading-none pl-1 transition-all duration-300 select-none mt-1">
+          <TextShimmer className="text-[10px] sm:text-xs font-serif italic tracking-[0.06em] font-medium leading-none pl-1 transition-all duration-300 select-none mt-1">
             Commitment | Trust | Confidentiality
-          </span>
+          </TextShimmer>
         </Link>
 
         {/* Desktop Primary Menu */}

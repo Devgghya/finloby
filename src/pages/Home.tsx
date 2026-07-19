@@ -401,6 +401,28 @@ export default function Home() {
                           MYR: 'Malaysian Ringgit',
                           THB: 'Thai Baht'
                         };
+                        const flagMap: Record<string, string> = {
+                          AED: 'ae',
+                          INR: 'in',
+                          PKR: 'pk',
+                          JPY: 'jp',
+                          CNY: 'cn',
+                          BDT: 'bd',
+                          EUR: 'eu',
+                          GBP: 'gb',
+                          SGD: 'sg',
+                          SAR: 'sa',
+                          QAR: 'qa',
+                          OMR: 'om',
+                          KWD: 'kw',
+                          CAD: 'ca',
+                          AUD: 'au',
+                          CHF: 'ch',
+                          HKD: 'hk',
+                          NZD: 'nz',
+                          MYR: 'my',
+                          THB: 'th'
+                        };
                         const valueAgainstAED = value / 3.6725;
                         const usdDecimals = code === 'OMR' || code === 'KWD' ? 3 : 2;
                         const aedDecimals = code === 'OMR' || code === 'KWD' ? 4 : (valueAgainstAED < 1 ? 4 : 2);
@@ -408,9 +430,17 @@ export default function Home() {
                         return (
                           <tr key={code} className="hover:bg-[#031C14]/50 transition-colors duration-200">
                             <td className="py-2.5 pr-2">
-                              <div className="flex flex-col">
-                                <span className="text-[11px] font-bold text-white font-sans">{code}</span>
-                                <span className="text-[8px] text-white/50">{names[code]}</span>
+                              <div className="flex items-center gap-2">
+                                <img 
+                                  src={`https://flagcdn.com/w20/${flagMap[code]}.png`} 
+                                  width="16" 
+                                  alt={code} 
+                                  className="h-3 w-5 object-cover rounded-sm border border-slate-700/50"
+                                />
+                                <div className="flex flex-col">
+                                  <span className="text-[11px] font-bold text-white font-sans leading-none">{code}</span>
+                                  <span className="text-[8px] text-white/50 mt-0.5">{names[code]}</span>
+                                </div>
                               </div>
                             </td>
                             <td className="py-2.5 text-right font-mono text-[11px] font-medium text-[var(--brand-gold-light)]">
