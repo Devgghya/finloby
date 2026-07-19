@@ -1,6 +1,6 @@
 export default function WhatsAppWidget() {
   const phoneNumber = "971585174871";
-  const message = "Hi FINLOBY, I would like to inquire about your private consultancy services. Please guide me on the next steps.";
+  const message = "Hi FINLOBY, I would like to inquire about your consultancy services. Please guide me on the next steps.";
   const encodedMessage = encodeURIComponent(message);
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
