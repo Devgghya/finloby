@@ -117,7 +117,7 @@ export default function AboutUs() {
           <h3 className="text-xl font-sans font-semibold text-[#FBF9F4] tracking-wide mb-8 border-b border-[#C5A059]/10 pb-3">
             Global Coordination Hubs
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="max-w-md">
             {/* Dubai HQ */}
             <div className="border border-slate-800 p-6 bg-[#0D1625]/60 rounded-sm">
               <div className="flex items-center gap-2 mb-4">
@@ -126,28 +126,6 @@ export default function AboutUs() {
               </div>
               <p className="text-[11px] font-light text-[#FBF9F4]/60 leading-relaxed">
                 Al Ameri Business Tower, Suite #21-02, Barsha Heights, Tecom, Dubai Media City, UAE.
-              </p>
-            </div>
-            
-            {/* London */}
-            <div className="border border-slate-800 p-6 bg-[#0D1625]/60 rounded-sm">
-              <div className="flex items-center gap-2 mb-4">
-                <MapPin className="w-4 h-4 text-[#C5A059]" />
-                <h4 className="text-xs uppercase tracking-wider font-semibold text-[#FBF9F4]">London Associate Desk</h4>
-              </div>
-              <p className="text-[11px] font-light text-[#FBF9F4]/60 leading-relaxed">
-                25 Old Broad Street, Tower 42, London EC2N 1HQ, United Kingdom.
-              </p>
-            </div>
-
-            {/* Singapore */}
-            <div className="border border-slate-800 p-6 bg-[#0D1625]/60 rounded-sm">
-              <div className="flex items-center gap-2 mb-4">
-                <MapPin className="w-4 h-4 text-[#C5A059]" />
-                <h4 className="text-xs uppercase tracking-wider font-semibold text-[#FBF9F4]">Singapore Marina Desk</h4>
-              </div>
-              <p className="text-[11px] font-light text-[#FBF9F4]/60 leading-relaxed">
-                Marina Bay Financial Centre, Tower 1, 8 Marina Boulevard, Singapore 018981.
               </p>
             </div>
           </div>
