@@ -22,7 +22,7 @@ export default function Footer() {
                 className="h-5 w-auto object-contain" 
               />
             </div>
-            <TextShimmer className="text-xs sm:text-sm font-serif italic tracking-[0.06em] font-medium leading-none pl-1 transition-all duration-300 select-none mt-1">
+            <TextShimmer variant="white" className="text-xs sm:text-sm font-serif italic font-normal tracking-[0.08em] leading-none pl-1 transition-all duration-300 select-none mt-1">
               Commitment | Trust | Confidentiality
             </TextShimmer>
           </div>
