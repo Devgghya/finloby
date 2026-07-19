@@ -10,7 +10,7 @@ const portfolios = [
     num: 'I',
     title: 'Debt Solutions & Restructuring',
     desc: 'Bespoke personal and corporate debt settlement, consolidation, and liability negotiations designed to restore financial equilibrium with absolute discretion.',
-    services: ['Debt Counselling', 'Debt Consolidation', 'Debt Settlement', 'Debt Restructuring', 'Skip Solutions'],
+    services: ['Debt Counselling', 'Debt Consolidation', 'Debt Restructuring', 'Debt Settlement'],
     link: '/debt-solutions',
   },
   {
