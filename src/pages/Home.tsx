@@ -41,13 +41,6 @@ const portfolios = [
     services: ['Banking Collections', 'Legal Support'],
     link: '/legal-assistance',
   },
-  {
-    num: 'VI',
-    title: 'Private Client Asset Protection',
-    desc: 'Custom trust arrangements, corporate restructure models, and sovereign compliance protocols to insulate multigenerational wealth.',
-    services: ['Wealth Insulation', 'Institutional Trust Setup', 'Confidential Advisory'],
-    link: '/debt-solutions#debt-restructuring',
-  },
 ];
 
 const caseStudies = [
