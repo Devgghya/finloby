@@ -82,36 +82,32 @@ const testimonials = [
 
 const heroBadges = [
   {
-    title: 'CONSOLIDATION OF CREDIT CARDS & LOANS',
+    title: 'CONSOLIDATION AND SETTLEMENT OF CREDIT CARDS',
     img: '/consolidation_loans.jpg'
   },
   {
-    title: 'SETTLEMENT OF CREDIT CARDS & LOANS',
-    img: '/settlement_loans.jpg'
-  },
-  {
-    title: 'FINANCIAL CONSULTANCY & LEGAL ISSUES',
-    img: '/financial_consultancy.jpg'
-  },
-  {
-    title: 'CORPORATE DEBT RESTRUCTURING',
-    img: '/corporate_restructuring.jpg'
-  },
-  {
-    title: 'SOVEREIGN ASSET ADVISORY',
+    title: 'MORTGAGE LOAN AND TOP UP FACILITIES',
     img: '/sovereign_asset.jpg'
   },
   {
-    title: 'FREE ZONE SETUP & ADVISORY',
-    img: '/economic_zone.jpg'
-  },
-  {
-    title: 'STRATEGIC WEALTH INSULATION',
+    title: 'PROJECT AND MACHINERY FINANCE',
     img: '/wealth_insulation.jpg'
   },
   {
-    title: 'POLICE CASE & TRAVEL BAN CLEARANCE',
+    title: 'POLICE CASE AND TRAVEL BAN CLEARANCE',
     img: '/police_clearance.jpg'
+  },
+  {
+    title: 'INVESTMENT AND INVESTMENT SEEKER',
+    img: '/corporate_restructuring.jpg'
+  },
+  {
+    title: 'MAINLAND AND FREEZONE BUSINESS SET UP',
+    img: '/economic_zone.jpg'
+  },
+  {
+    title: 'FINANCIAL CONSULTANCY AND LEGAL SERVICES',
+    img: '/financial_consultancy.jpg'
   }
 ];
 
