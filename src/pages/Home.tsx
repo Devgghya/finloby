@@ -108,6 +108,10 @@ const heroBadges = [
   {
     title: 'FINANCIAL CONSULTANCY AND LEGAL SERVICES',
     img: '/financial_consultancy.jpg'
+  },
+  {
+    title: 'PERSONAL AND BUSINESS FINANCE',
+    img: '/personal_business_finance.png'
   }
 ];
 
