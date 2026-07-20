@@ -648,13 +648,13 @@ export default function CrmPrototype() {
 
                   <div className="space-y-4 text-xs text-slate-300 leading-relaxed font-light">
                     <p>
-                      1. **The Inbound Trigger**: The website’s WhatsApp widget sends a pre-formatted message: *"Hi FINLOBY, I would like to inquire about your consultancy services..."*
+                      1. <strong className="font-semibold text-[#C5A059]">The Inbound Trigger</strong>: The website’s WhatsApp widget sends a pre-formatted message: <span className="italic text-white">"Hi FINLOBY, I would like to inquire about your consultancy services..."</span>
                     </p>
                     <p>
-                      2. **Instant Welcome Auto-Reply**: As soon as this trigger hits your number, the bot immediately pushes the **welcome text** listing the primary options (1 to 5).
+                      2. <strong className="font-semibold text-[#C5A059]">Instant Welcome Auto-Reply</strong>: As soon as this trigger hits your number, the bot immediately pushes the <span className="font-semibold text-white">welcome text</span> listing the primary options (1 to 5).
                     </p>
                     <p>
-                      3. **Interactive Menu Options**: In the phone simulator on the right, type **1, 2, 3, 4, or 5** and click Send to test how the bot responds back automatically based on their choice.
+                      3. <strong className="font-semibold text-[#C5A059]">Interactive Menu Options</strong>: In the phone simulator on the right, type <span className="font-semibold text-white">1, 2, 3, 4, or 5</span> and click Send to test how the bot responds back automatically based on their choice.
                     </p>
                   </div>
 
