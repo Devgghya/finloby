@@ -73,6 +73,10 @@ export default function CrmPrototype() {
     setNewLeadForm({ name: '', phone: '', email: '', interest: 'Debt Solutions', amount: '', notes: '' });
   };
 
+  const handleDropLead = (leadId: string, newStatus: 'intake' | 'advisory' | 'legal' | 'settled') => {
+    setLeads(prevLeads => prevLeads.map(l => l.id === leadId ? { ...l, status: newStatus } : l));
+  };
+
   const handleSimSend = (textToSend?: string) => {
     const input = textToSend || userInput;
     if (!input.trim()) return;
@@ -329,19 +333,28 @@ export default function CrmPrototype() {
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6 overflow-x-auto pb-4">
                 
                 {/* Column 1: Intake / Verification */}
-                <div className="bg-[#09101C] border border-slate-800 p-4 rounded-sm space-y-4 min-w-[260px]">
+                <div 
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={(e) => {
+                    const id = e.dataTransfer.getData("text/plain");
+                    if (id) handleDropLead(id, 'intake');
+                  }}
+                  className="bg-[#09101C] border border-slate-800 p-4 rounded-sm space-y-4 min-w-[260px] transition-all duration-200 hover:border-[#C5A059]/20"
+                >
                   <div className="flex justify-between items-center border-b border-slate-800 pb-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-400">1. Verification Inbound</span>
                     <span className="px-2 py-0.5 bg-slate-800 text-slate-400 text-[10px] font-mono rounded-full">
                       {leads.filter(l => l.status === 'intake').length}
                     </span>
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-3 min-h-[300px]">
                     {leads.filter(l => l.status === 'intake').map(lead => (
                       <div 
                         key={lead.id} 
+                        draggable
+                        onDragStart={(e) => e.dataTransfer.setData("text/plain", lead.id)}
                         onClick={() => setSelectedLead(lead)}
-                        className="bg-[#0D1625] hover:border-[#C5A059]/40 border border-slate-800/80 p-4 rounded-sm cursor-pointer transition-all hover:translate-y-[-2px] space-y-2.5 shadow-md"
+                        className="bg-[#0D1625] hover:border-[#C5A059]/40 border border-slate-800/80 p-4 rounded-sm cursor-pointer transition-all hover:translate-y-[-2px] space-y-2.5 shadow-md active:opacity-50 active:cursor-grabbing"
                       >
                         <div className="flex justify-between items-start">
                           <span className="text-[9px] font-mono text-slate-500">{lead.id}</span>
@@ -358,19 +371,28 @@ export default function CrmPrototype() {
                 </div>
 
                 {/* Column 2: Advisory / Active Audit */}
-                <div className="bg-[#09101C] border border-slate-800 p-4 rounded-sm space-y-4 min-w-[260px]">
+                <div 
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={(e) => {
+                    const id = e.dataTransfer.getData("text/plain");
+                    if (id) handleDropLead(id, 'advisory');
+                  }}
+                  className="bg-[#09101C] border border-slate-800 p-4 rounded-sm space-y-4 min-w-[260px] transition-all duration-200 hover:border-[#C5A059]/20"
+                >
                   <div className="flex justify-between items-center border-b border-slate-800 pb-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-amber-500">2. Active Audit</span>
                     <span className="px-2 py-0.5 bg-amber-500/10 text-amber-400 text-[10px] font-mono rounded-full">
                       {leads.filter(l => l.status === 'advisory').length}
                     </span>
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-3 min-h-[300px]">
                     {leads.filter(l => l.status === 'advisory').map(lead => (
                       <div 
                         key={lead.id} 
+                        draggable
+                        onDragStart={(e) => e.dataTransfer.setData("text/plain", lead.id)}
                         onClick={() => setSelectedLead(lead)}
-                        className="bg-[#0D1625] hover:border-[#C5A059]/40 border border-slate-800/80 p-4 rounded-sm cursor-pointer transition-all hover:translate-y-[-2px] space-y-2.5 shadow-md"
+                        className="bg-[#0D1625] hover:border-[#C5A059]/40 border border-slate-800/80 p-4 rounded-sm cursor-pointer transition-all hover:translate-y-[-2px] space-y-2.5 shadow-md active:opacity-50 active:cursor-grabbing"
                       >
                         <div className="flex justify-between items-start">
                           <span className="text-[9px] font-mono text-slate-500">{lead.id}</span>
@@ -387,19 +409,28 @@ export default function CrmPrototype() {
                 </div>
 
                 {/* Column 3: Legal & Settlement Support */}
-                <div className="bg-[#09101C] border border-slate-800 p-4 rounded-sm space-y-4 min-w-[260px]">
+                <div 
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={(e) => {
+                    const id = e.dataTransfer.getData("text/plain");
+                    if (id) handleDropLead(id, 'legal');
+                  }}
+                  className="bg-[#09101C] border border-slate-800 p-4 rounded-sm space-y-4 min-w-[260px] transition-all duration-200 hover:border-[#C5A059]/20"
+                >
                   <div className="flex justify-between items-center border-b border-slate-800 pb-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-sky-500">3. Legal Support</span>
                     <span className="px-2 py-0.5 bg-sky-500/10 text-sky-400 text-[10px] font-mono rounded-full">
                       {leads.filter(l => l.status === 'legal').length}
                     </span>
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-3 min-h-[300px]">
                     {leads.filter(l => l.status === 'legal').map(lead => (
                       <div 
                         key={lead.id} 
+                        draggable
+                        onDragStart={(e) => e.dataTransfer.setData("text/plain", lead.id)}
                         onClick={() => setSelectedLead(lead)}
-                        className="bg-[#0D1625] hover:border-[#C5A059]/40 border border-slate-800/80 p-4 rounded-sm cursor-pointer transition-all hover:translate-y-[-2px] space-y-2.5 shadow-md"
+                        className="bg-[#0D1625] hover:border-[#C5A059]/40 border border-slate-800/80 p-4 rounded-sm cursor-pointer transition-all hover:translate-y-[-2px] space-y-2.5 shadow-md active:opacity-50 active:cursor-grabbing"
                       >
                         <div className="flex justify-between items-start">
                           <span className="text-[9px] font-mono text-slate-500">{lead.id}</span>
@@ -416,19 +447,28 @@ export default function CrmPrototype() {
                 </div>
 
                 {/* Column 4: Resolved / Settled */}
-                <div className="bg-[#09101C] border border-slate-800 p-4 rounded-sm space-y-4 min-w-[260px]">
+                <div 
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={(e) => {
+                    const id = e.dataTransfer.getData("text/plain");
+                    if (id) handleDropLead(id, 'settled');
+                  }}
+                  className="bg-[#09101C] border border-slate-800 p-4 rounded-sm space-y-4 min-w-[260px] transition-all duration-200 hover:border-[#C5A059]/20"
+                >
                   <div className="flex justify-between items-center border-b border-slate-800 pb-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-emerald-500">4. Resolved / Settled</span>
                     <span className="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 text-[10px] font-mono rounded-full">
                       {leads.filter(l => l.status === 'settled').length}
                     </span>
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-3 min-h-[300px]">
                     {leads.filter(l => l.status === 'settled').map(lead => (
                       <div 
                         key={lead.id} 
+                        draggable
+                        onDragStart={(e) => e.dataTransfer.setData("text/plain", lead.id)}
                         onClick={() => setSelectedLead(lead)}
-                        className="bg-[#0D1625] hover:border-[#C5A059]/40 border border-slate-800/80 p-4 rounded-sm cursor-pointer transition-all hover:translate-y-[-2px] space-y-2.5 shadow-md"
+                        className="bg-[#0D1625] hover:border-[#C5A059]/40 border border-slate-800/80 p-4 rounded-sm cursor-pointer transition-all hover:translate-y-[-2px] space-y-2.5 shadow-md active:opacity-50 active:cursor-grabbing"
                       >
                         <div className="flex justify-between items-start">
                           <span className="text-[9px] font-mono text-slate-500">{lead.id}</span>
