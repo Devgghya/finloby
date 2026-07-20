@@ -372,86 +372,92 @@ export default function Home() {
                   <table className="w-full text-left border-collapse">
                     <thead>
                       <tr className="border-b border-[var(--brand-gold)]/20 text-[9px] uppercase tracking-wider text-[#E5C158]/80 font-mono">
-                        <th className="py-2.5 pb-3">Currency</th>
-                        <th className="py-2.5 pb-3 text-right">1.00 USD</th>
-                        <th className="py-2.5 pb-3 text-right">1.00 AED</th>
+                        <th className="py-2.5 pb-3">Country / Currency</th>
+                        <th className="py-2.5 pb-3 text-right">Dirham Exchange Rate (AED)</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-[var(--brand-gold)]/5">
-                      {Object.entries(rates).map(([code, value]) => {
+                      {(() => {
+                        const baseAED = 3.6725;
                         const names: Record<string, string> = {
-                          AED: 'UAE Dirham',
-                          INR: 'Indian Rupee',
-                          PKR: 'Pakistani Rupee',
-                          JPY: 'Japanese Yen',
-                          CNY: 'Chinese Yuan',
-                          BDT: 'Bangladeshi Taka',
+                          USD: 'United States',
                           EUR: 'Euro Zone',
                           GBP: 'United Kingdom',
-                          SGD: 'Singapore Dollar',
-                          SAR: 'Saudi Riyal',
-                          QAR: 'Qatari Riyal',
-                          OMR: 'Omani Rial',
-                          KWD: 'Kuwaiti Dinar',
-                          CAD: 'Canadian Dollar',
-                          AUD: 'Australian Dollar',
-                          CHF: 'Swiss Franc',
-                          HKD: 'Hong Kong Dollar',
-                          NZD: 'New Zealand Dollar',
-                          MYR: 'Malaysian Ringgit',
-                          THB: 'Thai Baht'
+                          INR: 'India',
+                          PKR: 'Pakistan',
+                          SGD: 'Singapore',
+                          CAD: 'Canada',
+                          AUD: 'Australia',
+                          CHF: 'Switzerland',
+                          KWD: 'Kuwait',
+                          OMR: 'Oman',
+                          SAR: 'Saudi Arabia',
+                          QAR: 'Qatar',
+                          JPY: 'Japan',
+                          CNY: 'China',
+                          HKD: 'Hong Kong',
+                          MYR: 'Malaysia',
+                          THB: 'Thailand',
+                          NZD: 'New Zealand',
+                          BDT: 'Bangladesh'
                         };
                         const flagMap: Record<string, string> = {
-                          AED: 'ae',
-                          INR: 'in',
-                          PKR: 'pk',
-                          JPY: 'jp',
-                          CNY: 'cn',
-                          BDT: 'bd',
+                          USD: 'us',
                           EUR: 'eu',
                           GBP: 'gb',
+                          INR: 'in',
+                          PKR: 'pk',
                           SGD: 'sg',
-                          SAR: 'sa',
-                          QAR: 'qa',
-                          OMR: 'om',
-                          KWD: 'kw',
                           CAD: 'ca',
                           AUD: 'au',
                           CHF: 'ch',
+                          KWD: 'kw',
+                          OMR: 'om',
+                          SAR: 'sa',
+                          QAR: 'qa',
+                          JPY: 'jp',
+                          CNY: 'cn',
                           HKD: 'hk',
-                          NZD: 'nz',
                           MYR: 'my',
-                          THB: 'th'
+                          THB: 'th',
+                          NZD: 'nz',
+                          BDT: 'bd'
                         };
-                        const valueAgainstAED = value / 3.6725;
-                        const usdDecimals = code === 'OMR' || code === 'KWD' ? 3 : 2;
-                        const aedDecimals = code === 'OMR' || code === 'KWD' ? 4 : (valueAgainstAED < 1 ? 4 : 2);
-                        
-                        return (
-                          <tr key={code} className="hover:bg-[#031C14]/50 transition-colors duration-200">
-                            <td className="py-2.5 pr-2">
-                              <div className="flex items-center gap-2">
-                                <img 
-                                  src={`https://flagcdn.com/w20/${flagMap[code]}.png`} 
-                                  width="16" 
-                                  alt={code} 
-                                  className="h-3 w-5 object-cover rounded-sm border border-slate-700/50"
-                                />
-                                <div className="flex flex-col">
-                                  <span className="text-[11px] font-bold text-white font-sans leading-none">{code}</span>
-                                  <span className="text-[8px] text-white/50 mt-0.5">{names[code]}</span>
+
+                        const currencyEntries = [
+                          { code: 'USD', value: 1.0 },
+                          ...Object.entries(rates).filter(([code]) => code !== 'AED').map(([code, value]) => ({ code, value }))
+                        ];
+
+                        return currencyEntries.map(({ code, value }) => {
+                          const rateInAED = baseAED / value;
+                          const decimals = code === 'OMR' || code === 'KWD' ? 3 : (rateInAED < 0.1 ? 3 : 2);
+                          
+                          return (
+                            <tr key={code} className="hover:bg-[#031C14]/50 transition-colors duration-200">
+                              <td className="py-2.5 pr-2">
+                                <div className="flex items-center gap-2">
+                                  <img 
+                                    src={`https://flagcdn.com/w20/${flagMap[code]}.png`} 
+                                    width="16" 
+                                    alt={code} 
+                                    className="h-3 w-5 object-cover rounded-sm border border-slate-700/50"
+                                  />
+                                  <div className="flex flex-col">
+                                    <span className="text-[11px] font-bold text-white font-sans leading-none">{code}</span>
+                                    <span className="text-[8px] text-white/50 mt-0.5">{names[code]}</span>
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
-                            <td className="py-2.5 text-right font-mono text-[11px] font-medium text-[var(--brand-gold-light)]">
-                              {value.toFixed(usdDecimals)}
-                            </td>
-                            <td className="py-2.5 text-right font-mono text-[11px] font-medium text-white/80">
-                              {valueAgainstAED.toFixed(aedDecimals)}
-                            </td>
-                          </tr>
-                        );
-                      })}
+                              </td>
+                              <td className="py-2.5 text-right font-mono text-[11px] font-medium text-[var(--brand-gold-light)]">
+                                <span className="text-white/60">1.00 {code} = </span>
+                                <span className="text-white font-bold">{rateInAED.toFixed(decimals)}</span>
+                                <span className="text-[#E5C158] font-semibold text-[9px] ml-1">AED</span>
+                              </td>
+                            </tr>
+                          );
+                        });
+                      })()}
                     </tbody>
                   </table>
                 </div>
