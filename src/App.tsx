@@ -19,6 +19,7 @@ import ScrollToTop from './components/ScrollToTop';
 import { useState, useEffect } from 'react';
 import Preloader from './components/Preloader';
 import WhatsAppWidget from './components/WhatsAppWidget';
+import CrmPrototype from './pages/CrmPrototype';
 
 function App() {
   const [showPreloader, setShowPreloader] = useState(true);
@@ -59,6 +60,8 @@ function App() {
     };
   }, []);
 
+  const isPrototype = window.location.pathname.startsWith('/prototype/crm');
+
   return (
     <Router>
       <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[99999] focus:bg-[var(--brand-gold)] focus:text-[var(--text-contrast)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:rounded-sm focus:shadow-lg">Skip to main content</a>
@@ -69,7 +72,7 @@ function App() {
       )}
       <div className="flex flex-col min-h-screen bg-[var(--bg-midnight)] text-[var(--text-ivory)] selection:bg-[var(--brand-gold)]/25 selection:text-[var(--text-ivory)] transition-colors duration-500" aria-busy={showPreloader}>
         <ScrollToTop />
-        <Navbar />
+        {!isPrototype && <Navbar />}
         <main id="main-content" role="main">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -86,10 +89,11 @@ function App() {
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/prototype/crm" element={<CrmPrototype />} />
           </Routes>
         </main>
-        <Footer />
-        <WhatsAppWidget />
+        {!isPrototype && <Footer />}
+        {!isPrototype && <WhatsAppWidget />}
       </div>
     </Router>
   );
