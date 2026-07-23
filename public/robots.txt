@@ -3,6 +3,7 @@ Allow: /
 
 # Restricted Areas
 Disallow: /admin
+Disallow: /prototype/
 
 # Host & Sitemap
 Sitemap: https://finloby.com/sitemap.xml
