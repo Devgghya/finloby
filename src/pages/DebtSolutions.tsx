@@ -191,7 +191,7 @@ export default function DebtSolutions() {
             Debt Solutions & <br />
             <span className="text-gradient-gold italic">Liability Restructuring</span>
           </h1>
-          <p className="text-sm sm:text-base font-light text-[#FBF9F4]/60 max-w-2xl leading-relaxed mt-2">
+          <p className="text-sm sm:text-base font-light text-[#FBF9F4]/60 max-w-2xl leading-relaxed text-justify mt-2">
             Restoring your corporate and personal financial equilibrium. We stand between you and institutional lenders to negotiate, consolidate, and settle outstanding balances under strict NDA protocols.
           </p>
         </div>

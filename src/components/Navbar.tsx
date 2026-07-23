@@ -204,7 +204,7 @@ export default function Navbar() {
         <div className="flex items-center gap-6">
           <span className="flex items-center gap-2 font-bold text-white">
             <Clock className="w-3 h-3 text-[#E5C158]" />
-            <span>Operational Hours: Mon - Fri: 09:00 - 18:00 (GMT+4)</span>
+            <span>Operational Hours: Mon - Sat: 09:00 - 18:00 (GMT+4)</span>
           </span>
           <span className="hidden md:flex items-center gap-2 font-bold text-white">
             <Lock className="w-3 h-3 text-[#E5C158] animate-pulse" />

@@ -69,14 +69,14 @@ const caseStudies = [
 
 const testimonials = [
   {
-    quote: "FINLOBY handled our corporate restructuring with absolute secrecy. Their access to institutional banking partners and custom settlement channels allowed us to stay liquid during a complex transition.",
-    author: "Managing Director",
-    company: "Sovereign Trading LLC",
+    quote: "I was really stressed with the overdue of the credit card payments. They took care of all the paperwork, negotiated with the banks on my behalf and sorted out a payment plan I could actually manage. Now I’m totally out of debt trouble and was even able to get a new loan. I’m just really thankful for their help.",
+    author: "Ahammad Jassim",
+    company: "Credit Card Restructuring & Debt Settlement",
   },
   {
-    quote: "The business setup and banking introductions in Dubai Tecom were seamless. Within weeks, we had active corporate accounts and verified assignment of authority structures in place.",
-    author: "Founder & CFO",
-    company: "Aether Capital Management",
+    quote: "I originally approached Finloby for a personal loan, but my high DBR was a major roadblock. The team stepped in with a brilliant solution, they restructured my existing loan to lower my burden and successfully secured my new loan, complete with a much needed two month deferment. Finloby made what seemed impossible seamless and stress free. I highly recommend their expertise!",
+    author: "John",
+    company: "Personal Loan & Debt Restructuring Facility",
   },
 ];
 

@@ -16,15 +16,15 @@ export default function AboutUs() {
           <div className="inline-flex items-center gap-2 px-3 py-1 border border-[#C5A059]/25 bg-[#0D1625]/85 rounded-full w-fit">
             <span className="w-2 h-2 rounded-full bg-[#C5A059]"></span>
             <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E2C999]">
-              Credentials
+              About Finloby
             </span>
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light text-[#FBF9F4] leading-tight">
-            Our Legacy. <br />
-            <span className="text-gradient-gold italic">Absolute Compliance.</span>
+            Welcome to Finloby. <br />
+            <span className="text-gradient-gold italic">Your Trusted Financial & Management Partners.</span>
           </h1>
-          <p className="text-sm sm:text-base font-light text-[#FBF9F4]/60 max-w-2xl leading-relaxed mt-2">
-            FINLOBY is a premier financial advisory firm matching elite private banking networks with custom legal structures to insulate corporate and private capital assets.
+          <p className="text-sm sm:text-base font-light text-[#FBF9F4]/70 max-w-3xl leading-relaxed text-justify mt-2">
+            At Finloby, we believe financial challenges should never stand between you and your peace of mind. Registered in Dubai, UAE, Finloby is a premier financial and management consultancy dedicated to delivering tailored, ethical, and highly effective financial solutions for individuals and businesses across the globe.
           </p>
         </div>
 
@@ -38,7 +38,7 @@ export default function AboutUs() {
             <h3 className="text-lg font-sans font-bold text-[#FBF9F4] tracking-wide mb-3">
               Absolute Discretion
             </h3>
-            <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed">
+            <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed text-justify">
               We operate under zero-telemetry protocols. Every file, consultation, and settlement transaction is protected by mutual NDAs and attorney-client privileges.
             </p>
           </div>
@@ -50,7 +50,7 @@ export default function AboutUs() {
             <h3 className="text-lg font-sans font-bold text-[#FBF9F4] tracking-wide mb-3">
               Institutional Leverage
             </h3>
-            <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed">
+            <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed text-justify">
               With relationships spanning over 36 tier-1 banking institutions, we secure debt settlement terms and credit limits that standard mediators cannot access.
             </p>
           </div>
@@ -62,7 +62,7 @@ export default function AboutUs() {
             <h3 className="text-lg font-sans font-bold text-[#FBF9F4] tracking-wide mb-3">
               Sovereign Compliance
             </h3>
-            <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed">
+            <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed text-justify">
               Every restructure model, trust arrangement, and settlement file is built to align with CBUAE directives and UAE Decree-Law parameters.
             </p>
           </div>
@@ -75,15 +75,15 @@ export default function AboutUs() {
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-4">
-              <span className="text-[9px] font-mono text-[#C5A059] uppercase tracking-[0.2em]">Advisory Vision</span>
-              <h2 className="text-2xl font-sans font-semibold text-[#FBF9F4]">
-                Securing Operations Across High-Risk Jurisdictions
+              <span className="text-[9px] font-mono text-[#C5A059] uppercase tracking-[0.2em]">Advisory Vision & Strategic Diligence</span>
+              <h2 className="text-2xl sm:text-3xl font-sans font-semibold text-[#FBF9F4]">
+                Achieving Long-Term Financial Freedom
               </h2>
-              <p className="text-xs font-light text-[#FBF9F4]/70 leading-relaxed">
-                Founded by senior corporate restructuring advisors and banking collections experts, FINLOBY was established to bridge the gap between heavy commercial debt enforcement and legal capital protection.
+              <p className="text-xs sm:text-sm font-light text-[#FBF9F4]/80 leading-relaxed text-justify">
+                Whether you are navigating complex debt, seeking smart investment strategies, securing capital for growth, or setting up a business, our team of seasoned advisors brings deep market expertise and strategic diligence to help you achieve long-term financial freedom.
               </p>
-              <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed">
-                We believe that every corporation and private client deserves direct, unbiased representation when dealing with primary lenders. By combining deep local regulatory understanding with global asset protection standards, we restructure non-performing debt assets, setup secure corporate architectures, and defend client positions in courts.
+              <p className="text-xs font-light text-[#FBF9F4]/60 leading-relaxed text-justify">
+                Founded by senior corporate restructuring advisors and banking collections experts, FINLOBY was established to bridge the gap between commercial debt enforcement and legal capital protection across global jurisdictions.
               </p>
             </div>
             <div className="lg:col-span-5 bg-[#070F1E] border border-[#C5A059]/20 p-6 rounded-sm space-y-4">
