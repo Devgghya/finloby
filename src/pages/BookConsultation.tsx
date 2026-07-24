@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Key, CheckCircle2, User, Phone, Mail, ChevronRight, ShieldCheck } from 'lucide-react';
 import SEO from '../components/SEO';
 import { BorderBeam } from '../components/ui/BorderBeam';
+import { trackMetaEvent } from '../utils/pixel';
 
 export default function BookConsultation() {
   const [formData, setFormData] = useState({
@@ -28,6 +29,7 @@ export default function BookConsultation() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    trackMetaEvent('Lead', { content_name: 'Book Consultation Form', interest: formData.interest });
     setTimeout(() => {
       setLoading(false);
       setIsSubmitted(true);
