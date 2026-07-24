@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, ChevronRight, Lock, Activity, ArrowUpRight, FileText } from 'lucide-react';
+import { Phone, ChevronRight, ArrowUpRight, FileText } from 'lucide-react';
 import SEO from '../components/SEO';
 import { BorderBeam } from '../components/ui/BorderBeam';
 import { TextShimmer } from '../components/ui/TextShimmer';
@@ -474,65 +474,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
 
-      {/* SECTION 1.5: BESPOKE PORTFOLIO DIAGNOSTIC ENGINE PLACEHOLDER */}
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-8 pb-20 md:pb-24 lg:pb-32" id="estimator-section">
-        <div className="bg-[#0D1625] border border-[#C5A059]/20 p-8 sm:p-12 rounded-sm shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#9A7B3E] via-[#E5C158] to-[#E2C999]"></div>
-          
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-[#C5A059]/10 pb-6 mb-8 gap-4">
-            <div className="flex flex-col gap-2">
-              <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#E5C158] flex items-center gap-1.5">
-                <Activity className="w-4 h-4 text-[#E5C158] animate-pulse" />
-                Classified Diagnostics Hub
-              </span>
-              <h2 className="text-3xl md:text-5xl font-serif text-white font-bold tracking-wide">
-                Bespoke Portfolio Diagnostic Engine
-              </h2>
-              <div className="flex items-center gap-2 mt-1 mb-2">
-                <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-gold)]"></span>
-                <div className="w-12 h-[1px] bg-[var(--brand-gold)]"></div>
-              </div>
-              <p className="text-xs font-light text-[#FBF9F4]/40 max-w-2xl">
-                Cryptographically buffered analysis suite mapped to local UAE Central Bank directives and regional court database files.
-              </p>
-            </div>
-            <div className="border border-[#C5A059]/20 text-[#E5C158] px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.2em] bg-[#070F1E] font-mono rounded-sm">
-              STATUS: AWAITING MATHEMATICAL PARAMETER MATRICES
-            </div>
-          </div>
-
-          <div className="py-12 px-6 flex flex-col items-center text-center justify-center border border-dashed border-slate-800/80 rounded-sm bg-[#070F1E]/40 relative min-h-[300px]">
-            <div className="absolute inset-0 grid grid-cols-6 pointer-events-none opacity-[0.015]">
-              <div className="border-r border-[#C5A059]"></div>
-              <div className="border-r border-[#C5A059]"></div>
-              <div className="border-r border-[#C5A059]"></div>
-              <div className="border-r border-[#C5A059]"></div>
-              <div className="border-r border-[#C5A059]"></div>
-            </div>
-            
-            <Lock className="w-12 h-12 text-[#E5C158]/35 mb-6" />
-            <h3 className="text-base font-sans text-[#FBF9F4] font-bold mb-2 uppercase tracking-wider">
-              Secure Parameter Pipeline Under Calibration
-            </h3>
-            <p className="text-xs text-[#FBF9F4]/50 max-w-lg leading-relaxed font-light mb-6">
-              The diagnostic ledger is currently integrating encrypted live telemetry API coordinates from regional sovereign institutions. Local mathematical indices will propagate once security parameters are validated.
-            </p>
-            
-            <div className="flex gap-4">
-              <span className="px-4 py-2 bg-[#0D1625] border border-slate-850 text-slate-400 font-mono text-[9px] rounded-sm">
-                ENCRYPTION: AES-256-GCM
-              </span>
-              <span className="px-4 py-2 bg-[#0D1625] border border-slate-850 text-[#E5C158] font-mono text-[9px] rounded-sm flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#E5C158] animate-ping"></span>
-                SYNCING DATA STACK
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <div className="h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent my-8 md:my-16"></div>
 
