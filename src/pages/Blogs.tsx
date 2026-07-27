@@ -4,6 +4,55 @@ import SEO from '../components/SEO';
 
 const blogPosts = [
   {
+    id: 'breaking-debt-cycle-financial-advisory',
+    title: 'Breaking the Debt Cycle: Why Financial Advisory Matters Before and During Crisis',
+    summary: 'Discover how proactive financial pre-consultancy and structured debt resolution strategies like consolidation, restructuring, and settlement can safeguard your financial future.',
+    date: 'July 27, 2026',
+    author: 'Finloby Advisory Team',
+    readTime: '5 min read',
+    content: `
+      <p>Debt rarely happens overnight. It usually builds quietly—a missed budget goal here, a high-interest credit card balance there, or an unmanaged sudden expense.</p>
+
+      <p>Whether you are looking to safeguard your financial health or actively seeking relief from heavy debt burdens, having the right financial guidance makes all the difference.</p>
+
+      <h3>1. Prevention First: The Power of Pre-Consultancy</h3>
+      <p>The most effective way to manage debt is to prevent it before it takes root. Pre-consultancy acts as a strategic financial health check, helping individuals and businesses build resilient frameworks before warning signs become emergencies.</p>
+
+      <p>Through proactive assessment, a pre-consultancy evaluation helps you:</p>
+      <ul>
+        <li><strong>Identify Vulnerabilities:</strong> Uncover hidden cash-flow gaps and high-cost liabilities before they snowball.</li>
+        <li><strong>Optimize Debt-to-Income Ratios:</strong> Ensure your monthly commitments remain well within safe regulatory and personal limits.</li>
+        <li><strong>Build Sustainable Repayment Plans:</strong> Structure major purchases and credit lines with clear exit strategies instead of relying on minimum payments.</li>
+      </ul>
+
+      <h3>2. Navigating Existing Debt: How Finloby Delivers Solutions</h3>
+      <p>If you are already struggling with overwhelming monthly obligations, proactive strategy replaces panic. At Finloby, we analyze your complete financial profile to deploy tailored debt resolution strategies:</p>
+
+      <h4>🔄 Debt Consolidation</h4>
+      <ul>
+        <li><strong>What it does:</strong> Combines multiple high-interest debts (such as credit cards and personal loans) into a single, structured loan with a lower interest rate and one fixed monthly installment.</li>
+        <li><strong>The Finloby Advantage:</strong> Simplifies your cash flow, significantly reduces interest costs, and protects your credit standing by eliminating missed payment risks.</li>
+      </ul>
+
+      <h4>⚙️ Debt Restructuring</h4>
+      <ul>
+        <li><strong>What it does:</strong> Re-negotiates existing loan terms such as extending the repayment tenure or adjusting interest structures to lower immediate monthly strain.</li>
+        <li><strong>The Finloby Advantage:</strong> We work with financial institutions with the client’s consent to align your loan obligations with your actual current income capacity, giving you breathing room without default.</li>
+      </ul>
+
+      <h4>🤝 Debt Settlement</h4>
+      <ul>
+        <li><strong>What it does:</strong> A structured resolution path for severe financial hardship where full repayment under original terms is no longer feasible.</li>
+        <li><strong>The Finloby Advantage:</strong> Finloby facilitates direct negotiations to settle outstanding liabilities for a manageable single amount or structured compromise, giving you a clear path back to financial stability.</li>
+      </ul>
+
+      <h3>Take Control of Your Financial Future</h3>
+      <p>Debt shouldn't dictate your future. Whether you need a preventative financial review or a structured recovery plan, expert consultancy turns uncertainty into actionable steps.</p>
+
+      <p><strong>💡 Ready to regain financial clarity?</strong> <a href="/book-consultation" class="text-[#C5A059] underline hover:text-[#E2C999]">Connect with the advisory team at Finloby today</a> for a confidential consultation.</p>
+    `
+  },
+  {
     id: 'uae-pdpl-asset-protection',
     title: 'UAE Personal Data Protection Law & Private Wealth Asset Protection',
     summary: 'A deep analytical dive into how Decree-Law No. 45 of 2021 protects private asset files from arbitrary disclosure and external credit rating exposure.',
@@ -126,7 +175,7 @@ export default function Blogs() {
 
             {/* Custom styled blog contents */}
             <div 
-              className="prose prose-invert max-w-none text-xs sm:text-sm font-light text-[#FBF9F4]/75 leading-relaxed space-y-6 border-t border-[#C5A059]/10 pt-8"
+              className="prose prose-invert max-w-none text-xs sm:text-sm font-light text-[#FBF9F4]/75 leading-relaxed space-y-6 border-t border-[#C5A059]/10 pt-8 text-justify"
               dangerouslySetInnerHTML={{ __html: activePost.content }}
             />
 
