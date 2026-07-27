@@ -121,29 +121,41 @@ export default function Home() {
   const [bgIndex, setBgIndex] = useState(0);
   const [carouselSlide, setCarouselSlide] = useState(0);
 
-  // Static cached exchange rates registry
-  const rates = {
-    AED: 3.6725,
-    INR: 83.512,
-    EUR: 0.9221,
-    GBP: 0.7812,
-    CHF: 0.9015,
-    SGD: 1.3524,
-    CAD: 1.3685,
-    AUD: 1.4921,
-    KWD: 0.3068,
-    OMR: 0.3845,
-    SAR: 3.7500,
-    QAR: 3.6400,
-    JPY: 160.84,
-    CNY: 7.268,
-    HKD: 7.8000,
-    MYR: 4.7125,
-    THB: 36.412,
-    NZD: 1.6312,
-    PKR: 278.15,
-    BDT: 117.48
-  };
+  // Dynamic Live Exchange Rates (AED Base) with Accurate Real-World Fallbacks
+  const [liveRates, setLiveRates] = useState<Record<string, number>>({
+    USD: 0.27229,
+    EUR: 0.23907,
+    GBP: 0.20409,
+    KWD: 0.08429,
+    OMR: 0.10470,
+    BHD: 0.10238,
+    SAR: 1.02110,
+    QAR: 0.99115,
+    CAD: 0.38359,
+    AUD: 0.38949,
+    CHF: 0.22242,
+    SGD: 0.35126,
+    INR: 26.31,
+    PKR: 75.72,
+    BDT: 33.66,
+    JPY: 44.57,
+    CNY: 1.85,
+    THB: 9.16,
+    MYR: 1.11,
+  });
+
+  useEffect(() => {
+    fetch('https://open.er-api.com/v6/latest/AED')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.rates) {
+          setLiveRates(data.rates);
+        }
+      })
+      .catch(() => {
+        // Fallback initialized
+      });
+  }, []);
 
   const backgroundImages = [
     'https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?q=80&w=1600&auto=format&fit=crop', // Dubai DIFC
@@ -378,81 +390,73 @@ export default function Home() {
                     </thead>
                     <tbody className="divide-y divide-[var(--brand-gold)]/5">
                       {(() => {
-                        const baseAED = 3.6725;
-                        const names: Record<string, string> = {
-                          USD: 'United States',
-                          EUR: 'Euro Zone',
-                          GBP: 'United Kingdom',
-                          INR: 'India',
-                          PKR: 'Pakistan',
-                          SGD: 'Singapore',
-                          CAD: 'Canada',
-                          AUD: 'Australia',
-                          CHF: 'Switzerland',
-                          KWD: 'Kuwait',
-                          OMR: 'Oman',
-                          SAR: 'Saudi Arabia',
-                          QAR: 'Qatar',
-                          JPY: 'Japan',
-                          CNY: 'China',
-                          HKD: 'Hong Kong',
-                          MYR: 'Malaysia',
-                          THB: 'Thailand',
-                          NZD: 'New Zealand',
-                          BDT: 'Bangladesh'
-                        };
-                        const flagMap: Record<string, string> = {
-                          USD: 'us',
-                          EUR: 'eu',
-                          GBP: 'gb',
-                          INR: 'in',
-                          PKR: 'pk',
-                          SGD: 'sg',
-                          CAD: 'ca',
-                          AUD: 'au',
-                          CHF: 'ch',
-                          KWD: 'kw',
-                          OMR: 'om',
-                          SAR: 'sa',
-                          QAR: 'qa',
-                          JPY: 'jp',
-                          CNY: 'cn',
-                          HKD: 'hk',
-                          MYR: 'my',
-                          THB: 'th',
-                          NZD: 'nz',
-                          BDT: 'bd'
-                        };
-
-                        const currencyEntries = [
-                          { code: 'USD', value: 1.0 },
-                          ...Object.entries(rates).filter(([code]) => code !== 'AED').map(([code, value]) => ({ code, value }))
+                        const currencyList = [
+                          { code: 'USD', name: 'United States', flag: 'us', isDirectAED: true },
+                          { code: 'EUR', name: 'Euro Zone', flag: 'eu', isDirectAED: true },
+                          { code: 'GBP', name: 'United Kingdom', flag: 'gb', isDirectAED: true },
+                          { code: 'KWD', name: 'Kuwait', flag: 'kw', isDirectAED: true },
+                          { code: 'OMR', name: 'Oman', flag: 'om', isDirectAED: true },
+                          { code: 'BHD', name: 'Bahrain', flag: 'bh', isDirectAED: true },
+                          { code: 'SAR', name: 'Saudi Arabia', flag: 'sa', isDirectAED: true },
+                          { code: 'QAR', name: 'Qatar', flag: 'qa', isDirectAED: true },
+                          { code: 'CAD', name: 'Canada', flag: 'ca', isDirectAED: true },
+                          { code: 'AUD', name: 'Australia', flag: 'au', isDirectAED: true },
+                          { code: 'CHF', name: 'Switzerland', flag: 'ch', isDirectAED: true },
+                          { code: 'SGD', name: 'Singapore', flag: 'sg', isDirectAED: true },
+                          { code: 'INR', name: 'India', flag: 'in', isDirectAED: false },
+                          { code: 'PKR', name: 'Pakistan', flag: 'pk', isDirectAED: false },
+                          { code: 'BDT', name: 'Bangladesh', flag: 'bd', isDirectAED: false },
+                          { code: 'JPY', name: 'Japan', flag: 'jp', isDirectAED: false },
+                          { code: 'CNY', name: 'China', flag: 'cn', isDirectAED: false },
+                          { code: 'MYR', name: 'Malaysia', flag: 'my', isDirectAED: false },
+                          { code: 'THB', name: 'Thailand', flag: 'th', isDirectAED: false },
                         ];
 
-                        return currencyEntries.map(({ code, value }) => {
-                          const rateInAED = baseAED / value;
-                          const decimals = code === 'OMR' || code === 'KWD' ? 3 : (rateInAED < 0.1 ? 3 : 2);
-                          
+                        return currencyList.map(({ code, name, flag, isDirectAED }) => {
+                          const rawRate = liveRates[code];
+                          let displayVal = '0.00';
+
+                          if (isDirectAED) {
+                            // 1 Foreign Unit = X AED
+                            const rateInAED = rawRate ? (1 / rawRate) : (code === 'USD' ? 3.67 : 1.0);
+                            const decimals = code === 'OMR' || code === 'KWD' || code === 'BHD' ? 3 : 2;
+                            displayVal = rateInAED.toFixed(decimals);
+                          } else {
+                            // 1 AED = X Foreign Units
+                            const rateInForeign = rawRate || 1.0;
+                            displayVal = rateInForeign.toFixed(2);
+                          }
+
                           return (
                             <tr key={code} className="hover:bg-[#031C14]/50 transition-colors duration-200">
                               <td className="py-2.5 pr-2">
                                 <div className="flex items-center gap-2">
                                   <img 
-                                    src={`https://flagcdn.com/w20/${flagMap[code]}.png`} 
+                                    src={`https://flagcdn.com/w20/${flag}.png`} 
                                     width="16" 
                                     alt={code} 
                                     className="h-3 w-5 object-cover rounded-sm border border-slate-700/50"
                                   />
                                   <div className="flex flex-col">
                                     <span className="text-[11px] font-bold text-white font-sans leading-none">{code}</span>
-                                    <span className="text-[8px] text-white/50 mt-0.5">{names[code]}</span>
+                                    <span className="text-[8px] text-white/50 mt-0.5">{name}</span>
                                   </div>
                                 </div>
                               </td>
                               <td className="py-2.5 text-right font-mono text-[11px] font-medium text-[var(--brand-gold-light)]">
-                                <span className="text-white/60">1.00 {code} = </span>
-                                <span className="text-white font-bold">{rateInAED.toFixed(decimals)}</span>
-                                <span className="text-[#E5C158] font-semibold text-[9px] ml-1">AED</span>
+                                {isDirectAED ? (
+                                  <>
+                                    <span className="text-white/60">1.00 {code} = </span>
+                                    <span className="text-white font-bold">{displayVal}</span>
+                                    <span className="text-[#E5C158] font-semibold text-[9px] ml-1">AED</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <span className="text-white/60">1.00 AED = </span>
+                                    <span className="text-white font-bold">{displayVal}</span>
+                                    <span className="text-[#E5C158] font-semibold text-[9px] ml-1">{code}</span>
+                                  </>
+                                )}
                               </td>
                             </tr>
                           );
