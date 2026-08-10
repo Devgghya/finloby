@@ -23,6 +23,23 @@ export default function Investments() {
         title="Investment & Capital Placement"
         description="Connecting institutional investors with high-yield opportunities and structuring joint ventures with verified capital seekers globally."
         keywords="investment capital placement, institutional investors, joint ventures, high-yield investment, capital seekers, venture capital, private equity, Dubai"
+        image="/sovereign_asset.jpg"
+        breadcrumbs={[
+          { name: "Home", item: "/" },
+          { name: "Investment & Capital Placement", item: "/investments" }
+        ]}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Investment & Capital Placement",
+          "provider": {
+            "@type": "FinancialService",
+            "name": "FINLOBY",
+            "url": "https://finloby.com"
+          },
+          "areaServed": "United Arab Emirates",
+          "serviceType": "Institutional Placement & Capital Structuring"
+        }}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         

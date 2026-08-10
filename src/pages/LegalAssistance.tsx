@@ -313,18 +313,37 @@ export default function LegalAssistance() {
         title="Cross-Border Legal Support & Police Clearance"
         description="Strategic defense against financial liabilities, police case clearance assistance, court representation coordinates, and cross-border skip settlement support."
         keywords="cross-border legal support, police case clearance, travel ban clearance UAE, financial liability defense, skip settlement, legal negotiation, Dubai, UAE"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [...individualCategories, ...corporateCategories].map((cat) => ({
-            "@type": "Question",
-            "name": `What is ${cat.title}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": cat.desc
-            }
-          }))
-        }}
+        image="/police_clearance.jpg"
+        breadcrumbs={[
+          { name: "Home", item: "/" },
+          { name: "Cross-Border Legal Support", item: "/legal-assistance" }
+        ]}
+        structuredData={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Cross-Border Legal Support & Police Clearance",
+            "provider": {
+              "@type": "FinancialService",
+              "name": "FINLOBY",
+              "url": "https://finloby.com"
+            },
+            "areaServed": "United Arab Emirates",
+            "serviceType": "Legal Defense & Police Clearance Assistance"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [...individualCategories, ...corporateCategories].map((cat) => ({
+              "@type": "Question",
+              "name": `What is ${cat.title}?`,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": cat.desc
+              }
+            }))
+          }
+        ]}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         

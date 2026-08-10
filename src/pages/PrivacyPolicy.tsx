@@ -9,6 +9,10 @@ export default function PrivacyPolicy() {
         title="Privacy Policy | Data Protection Protocols"
         description="Read our comprehensive privacy policy outlining how FINLOBY handles client data and ensures sovereign-level privacy and absolute security."
         keywords="privacy policy, data protection, client confidentiality, FINLOBY privacy, legal data protection UAE"
+        breadcrumbs={[
+          { name: "Home", item: "/" },
+          { name: "Privacy Policy", item: "/privacy" }
+        ]}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-8">
         

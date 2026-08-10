@@ -536,20 +536,39 @@ export default function Loans() {
         title="Loans & Commercial Facilities"
         description="High-volume salary transfer, fleet, business, and mortgage loans structured through tier-1 banking institutions and private lenders."
         keywords="commercial loans, mortgage loans, business finance, auto loans, personal finance, credit cards, debt buyout, SME finance, Dubai, UAE"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": loanCategories.flatMap((cat) => 
-            cat.subcategories.map((sub) => ({
-              "@type": "Question",
-              "name": `What is ${sub.name} in the UAE?`,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": sub.desc
-              }
-            }))
-          )
-        }}
+        image="/settlement_loans.jpg"
+        breadcrumbs={[
+          { name: "Home", item: "/" },
+          { name: "Loans & Commercial Facilities", item: "/loans" }
+        ]}
+        structuredData={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Loans & Commercial Facilities",
+            "provider": {
+              "@type": "FinancialService",
+              "name": "FINLOBY",
+              "url": "https://finloby.com"
+            },
+            "areaServed": "United Arab Emirates",
+            "serviceType": "Commercial Loans, Mortgages & Corporate Facilities"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": loanCategories.flatMap((cat) => 
+              cat.subcategories.map((sub) => ({
+                "@type": "Question",
+                "name": `What is ${sub.name} in the UAE?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": sub.desc
+                }
+              }))
+            )
+          }
+        ]}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         

@@ -1,6 +1,11 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+interface BreadcrumbItem {
+  name: string;
+  item: string;
+}
+
 interface SEOProps {
   title: string;
   description: string;
@@ -9,7 +14,8 @@ interface SEOProps {
   type?: string;
   canonicalUrl?: string;
   noIndex?: boolean;
-  structuredData?: Record<string, any>;
+  structuredData?: Record<string, any> | Array<Record<string, any>>;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 export default function SEO({
@@ -21,9 +27,12 @@ export default function SEO({
   canonicalUrl,
   noIndex = false,
   structuredData,
+  breadcrumbs,
 }: SEOProps) {
   const location = useLocation();
   const currentUrl = canonicalUrl || `https://finloby.com${location.pathname}${location.search}`;
+
+  const formattedImage = image.startsWith('http') ? image : `https://finloby.com${image.startsWith('/') ? '' : '/'}${image}`;
 
   useEffect(() => {
     // 1. Update Title
@@ -59,7 +68,7 @@ export default function SEO({
     // 4. Update Open Graph (OG) tags
     updateMetaTag('property', 'og:title', fullTitle);
     updateMetaTag('property', 'og:description', description);
-    updateMetaTag('property', 'og:image', image);
+    updateMetaTag('property', 'og:image', formattedImage);
     updateMetaTag('property', 'og:url', currentUrl);
     updateMetaTag('property', 'og:type', type);
     updateMetaTag('property', 'og:site_name', 'FINLOBY');
@@ -68,7 +77,7 @@ export default function SEO({
     updateMetaTag('name', 'twitter:card', 'summary_large_image');
     updateMetaTag('name', 'twitter:title', fullTitle);
     updateMetaTag('name', 'twitter:description', description);
-    updateMetaTag('name', 'twitter:image', image);
+    updateMetaTag('name', 'twitter:image', formattedImage);
 
     // 6. Update Canonical URL
     let canonicalLink = document.querySelector('link[rel="canonical"]');
@@ -94,11 +103,37 @@ export default function SEO({
       existingJsonLd.remove();
     }
 
+    const payloadSchemas: Array<Record<string, any>> = [];
+
+    if (breadcrumbs && breadcrumbs.length > 0) {
+      payloadSchemas.push({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": breadcrumbs.map((b, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": b.name,
+          "item": b.item.startsWith('http') ? b.item : `https://finloby.com${b.item.startsWith('/') ? '' : '/'}${b.item}`
+        }))
+      });
+    }
+
     if (structuredData) {
+      if (Array.isArray(structuredData)) {
+        payloadSchemas.push(...structuredData);
+      } else {
+        payloadSchemas.push(structuredData);
+      }
+    }
+
+    if (payloadSchemas.length > 0) {
       const script = document.createElement('script');
       script.id = 'seo-jsonld';
       script.type = 'application/ld+json';
-      script.innerHTML = JSON.stringify(structuredData);
+      script.innerHTML = JSON.stringify(payloadSchemas.length === 1 ? payloadSchemas[0] : {
+        "@context": "https://schema.org",
+        "@graph": payloadSchemas
+      });
       document.head.appendChild(script);
     }
 
@@ -109,7 +144,7 @@ export default function SEO({
         jsonLdToCleanup.remove();
       }
     };
-  }, [title, description, keywords, image, type, currentUrl, noIndex, structuredData]);
+  }, [title, description, keywords, formattedImage, type, currentUrl, noIndex, structuredData, breadcrumbs]);
 
   return null;
 }

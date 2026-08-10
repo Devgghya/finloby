@@ -83,6 +83,10 @@ export default function BookConsultation() {
         title="Schedule a Private Consultation"
         description="Request a confidential, face-to-face or digital consultation with a senior FINLOBY financial consultant to discuss corporate debt and strategic wealth protection."
         keywords="schedule financial consultation, book advisory session, confidential wealth consultation, FINLOBY booking"
+        breadcrumbs={[
+          { name: "Home", item: "/" },
+          { name: "Schedule a Private Consultation", item: "/book-consultation" }
+        ]}
       />
       <div className="max-w-xl mx-auto">
         

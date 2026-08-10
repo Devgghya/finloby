@@ -176,18 +176,37 @@ export default function DebtSolutions() {
         title="Debt Solutions & Corporate Restructuring"
         description="Bespoke personal and corporate debt settlement, consolidation, and liability negotiations designed to restore financial equilibrium with absolute discretion."
         keywords="corporate debt restructuring, debt settlement, debt consolidation, debt counselling, liability negotiation, Dubai, UAE"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": services.map((s) => ({
-            "@type": "Question",
-            "name": `What is ${s.title}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": s.desc
-            }
-          }))
-        }}
+        image="/corporate_restructuring.jpg"
+        breadcrumbs={[
+          { name: "Home", item: "/" },
+          { name: "Debt Solutions & Restructuring", item: "/debt-solutions" }
+        ]}
+        structuredData={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Debt Solutions & Corporate Restructuring",
+            "provider": {
+              "@type": "FinancialService",
+              "name": "FINLOBY",
+              "url": "https://finloby.com"
+            },
+            "areaServed": "United Arab Emirates",
+            "serviceType": "Corporate Debt Restructuring & Settlement"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": services.map((s) => ({
+              "@type": "Question",
+              "name": `What is ${s.title}?`,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": s.desc
+              }
+            }))
+          }
+        ]}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         

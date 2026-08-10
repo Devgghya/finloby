@@ -184,6 +184,8 @@ export default function Home() {
         title="FINLOBY | Visionary Wealth. Absolute Protection."
         description="FINLOBY is an ultra-luxury financial consultancy specializing in institutional debt solutions, loans & commercial facilities, international business setup, investments, and cross-border legal assistance."
         keywords="financial consultancy, debt solutions, corporate debt restructuring, commercial loans, company setup Dubai, wealth protection, cross-border legal support, FINLOBY"
+        image="/finloby-new.jpg"
+        breadcrumbs={[{ name: "Home", item: "/" }]}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "FinancialService",

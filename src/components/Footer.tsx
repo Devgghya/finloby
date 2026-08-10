@@ -49,11 +49,10 @@ export default function Footer() {
           </h4>
           <div className="flex gap-3 text-xs leading-relaxed font-light mt-1">
             <MapPin className="w-4 h-4 text-[#C5A059] flex-shrink-0 mt-0.5" />
-            <address className="not-italic text-[#FBF9F4]/60">
-              Al Ameri Business Tower,<br />
-              Office Suite #21-02, Barsha Heights,<br />
-              Tecom - Dubai Media City,<br />
-              Dubai, UAE
+            <address className="not-italic text-[#FBF9F4]/60" itemScope itemType="http://schema.org/PostalAddress">
+              <span itemProp="streetAddress">Al Ameri Business Tower, Office Suite #21-02, Barsha Heights</span>,<br />
+              <span itemProp="addressLocality">Tecom - Dubai Media City</span>,<br />
+              <span itemProp="addressRegion">Dubai</span>, <span itemProp="addressCountry">UAE</span>
             </address>
           </div>
         </div>

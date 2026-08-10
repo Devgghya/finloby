@@ -9,6 +9,10 @@ export default function ComplianceDisclaimer() {
         title="Compliance & Disclaimer | Regulatory Notice"
         description="Important regulatory notices, risk disclosures, and licensing information regarding FINLOBY's advisory services and compliance frameworks."
         keywords="compliance disclaimer, regulatory disclosure, licensing advisory, FINLOBY compliance, risk warning"
+        breadcrumbs={[
+          { name: "Home", item: "/" },
+          { name: "Compliance & Disclaimer", item: "/disclaimer" }
+        ]}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-8">
         

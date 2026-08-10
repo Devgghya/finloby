@@ -8,6 +8,10 @@ export default function AboutUs() {
         title="About Us | Credentials & Legacy"
         description="Discover FINLOBY's legacy of financial excellence, institutional partnership, and strategic wealth insulation for sovereign clients and private entities."
         keywords="financial advisors, wealth protection, institutional advisory, private client services, corporate compliance, FINLOBY team"
+        breadcrumbs={[
+          { name: "Home", item: "/" },
+          { name: "About Us", item: "/about-us" }
+        ]}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         

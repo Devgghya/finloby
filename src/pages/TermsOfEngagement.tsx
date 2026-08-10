@@ -9,6 +9,10 @@ export default function TermsOfEngagement() {
         title="Terms of Engagement | Client Agreement"
         description="Read the Terms of Engagement and service agreements governing advisory relationships and financial mediation with FINLOBY."
         keywords="terms of engagement, terms of service, client agreement, FINLOBY terms, advisory agreement"
+        breadcrumbs={[
+          { name: "Home", item: "/" },
+          { name: "Terms of Engagement", item: "/terms" }
+        ]}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-8">
         

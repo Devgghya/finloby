@@ -151,7 +151,16 @@ export default function Blogs() {
         title={activePost ? `${activePost.title} | Financial Insights` : "Financial Insights & Intelligence Blog"}
         description={activePost ? activePost.summary : "Stay informed with the latest insights, analyses, and strategic advice on corporate debt, company formation, and wealth management from FINLOBY."}
         keywords={activePost ? `financial blog, ${activePost.title.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, '')}, FINLOBY` : "financial blog, wealth management insights, corporate finance trends, Dubai banking updates"}
+        image={activePost ? "/financial_consultancy.jpg" : "/finloby-new.jpg"}
         canonicalUrl={activePost ? `https://finloby.com/blogs/${activePost.id}` : 'https://finloby.com/blogs'}
+        breadcrumbs={activePost ? [
+          { name: "Home", item: "/" },
+          { name: "Insights & Intelligence", item: "/blogs" },
+          { name: activePost.title, item: `/blogs/${activePost.id}` }
+        ] : [
+          { name: "Home", item: "/" },
+          { name: "Insights & Intelligence", item: "/blogs" }
+        ]}
         structuredData={activePost ? {
           "@context": "https://schema.org",
           "@type": "BlogPosting",
