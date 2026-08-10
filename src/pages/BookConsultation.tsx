@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Key, CheckCircle2, User, Phone, Mail, ChevronRight, ShieldCheck } from 'lucide-react';
+import { Key, CheckCircle2, User, Phone, Mail, ChevronRight, ShieldCheck, AlertCircle } from 'lucide-react';
 import SEO from '../components/SEO';
 import { BorderBeam } from '../components/ui/BorderBeam';
 import { trackMetaEvent } from '../utils/pixel';
@@ -14,6 +14,7 @@ export default function BookConsultation() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
   const interestOptions = [
@@ -26,14 +27,54 @@ export default function BookConsultation() {
 
   const selectedOption = interestOptions.find(opt => opt.value === formData.interest) || interestOptions[0];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMsg(null);
     trackMetaEvent('Lead', { content_name: 'Book Consultation Form', interest: formData.interest });
-    setTimeout(() => {
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
+
+    if (!accessKey) {
+      console.warn('Web3Forms Access Key is missing (VITE_WEB3FORMS_KEY). Simulating uplink...');
+      setTimeout(() => {
+        setLoading(false);
+        setIsSubmitted(true);
+      }, 1200);
+      return;
+    }
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          interest: formData.interest,
+          subject: `New Private Consultation Request: ${formData.name} (${formData.interest})`,
+          from_name: 'FINLOBY Intake Portal'
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        setErrorMsg(result.message || 'Transmission failed. Please check credentials or contact support.');
+      }
+    } catch (err: any) {
+      console.error('Web3Forms Transmission Failed:', err);
+      setErrorMsg('Transmission failed. Please verify network connection or reach us at +971 58 517 4871.');
+    } finally {
       setLoading(false);
-      setIsSubmitted(true);
-    }, 1500);
+    }
   };
 
   return (
@@ -71,7 +112,13 @@ export default function BookConsultation() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5" id="intake-form">
-              
+              {errorMsg && (
+                <div className="p-3 bg-red-900/40 border border-red-500/30 text-red-200 text-xs rounded-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-red-400" />
+                  <span>{errorMsg}</span>
+                </div>
+              )}
+
               {/* Full Legal Name */}
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="intake-name" className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--brand-gold)]">

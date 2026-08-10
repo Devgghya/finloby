@@ -536,6 +536,20 @@ export default function Loans() {
         title="Loans & Commercial Facilities"
         description="High-volume salary transfer, fleet, business, and mortgage loans structured through tier-1 banking institutions and private lenders."
         keywords="commercial loans, mortgage loans, business finance, auto loans, personal finance, credit cards, debt buyout, SME finance, Dubai, UAE"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": loanCategories.flatMap((cat) => 
+            cat.subcategories.map((sub) => ({
+              "@type": "Question",
+              "name": `What is ${sub.name} in the UAE?`,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": sub.desc
+              }
+            }))
+          )
+        }}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         

@@ -88,6 +88,7 @@ function App() {
             <Route path="/disclaimer" element={<ComplianceDisclaimer />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:id" element={<Blogs />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/prototype/crm" element={<CrmPrototype />} />
           </Routes>

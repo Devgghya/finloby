@@ -342,6 +342,20 @@ export default function BusinessSetup() {
         title="International Business Setup & Company Formation"
         description="Seamless mainland and free zone company formation, banking introductions, MOA drafting, and corporate sponsorship services in the UAE and globally."
         keywords="company setup Dubai, business setup UAE, free zone company formation, mainland licensing, corporate banking introduction, corporate sponsorship, DIFC, DMCC"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": divisions.flatMap((div) => 
+            div.items.map((item) => ({
+              "@type": "Question",
+              "name": `What is required for ${item.name} in the UAE?`,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.desc
+              }
+            }))
+          )
+        }}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         

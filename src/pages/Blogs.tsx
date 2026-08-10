@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Clock, Calendar, User, BookOpen, Share2 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -127,9 +128,22 @@ const blogPosts = [
 ];
 
 export default function Blogs() {
+  const { id } = useParams<{ id?: string }>();
+  const navigate = useNavigate();
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
 
-  const activePost = blogPosts.find(p => p.id === selectedPostId);
+  const activePostId = id || selectedPostId;
+  const activePost = blogPosts.find(p => p.id === activePostId);
+
+  const handleSelectPost = (postId: string) => {
+    setSelectedPostId(postId);
+    navigate(`/blogs/${postId}`);
+  };
+
+  const handleBackToList = () => {
+    setSelectedPostId(null);
+    navigate('/blogs');
+  };
 
   return (
     <div className="flex-1 w-full bg-[#070F1E] pt-48 sm:pt-52 lg:pt-56 xl:pt-64 pb-20">
@@ -137,6 +151,26 @@ export default function Blogs() {
         title={activePost ? `${activePost.title} | Financial Insights` : "Financial Insights & Intelligence Blog"}
         description={activePost ? activePost.summary : "Stay informed with the latest insights, analyses, and strategic advice on corporate debt, company formation, and wealth management from FINLOBY."}
         keywords={activePost ? `financial blog, ${activePost.title.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, '')}, FINLOBY` : "financial blog, wealth management insights, corporate finance trends, Dubai banking updates"}
+        canonicalUrl={activePost ? `https://finloby.com/blogs/${activePost.id}` : 'https://finloby.com/blogs'}
+        structuredData={activePost ? {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": activePost.title,
+          "description": activePost.summary,
+          "author": {
+            "@type": "Person",
+            "name": activePost.author
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "FINLOBY",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://finloby.com/finloby-white.png"
+            }
+          },
+          "mainEntityOfPage": `https://finloby.com/blogs/${activePost.id}`
+        } : undefined}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
@@ -145,7 +179,7 @@ export default function Blogs() {
           <div className="max-w-3xl mx-auto animate-fade-in">
             <button
               type="button"
-              onClick={() => setSelectedPostId(null)}
+              onClick={handleBackToList}
               className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#C5A059] hover:text-[#E2C999] mb-10 transition-colors cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -240,7 +274,7 @@ export default function Blogs() {
 
                   <button
                     type="button"
-                    onClick={() => setSelectedPostId(post.id)}
+                    onClick={() => handleSelectPost(post.id)}
                     className="w-full text-center bg-[#070F1E] border border-[#C5A059]/25 hover:border-[#C5A059] text-[#C5A059] py-3 text-xs font-semibold uppercase tracking-wider rounded-sm transition-all cursor-pointer mt-4"
                   >
                     Read Legal Brief
