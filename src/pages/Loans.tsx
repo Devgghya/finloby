@@ -535,7 +535,7 @@ export default function Loans() {
       <SEO
         title="Loans & Commercial Facilities"
         description="High-volume salary transfer, fleet, business, and mortgage loans structured through tier-1 banking institutions and private lenders."
-        keywords="commercial loans, mortgage loans, business finance, auto loans, personal finance, credit cards, debt buyout, SME finance, Dubai, UAE"
+        keywords="commercial loans, STL in banking, short term loan facilities, bank facilities arrangement, mortgage loans, business finance, auto loans, personal finance, credit cards, debt buyout, SME finance, Dubai, UAE"
         image="/settlement_loans.jpg"
         breadcrumbs={[
           { name: "Home", item: "/" },
