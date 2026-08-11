@@ -12,13 +12,17 @@ export default function Footer() {
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center gap-3">
               <img 
-                src="/finloby-white.png" 
+                src="/finloby-white-256.png"
+                loading="lazy"
+                decoding="async"
                 alt="Finloby Shield" 
                 className="h-14 w-auto object-contain" 
               />
               <img 
                 src="/FINLOBY-TEXT.png" 
                 alt="FINLOBY" 
+                loading="lazy"
+                decoding="async"
                 className="h-5 w-auto object-contain" 
               />
             </div>

@@ -9,7 +9,11 @@ const blogPosts = [
     title: 'Breaking the Debt Cycle: Why Financial Advisory Matters Before and During Crisis',
     summary: 'Discover how proactive financial pre-consultancy and structured debt resolution strategies like consolidation, restructuring, and settlement can safeguard your financial future.',
     date: 'July 27, 2026',
+    datePublished: '2026-07-27',
     author: 'Finloby Advisory Team',
+    authorName: 'Finloby Advisory Team',
+    authorType: 'Organization',
+    authorJobTitle: undefined,
     readTime: '5 min read',
     content: `
       <p>Debt rarely happens overnight. It usually builds quietly—a missed budget goal here, a high-interest credit card balance there, or an unmanaged sudden expense.</p>
@@ -58,7 +62,11 @@ const blogPosts = [
     title: 'UAE Personal Data Protection Law & Private Wealth Asset Protection',
     summary: 'A deep analytical dive into how Decree-Law No. 45 of 2021 protects private asset files from arbitrary disclosure and external credit rating exposure.',
     date: 'June 24, 2026',
+    datePublished: '2026-06-24',
     author: 'Alexander Vance, Senior Counsel',
+    authorName: 'Alexander Vance',
+    authorType: 'Person',
+    authorJobTitle: 'Senior Counsel',
     readTime: '6 min read',
     content: `
       <p>The implementation of UAE Federal Decree-Law No. 45 of 2021 on Personal Data Protection (PDPL) has marked a massive paradigm shift in corporate asset protection and client confidentiality. For ultra-high-net-worth individuals (UHNWIs) and corporations holding significant liabilities, understanding the legal telemetry of this law is vital.</p>
@@ -80,7 +88,11 @@ const blogPosts = [
     title: 'Commercial Debt Restructuring in Dubai: Negotiating with Tier-1 Banks',
     summary: 'Navigating DBR thresholds, reducing interest rates, and securing written write-off settlements with UAE financial institutions.',
     date: 'May 12, 2026',
+    datePublished: '2026-05-12',
     author: 'Devendra K., Advisory Partner',
+    authorName: 'Devendra K.',
+    authorType: 'Person',
+    authorJobTitle: 'Advisory Partner',
     readTime: '8 min read',
     content: `
       <p>Renegotiating defaulted corporate credit lines, commercial vehicle fleets, or high-value personal loans in the UAE requires strict adherence to Central Bank regulations. Here is our direct strategic blueprint for achieving sustainable restructures.</p>
@@ -100,7 +112,11 @@ const blogPosts = [
     title: 'Mainland LLC vs Economic Zone: UAE Corporate Structuring Checklist',
     summary: 'Evaluate tax repatriation, physical office requirements, physical visa quotas, and banking compliance protocols for both models.',
     date: 'April 05, 2026',
+    datePublished: '2026-04-05',
     author: 'Sophia Chen, Setup Director',
+    authorName: 'Sophia Chen',
+    authorType: 'Person',
+    authorJobTitle: 'Setup Director',
     readTime: '5 min read',
     content: `
       <p>Selecting the correct corporate architecture is the first line of defense for wealth insulation in the UAE. We compare mainland and economic zone setup structures from a compliance perspective.</p>
@@ -166,16 +182,23 @@ export default function Blogs() {
           "@type": "BlogPosting",
           "headline": activePost.title,
           "description": activePost.summary,
+          "datePublished": activePost.datePublished,
+          "dateModified": activePost.datePublished,
+          "image": "https://finloby.com/financial_consultancy.jpg",
+          "inLanguage": "en",
           "author": {
-            "@type": "Person",
-            "name": activePost.author
+            "@type": activePost.authorType,
+            "name": activePost.authorName,
+            ...(activePost.authorJobTitle ? { "jobTitle": activePost.authorJobTitle } : {}),
+            ...(activePost.authorType === 'Organization' ? { "url": "https://finloby.com/" } : {})
           },
           "publisher": {
             "@type": "Organization",
             "name": "FINLOBY",
+            "url": "https://finloby.com/",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://finloby.com/finloby-white.png"
+              "url": "https://finloby.com/finloby-white-256.png"
             }
           },
           "mainEntityOfPage": `https://finloby.com/blogs/${activePost.id}`

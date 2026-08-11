@@ -8,7 +8,7 @@ export default function Preloader() {
           {/* Subtle gold halo pulse in background */}
           <div className="absolute inset-0 rounded-full bg-[var(--brand-gold)]/10 blur-xl animate-ping duration-3000" />
           <img 
-            src="/finloby-white.png" 
+            src="/finloby-white-256.png"
             alt="Finloby Crest" 
             className="w-24 h-auto object-contain animate-pulse" 
           />

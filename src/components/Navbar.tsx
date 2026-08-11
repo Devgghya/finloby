@@ -230,7 +230,7 @@ export default function Navbar() {
         <Link to="/" id="brand-logo" className="flex flex-col gap-1 group flex-shrink-0">
           <div className="flex items-center gap-2 sm:gap-3">
             <img 
-              src="/finloby-white.png" 
+              src="/finloby-white-256.png"
               alt="Finloby Shield" 
               className="h-12 sm:h-20 w-auto object-contain transition-all duration-300" 
             />

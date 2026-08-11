@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { SEOCollectorContext, type SEOState } from './SEOContext';
 
 interface BreadcrumbItem {
   name: string;
@@ -18,11 +19,60 @@ interface SEOProps {
   breadcrumbs?: BreadcrumbItem[];
 }
 
+function withoutTrackingParameters(url: string) {
+  try {
+    const canonical = new URL(url);
+    canonical.search = '';
+    canonical.hash = '';
+    return canonical.toString();
+  } catch {
+    return url.split(/[?#]/, 1)[0];
+  }
+}
+
+function buildStructuredData(
+  structuredData: SEOProps['structuredData'],
+  breadcrumbs: BreadcrumbItem[] | undefined,
+) {
+  const payloadSchemas: Array<Record<string, any>> = [];
+
+  if (breadcrumbs && breadcrumbs.length > 0) {
+    payloadSchemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((breadcrumb, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: breadcrumb.name,
+        item: breadcrumb.item.startsWith('http')
+          ? breadcrumb.item
+          : `https://finloby.com${breadcrumb.item.startsWith('/') ? '' : '/'}${breadcrumb.item}`,
+      })),
+    });
+  }
+
+  if (structuredData) {
+    if (Array.isArray(structuredData)) {
+      payloadSchemas.push(...structuredData);
+    } else {
+      payloadSchemas.push(structuredData);
+    }
+  }
+
+  if (payloadSchemas.length === 0) return undefined;
+  if (payloadSchemas.length === 1) return payloadSchemas[0];
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': payloadSchemas,
+  };
+}
+
 export default function SEO({
   title,
   description,
   keywords,
-  image = 'https://finloby.com/finloby-white.png', // Default brand image
+  image = 'https://finloby.com/finloby-white-256.png',
   type = 'website',
   canonicalUrl,
   noIndex = false,
@@ -30,16 +80,36 @@ export default function SEO({
   breadcrumbs,
 }: SEOProps) {
   const location = useLocation();
-  const currentUrl = canonicalUrl || `https://finloby.com${location.pathname}${location.search}`;
+  const collector = useContext(SEOCollectorContext);
+  const fullTitle = title.includes('FINLOBY') ? title : `${title} | FINLOBY`;
+  const currentUrl = withoutTrackingParameters(
+    canonicalUrl || `https://finloby.com${location.pathname}`,
+  );
+  const formattedImage = image.startsWith('http')
+    ? image
+    : `https://finloby.com${image.startsWith('/') ? '' : '/'}${image}`;
+  const payload = buildStructuredData(structuredData, breadcrumbs);
+  const jsonLd = payload ? JSON.stringify(payload) : undefined;
+  const robots = noIndex ? 'noindex, nofollow' : 'index, follow';
 
-  const formattedImage = image.startsWith('http') ? image : `https://finloby.com${image.startsWith('/') ? '' : '/'}${image}`;
+  const state: SEOState = {
+    title: fullTitle,
+    description,
+    keywords,
+    image: formattedImage,
+    type,
+    canonicalUrl: currentUrl,
+    robots,
+    structuredData: payload,
+  };
+
+  // During the server build, the route renderer collects this state and writes
+  // the tags directly into the generated HTML head.
+  if (collector) collector.state = state;
 
   useEffect(() => {
-    // 1. Update Title
-    const fullTitle = title.includes('FINLOBY') ? title : `${title} | FINLOBY`;
     document.title = fullTitle;
 
-    // Helper to update or create meta tags
     const updateMetaTag = (attributeName: string, attributeValue: string, content: string) => {
       let element = document.querySelector(`meta[${attributeName}="${attributeValue}"]`);
       if (element) {
@@ -52,34 +122,25 @@ export default function SEO({
       }
     };
 
-    // 2. Update Description
     updateMetaTag('name', 'description', description);
 
-    // 3. Update Keywords if provided
     if (keywords) {
       updateMetaTag('name', 'keywords', keywords);
     } else {
-      const keywordsEl = document.querySelector('meta[name="keywords"]');
-      if (keywordsEl) {
-        keywordsEl.remove();
-      }
+      document.querySelector('meta[name="keywords"]')?.remove();
     }
 
-    // 4. Update Open Graph (OG) tags
     updateMetaTag('property', 'og:title', fullTitle);
     updateMetaTag('property', 'og:description', description);
     updateMetaTag('property', 'og:image', formattedImage);
     updateMetaTag('property', 'og:url', currentUrl);
     updateMetaTag('property', 'og:type', type);
     updateMetaTag('property', 'og:site_name', 'FINLOBY');
-
-    // 5. Update Twitter tags
     updateMetaTag('name', 'twitter:card', 'summary_large_image');
     updateMetaTag('name', 'twitter:title', fullTitle);
     updateMetaTag('name', 'twitter:description', description);
     updateMetaTag('name', 'twitter:image', formattedImage);
 
-    // 6. Update Canonical URL
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
       canonicalLink.setAttribute('href', currentUrl);
@@ -90,61 +151,21 @@ export default function SEO({
       document.head.appendChild(canonicalLink);
     }
 
-    // 7. Update Robots (e.g. for noindex on Admin pages)
-    if (noIndex) {
-      updateMetaTag('name', 'robots', 'noindex, nofollow');
-    } else {
-      updateMetaTag('name', 'robots', 'index, follow');
-    }
+    updateMetaTag('name', 'robots', robots);
 
-    // 8. Update JSON-LD Structured Data if provided
-    const existingJsonLd = document.getElementById('seo-jsonld');
-    if (existingJsonLd) {
-      existingJsonLd.remove();
-    }
-
-    const payloadSchemas: Array<Record<string, any>> = [];
-
-    if (breadcrumbs && breadcrumbs.length > 0) {
-      payloadSchemas.push({
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": breadcrumbs.map((b, index) => ({
-          "@type": "ListItem",
-          "position": index + 1,
-          "name": b.name,
-          "item": b.item.startsWith('http') ? b.item : `https://finloby.com${b.item.startsWith('/') ? '' : '/'}${b.item}`
-        }))
-      });
-    }
-
-    if (structuredData) {
-      if (Array.isArray(structuredData)) {
-        payloadSchemas.push(...structuredData);
-      } else {
-        payloadSchemas.push(structuredData);
-      }
-    }
-
-    if (payloadSchemas.length > 0) {
+    document.getElementById('seo-jsonld')?.remove();
+    if (jsonLd) {
       const script = document.createElement('script');
       script.id = 'seo-jsonld';
       script.type = 'application/ld+json';
-      script.innerHTML = JSON.stringify(payloadSchemas.length === 1 ? payloadSchemas[0] : {
-        "@context": "https://schema.org",
-        "@graph": payloadSchemas
-      });
+      script.textContent = jsonLd;
       document.head.appendChild(script);
     }
 
-    // Cleanup: remove JSON-LD script on unmount
     return () => {
-      const jsonLdToCleanup = document.getElementById('seo-jsonld');
-      if (jsonLdToCleanup) {
-        jsonLdToCleanup.remove();
-      }
+      document.getElementById('seo-jsonld')?.remove();
     };
-  }, [title, description, keywords, formattedImage, type, currentUrl, noIndex, structuredData, breadcrumbs]);
+  }, [currentUrl, description, formattedImage, fullTitle, jsonLd, keywords, robots, type]);
 
   return null;
 }

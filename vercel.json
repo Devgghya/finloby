@@ -1,5 +1,38 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.finloby.com" }],
+      "destination": "https://finloby.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "finloby.vercel.app" }],
+      "destination": "https://finloby.com/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/:path*", "destination": "/index.html" }
+    { "source": "/admin", "destination": "/spa.html" },
+    { "source": "/prototype/:path*", "destination": "/spa.html" }
+  ],
+  "headers": [
+    {
+      "source": "/admin",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" },
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/prototype/:path*",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" },
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    }
   ]
 }

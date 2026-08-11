@@ -191,7 +191,7 @@ export default function Home() {
           "@type": "FinancialService",
           "name": "FINLOBY",
           "url": "https://finloby.com",
-          "logo": "https://finloby.com/finloby-white.png",
+          "logo": "https://finloby.com/finloby-white-256.png",
           "description": "FINLOBY is an ultra-luxury financial consultancy specializing in institutional debt solutions, loans & commercial facilities, international business setup, investments, and cross-border legal assistance.",
           "address": {
             "@type": "PostalAddress",
@@ -261,6 +261,7 @@ export default function Home() {
                       <img 
                         src={badge.img} 
                         alt={badge.title} 
+                        decoding="async"
                         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                       />
                     </div>
@@ -279,6 +280,8 @@ export default function Home() {
                       <img 
                         src={badge.img} 
                         alt={badge.title} 
+                        loading="lazy"
+                        decoding="async"
                         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                       />
                     </div>
@@ -437,6 +440,8 @@ export default function Home() {
                                     src={`https://flagcdn.com/w20/${flag}.png`} 
                                     width="16" 
                                     alt={code} 
+                                    loading="lazy"
+                                    decoding="async"
                                     className="h-3 w-5 object-cover rounded-sm border border-slate-700/50"
                                   />
                                   <div className="flex flex-col">

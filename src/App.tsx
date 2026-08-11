@@ -1,29 +1,31 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import DebtSolutions from './pages/DebtSolutions';
-import Loans from './pages/Loans';
-import BusinessSetup from './pages/BusinessSetup';
-import LegalAssistance from './pages/LegalAssistance';
-import Investments from './pages/Investments';
-import AboutUs from './pages/AboutUs';
-import Blogs from './pages/Blogs';
-import AdminDashboard from './pages/AdminDashboard';
-// import Calculator from './pages/Calculator';
-import BookConsultation from './pages/BookConsultation';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsOfEngagement from './pages/TermsOfEngagement';
-import ComplianceDisclaimer from './pages/ComplianceDisclaimer';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import { useState, useEffect } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import Preloader from './components/Preloader';
 import WhatsAppWidget from './components/WhatsAppWidget';
-import CrmPrototype from './pages/CrmPrototype';
+
+const Home = lazy(() => import('./pages/Home'));
+const DebtSolutions = lazy(() => import('./pages/DebtSolutions'));
+const Loans = lazy(() => import('./pages/Loans'));
+const BusinessSetup = lazy(() => import('./pages/BusinessSetup'));
+const LegalAssistance = lazy(() => import('./pages/LegalAssistance'));
+const Investments = lazy(() => import('./pages/Investments'));
+const AboutUs = lazy(() => import('./pages/AboutUs'));
+const Blogs = lazy(() => import('./pages/Blogs'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const BookConsultation = lazy(() => import('./pages/BookConsultation'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsOfEngagement = lazy(() => import('./pages/TermsOfEngagement'));
+const ComplianceDisclaimer = lazy(() => import('./pages/ComplianceDisclaimer'));
+const CrmPrototype = lazy(() => import('./pages/CrmPrototype'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
   const [showPreloader, setShowPreloader] = useState(true);
   const [fadePreloader, setFadePreloader] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     let hasLoaded = false;
@@ -34,24 +36,23 @@ function App() {
       hasLoaded = true;
       
       const elapsed = Date.now() - startTime;
-      const remainingTime = Math.max(3200 - elapsed, 0); // 3.2s minimum display for premium brand introduction to allow reading the tagline
+      const remainingTime = Math.max(350 - elapsed, 0);
 
       setTimeout(() => {
         setFadePreloader(true);
         setTimeout(() => {
           setShowPreloader(false);
-        }, 700); // match duration-700 fadeout
+        }, 300);
       }, remainingTime);
     };
 
     // Preload logo programmatically to track onload
     const img = new Image();
-    img.src = '/finloby-white.png';
+    img.src = '/finloby-white-256.png';
     img.onload = triggerFadeOut;
     img.onerror = triggerFadeOut; // fade out anyway if image fails
 
-    // Fallback timer (maximum 3.5s) to guarantee entry if loading hangs
-    const fallbackTimer = setTimeout(triggerFadeOut, 3500);
+    const fallbackTimer = setTimeout(triggerFadeOut, 1200);
 
     return () => {
       clearTimeout(fallbackTimer);
@@ -60,13 +61,13 @@ function App() {
     };
   }, []);
 
-  const isPrototype = window.location.pathname.startsWith('/prototype/crm');
+  const isPrototype = pathname.startsWith('/prototype/crm');
 
   return (
-    <Router>
+    <>
       <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[99999] focus:bg-[var(--brand-gold)] focus:text-[var(--text-contrast)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:rounded-sm focus:shadow-lg">Skip to main content</a>
       {showPreloader && (
-        <div className={`fixed inset-0 z-[9999] transition-opacity duration-700 ${fadePreloader ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+        <div className={`fixed inset-0 z-[9999] transition-opacity duration-300 ${fadePreloader ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
           <Preloader />
         </div>
       )}
@@ -74,29 +75,31 @@ function App() {
         <ScrollToTop />
         {!isPrototype && <Navbar />}
         <main id="main-content" role="main">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/debt-solutions" element={<DebtSolutions />} />
-            <Route path="/loans" element={<Loans />} />
-            <Route path="/business-setup" element={<BusinessSetup />} />
-            <Route path="/legal-assistance" element={<LegalAssistance />} />
-            <Route path="/investments" element={<Investments />} />
-            {/* <Route path="/calculator" element={<Calculator />} /> */}
-            <Route path="/book-consultation" element={<BookConsultation />} />
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/terms" element={<TermsOfEngagement />} />
-            <Route path="/disclaimer" element={<ComplianceDisclaimer />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blogs/:id" element={<Blogs />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/prototype/crm" element={<CrmPrototype />} />
-          </Routes>
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/debt-solutions" element={<DebtSolutions />} />
+              <Route path="/loans" element={<Loans />} />
+              <Route path="/business-setup" element={<BusinessSetup />} />
+              <Route path="/legal-assistance" element={<LegalAssistance />} />
+              <Route path="/investments" element={<Investments />} />
+              <Route path="/book-consultation" element={<BookConsultation />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsOfEngagement />} />
+              <Route path="/disclaimer" element={<ComplianceDisclaimer />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/blogs" element={<Blogs />} />
+              <Route path="/blogs/:id" element={<Blogs />} />
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/prototype/crm" element={<CrmPrototype />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </main>
         {!isPrototype && <Footer />}
         {!isPrototype && <WhatsAppWidget />}
       </div>
-    </Router>
+    </>
   );
 }
 
