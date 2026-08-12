@@ -214,7 +214,6 @@ export default function Home() {
             "telephone": "+971585174871",
             "email": "info@finloby.com",
             "sameAs": [
-              "https://www.linkedin.com/company/finloby",
               "https://www.instagram.com/fin_loby/",
               "https://www.youtube.com/@FinLoby"
             ]
