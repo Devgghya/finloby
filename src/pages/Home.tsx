@@ -186,26 +186,50 @@ export default function Home() {
         keywords="financial consultancy, debt solutions, corporate debt restructuring, commercial loans, company setup Dubai, wealth protection, cross-border legal support, FINLOBY"
         image="/finloby-new.jpg"
         breadcrumbs={[{ name: "Home", item: "/" }]}
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "FinancialService",
-          "name": "FINLOBY",
-          "url": "https://finloby.com",
-          "logo": "https://finloby.com/finloby-white-256.png",
-          "description": "FINLOBY is an ultra-luxury financial consultancy specializing in institutional debt solutions, loans & commercial facilities, international business setup, investments, and cross-border legal assistance.",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Al Ameri Business Tower, Suite #21-02, Barsha Heights, Tecom",
-            "addressLocality": "Dubai Media City",
-            "addressRegion": "Dubai",
-            "addressCountry": "AE"
+        structuredData={[
+          {
+            "@context": "https://schema.org",
+            "@type": ["Organization", "FinancialService"],
+            "@id": "https://finloby.com/#organization",
+            "name": "FINLOBY",
+            "alternateName": "Finloby",
+            "url": "https://finloby.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://finloby.com/#logo",
+              "url": "https://finloby.com/finloby-white-256.png",
+              "contentUrl": "https://finloby.com/finloby-white-256.png",
+              "width": 256,
+              "height": 256
+            },
+            "image": { "@id": "https://finloby.com/#logo" },
+            "description": "FINLOBY is an ultra-luxury financial consultancy specializing in institutional debt solutions, loans & commercial facilities, international business setup, investments, and cross-border legal assistance.",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Al Ameri Business Tower, Suite #21-02, Barsha Heights, Tecom",
+              "addressLocality": "Dubai Media City",
+              "addressRegion": "Dubai",
+              "addressCountry": "AE"
+            },
+            "telephone": "+971585174871",
+            "email": "info@finloby.com",
+            "sameAs": [
+              "https://www.linkedin.com/company/finloby",
+              "https://www.instagram.com/fin_loby/",
+              "https://www.youtube.com/@FinLoby"
+            ]
           },
-          "telephone": "+971585174871",
-          "email": "info@finloby.com",
-          "sameAs": [
-            "https://www.linkedin.com/company/finloby"
-          ]
-        }}
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": "https://finloby.com/#website",
+            "url": "https://finloby.com/",
+            "name": "FINLOBY",
+            "alternateName": "Finloby",
+            "publisher": { "@id": "https://finloby.com/#organization" },
+            "inLanguage": "en"
+          }
+        ]}
       />
       
       {/* SECTION 1: THE HERO FRAMEWORK */}
