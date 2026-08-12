@@ -1,4 +1,5 @@
 import { trackMetaEvent } from '../utils/pixel';
+import { trackGoogleEvent } from '../utils/analytics';
 
 export default function WhatsAppWidget() {
   const phoneNumber = "971585174871";
@@ -15,7 +16,10 @@ export default function WhatsAppWidget() {
         target="_blank"
         rel="noopener noreferrer"
         id="whatsapp-chat-link"
-        onClick={() => trackMetaEvent('Lead', { content_name: 'WhatsApp Secure Chat' })}
+        onClick={() => {
+          trackMetaEvent('Lead', { content_name: 'WhatsApp Secure Chat' });
+          trackGoogleEvent('whatsapp_click', { placement: 'floating_widget' });
+        }}
         className="flex items-center gap-3 px-5 py-3.5 bg-[#0D1625]/95 border border-[#C5A059]/40 hover:border-[#E5C158] rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.4)] transition-all duration-300 hover:shadow-[0_0_20px_rgba(229,193,88,0.2)]"
       >
         {/* Pulsing indicator badge inside button */}

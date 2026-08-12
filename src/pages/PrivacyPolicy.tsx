@@ -154,6 +154,28 @@ export default function PrivacyPolicy() {
             </ul>
           </div>
 
+          {/* Analytics Disclosure */}
+          <div className="space-y-3">
+            <h3 className="text-lg font-serif text-[#FBF9F4] font-medium tracking-wide flex items-center gap-2">
+              <span className="text-xs font-mono text-[#C5A059]">06.</span>
+              Analytics and Cookie Preferences
+            </h3>
+            <p>
+              FINLOBY uses Google Analytics 4 through Google Tag Manager only after a visitor allows optional analytics. The service may process device, browser, approximate location and website interaction information. FINLOBY does not send consultation-form names, telephone numbers or email addresses to Google Analytics. Visitors may reject optional analytics or change their choice at any time through Cookie Settings.
+            </p>
+            <p>
+              Learn more about how Google processes information on{' '}
+              <a
+                href="https://policies.google.com/technologies/partner-sites"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#C5A059] underline underline-offset-2 hover:text-[#E2C999]"
+              >
+                Google&apos;s partner sites information page
+              </a>.
+            </p>
+          </div>
+
           {/* Contact Block */}
           <div className="border-t border-[#C5A059]/15 pt-8 mt-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div className="flex items-center gap-3">

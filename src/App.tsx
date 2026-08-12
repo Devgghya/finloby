@@ -5,6 +5,8 @@ import ScrollToTop from './components/ScrollToTop';
 import { lazy, Suspense, useEffect, useState } from 'react';
 import Preloader from './components/Preloader';
 import WhatsAppWidget from './components/WhatsAppWidget';
+import ConsentBanner from './components/ConsentBanner';
+import { trackGoogleEvent } from './utils/analytics';
 
 const Home = lazy(() => import('./pages/Home'));
 const DebtSolutions = lazy(() => import('./pages/DebtSolutions'));
@@ -61,6 +63,23 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const trackContactClick = (event: MouseEvent) => {
+      const target = event.target as Element | null;
+      const link = target?.closest('a');
+      const href = link?.getAttribute('href') || '';
+
+      if (href.startsWith('tel:')) {
+        trackGoogleEvent('phone_click', { page_path: pathname });
+      } else if (href.startsWith('mailto:')) {
+        trackGoogleEvent('email_click', { page_path: pathname });
+      }
+    };
+
+    document.addEventListener('click', trackContactClick);
+    return () => document.removeEventListener('click', trackContactClick);
+  }, [pathname]);
+
   const isPrototype = pathname.startsWith('/prototype/crm');
 
   return (
@@ -98,6 +117,7 @@ function App() {
         </main>
         {!isPrototype && <Footer />}
         {!isPrototype && <WhatsAppWidget />}
+        {!isPrototype && <ConsentBanner />}
       </div>
     </>
   );

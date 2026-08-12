@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ShieldCheck, Lock, Landmark, Database } from 'lucide-react';
 import { TextShimmer } from './ui/TextShimmer';
+import { OPEN_CONSENT_SETTINGS_EVENT } from '../utils/analytics';
 
 export default function Footer() {
   return (
@@ -150,6 +151,14 @@ export default function Footer() {
           <Link to="/privacy" id="footer-privacy-link" className="hover:text-[#C5A059] transition-colors">Privacy Policy</Link>
           <Link to="/terms" id="footer-terms-link" className="hover:text-[#C5A059] transition-colors">Terms of Engagement</Link>
           <Link to="/disclaimer" id="footer-disclaimer-link" className="hover:text-[#C5A059] transition-colors">Compliance Disclaimer</Link>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event(OPEN_CONSENT_SETTINGS_EVENT))}
+            id="footer-cookie-settings"
+            className="hover:text-[#C5A059] transition-colors"
+          >
+            Cookie Settings
+          </button>
           <Link 
             to="/admin" 
             id="footer-admin-link" 

@@ -3,6 +3,7 @@ import { Key, CheckCircle2, User, Phone, Mail, ChevronRight, ShieldCheck, AlertC
 import SEO from '../components/SEO';
 import { BorderBeam } from '../components/ui/BorderBeam';
 import { trackMetaEvent } from '../utils/pixel';
+import { trackGoogleEvent } from '../utils/analytics';
 
 export default function BookConsultation() {
   const [formData, setFormData] = useState({
@@ -65,6 +66,10 @@ export default function BookConsultation() {
       const result = await response.json();
 
       if (result.success) {
+        trackGoogleEvent('generate_lead', {
+          form_name: 'book_consultation',
+          service_interest: formData.interest
+        });
         setIsSubmitted(true);
       } else {
         setErrorMsg(result.message || 'Transmission failed. Please check credentials or contact support.');
