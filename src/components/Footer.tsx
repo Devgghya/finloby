@@ -147,7 +147,7 @@ export default function Footer() {
         <div>
           © {new Date().getFullYear()} FINLOBY. All rights reserved.
         </div>
-        <div className="flex gap-6 items-center">
+        <div className="flex flex-wrap justify-center gap-6 items-center">
           <Link to="/privacy" id="footer-privacy-link" className="hover:text-[#C5A059] transition-colors">Privacy Policy</Link>
           <Link to="/terms" id="footer-terms-link" className="hover:text-[#C5A059] transition-colors">Terms of Engagement</Link>
           <Link to="/disclaimer" id="footer-disclaimer-link" className="hover:text-[#C5A059] transition-colors">Compliance Disclaimer</Link>
